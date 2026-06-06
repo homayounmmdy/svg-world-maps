@@ -234,5 +234,6 @@ export const DEFAULT_MAP_OPTIONS = {
     borders: '#333333',
     hoverColor: '#d0e0ff',
     size: 'lg',
+    showLabels: false
 };
 //# sourceMappingURL=config.js.map

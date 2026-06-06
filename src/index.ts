@@ -1,20 +1,34 @@
-import type {MapData, MapOptions, MapRegion, MapType, PathData} from "./types";
-import {DEFAULT_MAP_OPTIONS, MAP_DATA_REGISTRY, SVG_VIEWPORT_CONFIGS} from "./config";
+import {
+  DEFAULT_MAP_OPTIONS,
+  MAP_DATA_REGISTRY,
+  SVG_VIEWPORT_CONFIGS,
+} from "./config";
+import type {
+  MapData,
+  MapOptions,
+  MapRegion,
+  MapType,
+  PathData,
+} from "./types";
 
-export {registerMapData} from "./config";
+export { registerMapData } from "./config";
 
 /**
  * Type guard to check if region has multiple paths
  */
-const hasMultiplePaths = (region: MapRegion): region is MapRegion & { paths: PathData[] } => {
-    return 'paths' in region && Array.isArray(region.paths);
+const hasMultiplePaths = (
+  region: MapRegion,
+): region is MapRegion & { paths: PathData[] } => {
+  return "paths" in region && Array.isArray(region.paths);
 };
 
 /**
  * Type guard to check if region has a single path
  */
-const hasSinglePath = (region: MapRegion): region is MapRegion & { path: string } => {
-    return 'path' in region && typeof region.path === 'string';
+const hasSinglePath = (
+  region: MapRegion,
+): region is MapRegion & { path: string } => {
+  return "path" in region && typeof region.path === "string";
 };
 
 /**
@@ -24,15 +38,15 @@ const hasSinglePath = (region: MapRegion): region is MapRegion & { path: string 
  * @throws {Error} If map data contains no regions
  */
 const extractRegions = (mapData: MapData): MapRegion[] => {
-    if (mapData.countries && mapData.countries.length > 0) {
-        return mapData.countries;
-    }
-    if (mapData.states && mapData.states.length > 0) {
-        return mapData.states;
-    }
+  if (mapData.countries && mapData.countries.length > 0) {
+    return mapData.countries;
+  }
+  if (mapData.states && mapData.states.length > 0) {
+    return mapData.states;
+  }
 
-    console.error('Map data structure:', mapData);
-    throw new Error('Invalid map data: missing both states and countries arrays');
+  console.error("Map data structure:", mapData);
+  throw new Error("Invalid map data: missing both states and countries arrays");
 };
 
 /**
@@ -41,33 +55,45 @@ const extractRegions = (mapData: MapData): MapRegion[] => {
  * @param options - Styling options for the map regions
  * @returns String of concatenated SVG path elements
  */
-const generateRegionPaths = (mapData: MapData, options: MapOptions = {}): string => {
-    const mergedOptions: Required<MapOptions> = {
-        ...DEFAULT_MAP_OPTIONS,
-        ...options
-    };
+const generateRegionPaths = (
+  mapData: MapData,
+  options: MapOptions = {},
+): string => {
+  const mergedOptions: Required<MapOptions> = {
+    ...DEFAULT_MAP_OPTIONS,
+    ...options,
+  };
 
-    try {
-        const regions = extractRegions(mapData);
+  try {
+    const regions = extractRegions(mapData);
 
-        const styleBlock = `
+    const styleBlock = `
         <style>
             .regions:hover {
                 fill: ${mergedOptions.hoverColor} !important;
                 transition: fill 0.2s ease;
                 cursor: pointer;
             }
+            .map-label {
+                font-family: sans-serif;
+                font-size: 12px;
+                fill: #333;
+                text-anchor: middle;
+                dominant-baseline: middle;
+                pointer-events: none; 
+                user-select: none;
+            }
         </style>
     `;
 
-        if (regions.length === 0) {
-            console.warn('No regions found in map data');
-            return '';
-        }
+    if (regions.length === 0) {
+      console.warn("No regions found in map data");
+      return "";
+    }
 
-        const paths = regions
-            .map((region: MapRegion) => {
-                const commonAttrs = `
+    const paths = regions
+      .map((region: MapRegion) => {
+        const commonAttrs = `
                 id="${region.code}"
                 data-code="${region.code}"
                 data-name="${region.name}"
@@ -75,45 +101,78 @@ const generateRegionPaths = (mapData: MapData, options: MapOptions = {}): string
                 fill="${mergedOptions.background}"
                 stroke="${mergedOptions.borders}"
             `;
-                // Handle regions with multiple paths (like Angola)
-                if (hasMultiplePaths(region)) {
-                    return region.paths
-                        .map((pathData: PathData, index: number) => {
-
-                            if (index === 0) {
-                                return `<path 
+        // Handle regions with multiple paths (like Angola)
+        if (hasMultiplePaths(region)) {
+          return region.paths
+            .map((pathData: PathData, index: number) => {
+              if (index === 0) {
+                return `<path 
                                 d="${pathData.d}" 
                                 ${commonAttrs}
                                 name="${region.name}"
                             />`;
-                            }
-                            return `<path 
+              }
+              return `<path 
                                 d="${pathData.d}" ${commonAttrs}
                                 />`;
-                        })
-                        .join('');
-                }
+            })
+            .join("");
+        }
 
-                // Handle single path regions
-                if (hasSinglePath(region)) {
-                    return `<path 
+        // Handle single path regions
+        if (hasSinglePath(region)) {
+          return `<path 
                 d="${region.path}" 
                 ${commonAttrs}
                 name="${region.name}"
             />`;
-                }
+        }
 
-                console.warn(`Region has no valid path data`, region);
-                return '';
-            })
-            .filter(Boolean)
-            .join('');
+        console.warn(`Region has no valid path data`, region);
+        return "";
+      })
+      .filter(Boolean)
+      .join("");
 
-        return styleBlock + paths;
-    } catch (error) {
-        console.error('Error generating region paths:', error);
-        throw error;
-    }
+    return styleBlock + paths;
+  } catch (error) {
+    console.error("Error generating region paths:", error);
+    throw error;
+  }
+};
+
+/**
+ * Generates SVG text elements for map labels
+ * @param mapData - The map data containing label information
+ * @param options - Styling options for the map
+ * @returns String of concatenated SVG text elements
+ */
+const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
+  const mergedOptions: Required<MapOptions> = {
+    ...DEFAULT_MAP_OPTIONS,
+    ...options,
+  };
+
+  // Only render if user enabled it and labels exist in the map data
+  if (
+    !mergedOptions.showLabels ||
+    !mapData.labels ||
+    mapData.labels.length === 0
+  ) {
+    return "";
+  }
+
+  return mapData.labels
+    .map((label) => {
+      return `<text 
+                x="${label.x}" 
+                y="${label.y}" 
+                data-code="${label.code}"
+                class="map-label"
+                stroke-width="0"
+            >${label.name}</text>`;
+    })
+    .join("\n");
 };
 
 /**
@@ -150,39 +209,44 @@ const generateRegionPaths = (mapData: MapData, options: MapOptions = {}): string
  *
  * @throws {Error} If the map type is not found in the registry
  */
-export const createMap = (mapType: MapType, options: MapOptions = {}): string => {
-    const mapData = MAP_DATA_REGISTRY[mapType];
+export const createMap = (
+  mapType: MapType,
+  options: MapOptions = {},
+): string => {
+  const mapData = MAP_DATA_REGISTRY[mapType];
 
-
-    if (!mapData) {
-        // ✨ Super helpful error for optional maps
-        if (mapType.toLowerCase() !== 'world') {
-                    const safeVarName = `${mapType.replace(/[^a-zA-Z0-9]/g, '_')}Data`;
-            const importPath = `./src/maps/${mapType}`;
-            throw new Error(
-                `Map "${mapType}" is not registered.\n\n` +
-                `💡 This map is optional to keep bundle size small.\n` +
-                `✅ To add it, run:\n` +
-                `   npx add-map ${mapType}\n\n` +
-                `📝 Then register it in your code:\n` +
-                `   import { registerMapData } from 'svg-world-maps';\n` +
-                `   import ${safeVarName} from '${importPath}';\n` +
-                `   registerMapData('${mapType}', ${safeVarName});`
-            );
-        }
-
-        throw new Error(`Map type "${mapType}" not found in registry`);
+  if (!mapData) {
+    // ✨ Super helpful error for optional maps
+    if (mapType.toLowerCase() !== "world") {
+      const safeVarName = `${mapType.replace(/[^a-zA-Z0-9]/g, "_")}Data`;
+      const importPath = `./src/maps/${mapType}`;
+      throw new Error(
+        `Map "${mapType}" is not registered.\n\n` +
+          `💡 This map is optional to keep bundle size small.\n` +
+          `✅ To add it, run:\n` +
+          `   npx add-map ${mapType}\n\n` +
+          `📝 Then register it in your code:\n` +
+          `   import { registerMapData } from 'svg-world-maps';\n` +
+          `   import ${safeVarName} from '${importPath}';\n` +
+          `   registerMapData('${mapType}', ${safeVarName});`,
+      );
     }
 
-    const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType].getConfig(options.size || 'lg');
+    throw new Error(`Map type "${mapType}" not found in registry`);
+  }
 
-    return `<svg 
+  const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType].getConfig(
+    options.size || "lg",
+  );
+
+  return `<svg 
     xmlns="http://www.w3.org/2000/svg" 
     height="${viewportConfig.height}" 
     width="${viewportConfig.width}"
     viewBox="${mapData.viewBox}"
     preserveAspectRatio="xMidYMid meet">
         ${generateRegionPaths(mapData as MapData, options)}
+        ${generateLabels(mapData as MapData, options)}
   </svg>`;
 };
 

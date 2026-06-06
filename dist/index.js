@@ -1,16 +1,16 @@
-import { DEFAULT_MAP_OPTIONS, MAP_DATA_REGISTRY, SVG_VIEWPORT_CONFIGS } from "./config";
+import { DEFAULT_MAP_OPTIONS, MAP_DATA_REGISTRY, SVG_VIEWPORT_CONFIGS, } from "./config";
 export { registerMapData } from "./config";
 /**
  * Type guard to check if region has multiple paths
  */
 const hasMultiplePaths = (region) => {
-    return 'paths' in region && Array.isArray(region.paths);
+    return "paths" in region && Array.isArray(region.paths);
 };
 /**
  * Type guard to check if region has a single path
  */
 const hasSinglePath = (region) => {
-    return 'path' in region && typeof region.path === 'string';
+    return "path" in region && typeof region.path === "string";
 };
 /**
  * Extracts regions from map data based on map type
@@ -25,8 +25,8 @@ const extractRegions = (mapData) => {
     if (mapData.states && mapData.states.length > 0) {
         return mapData.states;
     }
-    console.error('Map data structure:', mapData);
-    throw new Error('Invalid map data: missing both states and countries arrays');
+    console.error("Map data structure:", mapData);
+    throw new Error("Invalid map data: missing both states and countries arrays");
 };
 /**
  * Generates SVG path elements for all regions in the map
@@ -37,7 +37,7 @@ const extractRegions = (mapData) => {
 const generateRegionPaths = (mapData, options = {}) => {
     const mergedOptions = {
         ...DEFAULT_MAP_OPTIONS,
-        ...options
+        ...options,
     };
     try {
         const regions = extractRegions(mapData);
@@ -48,11 +48,20 @@ const generateRegionPaths = (mapData, options = {}) => {
                 transition: fill 0.2s ease;
                 cursor: pointer;
             }
+            .map-label {
+                font-family: sans-serif;
+                font-size: 12px;
+                fill: #333;
+                text-anchor: middle;
+                dominant-baseline: middle;
+                pointer-events: none; 
+                user-select: none;
+            }
         </style>
     `;
         if (regions.length === 0) {
-            console.warn('No regions found in map data');
-            return '';
+            console.warn("No regions found in map data");
+            return "";
         }
         const paths = regions
             .map((region) => {
@@ -79,7 +88,7 @@ const generateRegionPaths = (mapData, options = {}) => {
                                 d="${pathData.d}" ${commonAttrs}
                                 />`;
                 })
-                    .join('');
+                    .join("");
             }
             // Handle single path regions
             if (hasSinglePath(region)) {
@@ -90,16 +99,45 @@ const generateRegionPaths = (mapData, options = {}) => {
             />`;
             }
             console.warn(`Region has no valid path data`, region);
-            return '';
+            return "";
         })
             .filter(Boolean)
-            .join('');
+            .join("");
         return styleBlock + paths;
     }
     catch (error) {
-        console.error('Error generating region paths:', error);
+        console.error("Error generating region paths:", error);
         throw error;
     }
+};
+/**
+ * Generates SVG text elements for map labels
+ * @param mapData - The map data containing label information
+ * @param options - Styling options for the map
+ * @returns String of concatenated SVG text elements
+ */
+const generateLabels = (mapData, options = {}) => {
+    const mergedOptions = {
+        ...DEFAULT_MAP_OPTIONS,
+        ...options,
+    };
+    // Only render if user enabled it and labels exist in the map data
+    if (!mergedOptions.showLabels ||
+        !mapData.labels ||
+        mapData.labels.length === 0) {
+        return "";
+    }
+    return mapData.labels
+        .map((label) => {
+        return `<text 
+                x="${label.x}" 
+                y="${label.y}" 
+                data-code="${label.code}"
+                class="map-label"
+                stroke-width="0"
+            >${label.name}</text>`;
+    })
+        .join("\n");
 };
 /**
  * Creates an SVG map string for the specified map type
@@ -139,8 +177,8 @@ export const createMap = (mapType, options = {}) => {
     const mapData = MAP_DATA_REGISTRY[mapType];
     if (!mapData) {
         // ✨ Super helpful error for optional maps
-        if (mapType.toLowerCase() !== 'world') {
-            const safeVarName = `${mapType.replace(/[^a-zA-Z0-9]/g, '_')}Data`;
+        if (mapType.toLowerCase() !== "world") {
+            const safeVarName = `${mapType.replace(/[^a-zA-Z0-9]/g, "_")}Data`;
             const importPath = `./src/maps/${mapType}`;
             throw new Error(`Map "${mapType}" is not registered.\n\n` +
                 `💡 This map is optional to keep bundle size small.\n` +
@@ -153,7 +191,7 @@ export const createMap = (mapType, options = {}) => {
         }
         throw new Error(`Map type "${mapType}" not found in registry`);
     }
-    const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType].getConfig(options.size || 'lg');
+    const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType].getConfig(options.size || "lg");
     return `<svg 
     xmlns="http://www.w3.org/2000/svg" 
     height="${viewportConfig.height}" 
@@ -161,6 +199,7 @@ export const createMap = (mapType, options = {}) => {
     viewBox="${mapData.viewBox}"
     preserveAspectRatio="xMidYMid meet">
         ${generateRegionPaths(mapData, options)}
+        ${generateLabels(mapData, options)}
   </svg>`;
 };
 export default createMap;

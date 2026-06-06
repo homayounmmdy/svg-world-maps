@@ -73,6 +73,7 @@ export type MapOptions = {
      * { hoverColor: 'var(--map-hover-color)' }
      */
     hoverColor?: string;
+    showLabels?: boolean;
 };
 /**
  * Represents the possible size values for map rendering
@@ -118,7 +119,7 @@ export type MapOptions = {
  * // Custom size for specific layout
  * createMap('usa', { size: 0.65 }) // 65% of original
  */
-export type MapSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | number;
+export type MapSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | number;
 /**
  * Supported map types
  * - 'afghanistan': Detailed map of Afghanistan with provinces/states
@@ -133,7 +134,7 @@ export type MapSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' |
  * - 'usa': Detailed map of usa with provinces/states
  * - 'world': World map with all countries
  */
-export type MapType = 'afghanistan' | 'australia' | 'brazil' | 'france' | 'gb' | 'germany' | 'india' | 'iran' | 'netherlands' | 'usa' | 'world';
+export type MapType = "afghanistan" | "australia" | "brazil" | "france" | "gb" | "germany" | "india" | "iran" | "netherlands" | "usa" | "world";
 /**
  * Represents a single path within a region
  */
@@ -169,5 +170,11 @@ export type MapData = {
     states?: MapRegion[];
     /** Countries for world maps */
     countries?: MapRegion[];
+    labels?: Array<{
+        code: string;
+        x: string | number;
+        y: string | number;
+        name: string;
+    }>;
 };
 //# sourceMappingURL=types.d.ts.map

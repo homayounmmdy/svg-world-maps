@@ -7,6 +7,12 @@ declare const AFGHANISTAN: {
         path: string;
         name: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default AFGHANISTAN;
 //# sourceMappingURL=AFGHANISTAN.d.ts.map
