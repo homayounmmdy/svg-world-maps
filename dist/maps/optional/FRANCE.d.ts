@@ -7,6 +7,12 @@ declare const FRANCE: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default FRANCE;
 //# sourceMappingURL=FRANCE.d.ts.map

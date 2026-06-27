@@ -7,6 +7,12 @@ declare const INDIA: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default INDIA;
 //# sourceMappingURL=INDIA.d.ts.map

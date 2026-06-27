@@ -7,6 +7,12 @@ declare const GB: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default GB;
 //# sourceMappingURL=GB.d.ts.map

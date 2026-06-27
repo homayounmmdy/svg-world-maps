@@ -50,5 +50,8 @@
   "bugs": {
     "url": "https://github.com/homayounmmdy/svg-world-maps/issues"
   },
-  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme"
+  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }

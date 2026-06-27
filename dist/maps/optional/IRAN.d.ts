@@ -7,6 +7,12 @@ declare const IRAN: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default IRAN;
 //# sourceMappingURL=IRAN.d.ts.map

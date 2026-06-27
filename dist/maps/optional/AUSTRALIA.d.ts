@@ -7,6 +7,12 @@ declare const AUSTRALIA: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default AUSTRALIA;
 //# sourceMappingURL=AUSTRALIA.d.ts.map

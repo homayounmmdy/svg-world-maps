@@ -7,6 +7,12 @@ declare const BRAZIL: {
         code: string;
         path: string;
     }[];
+    labels: {
+        code: string;
+        x: string;
+        y: string;
+        name: string;
+    }[];
 };
 export default BRAZIL;
 //# sourceMappingURL=BRAZIL.d.ts.map
