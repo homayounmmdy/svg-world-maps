@@ -1,5 +1,9 @@
 # svg-world-maps
 
+[![npm version](https://badge.fury.io/js/svg-world-maps.svg)](https://www.npmjs.com/package/svg-world-maps)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm downloads](https://img.shields.io/npm/dt/svg-world-maps.svg)](https://www.npmjs.com/package/svg-world-maps)
+
 Simple, lightweight SVG maps for JavaScript projects.
 
 🎉 **Now with 8 Country Maps! Hover Effects & Click Support!**
