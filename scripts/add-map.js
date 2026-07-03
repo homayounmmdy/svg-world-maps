@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,11 +46,29 @@ const src = path.join(optionalDir, foundFileName);
 // Destination uses the name provided by the user for consistency
 const dest = path.join(process.cwd(), 'src/maps', `${mapName}.ts`);
 
+function askQuestion(query) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  return new Promise(resolve => {
+    rl.question(query, (answer) => {
+      rl.close();
+      resolve(answer);
+    });
+  });
+}
+
+async function run() {
 // 4. Check if already installed
 if (fs.existsSync(dest)) {
   console.warn(`⚠️  Map '${mapName}' already exists in your project.`);
-  const overwrite = prompt('Do you want to overwrite it? (y/N): ');
+
+    // 👇 Use the async helper instead of prompt()
+    const overwrite = await askQuestion('Do you want to overwrite it? (y/N): ');
+
   if (overwrite?.toLowerCase() !== 'y') {
+      console.log('Aborted.');
     process.exit(0);
   }
 }
@@ -78,3 +97,6 @@ registerMapData('${mapName}', ${varName});
 
 const map = createMap('${mapName}');
 `);
+}
+
+run();
