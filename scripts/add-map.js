@@ -90,7 +90,7 @@ console.log(`
 
 📝 Now register it in your code:
 
-import { registerMapData, createMap } from 'your-package';
+import { registerMapData, createMap } from 'svg-world-maps';
 import ${varName} from './src/maps/${mapName}';
 
 registerMapData('${mapName}', ${varName});
