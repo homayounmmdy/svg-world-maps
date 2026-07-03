@@ -1,6 +1,6 @@
 {
   "name": "svg-world-maps",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "description": "World map SVG for any JavaScript framework",
   "type": "module",
   "main": "dist/index.js",
@@ -32,6 +32,9 @@
     "germany svg map",
     "india svg map",
     "iran svg map",
+    "switzerland svg map",
+    "europe svg map",
+    "belgium svg map",
     "netherlands svg map",
     "USA svg map",
     "country-maps"
@@ -50,8 +53,5 @@
   "bugs": {
     "url": "https://github.com/homayounmmdy/svg-world-maps/issues"
   },
-  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
+  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme"
 }
