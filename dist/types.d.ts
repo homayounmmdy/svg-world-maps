@@ -73,7 +73,18 @@ export type MapOptions = {
      * { hoverColor: 'var(--map-hover-color)' }
      */
     hoverColor?: string;
+    /**
+     * Whether to show static text labels permanently on the map.
+     * @default false
+     */
     showLabels?: boolean;
+    /**
+     * Whether to show a tooltip popup when hovering over a region.
+     * Uses the native SVG <title> element for maximum compatibility
+     * (works in React dangerouslySetInnerHTML, <img> tags, etc.).
+     * @default true
+     */
+    showTooltip?: boolean;
 };
 /**
  * Represents the possible size values for map rendering

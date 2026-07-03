@@ -257,5 +257,6 @@ export const DEFAULT_MAP_OPTIONS: Required<MapOptions> = {
     borders: '#333333',
     hoverColor: '#d0e0ff',
     size : 'lg',
-    showLabels: false
+    showLabels: false,
+    showTooltip: true
 };

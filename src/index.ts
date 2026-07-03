@@ -50,6 +50,18 @@ const extractRegions = (mapData: MapData): MapRegion[] => {
 };
 
 /**
+ * Escapes special characters for safe inclusion in XML/SVG
+ */
+const escapeXml = (unsafe: string): string => {
+    return unsafe
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+};
+
+/**
  * Generates SVG path elements for all regions in the map
  * @param mapData - The map data containing region information
  * @param options - Styling options for the map regions
@@ -76,7 +88,7 @@ const generateRegionPaths = (
             }
             .map-label {
                 font-family: sans-serif;
-                font-size: 12px;
+                font-size: 65%;
                 fill: #333;
                 text-anchor: middle;
                 dominant-baseline: middle;
@@ -101,6 +113,12 @@ const generateRegionPaths = (
                 fill="${mergedOptions.background}"
                 stroke="${mergedOptions.borders}"
             `;
+
+        // Generate the <title> tag for the native hover popup
+        const titleTag = mergedOptions.showTooltip
+          ? `<title>${escapeXml(region.name)}</title>`
+          : '';
+
         // Handle regions with multiple paths (like Angola)
         if (hasMultiplePaths(region)) {
           return region.paths
@@ -110,11 +128,11 @@ const generateRegionPaths = (
                                 d="${pathData.d}" 
                                 ${commonAttrs}
                                 name="${region.name}"
-                            />`;
+                            >${titleTag}</path>`;
               }
               return `<path 
                                 d="${pathData.d}" ${commonAttrs}
-                                />`;
+                            >${titleTag}</path>`;
             })
             .join("");
         }
@@ -125,7 +143,7 @@ const generateRegionPaths = (
                 d="${region.path}" 
                 ${commonAttrs}
                 name="${region.name}"
-            />`;
+            >${titleTag}</path>`;
         }
 
         console.warn(`Region has no valid path data`, region);
