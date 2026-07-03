@@ -208,6 +208,9 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
  *   - `'iran'`: Optional - requires registration via `npx add-map iran` ⚙️
  *   - `'netherlands'`: Optional - requires registration via `npx add-map netherlands` ⚙️
  *   - `'usa'`: Optional - requires registration via `npx add-map usa` ⚙️
+ *   - `'belgium'`: Optional - requires registration via `npx add-map belgium` ⚙️
+ *   - `'switzerland'`: Optional - requires registration via `npx add-map switzerland` ⚙️
+ *   - `'europe'`: Optional - requires registration via `npx add-map europe` ⚙️
  * @param options - Optional styling configuration for the map
  * @returns Complete SVG string representing the map
  *

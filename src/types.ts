@@ -159,6 +159,9 @@ export type MapSize =
  * - 'iran': Detailed map of iran with provinces/states
  * - 'netherlands': Detailed map of netherlands with provinces/states
  * - 'usa': Detailed map of usa with provinces/states
+ * - 'belgium': Detailed map of belgium with provinces/states
+ * - 'switzerland': Detailed map of switzerland with provinces/states
+ * - 'europe': Detailed map of europe with provinces/states
  * - 'world': World map with all countries
  */
 export type MapType =
@@ -172,8 +175,9 @@ export type MapType =
   | "iran"
   | "netherlands"
   | "usa"
-  | "europe"  | "belgium"
-
+  | "europe"
+  | "belgium"
+  | "switzerland"
   | "world";
 
 /**

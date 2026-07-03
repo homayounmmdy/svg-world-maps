@@ -16,8 +16,9 @@ export const MAP_DATA_REGISTRY = {
   iran: undefined,
   netherlands: undefined,
   usa: undefined,
-  europe: undefined,    belgium: undefined,
-
+  europe: undefined,
+  belgium: undefined,
+  switzerland: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -94,12 +95,19 @@ export const BASE_VIEWPORT_CONFIGS = {
     width: 1000,
     viewBox: "0 0 1000 684",
     aspectRatio: 1000 / 684,
-  },    belgium: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },
+  },
+  belgium: {
+    height: 817,
+    width: 1000,
+    viewBox: "0 0 1000 817",
+    aspectRatio: 1000 / 817,
+  },
+  switzerland: {
+    height: 641,
+    width: 1000,
+    viewBox: "0 0 1000 641",
+    aspectRatio: 1000 / 641,
+  },
 
   world: {
     height: 857,
@@ -114,23 +122,23 @@ export const BASE_VIEWPORT_CONFIGS = {
  * Defines the dimensions for each size variant
  */
 export const SIZE_PRESETS = {
-  "xs": {
+  xs: {
     scale: 0.25,
     description: "Extra small - 25% of original size",
   },
-  "sm": {
+  sm: {
     scale: 0.5,
     description: "Small - 50% of original size",
   },
-  "md": {
+  md: {
     scale: 0.75,
     description: "Medium - 75% of original size",
   },
-  "lg": {
+  lg: {
     scale: 1,
     description: "Large - 100% of original size (default)",
   },
-  "xl": {
+  xl: {
     scale: 1.5,
     description: "Extra large - 150% of original size",
   },
@@ -168,6 +176,7 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.usa
     | typeof BASE_VIEWPORT_CONFIGS.europe
     | typeof BASE_VIEWPORT_CONFIGS.belgium
+    | typeof BASE_VIEWPORT_CONFIGS.switzerland
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -268,6 +277,7 @@ export const SVG_VIEWPORT_CONFIGS = {
   usa: createMapViewportConfig("usa"),
   europe: createMapViewportConfig("europe"),
   belgium: createMapViewportConfig("belgium"),
+  switzerland: createMapViewportConfig("switzerland"),
   world: createMapViewportConfig("world"),
 } as const;
 
