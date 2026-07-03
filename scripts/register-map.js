@@ -95,8 +95,16 @@ if (!configContent.includes(`${cleanName}: {`)) {
 // Add to SVG_VIEWPORT_CONFIGS (inserts before "world")
 if (!configContent.includes(`${cleanName}: createMapViewportConfig`)) {
   configContent = configContent.replace(
-    /(export const SVG_VIEWPORT_CONFIGS = \{[\s\S]*?)(\s*world: createMapViewportConfig\('world'\),)/,
-    `$1    ${cleanName}: createMapViewportConfig('${cleanName}'),\n$2`,
+    /(export const SVG_VIEWPORT_CONFIGS = \{[\s\S]*?)(world: createMapViewportConfig\(["']world["']\),)/,
+    `$1${cleanName}: createMapViewportConfig("${cleanName}"),\n  $2`,
+  );
+  configUpdated = true;
+}
+
+if (!configContent.includes(`typeof BASE_VIEWPORT_CONFIGS.${cleanName}`)) {
+  configContent = configContent.replace(
+    /(\n\s*\|\s*typeof BASE_VIEWPORT_CONFIGS\.world,)/,
+    `\n    | typeof BASE_VIEWPORT_CONFIGS.${cleanName}$1`
   );
   configUpdated = true;
 }
@@ -130,43 +138,9 @@ if (indexUpdated) {
   console.log(`ℹ️ index.ts already contains "${cleanName}"`);
 }
 
-// ==========================================
-// 4. Create placeholder map data file
-// ==========================================
-const mapFilePath = path.join(mapDataDir, `${cleanName}.ts`);
-if (!fs.existsSync(mapFilePath)) {
-  const placeholderContent = `import type { MapData } from "../types";
-
-/**
- * Map data for ${cleanName}
- * TODO: Replace with actual SVG path data and correct viewBox
- */
-const ${cleanName}Data: MapData = {
-    viewBox: "0 0 1000 1000",
-    states: [
-        // Add regions here
-        // {
-        //     code: "BRU",
-        //     name: "Brussels",
-        //     path: "M..."
-        // }
-    ]
-};
-
-export default ${cleanName}Data;
-`;
-  fs.writeFileSync(mapFilePath, placeholderContent);
-  console.log(`✅ Created placeholder map data file at ${mapFilePath}`);
-} else {
-  console.log(`ℹ️ Map data file already exists at ${mapFilePath}`);
-}
-
 console.log(`\n🎉 Successfully added "${cleanName}"!`);
 console.log(`\n📝 Next steps:`);
-console.log(
-  `1. Update the dimensions in config.ts (BASE_VIEWPORT_CONFIGS.${cleanName})`,
-);
-console.log(`2. Add actual SVG data to ${mapFilePath}`);
-console.log(`3. Import and register the map in your app:`);
+console.log(`1. Update the dimensions in config.ts (BASE_VIEWPORT_CONFIGS.${cleanName}) if needed`);
+console.log(`2. Import and register the data in config.ts:`);
 console.log(`   import ${cleanName}Data from './maps/${cleanName}';`);
 console.log(`   registerMapData('${cleanName}', ${cleanName}Data);`);

@@ -172,7 +172,8 @@ export type MapType =
   | "iran"
   | "netherlands"
   | "usa"
-  | "europe"
+  | "europe"  | "belgium"
+
   | "world";
 
 /**
