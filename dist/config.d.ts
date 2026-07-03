@@ -38,6 +38,7 @@ export declare const MAP_DATA_REGISTRY: {
     readonly iran: undefined;
     readonly netherlands: undefined;
     readonly usa: undefined;
+    readonly europe: undefined;
 };
 export declare const registerMapData: (type: string, data: any) => void;
 /**
@@ -105,6 +106,12 @@ export declare const BASE_VIEWPORT_CONFIGS: {
         readonly viewBox: "0 0 1000 589";
         readonly aspectRatio: number;
     };
+    readonly europe: {
+        readonly height: 684;
+        readonly width: 1000;
+        readonly viewBox: "0 0 1000 684";
+        readonly aspectRatio: number;
+    };
     readonly world: {
         readonly height: 857;
         readonly width: 2000;
@@ -156,7 +163,7 @@ export declare const SIZE_PRESETS: {
  * @param size - Size variant or custom size
  * @returns Calculated width and height
  */
-export declare const calculateViewportDimensions: (baseConfig: typeof BASE_VIEWPORT_CONFIGS.afghanistan | typeof BASE_VIEWPORT_CONFIGS.australia | typeof BASE_VIEWPORT_CONFIGS.brazil | typeof BASE_VIEWPORT_CONFIGS.france | typeof BASE_VIEWPORT_CONFIGS.gb | typeof BASE_VIEWPORT_CONFIGS.germany | typeof BASE_VIEWPORT_CONFIGS.india | typeof BASE_VIEWPORT_CONFIGS.iran | typeof BASE_VIEWPORT_CONFIGS.netherlands | typeof BASE_VIEWPORT_CONFIGS.usa | typeof BASE_VIEWPORT_CONFIGS.world, size?: MapSize) => {
+export declare const calculateViewportDimensions: (baseConfig: typeof BASE_VIEWPORT_CONFIGS.afghanistan | typeof BASE_VIEWPORT_CONFIGS.australia | typeof BASE_VIEWPORT_CONFIGS.brazil | typeof BASE_VIEWPORT_CONFIGS.france | typeof BASE_VIEWPORT_CONFIGS.gb | typeof BASE_VIEWPORT_CONFIGS.germany | typeof BASE_VIEWPORT_CONFIGS.india | typeof BASE_VIEWPORT_CONFIGS.iran | typeof BASE_VIEWPORT_CONFIGS.netherlands | typeof BASE_VIEWPORT_CONFIGS.usa | typeof BASE_VIEWPORT_CONFIGS.europe | typeof BASE_VIEWPORT_CONFIGS.world, size?: MapSize) => {
     width: number;
     height: number;
 };
@@ -236,6 +243,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -296,6 +308,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly height: 589;
             readonly width: 1000;
             readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
             readonly aspectRatio: number;
         } | {
             readonly height: 857;
@@ -360,6 +377,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -420,6 +442,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly height: 589;
             readonly width: 1000;
             readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
             readonly aspectRatio: number;
         } | {
             readonly height: 857;
@@ -484,6 +511,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -544,6 +576,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly height: 589;
             readonly width: 1000;
             readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
             readonly aspectRatio: number;
         } | {
             readonly height: 857;
@@ -608,6 +645,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -668,6 +710,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly height: 589;
             readonly width: 1000;
             readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
             readonly aspectRatio: number;
         } | {
             readonly height: 857;
@@ -732,6 +779,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -794,6 +846,78 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly viewBox: "0 0 1000 589";
             readonly aspectRatio: number;
         } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 857;
+            readonly width: 2000;
+            readonly viewBox: "0 0 2000 857";
+            readonly aspectRatio: number;
+        };
+        readonly getConfig: (size?: MapSize) => {
+            height: string;
+            width: string;
+        };
+    };
+    readonly europe: {
+        readonly base: {
+            readonly height: 457.2;
+            readonly width: 600;
+            readonly viewBox: "0 0 600 457.2";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 966;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 966";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 912;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 912";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 960;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 960";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 1000;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 1000";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 1000;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 1000";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 1000;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 1000";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 593.71021;
+            readonly width: 654.51147;
+            readonly viewBox: "0 0 654.51147 593.71021";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 1000;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 1000";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 589;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
+            readonly aspectRatio: number;
+        } | {
             readonly height: 857;
             readonly width: 2000;
             readonly viewBox: "0 0 2000 857";
@@ -854,6 +978,11 @@ export declare const SVG_VIEWPORT_CONFIGS: {
             readonly height: 589;
             readonly width: 1000;
             readonly viewBox: "0 0 1000 589";
+            readonly aspectRatio: number;
+        } | {
+            readonly height: 684;
+            readonly width: 1000;
+            readonly viewBox: "0 0 1000 684";
             readonly aspectRatio: number;
         } | {
             readonly height: 857;

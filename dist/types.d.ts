@@ -145,7 +145,7 @@ export type MapSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" |
  * - 'usa': Detailed map of usa with provinces/states
  * - 'world': World map with all countries
  */
-export type MapType = "afghanistan" | "australia" | "brazil" | "france" | "gb" | "germany" | "india" | "iran" | "netherlands" | "usa" | "world";
+export type MapType = "afghanistan" | "australia" | "brazil" | "france" | "gb" | "germany" | "india" | "iran" | "netherlands" | "usa" | "europe" | "world";
 /**
  * Represents a single path within a region
  */
