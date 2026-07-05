@@ -6,6 +6,9 @@
 
 Simple, lightweight SVG maps for JavaScript projects.
 
+<img width="1664" height="928" alt="1783268206" src="https://github.com/user-attachments/assets/4ef39455-47e4-4d96-aa64-a69097874837" />
+
+
 🎉 **Now with 13 Country Maps + Europe! Hover Effects, Tooltips, Labels & Click Support!**
 
 > 📚 **Documentation**: [Wiki Home](https://github.com/homayounmmdy/svg-world-maps/wiki) • [Getting Started](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) • [Optional Maps](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)  
