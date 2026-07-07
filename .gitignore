@@ -37,6 +37,10 @@ next-env.d.ts
 /dist 
 
 /.idea
+
+# project
 test.svg
+
+src/maps/optional/TEMPLATE.ts
 
 *.tgz
