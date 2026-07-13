@@ -178,6 +178,7 @@ export type MapType =
   | "europe"
   | "belgium"
   | "switzerland"
+  | "pakistan"
   | "world";
 
 /**
@@ -199,17 +200,17 @@ export type MapRegion = {
   /** Display name of the region (e.g., 'Angola') */
   name: string;
 } & (
-  | {
+    | {
       /** Single SVG path for simple regions */
       path: string;
       paths?: never;
     }
-  | {
+    | {
       /** Multiple SVG paths for complex regions (islands, territories, etc.) */
       paths: PathData[];
       path?: never;
     }
-);
+  );
 
 /**
  * Structure of map data containing either states or countries

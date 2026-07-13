@@ -18,6 +18,7 @@ export const MAP_DATA_REGISTRY = {
   usa: undefined,
   europe: undefined,
   belgium: undefined,
+  pakistan: undefined,
   switzerland: undefined,
 } as const;
 
@@ -108,6 +109,12 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 641",
     aspectRatio: 1000 / 641,
   },
+  pakistan: {
+    height: 959,
+    width: 1000,
+    viewBox: "0 0 1000 959",
+    aspectRatio: 1000 / 959,
+  },
 
   world: {
     height: 857,
@@ -177,6 +184,7 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.europe
     | typeof BASE_VIEWPORT_CONFIGS.belgium
     | typeof BASE_VIEWPORT_CONFIGS.switzerland
+    | typeof BASE_VIEWPORT_CONFIGS.pakistan
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -278,6 +286,7 @@ export const SVG_VIEWPORT_CONFIGS = {
   europe: createMapViewportConfig("europe"),
   belgium: createMapViewportConfig("belgium"),
   switzerland: createMapViewportConfig("switzerland"),
+  pakistan: createMapViewportConfig("pakistan"),
   world: createMapViewportConfig("world"),
 } as const;
 

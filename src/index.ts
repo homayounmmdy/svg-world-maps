@@ -53,12 +53,12 @@ const extractRegions = (mapData: MapData): MapRegion[] => {
  * Escapes special characters for safe inclusion in XML/SVG
  */
 const escapeXml = (unsafe: string): string => {
-    return unsafe
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&apos;');
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 };
 
 /**
@@ -210,6 +210,7 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
  *   - `'usa'`: Optional - requires registration via `npx add-map usa` ⚙️
  *   - `'belgium'`: Optional - requires registration via `npx add-map belgium` ⚙️
  *   - `'switzerland'`: Optional - requires registration via `npx add-map switzerland` ⚙️
+ * - 'pakistan': Detailed map of Pakistan with provinces/states
  *   - `'europe'`: Optional - requires registration via `npx add-map europe` ⚙️
  * @param options - Optional styling configuration for the map
  * @returns Complete SVG string representing the map
@@ -243,13 +244,13 @@ export const createMap = (
       const importPath = `./src/maps/${mapType}`;
       throw new Error(
         `Map "${mapType}" is not registered.\n\n` +
-          `💡 This map is optional to keep bundle size small.\n` +
-          `✅ To add it, run:\n` +
-          `   npx add-map ${mapType}\n\n` +
-          `📝 Then register it in your code:\n` +
-          `   import { registerMapData } from 'svg-world-maps';\n` +
-          `   import ${safeVarName} from '${importPath}';\n` +
-          `   registerMapData('${mapType}', ${safeVarName});`,
+        `💡 This map is optional to keep bundle size small.\n` +
+        `✅ To add it, run:\n` +
+        `   npx add-map ${mapType}\n\n` +
+        `📝 Then register it in your code:\n` +
+        `   import { registerMapData } from 'svg-world-maps';\n` +
+        `   import ${safeVarName} from '${importPath}';\n` +
+        `   registerMapData('${mapType}', ${safeVarName});`,
       );
     }
 
