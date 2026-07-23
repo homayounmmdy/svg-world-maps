@@ -82,7 +82,7 @@ async function main() {
       /name: "Template"/g,
       `name: "${mapNameCapitalized}"`,
     );
-    newContent = newContent.replace(/code: "TM"/g, `code: "${code}"`);
+    newContent = newContent.replace(/code: "TM"/g, `code: "${code.toUpperCase()}"`);
 
     // Replace viewBox height (replaces the 817 with the user's height)
     newContent = newContent.replace(
