@@ -149,20 +149,11 @@ export type MapSize =
 
 /**
  * Supported map types
- * - 'afghanistan': Detailed map of Afghanistan with provinces/states
- * - 'australia': Detailed map of australia with provinces/states
- * - 'brazil': Detailed map of brazil with provinces/states
- * - 'france': Detailed map of france with provinces/states
- * - 'gb': Detailed map of gb with provinces/states
- * - 'germany': Detailed map of germany with provinces/states
- * - 'india': Detailed map of india with provinces/states
- * - 'iran': Detailed map of iran with provinces/states
- * - 'netherlands': Detailed map of netherlands with provinces/states
- * - 'usa': Detailed map of usa with provinces/states
- * - 'belgium': Detailed map of belgium with provinces/states
- * - 'switzerland': Detailed map of switzerland with provinces/states
- * - 'europe': Detailed map of europe with provinces/states
  * - 'world': World map with all countries
+ * - 'usa': Detailed map of usa with provinces/states
+ * - 'india': Detailed map of india with provinces/states
+ * - 'europe': Detailed map of europe with provinces/states
+ * - For the full list of supported maps, open `MAPS_INFO.md` located in the root of the project.
  */
 export type MapType =
   | "afghanistan"

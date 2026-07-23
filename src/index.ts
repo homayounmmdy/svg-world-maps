@@ -198,20 +198,10 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
  *
  * @param mapType - Type of map to generate
  *   - `'world'`: Always available ✅
- *   - `'afghanistan'`: Optional - requires registration via `npx add-map afghanistan` ⚙️
- *   - `'australia'`: Optional - requires registration via `npx add-map australia` ⚙️
- *   - `'brazil'`: Optional - requires registration via `npx add-map brazil` ⚙️
- *   - `'france'`: Optional - requires registration via `npx add-map france` ⚙️
- *   - `'gb'`: Optional - requires registration via `npx add-map gb` ⚙️
- *   - `'germany'`: Optional - requires registration via `npx add-map germany` ⚙️
- *   - `'india'`: Optional - requires registration via `npx add-map india` ⚙️
- *   - `'iran'`: Optional - requires registration via `npx add-map iran` ⚙️
- *   - `'netherlands'`: Optional - requires registration via `npx add-map netherlands` ⚙️
  *   - `'usa'`: Optional - requires registration via `npx add-map usa` ⚙️
- *   - `'belgium'`: Optional - requires registration via `npx add-map belgium` ⚙️
- *   - `'switzerland'`: Optional - requires registration via `npx add-map switzerland` ⚙️
- * - 'pakistan': Detailed map of Pakistan with provinces/states
+ *   - `'india'`: Optional - requires registration via `npx add-map india` ⚙️
  *   - `'europe'`: Optional - requires registration via `npx add-map europe` ⚙️
+ *   - For the full list of supported countries, see `MAPS_INFO.md` located in the root of the project.
  * @param options - Optional styling configuration for the map
  * @returns Complete SVG string representing the map
  *
@@ -224,8 +214,8 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
  * });
  *
  * @example
- * // Create Afghanistan map at 50% scale
- * const afghanMap = createMap('afghanistan', {
+ * // Create USA map at 50% scale
+ * const usaMap = createMap('usa', {
  *   size: 0.5
  * });
  *
