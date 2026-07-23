@@ -2,94 +2,94 @@
  * Configuration options for map styling and sizing
  */
 export type MapOptions = {
-  /** Background color for map regions (supports any valid CSS color) */
-  background?: string;
+    /** Background color for map regions (supports any valid CSS color) */
+    background?: string;
 
-  /** Border color for region boundaries (supports any valid CSS color) */
-  borders?: string;
+    /** Border color for region boundaries (supports any valid CSS color) */
+    borders?: string;
 
-  /**
-   * Controls the rendered size of the map
-   *
-   * You can specify size in two ways:
-   *
-   * 1. **Preset sizes** - Use predefined string values for common scaling:
-   *    - `'xs'`   - 25% of original size (0.25x scale)
-   *    - `'sm'`   - 50% of original size (0.5x scale)
-   *    - `'md'`   - 75% of original size (0.75x scale)
-   *    - `'lg'`   - 100% of original size (1x scale - default)
-   *    - `'xl'`   - 150% of original size (1.5x scale)
-   *    - `'2xl'`  - 200% of original size (2x scale)
-   *    - `'3xl'`  - 250% of original size (2.5x scale)
-   *    - `'4xl'`  - 300% of original size (3x scale)
-   *
-   * 2. **Custom scale factor** - Provide a number for precise control:
-   *    - `0.25` - Quarter size (same as 'xs')
-   *    - `0.5`  - Half size (same as 'sm')
-   *    - `0.75` - Three-quarters size (same as 'md')
-   *    - `1`    - Original size (same as 'lg')
-   *    - `1.25` - 25% larger than original
-   *    - `2`    - Double size (same as '2xl')
-   *    - `2.5`  - Two and a half times larger (same as '3xl')
-   *    - `3`    - Triple size (same as '4xl')
-   *    - `0.33` - One-third size
-   *    - `1.8`  - 80% larger than original
-   *
-   * @example
-   * // Using preset sizes
-   * { size: 'sm' }     // 50% of original dimensions
-   * { size: 'xl' }     // 150% of original dimensions
-   *
-   * @example
-   * // Using custom scale factors
-   * { size: 0.33 }     // Exactly one-third the original size
-   * { size: 1.25 }     // 25% larger than original
-   * { size: 1.75 }     // 75% larger than original
-   * { size: 2.5 }      // Two and a half times larger
-   *
-   * @default 'lg' (original size)
-   */
-  size?: MapSize;
+    /**
+     * Controls the rendered size of the map
+     *
+     * You can specify size in two ways:
+     *
+     * 1. **Preset sizes** - Use predefined string values for common scaling:
+     *    - `'xs'`   - 25% of original size (0.25x scale)
+     *    - `'sm'`   - 50% of original size (0.5x scale)
+     *    - `'md'`   - 75% of original size (0.75x scale)
+     *    - `'lg'`   - 100% of original size (1x scale - default)
+     *    - `'xl'`   - 150% of original size (1.5x scale)
+     *    - `'2xl'`  - 200% of original size (2x scale)
+     *    - `'3xl'`  - 250% of original size (2.5x scale)
+     *    - `'4xl'`  - 300% of original size (3x scale)
+     *
+     * 2. **Custom scale factor** - Provide a number for precise control:
+     *    - `0.25` - Quarter size (same as 'xs')
+     *    - `0.5`  - Half size (same as 'sm')
+     *    - `0.75` - Three-quarters size (same as 'md')
+     *    - `1`    - Original size (same as 'lg')
+     *    - `1.25` - 25% larger than original
+     *    - `2`    - Double size (same as '2xl')
+     *    - `2.5`  - Two and a half times larger (same as '3xl')
+     *    - `3`    - Triple size (same as '4xl')
+     *    - `0.33` - One-third size
+     *    - `1.8`  - 80% larger than original
+     *
+     * @example
+     * // Using preset sizes
+     * { size: 'sm' }     // 50% of original dimensions
+     * { size: 'xl' }     // 150% of original dimensions
+     *
+     * @example
+     * // Using custom scale factors
+     * { size: 0.33 }     // Exactly one-third the original size
+     * { size: 1.25 }     // 25% larger than original
+     * { size: 1.75 }     // 75% larger than original
+     * { size: 2.5 }      // Two and a half times larger
+     *
+     * @default 'lg' (original size)
+     */
+    size?: MapSize;
 
-  /**
-   * Color applied to map regions when hovered by the user.
-   *
-   * @remarks
-   * - Requires CSS/JS hover handling to be implemented in your renderer
-   * - Supports any valid CSS color format:
-   *   • Named colors: `'red'`, `'blue'`, `'transparent'`
-   *   • Hex: `'#ff0000'`, `'#f00'`
-   *   • RGB/RGBA: `'rgb(255, 0, 0)'`, `'rgba(255, 0, 0, 0.5)'`
-   *   • HSL/HSLA: `'hsl(0, 100%, 50%)'`, `'hsla(0, 100%, 50%, 0.3)'`
-   * - If not provided, regions will use default color on hover
-   *
-   * @example
-   * // Simple named color
-   * { hoverColor: 'lightblue' }
-   *
-   * @example
-   * // Semi-transparent highlight
-   * { hoverColor: 'rgba(0, 123, 255, 0.4)' }
-   *
-   * @example
-   * // Using CSS custom property (if supported by your renderer)
-   * { hoverColor: 'var(--map-hover-color)' }
-   */
-  hoverColor?: string;
+    /**
+     * Color applied to map regions when hovered by the user.
+     *
+     * @remarks
+     * - Requires CSS/JS hover handling to be implemented in your renderer
+     * - Supports any valid CSS color format:
+     *   • Named colors: `'red'`, `'blue'`, `'transparent'`
+     *   • Hex: `'#ff0000'`, `'#f00'`
+     *   • RGB/RGBA: `'rgb(255, 0, 0)'`, `'rgba(255, 0, 0, 0.5)'`
+     *   • HSL/HSLA: `'hsl(0, 100%, 50%)'`, `'hsla(0, 100%, 50%, 0.3)'`
+     * - If not provided, regions will use default color on hover
+     *
+     * @example
+     * // Simple named color
+     * { hoverColor: 'lightblue' }
+     *
+     * @example
+     * // Semi-transparent highlight
+     * { hoverColor: 'rgba(0, 123, 255, 0.4)' }
+     *
+     * @example
+     * // Using CSS custom property (if supported by your renderer)
+     * { hoverColor: 'var(--map-hover-color)' }
+     */
+    hoverColor?: string;
 
-  /**
-   * Whether to show static text labels permanently on the map.
-   * @default false
-   */
-  showLabels?: boolean;
+    /**
+     * Whether to show static text labels permanently on the map.
+     * @default false
+     */
+    showLabels?: boolean;
 
-  /**
-   * Whether to show a tooltip popup when hovering over a region.
-   * Uses the native SVG <title> element for maximum compatibility
-   * (works in React dangerouslySetInnerHTML, <img> tags, etc.).
-   * @default true
-   */
-  showTooltip?: boolean;
+    /**
+     * Whether to show a tooltip popup when hovering over a region.
+     * Uses the native SVG <title> element for maximum compatibility
+     * (works in React dangerouslySetInnerHTML, <img> tags, etc.).
+     * @default true
+     */
+    showTooltip?: boolean;
 };
 
 /**
@@ -137,15 +137,15 @@ export type MapOptions = {
  * createMap('usa', { size: 0.65 }) // 65% of original
  */
 export type MapSize =
-  | "xs"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | number;
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | number;
 
 /**
  * Supported map types
@@ -156,28 +156,29 @@ export type MapSize =
  * - For the full list of supported maps, open `MAPS_INFO.md` located in the root of the project.
  */
 export type MapType =
-  | "afghanistan"
-  | "australia"
-  | "brazil"
-  | "france"
-  | "gb"
-  | "germany"
-  | "india"
-  | "iran"
-  | "netherlands"
-  | "usa"
-  | "europe"
-  | "belgium"
-  | "switzerland"
-  | "pakistan"
-  | "world";
+    | "afghanistan"
+    | "australia"
+    | "brazil"
+    | "france"
+    | "gb"
+    | "germany"
+    | "india"
+    | "iran"
+    | "netherlands"
+    | "usa"
+    | "europe"
+    | "belgium"
+    | "switzerland"
+    | "pakistan"
+    | "canada"
+    | "world";
 
 /**
  * Represents a single path within a region
  */
 export type PathData = {
-  /** SVG path data string */
-  d: string;
+    /** SVG path data string */
+    d: string;
 };
 
 /**
@@ -185,41 +186,41 @@ export type PathData = {
  * Can have either a single path OR multiple paths, but not both
  */
 export type MapRegion = {
-  /** Unique identifier code for the region (e.g., 'AF' for Afghanistan) */
-  code: string;
+    /** Unique identifier code for the region (e.g., 'AF' for Afghanistan) */
+    code: string;
 
-  /** Display name of the region (e.g., 'Angola') */
-  name: string;
+    /** Display name of the region (e.g., 'Angola') */
+    name: string;
 } & (
     | {
-      /** Single SVG path for simple regions */
-      path: string;
-      paths?: never;
-    }
+    /** Single SVG path for simple regions */
+    path: string;
+    paths?: never;
+}
     | {
-      /** Multiple SVG paths for complex regions (islands, territories, etc.) */
-      paths: PathData[];
-      path?: never;
-    }
-  );
+    /** Multiple SVG paths for complex regions (islands, territories, etc.) */
+    paths: PathData[];
+    path?: never;
+}
+    );
 
 /**
  * Structure of map data containing either states or countries
  */
 export type MapData = {
-  /** SVG viewBox attribute value */
-  viewBox: string;
+    /** SVG viewBox attribute value */
+    viewBox: string;
 
-  /** States/provinces for country maps (like usa) */
-  states?: MapRegion[];
+    /** States/provinces for country maps (like usa) */
+    states?: MapRegion[];
 
-  /** Countries for world maps */
-  countries?: MapRegion[];
+    /** Countries for world maps */
+    countries?: MapRegion[];
 
-  labels?: Array<{
-    code: string;
-    x: string | number;
-    y: string | number;
-    name: string;
-  }>;
+    labels?: Array<{
+        code: string;
+        x: string | number;
+        y: string | number;
+        name: string;
+    }>;
 };
