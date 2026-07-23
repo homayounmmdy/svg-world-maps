@@ -2,10 +2,10 @@
  * Configuration options for map styling and sizing
  */
 export type MapOptions = {
-    /** Background color for map regions (supports any valid CSS color) */
+    /** Background color for map states (supports any valid CSS color) */
     background?: string;
 
-    /** Border color for region boundaries (supports any valid CSS color) */
+    /** Border color for state boundaries (supports any valid CSS color) */
     borders?: string;
 
     /**
@@ -52,7 +52,7 @@ export type MapOptions = {
     size?: MapSize;
 
     /**
-     * Color applied to map regions when hovered by the user.
+     * Color applied to map states when hovered by the user.
      *
      * @remarks
      * - Requires CSS/JS hover handling to be implemented in your renderer
@@ -61,7 +61,7 @@ export type MapOptions = {
      *   • Hex: `'#ff0000'`, `'#f00'`
      *   • RGB/RGBA: `'rgb(255, 0, 0)'`, `'rgba(255, 0, 0, 0.5)'`
      *   • HSL/HSLA: `'hsl(0, 100%, 50%)'`, `'hsla(0, 100%, 50%, 0.3)'`
-     * - If not provided, regions will use default color on hover
+     * - If not provided, states will use default color on hover
      *
      * @example
      * // Simple named color
@@ -84,7 +84,7 @@ export type MapOptions = {
     showLabels?: boolean;
 
     /**
-     * Whether to show a tooltip popup when hovering over a region.
+     * Whether to show a tooltip popup when hovering over a state.
      * Uses the native SVG <title> element for maximum compatibility
      * (works in React dangerouslySetInnerHTML, <img> tags, etc.).
      * @default true
@@ -174,7 +174,7 @@ export type MapType =
     | "world";
 
 /**
- * Represents a single path within a region
+ * Represents a single path within a state
  */
 export type PathData = {
     /** SVG path data string */
@@ -182,23 +182,23 @@ export type PathData = {
 };
 
 /**
- * Represents a geographic region (state or country) within a map
+ * Represents a geographic state (or country in world maps) within a map
  * Can have either a single path OR multiple paths, but not both
  */
-export type MapRegion = {
-    /** Unique identifier code for the region (e.g., 'AF' for Afghanistan) */
+export type MapState = {
+    /** Unique identifier code for the state (e.g., 'AF' for Afghanistan) */
     code: string;
 
-    /** Display name of the region (e.g., 'Angola') */
+    /** Display name of the state (e.g., 'Angola') */
     name: string;
 } & (
     | {
-    /** Single SVG path for simple regions */
+    /** Single SVG path for simple states */
     path: string;
     paths?: never;
 }
     | {
-    /** Multiple SVG paths for complex regions (islands, territories, etc.) */
+    /** Multiple SVG paths for complex states (islands, territories, etc.) */
     paths: PathData[];
     path?: never;
 }
@@ -212,10 +212,10 @@ export type MapData = {
     viewBox: string;
 
     /** States/provinces for country maps (like usa) */
-    states?: MapRegion[];
+    states?: MapState[];
 
-    /** Countries for world maps */
-    countries?: MapRegion[];
+    /** Countries for world maps (treated as states for uniformity) */
+    countries?: MapState[];
 
     labels?: Array<{
         code: string;

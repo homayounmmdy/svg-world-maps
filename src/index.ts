@@ -6,38 +6,41 @@ import {
 import type {
   MapData,
   MapOptions,
-  MapRegion,
+  MapState,
   MapType,
   PathData,
 } from "./types";
 
 export { registerMapData } from "./config";
 
+// Counter to ensure every map instance gets a unique CSS class
+let mapInstanceCounter = 0;
+
 /**
- * Type guard to check if region has multiple paths
+ * Type guard to check if state has multiple paths
  */
 const hasMultiplePaths = (
-  region: MapRegion,
-): region is MapRegion & { paths: PathData[] } => {
-  return "paths" in region && Array.isArray(region.paths);
+  state: MapState,
+): state is MapState & { paths: PathData[] } => {
+  return "paths" in state && Array.isArray(state.paths);
 };
 
 /**
- * Type guard to check if region has a single path
+ * Type guard to check if state has a single path
  */
 const hasSinglePath = (
-  region: MapRegion,
-): region is MapRegion & { path: string } => {
-  return "path" in region && typeof region.path === "string";
+  state: MapState,
+): state is MapState & { path: string } => {
+  return "path" in state && typeof state.path === "string";
 };
 
 /**
- * Extracts regions from map data based on map type
- * @param mapData - The map data containing regions
- * @returns Array of map regions (either states or countries)
- * @throws {Error} If map data contains no regions
+ * Extracts states from map data based on map type
+ * @param mapData - The map data containing states
+ * @returns Array of map states (either states or countries)
+ * @throws {Error} If map data contains no states
  */
-const extractRegions = (mapData: MapData): MapRegion[] => {
+const extractStates = (mapData: MapData): MapState[] => {
   if (mapData.countries && mapData.countries.length > 0) {
     return mapData.countries;
   }
@@ -62,12 +65,12 @@ const escapeXml = (unsafe: string): string => {
 };
 
 /**
- * Generates SVG path elements for all regions in the map
- * @param mapData - The map data containing region information
- * @param options - Styling options for the map regions
+ * Generates SVG path elements for all states in the map
+ * @param mapData - The map data containing state information
+ * @param options - Styling options for the map states
  * @returns String of concatenated SVG path elements
  */
-const generateRegionPaths = (
+const generateStatePaths = (
   mapData: MapData,
   options: MapOptions = {},
 ): string => {
@@ -77,12 +80,15 @@ const generateRegionPaths = (
   };
 
   try {
-    const regions = extractRegions(mapData);
+    const states = extractStates(mapData);
+
+    const uniqueId = `map-${++mapInstanceCounter}`;
+    const stateClass = `state-${uniqueId}`;
 
     const styleBlock = `
         <style>
-            .regions:hover {
-                fill: ${mergedOptions.hoverColor} !important;
+            .${stateClass}:hover {
+                fill: ${mergedOptions.hoverColor};
                 transition: fill 0.2s ease;
                 cursor: pointer;
             }
@@ -98,36 +104,36 @@ const generateRegionPaths = (
         </style>
     `;
 
-    if (regions.length === 0) {
-      console.warn("No regions found in map data");
+    if (states.length === 0) {
+      console.warn("No states found in map data");
       return "";
     }
 
-    const paths = regions
-      .map((region: MapRegion) => {
+    const paths = states
+      .map((state: MapState) => {
         const commonAttrs = `
-                id="${region.code}"
-                data-code="${region.code}"
-                data-name="${region.name}"
-                class="regions"
+                id="${state.code}"
+                data-code="${state.code}"
+                data-name="${state.name}"
+                class="${stateClass}"
                 fill="${mergedOptions.background}"
                 stroke="${mergedOptions.borders}"
             `;
 
         // Generate the <title> tag for the native hover popup
         const titleTag = mergedOptions.showTooltip
-          ? `<title>${escapeXml(region.name)}</title>`
+          ? `<title>${escapeXml(state.name)}</title>`
           : '';
 
-        // Handle regions with multiple paths (like Angola)
-        if (hasMultiplePaths(region)) {
-          return region.paths
+        // Handle states with multiple paths (like islands or territories)
+        if (hasMultiplePaths(state)) {
+          return state.paths
             .map((pathData: PathData, index: number) => {
               if (index === 0) {
                 return `<path 
                                 d="${pathData.d}" 
                                 ${commonAttrs}
-                                name="${region.name}"
+                                name="${state.name}"
                             >${titleTag}</path>`;
               }
               return `<path 
@@ -137,16 +143,16 @@ const generateRegionPaths = (
             .join("");
         }
 
-        // Handle single path regions
-        if (hasSinglePath(region)) {
+        // Handle single path states
+        if (hasSinglePath(state)) {
           return `<path 
-                d="${region.path}" 
+                d="${state.path}" 
                 ${commonAttrs}
-                name="${region.name}"
+                name="${state.name}"
             >${titleTag}</path>`;
         }
 
-        console.warn(`Region has no valid path data`, region);
+        console.warn(`State has no valid path data`, state);
         return "";
       })
       .filter(Boolean)
@@ -154,7 +160,7 @@ const generateRegionPaths = (
 
     return styleBlock + paths;
   } catch (error) {
-    console.error("Error generating region paths:", error);
+    console.error("Error generating state paths:", error);
     throw error;
   }
 };
@@ -257,7 +263,7 @@ export const createMap = (
     width="${viewportConfig.width}"
     viewBox="${mapData.viewBox}"
     preserveAspectRatio="xMidYMid meet">
-        ${generateRegionPaths(mapData as MapData, options)}
+        ${generateStatePaths(mapData as MapData, options)}
         ${generateLabels(mapData as MapData, options)}
   </svg>`;
 };
