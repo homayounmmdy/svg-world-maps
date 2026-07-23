@@ -18,6 +18,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "create-map" : "node scripts/create-map.js",
+    "map-info" : "node scripts/map-info.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
