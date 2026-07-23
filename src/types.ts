@@ -171,6 +171,7 @@ export type MapType =
     | "switzerland"
     | "pakistan"
     | "canada"
+    | "argentina"
     | "world";
 
 /**

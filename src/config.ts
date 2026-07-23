@@ -21,6 +21,7 @@ export const MAP_DATA_REGISTRY = {
     pakistan: undefined,
     switzerland: undefined,
     canada: undefined,
+    argentina: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -121,6 +122,13 @@ export const BASE_VIEWPORT_CONFIGS = {
         viewBox: "0 0 1000 1000",
         aspectRatio: 1000 / 1000
     },
+    argentina: {
+        height: 1000,
+        width: 1000,
+        viewBox: "0 0 1000 1000",
+        aspectRatio: 1000 / 1000
+    },
+
     world: {
         height: 857,
         width: 2000,
@@ -191,6 +199,7 @@ export const calculateViewportDimensions = (
         | typeof BASE_VIEWPORT_CONFIGS.switzerland
         | typeof BASE_VIEWPORT_CONFIGS.pakistan
         | typeof BASE_VIEWPORT_CONFIGS.canada
+        | typeof BASE_VIEWPORT_CONFIGS.argentina
         | typeof BASE_VIEWPORT_CONFIGS.world,
     size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -294,6 +303,7 @@ export const SVG_VIEWPORT_CONFIGS = {
     switzerland: createMapViewportConfig("switzerland"),
     pakistan: createMapViewportConfig("pakistan"),
     canada: createMapViewportConfig("canada"),
+    argentina: createMapViewportConfig("argentina"),
     world: createMapViewportConfig("world"),
 } as const;
 
