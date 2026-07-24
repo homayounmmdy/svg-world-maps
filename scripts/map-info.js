@@ -57,11 +57,7 @@ function extractMapInfo(content, fileName) {
   }
 
   // Check if 'labels' array exists and contains at least one object.
-  // \b       : ensures we don't accidentally match "my_labels"
-  // \s*:\s*  : allows ANY amount of space around the colon (e.g., "labels : [")
-  // \[       : matches the opening bracket
-  // [^\]]*   : matches anything EXCEPT a closing bracket (ensures the '{' is actually inside the array)
-  // \{       : matches the opening brace of a label object
+  // \s*:\s* allows ANY amount of space around the colon (e.g., "labels : [")
   const hasLabels = /\blabels\s*:\s*\[[^\]]*\{/.test(content) ? "Yes" : "No";
 
     return {
@@ -111,15 +107,19 @@ async function main() {
       timeZoneName: "short",
     });
 
-    // 6. Build the Markdown content
+    // 6. Separate maps with and without labels for the summary
+    const withLabels = mapInfos.filter((info) => info.hasLabels === "Yes");
+    const withoutLabels = mapInfos.filter((info) => info.hasLabels === "No");
+
+    // 7. Build the Markdown content
     let mdContent = `# Maps Information Report\n\n`;
     mdContent += `**📅 Last Generated:** ${generatedAt}\n\n`;
     mdContent += `## ℹ️ About this Report\n`;
     mdContent += `This report provides an automated overview of all available map configurations located in the \`${path.relative(process.cwd(), MAPS_DIR)}\` directory. \n\n`;
-    mdContent += `- **Command**: The identifier used to reference or run this map (derived from the file name without the \`.ts\` extension).\n`;
+    mdContent += `- **Command**: The identifier used to reference to add map inside of your project.\n`;
     mdContent += `- **Country Name**: The human-readable name of the map.\n`;
     mdContent += `- **Code**: The standard short code assigned to the map.\n`;
-    mdContent += `- **States**: The total number of state/region objects defined in the map.\n`;
+    mdContent += `- **States**: The total number of state/countries objects defined in the map.\n`;
     mdContent += `- **Has Labels**: Indicates whether coordinate labels are defined for text placement on the map.\n\n`;
     mdContent += `## 🗺️ Map Details\n\n`;
     mdContent += `| Command | Country Name | Code | States/Countries | Has Labels |\n`;
@@ -129,11 +129,27 @@ async function main() {
       mdContent += `| \`${info.command}\` | ${info.mapName} | ${info.mapCode} | ${info.stateCount} | ${info.hasLabels} |\n`;
         }
 
-    // 7. Write or update the Markdown file at the project root
+    // 8. Add the Label Support Summary Section
+    mdContent += `\n## 📊 Label Support Summary\n\n`;
+    mdContent += `- **✅ Maps with Labels:** ${withLabels.length}\n`;
+    mdContent += `- **⚠️ Maps without Labels:** ${withoutLabels.length}\n\n`;
+
+    if (withoutLabels.length > 0) {
+      mdContent += `### ⚠️ Note on Maps Without Labels\n`;
+      mdContent += `Some maps currently do not support the \`showLabel\` feature (if you set it to \`true\`, nothing will happen). This is due to a lack of available open-source map data, or because we haven't been able to find the correct coordinate labels for them yet.\n\n`;
+      mdContent += `We are trying our best to find or create these labels. Please note that we are not professional SVG map designers, and this process takes time. Thank you for following and supporting us! 🙏\n\n`;
+
+      mdContent += `### 🗺️ Maps Currently Without Labels\n`;
+      mdContent += withoutLabels.map((info) => `- \`${info.command}\` (${info.mapName})`).join("\n") + "\n";
+    } else {
+      mdContent += `🎉 **Great news!** All maps currently support labels.\n`;
+    }
+
+    // 9. Write or update the Markdown file at the project root
         fs.writeFileSync(OUTPUT_FILE, mdContent, "utf8");
 
         console.log(`\n✅ Successfully updated ${OUTPUT_FILE}`);
-        console.log(`📊 Processed ${mapInfos.length} map(s).`);
+    console.log(`📊 Processed ${mapInfos.length} map(s) (${withLabels.length} with labels, ${withoutLabels.length} without).`);
     } catch (error) {
         console.error("❌ Error generating map info:", error);
         process.exit(1);
