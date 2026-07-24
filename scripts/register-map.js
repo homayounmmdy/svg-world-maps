@@ -77,8 +77,8 @@ let configUpdated = false;
 // Add to MAP_DATA_REGISTRY
 if (!configContent.includes(`${cleanName}: undefined`)) {
   configContent = configContent.replace(
-    /(export const MAP_DATA_REGISTRY = \{[\s\S]*?)(\n\} as const;)/,
-    `$1    ${cleanName}: undefined,\n$2`,
+      /(export const MAP_DATA_REGISTRY = \{[\s\S]*?)(\n\} as const;)/,
+      `$1    ${cleanName}: undefined,$2`,
   );
   configUpdated = true;
 }
