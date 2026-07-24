@@ -46,8 +46,8 @@ let typesUpdated = false;
 // Add to MapType union (inserts before "world")
 if (!typesContent.includes(`"${cleanName}"`)) {
   typesContent = typesContent.replace(
-    /(export type MapType =[\s\S]*?)(\s*\|\s*"world";)/,
-    `$1  | "${cleanName}"\n$2`,
+    /(\n)(\s*)(\|\s*"world";)/,
+    `$1$2| "${cleanName}"$1$2$3`
   );
   typesUpdated = true;
 }
