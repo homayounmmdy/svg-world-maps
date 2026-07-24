@@ -70,6 +70,74 @@ const ARMENIA = {
 
         },
     ],
+    labels: [
+        {
+            code: "AMTV",
+            x: "516.4",
+            y: "207.3",
+            name: "Tavush"
+        },
+        {
+            code: "AMLO",
+            x: "342.2",
+            y: "179.7",
+            name: "Lori"
+        },
+        {
+            code: "AMSH",
+            x: "163.6",
+            y: "184.5",
+            name: "Shirak"
+        },
+        {
+            code: "AMGR",
+            x: "579.1",
+            y: "434.9",
+            name: "Gegharkunik"
+        },
+        {
+            code: "AMVD",
+            x: "622.9",
+            y: "630.2",
+            name: "Vayots Dzor"
+        },
+        {
+            code: "AMSU",
+            x: "823.1",
+            y: "766",
+            name: "Syunik"
+        },
+        {
+            code: "AMAR",
+            x: "446.7",
+            y: "563",
+            name: "Ararat"
+        },
+        {
+            code: "AMAG",
+            x: "293.6",
+            y: "384.2",
+            name: "Aragatsotn"
+        },
+        {
+            code: "AMAV",
+            x: "186.4",
+            y: "485.7",
+            name: "Armavir"
+        },
+        {
+            code: "AMKT",
+            x: "408.1",
+            y: "392.6",
+            name: "Kotayk"
+        },
+        {
+            code: "AMER",
+            x: "358.3",
+            y: "474.6",
+            name: "Erevan"
+        }
+    ]
 }
 
 export default ARMENIA

@@ -59,6 +59,62 @@ const AUSTRIA = {
         },
 
     ],
+    labels : [
+        {
+            code: "AT3",
+            x: "775.7",
+            y: "152.8",
+            name: "Niederösterreich"
+        },
+        {
+            code: "AT4",
+            x: "563",
+            y: "181.1",
+            name: "Oberösterreich"
+        },
+        {
+            code: "AT1",
+            x: "849.3",
+            y: "332.6",
+            name: "Burgenland"
+        },
+        {
+            code: "AT8",
+            x: "85",
+            y: "336.1",
+            name: "Vorarlberg"
+        },
+        {
+            code: "AT7",
+            x: "308.9",
+            y: "332.6",
+            name: "Tirol"
+        },
+        {
+            code: "AT5",
+            x: "490.7",
+            y: "317.4",
+            name: "Salzburg"
+        },
+        {
+            code: "AT2",
+            x: "600.9",
+            y: "425.3",
+            name: "Kärnten"
+        },
+        {
+            code: "AT6",
+            x: "748",
+            y: "343.5",
+            name: "Steiermark"
+        },
+        {
+            code: "AT9",
+            x: "863.9",
+            y: "164.8",
+            name: "Wien"
+        }
+    ]
 }
 
 export default AUSTRIA

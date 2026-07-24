@@ -34,7 +34,38 @@ const DENMARK = {
         },
 
     ],
-
+    labels: [
+        {
+            code: "DK83",
+            x: "171",
+            y: "588.8",
+            name: "Syddanmark"
+        },
+        {
+            code: "DK82",
+            x: "241.9",
+            y: "405.6",
+            name: "Midtjylland"
+        },
+        {
+            code: "DK81",
+            x: "317.2",
+            y: "144",
+            name: "Nordjylland"
+        },
+        {
+            code: "DK85",
+            x: "514.3",
+            y: "577.7",
+            name: "Sjaælland"
+        },
+        {
+            code: "DK84",
+            x: "589.5",
+            y: "467.1",
+            name: "Hovedstaden"
+        }
+    ]
 }
 
 export default DENMARK
