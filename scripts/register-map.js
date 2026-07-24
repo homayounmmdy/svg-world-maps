@@ -103,8 +103,8 @@ if (!configContent.includes(`${cleanName}: createMapViewportConfig`)) {
 
 if (!configContent.includes(`typeof BASE_VIEWPORT_CONFIGS.${cleanName}`)) {
   configContent = configContent.replace(
-    /(\n\s*\|\s*typeof BASE_VIEWPORT_CONFIGS\.world,)/,
-    `\n    | typeof BASE_VIEWPORT_CONFIGS.${cleanName}$1`
+    /(\n)(\s*)(\|\s*typeof BASE_VIEWPORT_CONFIGS\.world,?)/,
+    `$1$2| typeof BASE_VIEWPORT_CONFIGS.${cleanName}$1$2$3`
   );
   configUpdated = true;
 }
