@@ -30,6 +30,38 @@ const GREENLAND = {
         },
 
     ],
+    labels : [
+        {
+            code: "GLSM",
+            x: "520.3",
+            y: "758.7",
+            name: "Kommuneqarfik Sermersooq"
+        },
+        {
+            code: "GLUO",
+            x: "551.1",
+            y: "455.3",
+            name: "Nationalparken"
+        },
+        {
+            code: "GLQA",
+            x: "406.3",
+            y: "528.7",
+            name: "Qaasuitsup Kommunia"
+        },
+        {
+            code: "GLQE",
+            x: "434.4",
+            y: "805.7",
+            name: "Qeqqata Kommunia"
+        },
+        {
+            code: "GLKU",
+            x: "478.5",
+            y: "916.5",
+            name: "Kommune Kujalleq"
+        }
+    ]
 }
 
 export default GREENLAND

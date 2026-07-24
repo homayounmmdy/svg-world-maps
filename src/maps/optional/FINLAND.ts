@@ -118,6 +118,122 @@ const FINLAND = {
 
         },
     ],
+    labels : [
+        {
+            code: "FI01",
+            x: "292.7",
+            y: "930.3",
+            name: "Åland"
+        },
+        {
+            code: "FI10",
+            x: "546.6",
+            y: "298.8",
+            name: "Lapland"
+        },
+        {
+            code: "FI14",
+            x: "530.5",
+            y: "528.9",
+            name: "Northern Ostrobothnia"
+        },
+        {
+            code: "FI05",
+            x: "612.9",
+            y: "574.8",
+            name: "Kainuu"
+        },
+        {
+            code: "FI13",
+            x: "666.4",
+            y: "726.5",
+            name: "North Karelia"
+        },
+        {
+            code: "FI02",
+            x: "594.5",
+            y: "861.8",
+            name: "South Karelia"
+        },
+        {
+            code: "FI09",
+            x: "549.4",
+            y: "875.3",
+            name: "Kymenlaakso"
+        },
+        {
+            code: "FI18",
+            x: "473.4",
+            y: "908.9",
+            name: "Uusimaa"
+        },
+        {
+            code: "FI19",
+            x: "400.5",
+            y: "893.7",
+            name: "Finland Proper"
+        },
+        {
+            code: "FI17",
+            x: "374.8",
+            y: "822.9",
+            name: "Satakunta"
+        },
+        {
+            code: "FI12",
+            x: "375.2",
+            y: "708",
+            name: "Ostrobothnia"
+        },
+        {
+            code: "FI07",
+            x: "448.4",
+            y: "659.3",
+            name: "Central Ostrobothnia"
+        },
+        {
+            code: "FI15",
+            x: "572.3",
+            y: "690.4",
+            name: "Northern Savonia"
+        },
+        {
+            code: "FI04",
+            x: "585",
+            y: "801.9",
+            name: "Southern Savonia"
+        },
+        {
+            code: "FI08",
+            x: "496.4",
+            y: "746.4",
+            name: "Central Finland"
+        },
+        {
+            code: "FI03",
+            x: "408.1",
+            y: "721.8",
+            name: "Southern Ostrobothnia"
+        },
+        {
+            code: "FI11",
+            x: "433",
+            y: "809.9",
+            name: "Pirkanmaa"
+        },
+        {
+            code: "FI06",
+            x: "459.3",
+            y: "872.3",
+            name: "Tavastia Proper"
+        },
+        {
+            code: "FI16",
+            x: "504.6",
+            y: "853",
+            name: "Päijät-Häme"
+        }
+    ]
 }
 
 export default FINLAND

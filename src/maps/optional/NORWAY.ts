@@ -70,6 +70,74 @@ const NORWAY = {
         },
 
     ],
+    labels: [
+        {
+            code: "NO54",
+            x: "666.9",
+            y: "160.4",
+            name: "Troms og Finnmark"
+        },
+        {
+            code: "NO50",
+            x: "327.6",
+            y: "551.4",
+            name: "Trøndelag"
+        },
+        {
+            code: "NO30",
+            x: "226.3",
+            y: "803.5",
+            name: "Viken"
+        },
+        {
+            code: "NO03",
+            x: "280.1",
+            y: "833.1",
+            name: "Oslo"
+        },
+        {
+            code: "NO38",
+            x: "215.5",
+            y: "862",
+            name: "Vestfold og Telemark"
+        },
+        {
+            code: "NO42",
+            x: "178",
+            y: "912.9",
+            name: "Agder"
+        },
+        {
+            code: "NO11",
+            x: "143.5",
+            y: "921.3",
+            name: "Rogaland"
+        },
+        {
+            code: "NO46",
+            x: "153.3",
+            y: "786.3",
+            name: "Vestland"
+        },
+        {
+            code: "NO15",
+            x: "190",
+            y: "683.2",
+            name: "Møre og Romsdal"
+        },
+        {
+            code: "NO34",
+            x: "285.2",
+            y: "734.7",
+            name: "Innlandet"
+        },
+        {
+            code: "NO18",
+            x: "409.1",
+            y: "378.8",
+            name: "Nordland"
+        }
+    ]
 }
 
 export default NORWAY
