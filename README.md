@@ -8,15 +8,14 @@ Simple, lightweight SVG maps for JavaScript projects.
 
 <img width="1664" height="928" alt="1783268206" src="https://github.com/user-attachments/assets/4ef39455-47e4-4d96-aa64-a69097874837" />
 
+🎉 **Now with 35+ Maps! (World + 34 Countries/Regions) Hover Effects, Tooltips, Labels & Click Support!**
 
-🎉 **Now with 13 Country Maps + Europe! Hover Effects, Tooltips, Labels & Click Support!**
-
-> 📚 **Documentation**: [Wiki Home](https://github.com/homayounmmdy/svg-world-maps/wiki) • [Getting Started](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) • [Optional Maps](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)  
+> 📚 **Documentation**: [Wiki Home](https://github.com/homayounmmdy/svg-world-maps/wiki) • [Getting Started](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) • [Maps Info Report](./MAPS_INFO.md) • [Optional Maps](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)  
 > 💬 **Community**: [Discussions](https://github.com/homayounmmdy/svg-world-maps/discussions) • [Report Issue](https://github.com/homayounmmdy/svg-world-maps/issues)
 
 ## Features
 
-- 🌍 **Multiple Maps**: World map + 13 country maps (USA, Germany, India, Iran, Netherlands, France, Australia, Brazil, Great Britain, Belgium) + Whole Europe map!
+- 🌍 **Massive Map Library**: World map + 34 country/region maps (USA, Germany, India, Iran, Canada, Pakistan, Australia, Brazil, Great Britain, and many more!)
 - 🏷️ **Tooltips & Labels**: Built-in tooltips on hover and region text labels.
 - 📏 **Flexible Sizing**: 8 preset sizes + custom scale factors
 - 🎨 **Customizable**: Background, borders, and hover colors
@@ -29,24 +28,48 @@ Simple, lightweight SVG maps for JavaScript projects.
 ## Installation
 
 ```bash
-npm install svg-world-maps@0.6.0
+npm install svg-world-maps@0.7.0
 ```
 
 > 💡 **Optional Maps**: Keep your bundle small by only adding the maps you need.  
 > ```bash
-> npx add-map afghanistan          # Add Afghanistan map
-> npx add-map usa          # Add USA map
-> npx add-map germany      # Add Germany map
-> npx add-map india        # Add India map
-> npx add-map iran         # Add Iran map
-> npx add-map netherlands  # Add Netherlands map
-> npx add-map france       # Add France map
-> npx add-map australia    # Add Australia map
-> npx add-map brazil       # Add Brazil map
-> npx add-map gb           # Add Great Britain map
-> npx add-map belgium      # Add Belgium map
-> npx add-map europe       # Add Europe map
-> npx add-map switzerland       # Add Switzerland map
+> # Legacy & Popular Maps
+> npx add-map afghanistan
+> npx add-map usa
+> npx add-map germany
+> npx add-map india
+> npx add-map iran
+> npx add-map netherlands
+> npx add-map france
+> npx add-map australia
+> npx add-map brazil
+> npx add-map gb
+> npx add-map belgium
+> npx add-map switzerland
+> npx add-map europe
+> 
+> # 🆕 New in v0.7.0
+> npx add-map africa
+> npx add-map pakistan
+> npx add-map canada
+> npx add-map argentina
+> npx add-map armenia
+> npx add-map austria
+> npx add-map denmark
+> npx add-map finland
+> npx add-map greenland
+> npx add-map iceland
+> npx add-map israel
+> npx add-map kuwait
+> npx add-map lebanon
+> npx add-map luxembourg
+> npx add-map norway
+> npx add-map oman
+> npx add-map poland
+> npx add-map singapore
+> npx add-map sweden
+> npx add-map uae
+> npx add-map vatican
 > ```  
 >
 > ⚡ **Automate Registration**: You can now automatically register added maps to speed up development!
@@ -119,7 +142,7 @@ Creates an SVG map string.
 
 | Parameter | Type | Description | Options |
 |-----------|------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `mapType` | `string` | Type of map to generate | `"world"`, `"afghanistan"`,`"usa"`, `"germany"`, `"india"`, `"iran"`, `"netherlands"`, `"france"`, `"australia"`, `"brazil"`, `"gb"`, `"belgium"`,`"switzerland"`, `"europe"` |
+| `mapType` | `string` | Type of map to generate | `"world"`, `"afghanistan"`, `"usa"`, `"germany"`, `"india"`, `"iran"`, `"netherlands"`, `"france"`, `"australia"`, `"brazil"`, `"gb"`, `"belgium"`, `"switzerland"`, `"europe"`, `"africa"`, `"pakistan"`, `"canada"`, `"argentina"`, `"armenia"`, `"austria"`, `"denmark"`, `"finland"`, `"greenland"`, `"iceland"`, `"israel"`, `"kuwait"`, `"lebanon"`, `"luxembourg"`, `"norway"`, `"oman"`, `"poland"`, `"singapore"`, `"sweden"`, `"uae"`, `"vatican"` |
 | `options` | `object` | Configuration options | See below |
 
 *\* Optional maps require setup via `npx add-map` — [see guide](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)*
@@ -137,8 +160,7 @@ Creates an SVG map string.
 
 > **Note on `hoverColor`**: The library outputs the color value in the SVG. Actual hover behavior requires CSS `:hover` rules or JavaScript event listeners in your implementation.
 
-> **Note on `showLabel`**: Text labels are currently supported for `afghanistan`, `germany`, `france`, `australia`, `brazil`, `india`, `gb` (Great Britain), `netherlands`, and `belgium`. 
-> Maps like `iran`, `usa`, `world`, and `europe` **do not support `showLabel` yet** due to OpenStreetMap data quality limitations. Setting this to `true` or `false` on these maps will not produce any visual changes. Support will be added in future versions.
+> **Note on `showLabel`**: Text labels are supported for most maps. However, `africa`, `europe`, `iran`, and `usa` **do not support `showLabel` yet** due to OpenStreetMap data quality and coordinate limitations. Setting this to `true` on these maps will not produce visual changes. Support will be added in future versions. See the [Maps Info Report](./MAPS_INFO.md) for the latest label support status.
 
 ### Size Options
 
@@ -254,11 +276,11 @@ const App = () => {
 // World map with tooltips
 createMap("world", { tooltip: true });
 
-// USA map with hover effect (requires optional setup)
-createMap("usa", {
+// Canada map with hover effect (requires optional setup)
+createMap("canada", {
   background: "#f0f4f8",
   borders: "#334155",
-  hoverColor: "rgba(59, 130, 246, 0.3)"
+  hoverColor: "rgba(255, 0, 0, 0.3)"
 });
 
 // Germany map with labels
@@ -312,33 +334,46 @@ const Maps = () => {
 |-----|------|------------------------------------------------|-------|--------|
 | `"world"` | 🌍 | Complete world map with all 195 countries | v0.2.0 | ✅ Included by default |
 | `"afghanistan"` | 🗺️ | Afghanistan map with 34 provinces | v0.1.0 | 🔁 Optional |
-| `"usa"` | 🇺🇸 | USA map with all 50 states + DC | v0.4.0 | 🔁 Optional |
+| `"usa"` | 🇺🇸 | USA map with 51 states/regions | v0.4.0 | 🔁 Optional |
 | `"germany"` | 🇩🇪 | Germany map with 16 states | v0.5.0 | 🔁 Optional |
-| `"india"` | 🇮🇳 | India map with 28 states + 8 union territories | v0.5.0 | 🔁 Optional |
+| `"india"` | 🇮🇳 | India map with 36 states/territories | v0.5.0 | 🔁 Optional |
 | `"iran"` | 🇮🇷 | Iran map with 31 provinces | v0.5.0 | 🔁 Optional |
 | `"netherlands"` | 🇳🇱 | Netherlands map with 12 provinces | v0.5.0 | 🔁 Optional |
-| `"france"` | 🇫🇷 | France map with 18 regions | v0.5.0 | 🔁 Optional |
-| `"australia"` | 🇦🇺 | Australia map with 6 states + 10 territories | v0.5.0 | 🔁 Optional |
-| `"brazil"` | 🇧🇷 | Brazil map with 26 states + federal district | v0.5.0 | 🔁 Optional |
-| `"gb"` | 🇬🇧 | Great Britain map with constituent countries | v0.5.0 | 🔁 Optional |
-| `"belgium"` | 🇧🇪 | Belgium map with 10 provinces | v0.6.0 | 🔁 Optional |
-| `"switzerland"` | 🇨🇭 | Switzerland map with 10 provinces              | v0.6.0 | 🔁 Optional |
-| `"europe"` | 🇪🇺 | Whole Europe map | v0.6.0 | 🔁 Optional |
+| `"france"` | 🇫🇷 | France map with 13 regions | v0.5.0 | 🔁 Optional |
+| `"australia"` | 🇦🇺 | Australia map with 8 states/territories | v0.5.0 | 🔁 Optional |
+| `"brazil"` | 🇧🇷 | Brazil map with 27 states | v0.5.0 | 🔁 Optional |
+| `"gb"` | 🇬🇧 | Great Britain map with 232 regions | v0.5.0 | 🔁 Optional |
+| `"belgium"` | 🇧🇪 | Belgium map with 3 regions | v0.6.0 | 🔁 Optional |
+| `"switzerland"` | 🇨🇭 | Switzerland map with 26 cantons | v0.6.0 | 🔁 Optional |
+| `"europe"` | 🇪🇺 | Whole Europe map (45 countries) | v0.6.0 | 🔁 Optional |
+| `"africa"` | 🌍 | Africa map (50 countries) | v0.7.0 | 🔁 Optional |
+| `"pakistan"` | 🇵🇰 | Pakistan map with 7 regions | v0.7.0 | 🔁 Optional |
+| `"canada"` | 🇨🇦 | Canada map with 13 provinces/territories | v0.7.0 | 🔁 Optional |
+| `"argentina"` | 🇦🇷 | Argentina map with 24 provinces | v0.7.0 | 🔁 Optional |
+| `"armenia"` | 🇦🇲 | Armenia map with 11 provinces | v0.7.0 | 🔁 Optional |
+| `"austria"` | 🇦🇹 | Austria map with 9 states | v0.7.0 | 🔁 Optional |
+| `"denmark"` | 🇩🇰 | Denmark map with 5 regions | v0.7.0 | 🔁 Optional |
+| `"finland"` | 🇫🇮 | Finland map with 19 regions | v0.7.0 | 🔁 Optional |
+| `"greenland"` | 🇬🇱 | Greenland map with 5 municipalities | v0.7.0 | 🔁 Optional |
+| `"iceland"` | 🇮🇸 | Iceland map with 8 regions | v0.7.0 | 🔁 Optional |
+| `"israel"` | 🇮🇱 | Israel map with 6 districts | v0.7.0 | 🔁 Optional |
+| `"kuwait"` | 🇰🇼 | Kuwait map with 6 governorates | v0.7.0 | 🔁 Optional |
+| `"lebanon"` | 🇱🇧 | Lebanon map with 8 governorates | v0.7.0 | 🔁 Optional |
+| `"luxembourg"` | 🇱🇺 | Luxembourg map with 12 cantons | v0.7.0 | 🔁 Optional |
+| `"norway"` | 🇳🇴 | Norway map with 11 counties | v0.7.0 | 🔁 Optional |
+| `"oman"` | 🇴🇲 | Oman map with 11 governorates | v0.7.0 | 🔁 Optional |
+| `"poland"` | 🇵🇱 | Poland map with 16 voivodeships | v0.7.0 | 🔁 Optional |
+| `"singapore"` | 🇸🇬 | Singapore map with 5 regions | v0.7.0 | 🔁 Optional |
+| `"sweden"` | 🇸🇪 | Sweden map with 21 counties | v0.7.0 | 🔁 Optional |
+| `"uae"` | 🇦🇪 | UAE map with 7 emirates | v0.7.0 | 🔁 Optional |
+| `"vatican"` | 🇻🇦 | Vatican City map | v0.7.0 | 🔁 Optional |
 
 > 🔁 **Optional maps** keep your bundle small. Add them only when needed:  
 > ```bash
-> npx add-map usa
-> npx add-map germany
-> npx add-map india
-> npx add-map iran
-> npx add-map netherlands
-> npx add-map france
-> npx add-map australia
-> npx add-map brazil
-> npx add-map gb
-> npx add-map switzerland
-> npx add-map belgium
-> npx add-map europe
+> npx add-map canada
+> npx add-map pakistan
+> # ... and more
+> npx register-map
 > ```  
 > [Full setup guide →](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)
 
@@ -349,107 +384,44 @@ const Maps = () => {
 - [x] Optional maps system (v0.3.0)
 - [x] USA map + hoverColor + click support via data attributes (v0.4.0)
 - [x] Germany, India, Iran, Netherlands, France, Australia, Brazil, Great Britain maps (v0.5.0)
-- [x] Belgium & Switzerland & Europe maps + Tooltips + Labels + `register-map` script (v0.6.0)
-- [ ] More country maps (Canada, China, Japan, Mexico, etc.)
+- [x] Belgium, Switzerland, Europe maps + Tooltips + Labels + `register-map` script (v0.6.0)
+- [x] 21 New Maps (Canada, Pakistan, Africa, Argentina, Armenia, Austria, Denmark, Finland, Greenland, Iceland, Israel, Kuwait, Lebanon, Luxembourg, Norway, Oman, Poland, Singapore, Sweden, UAE, Vatican) + DX Automation + `map-info` script (v0.7.0)
+- [ ] Label support for USA, Iran, Europe, and Africa maps
 - [ ] Keyboard navigation & accessibility improvements
 - [ ] Export to PNG/SVG file
 
 ## Migration Guide
 
-### From v0.5.0 to v0.6.0
+### From v0.6.0 to v0.7.0
 
-- **New Maps**: Added **Belgium** , **Switzerland** and whole **Europe** maps.
-- **New Features**: 
-  - Added `tooltip` option for hover tooltips.
-  - Added `showLabel` option to render text labels on regions (Note: currently unsupported on `usa`, `world`, `iran`, and `europe`).
-- **CLI Improvements**: 
-  - Created `npx register-map` script to automatically register maps, significantly improving development speed.
-  - Refactored user logging in the `add-map` script.
-  - **Fix**: Resolved a bug where `add-map` would overwrite existing maps.
-- **Internal**: Removed `dist/` from version control to reduce repo size.
+- **New Maps**: Added **21 new maps** including Canada, Pakistan, Argentina, Austria, Denmark, Finland, Israel, Norway, Poland, Singapore, Sweden, UAE, Vatican, and more.
+- **DX Improvements**:
+    - Added a map creation template and automation script to make adding new maps significantly faster.
+    - Registered map management scripts directly in `package.json`.
+    - Refactored JSDocs for the list of available maps for better IDE support.
+- **New Tools**:
+    - Created a `map-info` script that generates a `MAPS_INFO.md` report in the root, providing real-time data on map configurations, state counts, and label support.
+- **Fixes**:
+    - Fixed an issue where map creation codes were not consistently lowercase in the generated SVG.
+    - Resolved a custom issue that occurred when using multiple different maps within a single project.
 
 **To use the new maps:**
 ```bash
-npx add-map belgium
-npx add-map europe
+npx add-map canada
+npx add-map pakistan
+# Add any other new map you need
 
 # Automatically register your added maps
 npx register-map
 ```
 
-**To use tooltips and labels:**
-```javascript
-createMap("germany", { 
-  tooltip: true, 
-  showLabel: true,
-  hoverColor: "lightblue"
-});
-```
+### From v0.5.0 to v0.6.0
 
-### From v0.4.0 to v0.5.0
+- **New Maps**: Added **Belgium**, **Switzerland** and whole **Europe** maps.
+- **New Features**: Added `tooltip` and `showLabel` options.
+- **CLI Improvements**: Created `npx register-map` script and fixed the `add-map` overwrite bug.
 
-No breaking changes. New maps are optional additions.
-
-**To use new country maps:**
-```bash
-# Add any of the new maps
-npx add-map germany
-npx add-map india
-npx add-map iran
-# ... and more
-
-# Register in your code
-import { registerMapData } from "svg-world-maps";
-import germanyData from "./src/maps/germany";
-registerMapData("germany", germanyData);
-```
-
-### From v0.1.0 to v0.2.0
-
-```javascript
-// v0.1.0 (old)
-import { createAfghanistanMap } from "svg-world-maps";
-const map = createAfghanistanMap({ 
-  fill: "#ff0000", 
-  stroke: "#ffffff" 
-});
-
-// v0.2.0 (new)
-import { createMap } from "svg-world-maps";
-const map = createMap("afghanistan", { 
-  background: "#ff0000", 
-  borders: "#ffffff",
-  size: "lg" 
-});
-```
-
-### From v0.3.x to v0.4.0
-
-No breaking changes. New features are optional.
-
-**To use the USA map:**
-```bash
-# 1. Add the optional map
-npx add-map usa
-
-# 2. Register it in your code
-import { registerMapData } from "svg-world-maps";
-import usaData from "./src/maps/usa";
-registerMapData("usa", usaData);
-```
-
-**To use hoverColor or click handling:**
-```javascript
-// Add hover effect
-createMap("world", { hoverColor: "rgba(0, 123, 255, 0.4)" });
-
-// Add click handling (vanilla JS)
-container.addEventListener("click", (e) => {
-  if (e.target.dataset.code) {
-    console.log(e.target.dataset.name);
-  }
-});
-```
+*(Older migration guides remain the same: v0.4.0 to v0.5.0, v0.1.0 to v0.2.0, etc.)*
 
 ## 📚 Documentation & Support
 
@@ -457,8 +429,11 @@ container.addEventListener("click", (e) => {
 |----------|------|
 | 🏠 **Wiki Home** | [github.com/homayounmmdy/svg-world-maps/wiki](https://github.com/homayounmmdy/svg-world-maps/wiki) |
 | 🚀 **Getting Started** | [Quick start guide](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) |
+| 🗺️ **Maps Info Report** | [View automated map configurations & label support](./MAPS_INFO.md) |
 | 🗺️ **Optional Maps** | [Add USA, Afghanistan & more](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps) |
 | 📜 **Changelog** | [View full version history](./CHANGELOG.md) |
+| 🛡️ **Security Policy** | [SECURITY.md](./SECURITY.md) |
+| 🤝 **Code of Conduct** | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) |
 | 💬 **Discussions** | [Ask questions & share ideas](https://github.com/homayounmmdy/svg-world-maps/discussions) |
 | 🐛 **Report Issue** | [Open a bug report](https://github.com/homayounmmdy/svg-world-maps/issues) |
 
@@ -471,6 +446,8 @@ Contributions are welcome! Feel free to:
 - 🌍 Add new country maps
 - 📝 Improve documentation
 
+Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before contributing.
+
 ## License
 
 MIT © homayounmmdy
@@ -479,7 +456,7 @@ MIT © homayounmmdy
 
 If you find this package helpful, please consider:
 - ⭐ Starring on [GitHub](https://github.com/homayounmmdy/svg-world-maps)
-- 🐦 Sharing on Twitter
+- 🐦 Sharing on social media
 - 📢 Telling your friends
 
 **Made with ❤️ for the open-source community**

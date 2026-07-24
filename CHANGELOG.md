@@ -5,7 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.0] - Latest
+## [0.7.0] - Latest
+### 🌍 Added
+- **21 New Maps**: Added detailed SVG maps for Africa, Pakistan, Canada, Argentina, Armenia, Austria, Denmark, Finland, Greenland, Iceland, Israel, Kuwait, Lebanon, Luxembourg, Norway, Oman, Poland, Singapore, Sweden, UAE, and Vatican.
+- **Map Info Script**: Created a new `map-info` script that automatically generates a `MAPS_INFO.md` report in the root directory, providing a real-time overview of all available map configurations, state counts, and label support.
+- **DX Automation**: Added a map creation template and script to automate the map generation process, significantly improving Developer Experience (DX) and making the addition of new maps much faster.
+- **Package Scripts**: Registered the map management scripts directly in `package.json` for easier execution.
+- **Community Files**: Added `CODE_OF_CONDUCT.md` and `SECURITY.md` to foster a safe and secure open-source community.
+
+### 🐛 Fixed
+- **Lowercase SVG Generation**: Fixed an issue where map creation codes/names were not consistently lowercase in the generated SVG output.
+- **Multiple Maps Issue**: Resolved a custom issue that occurred when using multiple different maps within a single project.
+
+### ♻️ Refactored
+- **JSDocs**: Improved and refactored JSDoc comments for the list of available maps, providing better IDE autocomplete and documentation for developers.
+
+---
+
+## [0.6.0] - Jul 3, 2026
 ### 🌍 Added
 - **New Maps**: Added detailed SVG maps for **Belgium**, **Switzerland**, and the whole of **Europe**.
 - **Hover Tooltips**: Added a built-in tooltip feature to show region names on hover.
@@ -22,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.5.0] - 2026 Apr 25
+## [0.5.0] - Apr 25, 2026
 ### 🌍 Added
 - **8 New Country Maps**:
     - 🇩🇪 **Germany** (16 states)
@@ -37,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.4.0] - 2026 Feb 27
+## [0.4.0] - Feb 27, 2026
 ### 🌍 Added
 - **USA Map Support**: Added the USA map (50 states + DC) as an optional add-on to keep bundle sizes small.
 - **`hoverColor` Option**: Added interactive hover effects to map regions (supports named colors, hex, RGB/RGBA, HSL/HSLA).
@@ -53,7 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - 2026 Feb 26
+## [0.2.0] - Feb 26, 2026
 ### 🌍 Added
 - **World Map**: Added a complete world map with all 195 recognized countries.
 - **Flexible Sizing**: Introduced 8 preset sizes (`xs` to `4xl`) and custom scale factors for precise control.
@@ -67,7 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.1.0] - 2026 Feb 20
+## [0.1.0] - Feb 20, 2026
 ### 🌍 Added
 - **Initial Release** 🎉
 - **Afghanistan Map**: Complete SVG map with all 34 provinces/states.
