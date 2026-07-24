@@ -20,25 +20,49 @@ function extractMapInfo(content, fileName) {
   // Command name is the file name without the .ts extension
   const command = fileName.replace(/\.ts$/i, "");
 
-  // Extract the first occurrence of 'name' (the map/country name)
-    const nameMatch = content.match(/name:\s*["']([^"']+)["']/);
+  // \b ensures we match "name" and not "codename". \s* allows flexible spacing around the colon.
+  const nameMatch = content.match(/\bname\s*:\s*["']([^"']+)["']/);
   const mapName = nameMatch ? nameMatch[1] : command;
 
-  // Extract the first occurrence of 'code' (the map code)
-    const codeMatch = content.match(/code:\s*["']([^"']+)["']/);
+  const codeMatch = content.match(/\bcode\s*:\s*["']([^"']+)["']/);
     const mapCode = codeMatch ? codeMatch[1] : "N/A";
 
-    // Count states by isolating the 'states: [...]' block and counting 'name:' entries inside it
+  // Count states using a robust bracket-matching approach.
+  // This completely avoids bugs caused by nested arrays (e.g., aliases: ["A", "B"])
+  // prematurely ending the regex match.
     let stateCount = 0;
-    const statesMatch = content.match(/states:\s*\[([\s\S]*?)\](?:,|\s*})/);
+  const statesMatch = content.match(/\bstates\s*:\s*\[/);
     if (statesMatch) {
-        const statesBlock = statesMatch[1];
-        const nameMatchesInStates = statesBlock.match(/name:\s*["'][^"']*["']/g);
-        stateCount = nameMatchesInStates ? nameMatchesInStates.length : 0;
+    const startIndex = statesMatch.index + statesMatch[0].length;
+    const restOfContent = content.slice(startIndex);
+
+    let depth = 1;
+    let endIndex = 0;
+    for (let i = 0; i < restOfContent.length; i++) {
+      const char = restOfContent[i];
+      if (char === '[') depth++;
+      else if (char === ']') depth--;
+
+      if (depth === 0) {
+        endIndex = i;
+        break;
+      }
     }
 
-    // Check if the 'labels' array exists and contains at least one object
-    const hasLabels = /labels:\s*\[\s*\{/.test(content) ? "Yes" : "No";
+    if (endIndex > 0) {
+      const statesBlock = restOfContent.slice(0, endIndex);
+      const nameMatchesInStates = statesBlock.match(/\bname\s*:\s*["'][^"']*["']/g);
+        stateCount = nameMatchesInStates ? nameMatchesInStates.length : 0;
+    }
+  }
+
+  // Check if 'labels' array exists and contains at least one object.
+  // \b       : ensures we don't accidentally match "my_labels"
+  // \s*:\s*  : allows ANY amount of space around the colon (e.g., "labels : [")
+  // \[       : matches the opening bracket
+  // [^\]]*   : matches anything EXCEPT a closing bracket (ensures the '{' is actually inside the array)
+  // \{       : matches the opening brace of a label object
+  const hasLabels = /\blabels\s*:\s*\[[^\]]*\{/.test(content) ? "Yes" : "No";
 
     return {
     command,
@@ -99,7 +123,7 @@ async function main() {
     mdContent += `- **Has Labels**: Indicates whether coordinate labels are defined for text placement on the map.\n\n`;
     mdContent += `## 🗺️ Map Details\n\n`;
     mdContent += `| Command | Country Name | Code | States/Countries | Has Labels |\n`;
-    mdContent += `|---------|--------------|------|--------|------------|\n`;
+    mdContent += `|---------|--------------|------|------------------|------------|\n`;
 
         for (const info of mapInfos) {
       mdContent += `| \`${info.command}\` | ${info.mapName} | ${info.mapCode} | ${info.stateCount} | ${info.hasLabels} |\n`;
