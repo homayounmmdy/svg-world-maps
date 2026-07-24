@@ -59,6 +59,74 @@ const OMAN = {
             path: "M583.4 322.2l25-1.2 25.7 26.3 10 1.1 3.3 1.7 22.3-3.7 2.6-5.8 18.9-15.7 18.7-2.5 21.9 22.6-4 21.4-13.1 3.3-14.4 9.3-5.3 0.6-19.9 15.8-8.5 17.9 21.4 76 8.3 29.2 9.7 28.1-27.5-14.2-142.7-71.5 17.2-22.3 13.8-41.7 16.6-74.7z"
         },
     ],
+    labels: [
+        {
+            code: "OMMU",
+            x: "532",
+            y: "86.1",
+            name: "Musandam"
+        },
+        {
+            code: "OMBA",
+            x: "562.4",
+            y: "254.1",
+            name: "Al Batnah North"
+        },
+        {
+            code: "OMBU",
+            x: "509.2",
+            y: "234.2",
+            name: "Al Buraymi"
+        },
+        {
+            code: "OMZA",
+            x: "512.3",
+            y: "369.5",
+            name: "Al Dhahira"
+        },
+        {
+            code: "OMZU",
+            x: "353.2",
+            y: "796.6",
+            name: "Dhofar"
+        },
+        {
+            code: "OMWU",
+            x: "582.1",
+            y: "592.2",
+            name: "Al Wusta"
+        },
+        {
+            code: "OMSH",
+            x: "752.1",
+            y: "502.6",
+            name: "Ash Sharqiyah South"
+        },
+        {
+            code: "OMSS",
+            x: "724.6",
+            y: "421.7",
+            name: "Ash Sharqiyah North"
+        },
+        {
+            code: "OMMA",
+            x: "747.4",
+            y: "356.4",
+            name: "Muscat"
+        },
+        {
+            code: "OMBJ",
+            x: "653.6",
+            y: "321.8",
+            name: "Al Batnah South"
+        },
+        {
+            code: "OMDA",
+            x: "614.8",
+            y: "433.5",
+            name: "Ad Dakhliyah"
+        }
+    ]
 }
 
 export default OMAN

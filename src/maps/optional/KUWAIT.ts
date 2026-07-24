@@ -40,6 +40,44 @@ const KUWAIT = {
         },
 
     ],
+    labels: [
+        {
+            code: "KWJA",
+            x: "453.7",
+            y: "325.9",
+            name: "Al Jahrah"
+        },
+        {
+            code: "KWAH",
+            x: "718.7",
+            y: "735.9",
+            name: "Al Ahmadi"
+        },
+        {
+            code: "KWMU",
+            x: "776.4",
+            y: "505.9",
+            name: "Mubarak Al-Kabeer"
+        },
+        {
+            code: "KWHA",
+            x: "763.8",
+            y: "469.5",
+            name: "Hawalli"
+        },
+        {
+            code: "KWKU",
+            x: "710.9",
+            y: "458.8",
+            name: "Al Asimah"
+        },
+        {
+            code: "KWFA",
+            x: "718.2",
+            y: "504.9",
+            name: "Al Farwaniyah"
+        }
+    ]
 }
 
 export default KUWAIT

@@ -53,6 +53,56 @@ const LEBANON = {
         },
 
     ],
+    labels : [
+        {
+            code: "LBAS",
+            x: "533.8",
+            y: "256.1",
+            name: "North"
+        },
+        {
+            code: "LBBH",
+            x: "687",
+            y: "341.6",
+            name: "Baalbek-El Hermel"
+        },
+        {
+            code: "LBJL",
+            x: "421.8",
+            y: "496.9",
+            name: "Mount Lebanon"
+        },
+        {
+            code: "LBJA",
+            x: "236.1",
+            y: "844.1",
+            name: "South"
+        },
+        {
+            code: "LBNA",
+            x: "332.1",
+            y: "813.3",
+            name: "El Nabatieh"
+        },
+        {
+            code: "LBAK",
+            x: "649.5",
+            y: "134.4",
+            name: "Akkar"
+        },
+        {
+            code: "LBBI",
+            x: "479.7",
+            y: "664.6",
+            name: "Bekaa"
+        },
+        {
+            code: "LBBA",
+            x: "337.2",
+            y: "494.2",
+            name: "Beirut"
+        }
+    ]
 }
 
 export default LEBANON
