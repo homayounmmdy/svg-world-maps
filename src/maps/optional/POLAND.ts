@@ -100,6 +100,104 @@ const POLAND = {
 
         },
     ],
+    labels : [
+        {
+            code: "PL24",
+            x: "488.9",
+            y: "685.8",
+            name: "Silesian"
+        },
+        {
+            code: "PL12",
+            x: "582.7",
+            y: "787.8",
+            name: "Lesser Poland"
+        },
+        {
+            code: "PL18",
+            x: "760.4",
+            y: "762.3",
+            name: "Subcarpathian"
+        },
+        {
+            code: "PL02",
+            x: "258.6",
+            y: "600.8",
+            name: "Lower Silesian"
+        },
+        {
+            code: "PL16",
+            x: "385.8",
+            y: "668.1",
+            name: "Opole"
+        },
+        {
+            code: "PL20",
+            x: "847.7",
+            y: "295.6",
+            name: "Podlachian"
+        },
+        {
+            code: "PL28",
+            x: "645.2",
+            y: "198.5",
+            name: "Warmian-Masurian"
+        },
+        {
+            code: "PL08",
+            x: "154.7",
+            y: "445.1",
+            name: "Lubusz"
+        },
+        {
+            code: "PL32",
+            x: "178.7",
+            y: "237.1",
+            name: "West Pomeranian"
+        },
+        {
+            code: "PL06",
+            x: "839.5",
+            y: "580.9",
+            name: "Lublin"
+        },
+        {
+            code: "PL22",
+            x: "400.5",
+            y: "133.9",
+            name: "Pomeranian"
+        },
+        {
+            code: "PL14",
+            x: "679.2",
+            y: "412.7",
+            name: "Masovian"
+        },
+        {
+            code: "PL10",
+            x: "525",
+            y: "531.8",
+            name: "Łódź"
+        },
+        {
+            code: "PL04",
+            x: "442.6",
+            y: "320.5",
+            name: "Kuyavian-Pomeranian"
+        },
+        {
+            code: "PL30",
+            x: "289.9",
+            y: "414.9",
+            name: "Greater Poland"
+        },
+        {
+            code: "PL26",
+            x: "650.2",
+            y: "663.8",
+            name: "Świętokrzyskie"
+        }
+    ]
 }
 
 export default POLAND

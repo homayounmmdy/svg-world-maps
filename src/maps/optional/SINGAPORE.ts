@@ -30,6 +30,38 @@ const SINGAPORE = {
         },
 
     ],
+    labels: [
+        {
+            code: "SG05",
+            x: "256.2",
+            y: "263.3",
+            name: "South West"
+        },
+        {
+            code: "SG01",
+            x: "569",
+            y: "351",
+            name: "Central Singapore"
+        },
+        {
+            code: "SG04",
+            x: "721.4",
+            y: "300.4",
+            name: "South East"
+        },
+        {
+            code: "SG02",
+            x: "763.1",
+            y: "190.3",
+            name: "North East"
+        },
+        {
+            code: "SG03",
+            x: "435.5",
+            y: "140.1",
+            name: "North West"
+        }
+    ]
 }
 
 export default SINGAPORE

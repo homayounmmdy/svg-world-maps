@@ -1,6 +1,6 @@
 # Maps Information Report
 
-**📅 Last Generated:** Friday, July 24, 2026 at 01:58:55 PM GMT+3:30
+**📅 Last Generated:** Friday, July 24, 2026 at 02:03:29 PM GMT+3:30
 
 ## ℹ️ About this Report
 
@@ -40,13 +40,13 @@ directory.
 | `ISRAEL`      | Israel                | IL   | 6                | Yes        |
 | `KUWAIT`      | Kuwait                | KW   | 6                | Yes        |
 | `LEBANON`     | Lebanon               | LB   | 8                | Yes        |
-| `LUXEMBOURG`  | Luxembourg            | LU   | 12               | No         |
+| `LUXEMBOURG`  | Luxembourg            | LU   | 12               | Yes        |
 | `NETHERLANDS` | Netherlands           | NL   | 12               | Yes        |
 | `NORWAY`      | Norway                | No   | 11               | Yes        |
 | `OMAN`        | Oman                  | OM   | 11               | Yes        |
 | `PAKISTAN`    | Pakistan              | PK   | 7                | Yes        |
-| `POLAND`      | Poland                | PL   | 16               | No         |
-| `SINGAPORE`   | Singapore             | SG   | 5                | No         |
+| `POLAND`      | Poland                | PL   | 16               | Yes        |
+| `SINGAPORE`   | Singapore             | SG   | 5                | Yes        |
 | `SWEDEN`      | SWEDEN                | SE   | 21               | Yes        |
 | `SWITZERLAND` | Switzerland           | CH   | 26               | Yes        |
 | `TEMPLATE`    | Template              | TM   | 1                | Yes        |
