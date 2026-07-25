@@ -1,0 +1,221 @@
+---
+title: Optional Maps
+description: Keep your bundle size tiny by adding country and region maps on-demand.
+sidebar_position: 3
+sidebar_label: Optional Maps
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# 🗺️ Optional Maps
+
+> **Keep your bundle small.** Add heavy country/region maps only when you actually need them.
+
+By default, `svg-world-maps` includes **only the World map** to ensure the smallest possible initial bundle size. All other country and region maps are **optional** and can be added to your project on-demand with a single CLI command.
+
+<Admonition type="info" title="New in v0.7.0: Automation!">
+  🚀 We've added a new <code>npx register-map</code> command that can automatically scan your project and register your added maps, saving you from writing boilerplate import code! 
+  <br/>
+  👉 <a href="#automated-registration-v070">See how it works below →</a>
+</Admonition>
+
+---
+
+## 🚀 How to Add an Optional Map
+
+Let's use **Afghanistan** as an example. The process is the same for any optional map.
+
+### Step 1: Download the map via CLI
+
+Run this command in your project root:
+
+```bash
+npx add-map afghanistan
+```
+
+✅ This safely downloads the optimized map data into your project:
+```text
+your-project/
+├── src/
+│   └── maps/
+│       └── AF.ts        <-- New map data file
+```
+
+### Step 2: Register the map in your code
+
+Before you can render it, you must register the map data with the library.
+
+```javascript
+import { registerMapData, createMap } from 'svg-world-maps';
+import afghanistanData from './src/maps/AF'; // Adjust path to your folder structure
+
+// 1. Register the data
+registerMapData('afghanistan', afghanistanData);
+
+// 2. Now you can create the map!
+const map = createMap('afghanistan', {
+  background: '#f0f0f0',
+  borders: '#333',
+  tooltip: true,
+  size: 'lg'
+});
+```
+
+### Step 3: Render it in your framework
+
+Once registered, use it exactly like the built-in `world` map:
+
+<Tabs groupId="framework">
+  <TabItem value="vanilla" label="Vanilla JS" default>
+    ```javascript
+    document.getElementById('map-container').innerHTML = map;
+    ```
+  </TabItem>
+  <TabItem value="react" label="React / Next.js">
+    ```jsx
+    <div dangerouslySetInnerHTML={{ __html: map }} />
+    ```
+  </TabItem>
+  <TabItem value="vue" label="Vue 3">
+    ```vue
+    <template>
+      <div v-html="map" />
+    </template>
+    ```
+  </TabItem>
+  <TabItem value="svelte" label="Svelte">
+    ```svelte
+    {@html map}
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## ⚡ Automated Registration (v0.7.0+)
+
+Tired of manually importing and registering every map? We built a tool for that.
+
+After adding maps via `npx add-map`, simply run:
+
+```bash
+npx register-map
+```
+
+This script will automatically:
+1. Scan your `src/maps/` directory.
+2. Generate a centralized registration file (e.g., `src/maps/register.ts`).
+3. Provide you with a single import to initialize all your added maps at once.
+
+<Admonition type="tip" title="Best Practice">
+  Run `npx register-map` every time you add a new map during development to keep your setup completely frictionless.
+</Admonition>
+
+---
+
+## 🔁 Registering Multiple Maps Manually
+
+If you prefer manual control or are using an older version, you can register as many maps as you need:
+
+```javascript
+import { registerMapData, createMap } from 'svg-world-maps';
+import afData from './src/maps/AF';
+import usData from './src/maps/US'; 
+import deData from './src/maps/DE';
+
+registerMapData('afghanistan', afData);
+registerMapData('usa', usData);
+registerMapData('germany', deData);
+
+// Use them anywhere in your app
+const afMap = createMap('afghanistan');
+const usMap = createMap('usa', { tooltip: true });
+```
+
+---
+
+## ⚠️ Common Errors & Fixes
+
+<details>
+<summary><strong>❌ "Map type 'afghanistan' not found in registry"</strong></summary>
+<br/>
+**Cause**: You called `createMap('afghanistan')` before registering its data, or the registration failed silently.
+
+**Fix**:
+1. Ensure you ran `npx add-map afghanistan`.
+2. Verify that `registerMapData('afghanistan', data)` is executed **before** any `createMap('afghanistan')` call in your application lifecycle (e.g., at the top of your main entry file like `main.js` or `App.tsx`).
+</details>
+
+<details>
+<summary><strong>❌ "Cannot find module './src/maps/AF'"</strong></summary>
+<br/>
+**Cause**: The map file wasn't downloaded, or your import path is incorrect.
+
+**Fix**:
+1. Run `npx add-map afghanistan` again to ensure the file exists.
+2. Check your folder structure. If your maps folder is elsewhere, adjust the import:
+   ```javascript
+   // Using a relative path
+   import afData from '../maps/AF'; 
+   
+   // Or using a TypeScript/Vite alias (if configured)
+   import afData from '@/maps/AF'; 
+   ```
+</details>
+
+<details>
+<summary><strong>❌ "registerMapData is not a function"</strong></summary>
+<br/>
+**Cause**: You are using an outdated version of the library (pre-v0.3.0).
+
+**Fix**: Update to the latest version:
+```bash
+npm install svg-world-maps@latest
+# or
+yarn upgrade svg-world-maps@latest
+```
+</details>
+
+---
+
+## 🧹 Removing an Optional Map
+
+Don't need a map anymore? Remove it to shrink your production bundle:
+
+1. **Delete the map file**:
+   ```bash
+   rm src/maps/AF.ts 
+   ```
+2. **Remove the registration code** (or re-run `npx register-map` to auto-clean).
+3. **Rebuild your project** to confirm the bundle size reduction.
+
+> 💡 **Note**: The `npx add-map` command is idempotent. Running it multiple times just re-downloads/overwrites the file safely. No complex cleanup is needed unless you actively want to remove the map.
+
+---
+
+## 🌍 Available Optional Maps
+
+As of **v0.7.0**, we support **34+ country and region maps**. Add any of these using `npx add-map <name>`:
+
+| Region | CLI Command | Details |
+| :--- | :--- | :--- |
+| 🌍 **World** | *(Built-in)* | ✅ Included by default (195 countries) |
+| 🇦🇫 **Afghanistan** | `npx add-map afghanistan` | 34 provinces |
+| 🇺🇸 **USA** | `npx add-map usa` | 51 states/regions |
+| 🇩🇪 **Germany** | `npx add-map germany` | 16 states |
+| 🇮🇳 **India** | `npx add-map india` | 36 states/territories |
+| 🇮🇷 **Iran** | `npx add-map iran` | 31 provinces |
+| 🇨🇦 **Canada** | `npx add-map canada` | 13 provinces/territories |
+| 🇧🇷 **Brazil** | `npx add-map brazil` | 27 states |
+| 🇫🇷 **France** | `npx add-map france` | 13 regions |
+| 🇦🇺 **Australia** | `npx add-map australia` | 8 states/territories |
+| 🇬🇧 **Great Britain** | `npx add-map gb` | 232 regions |
+| 🇪🇺 **Europe** | `npx add-map europe` | 45 countries |
+| 🌍 **Africa** | `npx add-map africa` | 50 countries |
+| *...and 20+ more!* | `npx add-map <name>` | Pakistan, Argentina, Austria, Denmark, Finland, Greenland, Iceland, Israel, Kuwait, Lebanon, Luxembourg, Netherlands, Norway, Oman, Poland, Singapore, Sweden, Switzerland, UAE, Vatican. |
+
+<Admonition type="success" title="Need a map that isn't listed?">
+  We are constantly adding new maps! Open a <a href="https://github.com/homayounmmdy/svg-world-maps/discussions" target="_blank">GitHub Discussion</a> or <a href="https://github.com/homayounmmdy/svg-world-maps/issues" target="_blank">Issue</a> to request your country or region.
+</Admonition>
