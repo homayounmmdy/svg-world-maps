@@ -5,8 +5,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "SVG World Maps",
+  tagline: "Simple, lightweight SVG maps for JavaScript projects.",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -21,18 +21,33 @@ const config: Config = {
   baseUrl: "/",
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "homayounmmdy", // Usually your GitHub org/user name.
+  projectName: "svg-world-maps", // Usually your repo name.
 
   onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // 🌍 Internationalization (i18n) Configuration
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "fa", "de"],
+    localeConfigs: {
+      en: {
+        label: "English",
+        direction: "ltr",
+        htmlLang: "en",
+      },
+      fa: {
+        label: "فارسی",
+        direction: "rtl", // Crucial for Persian right-to-left layout
+        htmlLang: "fa",
+      },
+      de: {
+        label: "Deutsch",
+        direction: "ltr",
+        htmlLang: "de",
+      },
+    },
   },
 
   presets: [
@@ -41,10 +56,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // Update this to your actual repo
+          editUrl: "https://github.com/homayounmmdy/svg-world-maps/tree/main/docs/",
         },
         blog: {
           showReadingTime: true,
@@ -52,11 +65,7 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          // Useful options to enforce blogging best practices
+          editUrl: "https://github.com/homayounmmdy/svg-world-maps/tree/main/blog/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -73,9 +82,9 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     colorMode: { defaultMode: "dark", respectPrefersColorScheme: true },
     navbar: {
-      title: "My Site",
+      title: "SVG World Maps",
       logo: {
-        alt: "My Site Logo",
+        alt: "SVG World Maps Logo",
         src: "img/logo.svg",
       },
       items: [
@@ -83,11 +92,11 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Docs",
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/homayounmmdy/svg-world-maps",
           label: "GitHub",
           position: "right",
         },
@@ -100,8 +109,12 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Getting Started",
+              to: "/docs/getting-started",
+            },
+            {
+              label: "API Reference",
+              to: "/docs/api-reference",
             },
           ],
         },
@@ -109,16 +122,12 @@ const config: Config = {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "GitHub Discussions",
+              href: "https://github.com/homayounmmdy/svg-world-maps/discussions",
             },
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
+              label: "Report an Issue",
+              href: "https://github.com/homayounmmdy/svg-world-maps/issues",
             },
           ],
         },
@@ -126,21 +135,23 @@ const config: Config = {
           title: "More",
           items: [
             {
-              label: "Blog",
-              to: "/blog",
+              label: "npm",
+              href: "https://www.npmjs.com/package/svg-world-maps",
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/homayounmmdy/svg-world-maps",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SVG World Maps. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      // Add TypeScript and JSX to supported languages for better highlighting
+      additionalLanguages: ["typescript", "jsx", "bash", "json"],
     },
   } satisfies Preset.ThemeConfig,
 };

@@ -1,0 +1,294 @@
+---
+title: Getting Started
+description: Get your first interactive SVG map running in under a minute. Zero build tools required.
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# 🚀 Getting Started
+
+Get your first interactive SVG map running in under a minute. No complex build tools, no heavy dependencies—just pure, lightweight SVG.
+
+<Admonition type="info" title="What's New in v0.7.0?">
+  🎉 We now support **35+ maps**! To keep your bundle size tiny, country/region maps are now **optional**.
+  <br/>
+  👉 <a href="/docs/optional-maps">Learn how to add optional maps →</a>
+</Admonition>
+
+---
+
+## 📦 Prerequisites
+
+| Requirement | Version | Why |
+|-------------|---------|-----|
+| **Node.js** | 16+ | For package manager installation |
+| **Package Manager** | Any | `npm`, `yarn`, `pnpm`, or `bun` |
+| **JavaScript Project** | Any | React, Vue, Svelte, Next.js, or Vanilla JS |
+
+<Admonition type="tip" title="No Framework? No Problem!">
+  This library outputs plain SVG strings. You can insert them anywhere using `innerHTML`, `v-html`, or `{@html}`.
+</Admonition>
+
+---
+
+## ⬇️ Installation
+
+Install the package using your preferred package manager:
+
+<Tabs groupId="package-manager">
+  <TabItem value="npm" label="npm" default>
+    ```bash
+    npm install svg-world-maps
+    ```
+  </TabItem>
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn add svg-world-maps
+    ```
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    ```bash
+    pnpm add svg-world-maps
+    ```
+  </TabItem>
+  <TabItem value="bun" label="Bun">
+    ```bash
+    bun add svg-world-maps
+    ```
+  </TabItem>
+</Tabs>
+
+✅ **That's it!** Zero runtime dependencies installed. 🎉
+
+---
+
+## ✨ Your First Map
+
+The core of the library is the `createMap` function. It takes a `mapType` and an optional `options` object, returning a fully formatted SVG string.
+
+<Tabs groupId="framework">
+  <TabItem value="vanilla" label="Vanilla JS" default>
+    ```javascript
+    import { createMap } from "svg-world-maps";
+
+    // 1. Create the map SVG string
+    const worldMap = createMap("world", {
+      background: "#e6f3ff",
+      borders: "#2c3e50",
+      tooltip: true,
+    });
+
+    // 2. Insert into your HTML
+    document.getElementById("map-container").innerHTML = worldMap;
+    ```
+  </TabItem>
+  <TabItem value="react" label="React / Next.js">
+    ```jsx
+    import { createMap } from "svg-world-maps";
+
+    export default function App() {
+      const worldMap = createMap("world", {
+        background: "#e6f3ff",
+        borders: "#2c3e50",
+        tooltip: true,
+      });
+
+      return (
+        <div dangerouslySetInnerHTML={{ __html: worldMap }} />
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem value="vue" label="Vue 3">
+    ```vue
+    <script setup>
+    import { createMap } from "svg-world-maps";
+
+    const worldMap = createMap("world", {
+      background: "#e6f3ff",
+      borders: "#2c3e50",
+      tooltip: true,
+    });
+    </script>
+
+    <template>
+      <div v-html="worldMap" />
+    </template>
+    ```
+  </TabItem>
+  <TabItem value="svelte" label="Svelte">
+    ```svelte
+    <script>
+    import { createMap } from "svg-world-maps";
+
+    const worldMap = createMap("world", {
+      background: "#e6f3ff",
+      borders: "#2c3e50",
+      tooltip: true,
+    });
+    </script>
+
+    {@html worldMap}
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## 🎨 Interactive & Customizable
+
+Make your maps come alive with built-in interactive features and styling options.
+
+```typescript
+createMap(mapType: string, options?: MapOptions): string
+```
+
+### Common Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `background` | `string` | `"currentColor"` | Map fill color (any valid CSS color or `transparent`) |
+| `borders` | `string` | `"#000000"` | Country/state border stroke color |
+| `hoverColor` | `string` | `undefined` | Color applied to regions on hover (e.g., `"rgba(59, 130, 246, 0.3)"`) |
+| `tooltip` | `boolean` | `false` | Show a native/browser tooltip with the region name on hover |
+| `showLabel` | `boolean` | `false` | Render text labels directly on the map regions *(Note: Not yet supported for USA, Iran, Europe, Africa)* |
+| `size` | `string \| number` | `"lg"` | Preset size (`"xs"` to `"4xl"`) or a custom numeric scale factor |
+
+### Quick Examples
+
+<Tabs>
+  <TabItem value="dark" label="🌙 Dark Theme">
+    ```javascript
+    createMap("world", {
+      background: "#1a1a2e",
+      borders: "#4a4a6a",
+      hoverColor: "rgba(255, 255, 255, 0.1)",
+      size: "xl"
+    });
+    ```
+  </TabItem>
+  <TabItem value="transparent" label="🎨 Transparent Overlay">
+    ```javascript
+    createMap("world", {
+      background: "transparent",
+      borders: "#2c3e50",
+      tooltip: true
+    });
+    ```
+  </TabItem>
+  <TabItem value="labeled" label="🏷️ Labeled Map">
+    ```javascript
+    createMap("germany", {
+      showLabel: true,
+      hoverColor: "lightblue",
+      size: "md"
+    });
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## 📏 Understanding Size Options
+
+### Preset Sizes
+| Preset | Scale | Best For |
+|--------|-------|----------|
+| `"xs"` | 0.25x | Thumbnails, mobile navigation |
+| `"sm"` | 0.5x | Sidebar widgets, dashboard cards |
+| `"md"` | 0.75x | Modals, content blocks |
+| `"lg"` | 1x | **Default** — standard content areas |
+| `"xl"` | 1.5x | Hero sections, featured content |
+| `"2xl"` – `"4xl"`| 2x – 3x | Full-screen displays, print layouts |
+
+### Custom Scale Factors
+Need precise control? Pass a number instead of a string:
+
+```javascript
+// Exactly 33% size
+createMap("world", { size: 0.33 });
+
+// 125% size for emphasis
+createMap("world", { size: 1.25 });
+
+// Responsive: scale based on container width
+const containerWidth = 800;
+const baseWidth = 2000; // Approximate base width of the world map
+createMap("world", { size: containerWidth / baseWidth });
+```
+
+<Admonition type="tip" title="Pro Tip: Responsive CSS">
+Combine custom sizing with CSS to ensure your map always fits perfectly:
+```css
+.map-container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+```
+</Admonition>
+
+---
+
+## 🖱️ Handling Clicks
+
+Every region in the generated SVG includes two data attributes, making it incredibly easy to add interactivity:
+
+- `data-code`: Short region identifier (e.g., `"US-CA"`, `"DE-BY"`)
+- `data-name`: Full region name (e.g., `"California"`, `"Bavaria"`)
+
+```javascript
+const container = document.getElementById("map-container");
+container.innerHTML = createMap("usa", { tooltip: true });
+
+container.addEventListener("click", (e) => {
+  const target = e.target;
+  const code = target.dataset.code;
+  const name = target.dataset.name;
+
+  if (code && name) {
+    console.log(`Clicked: ${name} (${code})`);
+    // Navigate, filter data, or show a custom modal!
+  }
+});
+```
+
+---
+
+## 🔍 What You're Actually Getting
+
+`createMap()` returns a **plain SVG string**. There is no framework magic or hidden runtime overhead.
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 2000 857"
+     preserveAspectRatio="xMidYMid meet">
+
+  <path d="M100,50 L200,100 ..."
+        id="US"
+        data-code="US"
+        data-name="United States"
+        fill="#f0f0f0"
+        stroke="#333333" />
+  <!-- More path elements for each region -->
+</svg>
+```
+
+### Why This Architecture Matters
+
+✅ **Framework Agnostic** — Insert anywhere with `innerHTML`, `v-html`, `{@html}`, etc.
+✅ **Zero Runtime Overhead** — It's just a string; no virtual DOM diffing or reactivity cost.
+✅ **Easy to Style** — Target specific paths with standard CSS:
+  ```css
+  svg path[data-code="US"] {
+    transition: fill 0.2s ease;
+  }
+  svg path[data-code="US"]:hover {
+    fill: #3498db !important;
+    cursor: pointer;
+  }
+  ```
+✅ **Tree-shakeable** — Modern bundlers (Vite, Webpack, Rollup) will automatically strip out any maps or code you don't use.

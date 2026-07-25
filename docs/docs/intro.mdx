@@ -1,47 +1,105 @@
 ---
+title: Welcome
+description: The ultimate guide to building beautiful, interactive SVG maps in JavaScript.
 sidebar_position: 1
+sidebar_label: Introduction
 ---
 
-# Tutorial Intro
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+import Link from '@docusaurus/Link';
 
-Let's discover **Docusaurus in less than 5 minutes**.
+# 🗺️ Welcome to SVG World Maps
 
-## Getting Started
+Build beautiful, interactive, and lightweight SVG maps in seconds. No heavy dependencies, no complex build steps—just pure, framework-agnostic JavaScript.
 
-Get started by **creating a new site**.
+Whether you are building a global dashboard in **React**, a localized landing page in **Vue**, or a simple vanilla JS project, `svg-world-maps` gives you the tools to visualize geographic data effortlessly.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+---
 
-### What you'll need
+## ⚡ Quick Start
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Get a map on your screen in three simple steps:
 
-## Generate a new site
+<Tabs groupId="quick-start">
+  <TabItem value="step1" label="1. Install" default>
+    ```bash
+    npm install svg-world-maps
+    ```
+  </TabItem>
+  <TabItem value="step2" label="2. Import">
+    ```javascript
+    import { createMap } from "svg-world-maps";
+    ```
+  </TabItem>
+  <TabItem value="step3" label="3. Render">
+    ```javascript
+    const map = createMap("world", {
+      tooltip: true,
+      hoverColor: "lightblue"
+    });
 
-Generate a new Docusaurus site using the **classic template**.
+    document.getElementById("app").innerHTML = map;
+    ```
+  </TabItem>
+</Tabs>
 
-The classic template will automatically be added to your project after you run the command:
+<Admonition type="success" title="That's it!">
+  You now have a fully scalable, interactive SVG map. No extra CSS or JS required.
+</Admonition>
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+---
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## 🌟 Why Choose SVG World Maps?
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
 
-## Start your site
+<div style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)' }}>
+  <h3 style={{ marginTop: 0 }}>🌍 35+ Maps</h3>
+  <p style={{ marginBottom: 0, color: 'var(--ifm-font-color-secondary)' }}>From the entire world down to specific countries and regions (USA, Germany, Iran, Canada, and more).</p>
+</div>
 
-Run the development server:
+<div style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)' }}>
+  <h3 style={{ marginTop: 0 }}>🪶 Zero Dependencies</h3>
+  <p style={{ marginBottom: 0, color: 'var(--ifm-font-color-secondary)' }}>Pure SVG output. No runtime overhead, no bloated node_modules, just clean markup.</p>
+</div>
 
-```bash
-cd my-website
-npm run start
-```
+<div style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)' }}>
+  <h3 style={{ marginTop: 0 }}>👆 Interactive by Default</h3>
+  <p style={{ marginBottom: 0, color: 'var(--ifm-font-color-secondary)' }}>Built-in tooltips, region labels, and `data-code` / `data-name` attributes for easy click handling.</p>
+</div>
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+<div style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--ifm-color-emphasis-200)', background: 'var(--ifm-background-surface-color)' }}>
+  <h3 style={{ marginTop: 0 }}>📦 Tiny Bundles</h3>
+  <p style={{ marginBottom: 0, color: 'var(--ifm-font-color-secondary)' }}>Optional maps system ensures you only bundle the specific countries you actually need.</p>
+</div>
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+</div>
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+---
+
+## 🧭 Explore the Documentation
+
+Not sure where to go next? Choose your path:
+
+| Resource | Description |
+| :--- | :--- |
+| 🚀 **[Getting Started](/docs/getting-started)** | The complete guide to installation, basic usage, and framework integration. |
+| 🗺️ **[Optional Maps](/docs/optional-maps)** | How to add specific country maps (like `usa` or `germany`) using `npx add-map` to keep your bundle small. |
+| ⚙️ **[API Reference](/docs/api-reference)** | Deep dive into `createMap` options, size presets, TypeScript types, and customization. |
+| 🖱️ **[Interactivity](/docs/interactivity)** | Learn how to handle clicks, filter data, and style hover states effectively. |
+
+---
+
+## 💡 Need Help?
+
+We are here to support you! If you run into issues or have ideas for new features:
+
+- 🐛 **[Report a Bug](https://github.com/homayounmmdy/svg-world-maps/issues)**: Found something broken? Let us know.
+- 💬 **[GitHub Discussions](https://github.com/homayounmmdy/svg-world-maps/discussions)**: Ask questions, share your implementations, or request new country maps.
+- ⭐ **[Star on GitHub](https://github.com/homayounmmdy/svg-world-maps)**: Support the project and stay updated on new releases.
+
+<Admonition type="info" title="Ready to build?">
+  Jump straight into the action: <Link to="/docs/getting-started">Read the Getting Started guide →</Link>
+</Admonition>
