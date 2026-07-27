@@ -1,0 +1,90 @@
+---
+title: Maps Information Report
+description: A comprehensive overview of all available map configurations, state counts, and label support.
+sidebar_position: 4
+sidebar_label: Maps Info
+---
+
+import Admonition from '@theme/Admonition';
+
+# 🗺️ Maps Information Report
+
+<Admonition type="warning" title="📌 Always Check the Source of Truth">
+  The table below is a snapshot of our map configurations. For the <strong>absolute latest, auto-generated version</strong> of this report, including any newly added maps or updated label support, always check the 
+  <a href="https://github.com/homayounmmdy/svg-world-maps/blob/main/MAPS_INFO.md" target="_blank" rel="noopener noreferrer"> <code>MAPS_INFO.md</code> file at the root of the repository</a>.
+</Admonition>
+
+This report provides an automated overview of all available map configurations. It details the CLI command, human-readable name, standard code, total number of regions, and whether text labels are supported.
+
+
+## 📊 Map Details
+
+| Command | Country / Region Name | Code | Regions / States | Has Labels |
+| :--- | :--- | :---: | :---: | :---: |
+| `afghanistan` | Afghanistan | `AF` | 34 | ✅ Yes |
+| `africa` | Africa | `XF` | 50 | ❌ No |
+| `argentina` | Argentina | `AR` | 24 | ✅ Yes |
+| `armenia` | Armenia | `AM` | 11 | ✅ Yes |
+| `australia` | Australia | `AU` | 8 | ✅ Yes |
+| `austria` | Austria | `AT` | 9 | ✅ Yes |
+| `belgium` | Belgium | `BE` | 3 | ✅ Yes |
+| `brazil` | Brazil | `BR` | 27 | ✅ Yes |
+| `canada` | Canada | `CA` | 13 | ✅ Yes |
+| `denmark` | Denmark | `DK` | 5 | ✅ Yes |
+| `europe` | Europe | `XE` | 45 | ❌ No |
+| `finland` | Finland | `FI` | 19 | ✅ Yes |
+| `france` | France | `FR` | 13 | ✅ Yes |
+| `germany` | Germany | `DE` | 16 | ✅ Yes |
+| `gb` | Great Britain | `GB` | 232 | ✅ Yes |
+| `greenland` | Greenland | `GL` | 5 | ✅ Yes |
+| `iceland` | Iceland | `IS` | 8 | ✅ Yes |
+| `india` | India | `IN` | 36 | ✅ Yes |
+| `iran` | Iran | `IR` | 31 | ❌ No |
+| `israel` | Israel | `IL` | 6 | ✅ Yes |
+| `kuwait` | Kuwait | `KW` | 6 | ✅ Yes |
+| `lebanon` | Lebanon | `LB` | 8 | ✅ Yes |
+| `luxembourg` | Luxembourg | `LU` | 12 | ✅ Yes |
+| `netherlands` | Netherlands | `NL` | 12 | ✅ Yes |
+| `norway` | Norway | `NO` | 11 | ✅ Yes |
+| `oman` | Oman | `OM` | 11 | ✅ Yes |
+| `pakistan` | Pakistan | `PK` | 7 | ✅ Yes |
+| `poland` | Poland | `PL` | 16 | ✅ Yes |
+| `singapore` | Singapore | `SG` | 5 | ✅ Yes |
+| `sweden` | Sweden | `SE` | 21 | ✅ Yes |
+| `switzerland` | Switzerland | `CH` | 26 | ✅ Yes |
+| `uae` | United Arab Emirates | `AE` | 7 | ✅ Yes |
+| `usa` | United States of America | `USA` | 51 | ❌ No |
+| `vatican` | Vatican City | `VA` | 1 | ✅ Yes |
+
+*(Note: `TEMPLATE` is an internal development file and should not be used in production.)*
+
+## 🏷️ Label Support Summary
+
+- **✅ Maps with Labels:** 31
+- **⚠️ Maps without Labels:** 4
+
+### ⚠️ Important Note on Maps Without Labels
+
+Currently, the following maps **do not support** the `showLabel` feature. If you set `showLabel: true` for these maps, no visual changes will occur:
+
+- 🌍 **`africa`** (Africa)
+- 🇪🇺 **`europe`** (Europe)
+- 🇮🇷 **`iran`** (Iran)
+- 🇺🇸 **`usa`** (United States of America)
+
+#### Why are labels missing for these maps?
+This is due to a lack of readily available, high-quality open-source map data, or because we have not yet been able to calculate and verify the correct centroid coordinates for text placement on these specific maps.
+
+<Admonition type="info" title="A Note from the Maintainer">
+  We are actively trying our best to find or manually create these missing labels. Please note that we are not professional SVG cartographers, and this process takes significant time and effort. 
+  <br/><br/>
+  Thank you for your patience, understanding, and for supporting this open-source project! 🙏
+</Admonition>
+
+## 🔄 Keeping Up to Date
+
+Map data and label support are continuously improving. 
+
+> 💡 **Reminder:** Always check the <a href="https://github.com/homayounmmdy/svg-world-maps/blob/main/MAPS_INFO.md" target="_blank" rel="noopener noreferrer"><code>MAPS_INFO.md</code> file at the root of the repository</a> for the latest, auto-generated version of this report before starting a new implementation.
+
+Want to help us add labels to the missing maps? We welcome contributions! Check out our [Contributing Guide](/docs/contributing) or open a [GitHub Discussion](https://github.com/homayounmmdy/svg-world-maps/discussions).
