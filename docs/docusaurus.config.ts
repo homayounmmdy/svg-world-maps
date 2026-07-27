@@ -7,7 +7,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "SVG World Maps",
   tagline: "Simple, lightweight SVG maps for JavaScript projects.",
-  favicon: "img/favicon.ico",
+  favicon: "static/img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -85,7 +85,7 @@ const config: Config = {
       title: "SVG World Maps",
       logo: {
         alt: "SVG World Maps Logo",
-        src: "img/logo.svg",
+        src: "static/img/logo.svg",
       },
       items: [
         {
