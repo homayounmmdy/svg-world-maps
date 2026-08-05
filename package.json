@@ -21,9 +21,9 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc",
-    "create-map" : "node scripts/create-map.js",
-    "map-info" : "node scripts/map-info.js",
-    "register-map" : "node scripts/register-map.js",
+    "create-map": "node scripts/create-map.js",
+    "map-info": "node scripts/map-info.js",
+    "register-map": "node scripts/register-map.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -87,5 +87,8 @@
   "bugs": {
     "url": "https://github.com/homayounmmdy/svg-world-maps/issues"
   },
-  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme"
+  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme",
+  "dependencies": {
+    "svg-world-maps": "^0.7.0"
+  }
 }

@@ -27,6 +27,27 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
+    plugins: [
+    function fixFullySpecifiedPlugin() {
+      return {
+        name: "fix-fully-specified-plugin",
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.m?js$/,
+                  resolve: {
+                    fullySpecified: false, // This fixes the './config' error
+                  },
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
+  ],
   // 🌍 Internationalization (i18n) Configuration
   i18n: {
     defaultLocale: "en",

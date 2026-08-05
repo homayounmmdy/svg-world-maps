@@ -1,0 +1,71 @@
+---
+title: Interactive Map Explorer
+description: Click on any country in the world map below to see our library in action.
+sidebar_position: 2
+sidebar_label: Map Explorer
+---
+
+import MapExplorer from '../components/MapExplorer';
+import Admonition from '@theme/Admonition';
+
+# 🌍 Interactive Map Explorer
+
+Experience the interactivity of `svg-world-maps` firsthand. 
+
+Hover over any country below to see the built-in tooltips and hover effects. **Click on any country** to see how the library captures region data (`data-code` and `data-name`).
+
+<Admonition type="info" title="Try it out!">
+  Click on any country (e.g., Brazil, Japan, or Germany). For this demo, all country clicks will show our "Coming Soon" roadmap modal, demonstrating how easily you can intercept click events to build custom navigation, filtering, or detail views.
+</Admonition>
+
+<MapExplorer />
+
+---
+
+## 💡 How This Works
+
+The interactive behavior you just experienced is powered by two simple features of the library:
+
+1. **Data Attributes**: Every generated `<path>` automatically includes `data-code` (e.g., `"FR"`) and `data-name` (e.g., `"France"`).
+2. **Event Delegation**: You can attach a single `click` listener to the parent container and read these attributes from `e.target.dataset`.
+
+### Example: Handling Clicks in React
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useState, useRef, useEffect } from "react";
+
+export default function MyMap() {
+  const [selected, setSelected] = useState(null);
+  const containerRef = useRef(null);
+
+  const svgString = createMap("world", { tooltip: true, hoverColor: "lightblue" });
+
+  useEffect(() => {
+    const handleMapClick = (e) => {
+      const code = e.target.dataset.code;
+      const name = e.target.dataset.name;
+      if (code && name) {
+        setSelected({ code, name });
+      }
+    };
+
+    containerRef.current.addEventListener("click", handleMapClick);
+    return () => containerRef.current.removeEventListener("click", handleMapClick);
+  }, []);
+
+  return (
+    <div>
+      <div ref={containerRef} dangerouslySetInnerHTML={{ __html: svgString }} />
+      {selected && <p>You clicked: {selected.name} ({selected.code})</p>}
+    </div>
+  );
+}
+```
+
+<Admonition type="success" title="Ready to add specific countries?">
+  Once we add the specific map you need (or if you add it yourself), you can swap `"world"` for `"germany"`, `"usa"`, or any other supported region! 
+  <br/>
+  👉 <a href="/docs/optional-maps">Learn how to add optional maps →</a>
+</Admonition>
+```

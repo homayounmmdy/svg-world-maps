@@ -2,7 +2,7 @@ import {
   DEFAULT_MAP_OPTIONS,
   MAP_DATA_REGISTRY,
   SVG_VIEWPORT_CONFIGS,
-} from "./config";
+} from "./config.js";
 import type {
   MapData,
   MapOptions,
@@ -11,7 +11,7 @@ import type {
   PathData,
 } from "./types";
 
-export { registerMapData } from "./config";
+export { registerMapData } from "./config.js";
 
 // Counter to ensure every map instance gets a unique CSS class
 let mapInstanceCounter = 0;
