@@ -278,9 +278,9 @@ function MapsSection() {
           <div className={clsx(styles.mapCard, styles.mapCardMore)}>
             <div className={styles.mapEmoji}>🗺️</div>
             <div className={styles.mapName}>+ 27 more</div>
-            <Link to="/docs/maps-list" className={styles.mapLink}>
+            {/* <Link to="/docs/maps-list" className={styles.mapLink}>
               View all maps →
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
