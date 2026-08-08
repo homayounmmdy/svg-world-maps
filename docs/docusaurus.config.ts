@@ -25,9 +25,12 @@ const config: Config = {
   projectName: "svg-world-maps", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-
-    plugins: [
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
+  plugins: [
     function fixFullySpecifiedPlugin() {
       return {
         name: "fix-fully-specified-plugin",
@@ -78,7 +81,8 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           // Update this to your actual repo
-          editUrl: "https://github.com/homayounmmdy/svg-world-maps/tree/main/docs/",
+          editUrl:
+            "https://github.com/homayounmmdy/svg-world-maps/tree/main/docs/",
         },
         blog: {
           showReadingTime: true,
@@ -86,7 +90,8 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/homayounmmdy/svg-world-maps/tree/main/blog/",
+          editUrl:
+            "https://github.com/homayounmmdy/svg-world-maps/tree/main/blog/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
