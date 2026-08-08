@@ -23,7 +23,7 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "svg-world-maps": "^0.7.0"
+    "svg-world-maps": "file:../svg-world-maps-latest.tgz"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.2",
