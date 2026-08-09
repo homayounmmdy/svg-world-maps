@@ -1,0 +1,76 @@
+---
+title: Afghanistan Map
+description: Interactive SVG map of Afghanistan with all 34 provinces. Features tooltips, click handling, and hover colors inspired by the national flag.
+sidebar_position: 4
+sidebar_label: Afghanistan
+---
+
+import AfghanistanMap from '../../components/maps/AfghanistanMap';
+import Admonition from '@theme/Admonition';
+
+# 🇦🇫 Afghanistan Interactive Map
+
+Experience the rugged geography of Afghanistan through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting.
+
+## 🌍 Country Overview
+
+Afghanistan is a landlocked country located at the crossroads of Central and South Asia. Dominated by the towering Hindu Kush mountain range, its terrain is famously rugged.
+
+### 🎨 Design & Flag Inspiration
+The visual identity of this specific map pack is inspired by the **National Flag of Afghanistan**, which features a vertical tricolor of black, red, and green.
+* **Hover State:** We utilize a vibrant translucent green (`rgba(0, 153, 51, 0.35)`) to represent the green stripe, symbolizing Islam, prosperity, and the lush valleys hidden within the mountains.
+* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+---
+
+## 🗺️ Interactive Demo
+
+Hover over the provinces to see the green highlight and tooltips. **Click any province** to see how easily you can capture the region's data code.
+
+<AfghanistanMap />
+
+<Admonition type="info" title="How it works">
+Every `<path>` element in the generated SVG automatically receives `data-code` (e.g., `"AFKAB"`) and `data-name` (e.g., `"Kabul"`). You can listen for clicks on the parent container to instantly build drill-down experiences, filtering, or regional detail views.
+</Admonition>
+
+---
+
+## 💻 How to Render It
+
+Implementing the Afghanistan map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Green theme:
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useRef, useEffect } from "react";
+
+export default function AfghanistanMap() {
+  const containerRef = useRef(null);
+
+  // Generate the SVG string
+  const svg = createMap("afghanistan", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(0, 153, 51, 0.35)", // Afghan Flag Green
+    tooltip: true,
+    size: "xl"
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const onClick = (e) => {
+      const { code, name } = e.target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    };
+
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}
