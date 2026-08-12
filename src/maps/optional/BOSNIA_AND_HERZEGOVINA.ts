@@ -1,5 +1,5 @@
 const BOSNIA_AND_HERZEGOVINA = {
-    name: "Bosnia_and_herzegovina",
+    name: "Bosnia and herzegovina",
     code: "BA",
     viewBox: "0 0 1000 970",
     states: [
