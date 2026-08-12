@@ -1,3 +1,9 @@
+@media (max-width: 996px) {
+  .demoCode {
+    display: none !important;
+  }
+}
+
 /* ============================================
    MODERN PALETTE & VARIABLES
    ============================================ */
@@ -362,6 +368,10 @@
 
 .installCode {
   font-size: 1rem;
+  color : black;
+}
+
+[data-theme="dark"] .installCode {
   color: #e2e8f0;
 }
 

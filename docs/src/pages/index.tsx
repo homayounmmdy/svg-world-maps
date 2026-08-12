@@ -152,11 +152,6 @@ function HeroBanner({ mousePos, copied, onCopy }: HeroProps) {
                 <div className={styles.statNumber}>0</div>
                 <div className={styles.statLabel}>Dependencies</div>
               </div>
-              <div className={styles.statDivider} />
-              <div className={styles.stat}>
-                <div className={styles.statNumber}>100%</div>
-                <div className={styles.statLabel}>TypeScript</div>
-              </div>
             </div>
 
             <div className={styles.installBox}>
@@ -271,8 +266,7 @@ function MapsSection() {
     { name: "India", emoji: "🇮🇳", states: "36 states" },
     { name: "Brazil", emoji: "🇧🇷", states: "27 states" },
     { name: "Canada", emoji: "🇨🇦", states: "13 provinces" },
-    { name: "France", emoji: "🇫🇷", states: "13 regions" },
-    { name: "Australia", emoji: "🇦🇺", states: "8 states" },
+    { name: "France", emoji: "🇫🇷", states: "13 regions" }
   ];
 
   return (
