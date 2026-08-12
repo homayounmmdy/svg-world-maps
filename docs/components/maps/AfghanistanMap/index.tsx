@@ -34,26 +34,6 @@ export default function AfghanistanMap() {
         return () => container.removeEventListener("click", handleClick);
     }, []);
 
-    const provinces = [
-        { name: "Kabul", code: "AFKAB" }, { name: "Herat", code: "AFHER" },
-        { name: "Balkh", code: "AFBAL" }, { name: "Kandahar", code: "AFKAN" },
-        { name: "Nangarhar", code: "AFNAN" }, { name: "Badakhshan", code: "AFBDS" },
-        { name: "Ghazni", code: "AFGHA" }, { name: "Kunduz", code: "AFKDZ" },
-        { name: "Hilmand", code: "AFHEL" }, { name: "Takhar", code: "AFTAK" },
-        { name: "Baghlan", code: "AFBGL" }, { name: "Paktika", code: "AFPIA" },
-        { name: "Paktya", code: "AFPKA" }, { name: "Khost", code: "AFKHO" },
-        { name: "Uruzgan", code: "AFURU" }, { name: "Zabul", code: "AFZAB" },
-        { name: "Farah", code: "AFFRA" }, { name: "Nimroz", code: "AFNIM" },
-        { name: "Faryab", code: "AFFYB" }, { name: "Jawzjan", code: "AFJOW" },
-        { name: "Samangan", code: "AFSAM" }, { name: "Sar-e Pol", code: "AFSAR" },
-        { name: "Ghor", code: "AFGHO" }, { name: "Bamyan", code: "AFBAM" },
-        { name: "Daykundi", code: "AFDAY" }, { name: "Wardak", code: "AFWAR" },
-        { name: "Logar", code: "AFLOG" }, { name: "Parwan", code: "AFPAR" },
-        { name: "Kapisa", code: "AFKAP" }, { name: "Panjshir", code: "AFPAN" },
-        { name: "Laghman", code: "AFLAG" }, { name: "Kunar", code: "AFKNR" },
-        { name: "Nuristan", code: "AFNUR" }, { name: "Badghis", code: "AFBDG" }
-    ];
-
     return (
         <div className={styles.container}>
             <div className={styles.terminalHeader}>
@@ -77,16 +57,6 @@ export default function AfghanistanMap() {
                     <span className={styles.codeBadge}>({selected.code})</span>
                 </div>
             )}
-
-            <h3 className={styles.provincesTitle}>The 34 Provinces (Wilayats)</h3>
-            <div className={styles.provincesGrid}>
-                {provinces.map((p, i) => (
-                    <div key={i} className={styles.provinceCard}>
-                        <span className={styles.provinceName}>{p.name}</span>
-                        <span className={styles.provinceCode}>{p.code}</span>
-                    </div>
-                ))}
-            </div>
         </div>
     );
 }
