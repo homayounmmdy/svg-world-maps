@@ -37,6 +37,12 @@ function askQuestion(query) {
 }
 
 // --- SVG Parsing Helpers ---
+function getSvgViewBox(svg) {
+  const svgTagMatch = svg.match(/<svg\b[^>]*>/i);
+  if (!svgTagMatch) return null;
+  return getAttr(svgTagMatch[0], "viewBox");
+}
+
 function extractGroup(svg, groupId) {
   const openRegex = new RegExp(`<g\\b[^>]*\\bid\\s*=\\s*(["'])${escapeRegExp(groupId)}\\1[^>]*>`, "i");
   const openMatch = openRegex.exec(svg);
@@ -112,7 +118,6 @@ function extractLabelsFromSvg(svg) {
     const code = getAttr(tag, "id");
     const x = getAttr(tag, "cx");
     const y = getAttr(tag, "cy");
-    // Use "class" as the name based on your example, fallback to "name" attribute if present
     let name = getAttr(tag, "class") || getAttr(tag, "name") || getAttr(tag, "data-name") || "";
 
     if (code && x && y) {
@@ -292,15 +297,14 @@ async function main() {
   try {
     console.log("🗺️  Map Generator Tool\n");
 
-    // 1. Ask user for inputs
+    // 1. Ask user for inputs (Removed height question)
     const mapName = await askQuestion("Enter SVG map name (e.g., germany): ");
     const code = await askQuestion("Enter map code (e.g., DE): ");
-    const height = await askQuestion("Enter map height (e.g., 800): ");
 
     rl.close();
 
-    if (!mapName || !code || !height) {
-      console.error("❌ Error: All inputs are required.");
+    if (!mapName || !code) {
+      console.error("❌ Error: Map name and code are required.");
       process.exit(1);
     }
 
@@ -319,21 +323,39 @@ async function main() {
       templateContent = fallbackTemplate;
     }
 
-    // 4. Replace placeholders (Variables, Names, Viewbox Height)
     let newContent = templateContent;
 
+    // 4. Read SVG to extract viewBox automatically
+    const svgPath = path.join(process.cwd(), "src/maps/optional/map.svg");
+    let svgContent = "";
+    let viewBox = "0 0 1000 817"; // fallback
+
+    if (fs.existsSync(svgPath)) {
+      console.log(`\n📂 Reading SVG from ${svgPath}...`);
+      svgContent = fs.readFileSync(svgPath, "utf8");
+
+      const extractedViewBox = getSvgViewBox(svgContent);
+      if (extractedViewBox) {
+        viewBox = extractedViewBox;
+        console.log(`✅ Extracted viewBox from SVG: "${viewBox}"`);
+      } else {
+        console.log("⚠️ Could not find viewBox in SVG. Using default.");
+      }
+    } else {
+      console.log(`⚠️ Warning: map.svg not found at ${svgPath}. Using default viewBox.`);
+    }
+
+    // 5. Replace placeholders (Variables, Names, Viewbox)
     newContent = newContent.replace(/const TEMPLATE/g, `const ${mapNameUpper}`);
     newContent = newContent.replace(/export default TEMPLATE/g, `export default ${mapNameUpper}`);
     newContent = newContent.replace(/name: "Template"/g, `name: "${mapNameCapitalized}"`);
     newContent = newContent.replace(/code: "TM"/g, `code: "${code.toUpperCase()}"`);
-    newContent = newContent.replace(/viewBox:\s*"0\s+0\s+1000\s+817"/g, `viewBox: "0 0 1000 ${height}"`);
 
-    // 5. Extract states & labels from map.svg and inject them into the file content
-    const svgPath = path.join(process.cwd(), "src/maps/optional/map.svg");
-    if (fs.existsSync(svgPath)) {
-      console.log(`\n📂 Reading SVG from ${svgPath}...`);
-      const svgContent = fs.readFileSync(svgPath, "utf8");
+    // Replaces any existing viewBox string with the one dynamically extracted from the SVG
+    newContent = newContent.replace(/viewBox:\s*"[^"]+"/g, `viewBox: "${viewBox}"`);
 
+    // 6. Extract states & labels from map.svg and inject them into the file content
+    if (svgContent) {
       // Extract and inject states
       const states = extractStatesFromSvg(svgContent);
       if (states.length > 0) {
@@ -352,10 +374,10 @@ async function main() {
         console.log("⚠️ No valid labels found in <g id='label_points'>. Keeping template labels.");
       }
     } else {
-      console.log(`⚠️ Warning: map.svg not found at ${svgPath}. States and labels will remain empty/template defaults.`);
+      console.log(`⚠️ Warning: map.svg was not loaded. States and labels will remain empty/template defaults.`);
     }
 
-    // 6. Create the new file
+    // 7. Create the new file
     const outputDir = path.join(process.cwd(), "src/maps/optional");
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
