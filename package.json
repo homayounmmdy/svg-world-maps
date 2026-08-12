@@ -25,6 +25,7 @@
     "create-map": "node scripts/create-map.js",
     "map-info": "node scripts/map-info.js",
     "register-map": "node scripts/register-map.js",
+    "fill-states": "node scripts/fill-the-states.mjs",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
