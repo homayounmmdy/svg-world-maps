@@ -37,39 +37,10 @@ Every `<path>` element in the generated SVG automatically receives `data-code` (
 
 ## 💻 How to Render It
 
-Implementing the Afghanistan map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Green theme:
+Implementing the **Argentina** map in your project takes just a few lines of code. Since every map is generated as a plain SVG string, the exact same approach works in **React**, **Vue**, **Angular**, **Svelte**, and **vanilla JavaScript**.
 
-```jsx
-import { createMap } from "svg-world-maps";
-import { useRef, useEffect } from "react";
+<Admonition type="tip" title="One pattern, every framework">
+Generate the SVG with <code>createMap()</code>, inject it into a container, and listen for clicks using the automatic <code>data-code</code> and <code>data-name</code> attributes.
+</Admonition>
 
-export default function AfghanistanMap() {
-  const containerRef = useRef(null);
-
-  // Generate the SVG string
-  const svg = createMap("afghanistan", {
-    background: "transparent",
-    borders: "#1e293b",
-    hoverColor: "rgba(0, 153, 51, 0.35)", // Afghan Flag Green
-    size: "xl"
-  });
-
-  useEffect(() => {
-    const el = containerRef.current;
-    const onClick = (e) => {
-      const { code, name } = e.target.dataset;
-      if (code && name) console.log(`Clicked: ${name} (${code})`);
-    };
-
-    el.addEventListener("click", onClick);
-    return () => el.removeEventListener("click", onClick);
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-}
+👉 **[See the full rendering guide for your framework →](/docs/how-to-render)**

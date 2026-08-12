@@ -1,0 +1,285 @@
+---
+id: how-to-render
+title: How to Render It
+description: Render any svg-world-maps map in React, Vue, Angular, Svelte, or plain JavaScript. One SVG string, every framework.
+sidebar_position: 2
+sidebar_label: How to Render It
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# 💻 How to Render It
+
+Every map in **svg-world-maps** is generated as a **plain SVG string** via the `createMap()` function. Because of this, the rendering pattern is identical across all frameworks:
+
+1. **Generate** the SVG string with `createMap(mapId, options)`.
+2. **Inject** it into a container element (usually via `innerHTML`).
+3. **Listen** for events on the container to build interactivity.
+
+<Admonition type="tip" title="Works everywhere">
+Since <code>createMap()</code> returns a pure string with no framework dependencies, you can render it in React, Vue, Angular, Svelte, vanilla JS, or even server-rendered environments.
+</Admonition>
+
+---
+
+## 🧩 The Core Concept
+
+Every `<path>` element in the generated SVG automatically receives two data attributes you can use for interactivity:
+
+| Attribute      | Example        | Description                          |
+| -------------- | -------------- | ------------------------------------ |
+| `data-code`    | `"USCA"`       | The unique ISO-style region code     |
+| `data-name`    | `"California"` | The human-readable region name       |
+
+You listen for clicks on the **parent container** and read these attributes from the event target. This one pattern powers drill-downs, filtering, and detail views in every framework below.
+
+---
+
+## ⚙️ Rendering by Framework
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="⚛️ React" default>
+
+Use a `ref` for the container and `dangerouslySetInnerHTML` to inject the SVG. Attach the click listener inside `useEffect`.
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useRef, useEffect } from "react";
+
+export default function WorldMap() {
+  const containerRef = useRef(null);
+
+  // Generate the SVG string
+  const svg = createMap("usa", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(179, 25, 46, 0.35)",
+    size: "xl",
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const onClick = (e) => {
+      const { code, name } = e.target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    };
+
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}
+```
+
+  </TabItem>
+
+  <TabItem value="vue" label="💚 Vue">
+
+Use `v-html` to inject the SVG and a template `ref` to attach the listener.
+
+```vue
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { createMap } from "svg-world-maps";
+
+const container = ref(null);
+
+const svg = createMap("usa", {
+  background: "transparent",
+  borders: "#1e293b",
+  hoverColor: "rgba(179, 25, 46, 0.35)",
+  size: "xl",
+});
+
+const onClick = (e) => {
+  const { code, name } = e.target.dataset;
+  if (code && name) console.log(`Clicked: ${name} (${code})`);
+};
+
+onMounted(() => container.value?.addEventListener("click", onClick));
+onBeforeUnmount(() => container.value?.removeEventListener("click", onClick));
+</script>
+
+<template>
+  <div
+    ref="container"
+    class="map-container"
+    v-html="svg"
+  />
+</template>
+
+<style scoped>
+.map-container {
+  background: #0f172a;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+</style>
+```
+
+  </TabItem>
+
+  <TabItem value="angular" label="🅰️ Angular">
+
+Use `@ViewChild` to get the container and inject the SVG in `ngAfterViewInit`.
+
+```typescript
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from "@angular/core";
+import { createMap } from "svg-world-maps";
+
+@Component({
+  selector: "app-world-map",
+  template: `<div #mapContainer class="map-container"></div>`,
+  styles: [`.map-container { background: #0f172a; padding: 2rem; border-radius: 1rem; }`],
+})
+export class WorldMapComponent implements AfterViewInit {
+  @ViewChild("mapContainer") mapContainer!: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit(): void {
+    const svg = createMap("usa", {
+      background: "transparent",
+      borders: "#1e293b",
+      hoverColor: "rgba(179, 25, 46, 0.35)",
+      size: "xl",
+    });
+
+    const el = this.mapContainer.nativeElement;
+    el.innerHTML = svg;
+
+    el.addEventListener("click", (e: Event) => {
+      const target = e.target as HTMLElement;
+      const { code, name } = target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    });
+  }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="svelte" label="🧡 Svelte">
+
+Use `{@html}` to inject the SVG and an inline `on:click` handler.
+
+```svelte
+<script>
+  import { createMap } from "svg-world-maps";
+
+  const svg = createMap("usa", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(179, 25, 46, 0.35)",
+    size: "xl",
+  });
+
+  function handleClick(e) {
+    const { code, name } = e.target.dataset;
+    if (code && name) console.log(`Clicked: ${name} (${code})`);
+  }
+</script>
+
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="map-container" on:click={handleClick}>
+  {@html svg}
+</div>
+
+<style>
+  .map-container {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+</style>
+```
+
+  </TabItem>
+
+  <TabItem value="vanilla" label="🟨 JavaScript">
+
+No framework needed. Just inject into any element and attach a listener.
+
+```html
+<div id="map-container"></div>
+
+<script type="module">
+  import { createMap } from "svg-world-maps";
+
+  const container = document.getElementById("map-container");
+
+  const svg = createMap("usa", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(179, 25, 46, 0.35)",
+    size: "xl",
+  });
+
+  container.innerHTML = svg;
+
+  container.addEventListener("click", (e) => {
+    const { code, name } = e.target.dataset;
+    if (code && name) console.log(`Clicked: ${name} (${code})`);
+  });
+</script>
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+## 🎛️ Map Options Reference
+
+The second argument to `createMap()` controls the visual theme. These options are identical in every framework.
+
+```js
+createMap("usa", {
+  background: "transparent",             // Container background
+  borders: "#1e293b",                    // Region border color
+  hoverColor: "rgba(0, 153, 51, 0.35)",  // Fill color on hover
+  showTooltip: true,                     // Enable built-in tooltips
+  size: "xl",                            // Render size preset
+});
+```
+
+| Option         | Type      | Default         | Description                              |
+| -------------- | --------- | --------------- | ---------------------------------------- |
+| `background`   | `string`  | `"transparent"` | Background behind the SVG                |
+| `borders`      | `string`  | `"#1e293b"`     | Color of region border strokes           |
+| `hoverColor`   | `string`  | `null`          | Translucent fill applied on hover        |
+| `showTooltip`  | `boolean` | `true`          | Show region name tooltip on hover        |
+| `size`         | `string`  | `"md"`          | Size preset (`sm`, `md`, `lg`, `xl`)     |
+
+---
+
+## 🗂️ Registering Custom Map Data
+
+If you are shipping a map that isn't bundled by default (like the optional country packs), register it once before calling `createMap()`. This step is **framework-agnostic**.
+
+```js
+import { registerMapData, createMap } from "svg-world-maps";
+import argentinaData from "svg-world-maps/maps/ARGENTINA";
+
+// Register once (e.g., in your app bootstrap)
+registerMapData("argentina", argentinaData);
+
+// Now you can create it anywhere
+const svg = createMap("argentina", { hoverColor: "rgba(117, 186, 222, 0.35)" });
+```
+
+<Admonition type="note" title="Server-Side Rendering">
+Because <code>createMap()</code> is a pure string generator with no <code>window</code> or <code>document</code> access, it is safe to call during SSR (Next.js, Nuxt, SvelteKit, Angular Universal). Only the click-listener setup needs to run on the client.
+</Admonition>

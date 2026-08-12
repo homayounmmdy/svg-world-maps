@@ -5,8 +5,8 @@ sidebar_position: 5
 sidebar_label: United States
 ---
 
-import UnitedStatesMap from '../../components/maps/us';
-import Admonition from '@theme/Admonition';
+import UnitedStatesMap from "../../components/maps/us";
+import Admonition from "@theme/Admonition";
 
 # 🇺🇸 United States Interactive Map
 
@@ -17,9 +17,11 @@ Experience the vast geography of the United States through our highly optimized,
 The United States of America is a vast country located in North America, featuring an incredibly diverse landscape ranging from the Atlantic and Pacific coastlines to the towering Rocky Mountains and the expansive Great Plains.
 
 ### 🎨 Design & Flag Inspiration
+
 The visual identity of this specific map pack is inspired by the **National Flag of the United States**, which features red, white, and blue.
-* **Hover State:** We utilize a vibrant translucent red (`rgba(179, 25, 46, 0.35)`) to represent the red stripes of the flag, symbolizing hardiness and valor.
-* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+- **Hover State:** We utilize a vibrant translucent red (`rgba(179, 25, 46, 0.35)`) to represent the red stripes of the flag, symbolizing hardiness and valor.
+- **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
 
 ---
 
@@ -37,39 +39,12 @@ Every `<path>` element in the generated SVG automatically receives `data-code` (
 
 ## 💻 How to Render It
 
-Implementing the United States map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Red theme:
+Implementing the **Argentina** map in your project takes just a few lines of code. Since every map is generated as a plain SVG string, the exact same approach works in **React**, **Vue**, **Angular**, **Svelte**, and **vanilla JavaScript**.
 
-```jsx
-import { createMap } from "svg-world-maps";
-import { useRef, useEffect } from "react";
+<Admonition type="tip" title="One pattern, every framework">
+  Generate the SVG with <code>createMap()</code>, inject it into a container,
+  and listen for clicks using the automatic <code>data-code</code> and{" "}
+  <code>data-name</code> attributes.
+</Admonition>
 
-export default function UnitedStatesMap() {
-  const containerRef = useRef(null);
-
-  // Generate the SVG string
-  const svg = createMap("usa", {
-    background: "transparent",
-    borders: "#1e293b",
-    hoverColor: "rgba(179, 25, 46, 0.35)", // US Flag Red
-    size: "xl"
-  });
-
-  useEffect(() => {
-    const el = containerRef.current;
-    const onClick = (e) => {
-      const { code, name } = e.target.dataset;
-      if (code && name) console.log(`Clicked: ${name} (${code})`);
-    };
-
-    el.addEventListener("click", onClick);
-    return () => el.removeEventListener("click", onClick);
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-}
+👉 **[See the full rendering guide for your framework →](/docs/how-to-render)**
