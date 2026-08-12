@@ -1,0 +1,46 @@
+---
+title: Brazil Map
+description: Interactive SVG map of Brazil with all 27 federative units. Features tooltips, click handling, and hover colors inspired by the national flag.
+sidebar_position: 14
+sidebar_label: Brazil
+---
+
+import BrazilMap from '../../components/maps/br';
+import Admonition from '@theme/Admonition';
+
+# 🇧🇷 Brazil Interactive Map
+
+Experience the immense geography of Brazil through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting across all 26 states and the Federal District.
+
+## 🌍 Country Overview
+
+Brazil is the largest country in South America and the fifth-largest in the world. Its diverse geography includes the Amazon rainforest, the Pantanal wetlands, the Atlantic coast, and the Brazilian Highlands.
+
+### 🎨 Design & Flag Inspiration
+The visual identity of this map pack is inspired by the **National Flag of Brazil**, featuring a green field with a yellow diamond and a blue celestial globe.
+* **Hover State:** We utilize a vibrant translucent green (`rgba(0, 155, 58, 0.35)`) to represent the green field of the flag, symbolizing the lush forests and natural wealth of the nation.
+* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+---
+
+## 🗺️ Interactive Demo
+
+Hover over the states to see the green highlight and tooltips. **Click any state** to see how easily you can capture the region's data code.
+
+<BrazilMap />
+
+<Admonition type="info" title="How it works">
+Every `<path>` element in the generated SVG automatically receives `data-code` (e.g., `"BRSAO"`) and `data-name` (e.g., `"São Paulo"`). You can listen for clicks on the parent container to instantly build drill-down experiences, filtering, or regional detail views.
+</Admonition>
+
+---
+
+## 💻 How to Render It
+
+Implementing the **Brazil** map in your project takes just a few lines of code. Since every map is generated as a plain SVG string, the exact same approach works in **React**, **Vue**, **Angular**, **Svelte**, and **vanilla JavaScript**.
+
+<Admonition type="tip" title="One pattern, every framework">
+Generate the SVG with <code>createMap()</code>, inject it into a container, and listen for clicks using the automatic <code>data-code</code> and <code>data-name</code> attributes.
+</Admonition>
+
+👉 **[See the full rendering guide for your framework →](/docs/how-to-render)**
