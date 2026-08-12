@@ -1,6 +1,6 @@
 # Maps Information Report
 
-**📅 Last Generated:** Friday, July 24, 2026 at 02:22:33 PM GMT+3:30
+**📅 Last Generated:** Wednesday, August 12, 2026 at 06:51:32 PM GMT+3:30
 
 ## ℹ️ About this Report
 
@@ -23,9 +23,12 @@ directory.
 | `ARMENIA`     | Armenia               | AM   | 11               | Yes        |
 | `AUSTRALIA`   | Australia             | AU   | 8                | Yes        |
 | `AUSTRIA`     | Austria               | AT   | 9                | Yes        |
+| `BAHRAIN`     | Bahrain               | BH   | 4                | No         |
 | `BELGIUM`     | Belgium               | BE   | 3                | Yes        |
+| `BELIZE`      | Belize                | BZ   | 6                | No         |
 | `BRAZIL`      | Brazil                | BR   | 27               | Yes        |
 | `CANADA`      | Canada                | CA   | 13               | Yes        |
+| `CHINA`       | China                 | CN   | 34               | No         |
 | `DENMARK`     | Denmark               | DK   | 5                | Yes        |
 | `EUROPE`      | Europe                | XE   | 45               | No         |
 | `FINLAND`     | Finland               | FI   | 19               | Yes        |
@@ -40,12 +43,18 @@ directory.
 | `KUWAIT`      | Kuwait                | KW   | 6                | Yes        |
 | `LEBANON`     | Lebanon               | LB   | 8                | Yes        |
 | `LUXEMBOURG`  | Luxembourg            | LU   | 12               | Yes        |
+| `MONACO`      | Monaco                | MC   | 1                | Yes        |
 | `NETHERLANDS` | Netherlands           | NL   | 12               | Yes        |
+| `NORTH_KOREA` | North_korea           | KP   | 12               | No         |
 | `NORWAY`      | Norway                | No   | 11               | Yes        |
 | `OMAN`        | Oman                  | OM   | 11               | Yes        |
 | `PAKISTAN`    | Pakistan              | PK   | 7                | Yes        |
 | `POLAND`      | Poland                | PL   | 16               | Yes        |
+| `PORTUGAL`    | Portugal              | PT   | 20               | No         |
+| `RUSSIA`      | Russia                | RU   | 83               | No         |
 | `SINGAPORE`   | Singapore             | SG   | 5                | Yes        |
+| `SLOVAKIA`    | Slovakia              | SK   | 8                | No         |
+| `SPAIN`       | Spain                 | ES   | 19               | No         |
 | `SWEDEN`      | SWEDEN                | SE   | 21               | Yes        |
 | `SWITZERLAND` | Switzerland           | CH   | 26               | Yes        |
 | `TEMPLATE`    | Template              | TM   | 1                | Yes        |
@@ -55,8 +64,8 @@ directory.
 
 ## 📊 Label Support Summary
 
-- **✅ Maps with Labels:** 31
-- **⚠️ Maps without Labels:** 4
+- **✅ Maps with Labels:** 32
+- **⚠️ Maps without Labels:** 12
 
 ### ⚠️ Note on Maps Without Labels
 
@@ -70,6 +79,14 @@ this process takes time. Thank you for following and supporting us! 🙏
 ### 🗺️ Maps Currently Without Labels
 
 - `AFRICA` (Africa)
+- `BAHRAIN` (Bahrain)
+- `BELIZE` (Belize)
+- `CHINA` (China)
 - `EUROPE` (Europe)
 - `IRAN` (Iran)
+- `NORTH_KOREA` (North_korea)
+- `PORTUGAL` (Portugal)
+- `RUSSIA` (Russia)
+- `SLOVAKIA` (Slovakia)
+- `SPAIN` (Spain)
 - `USA` (United States America)
