@@ -36,9 +36,35 @@ function askQuestion(query) {
   return new Promise((resolve) => rl.question(query, resolve));
 }
 
-// --- SVG & State Parsing Helpers ---
+// --- SVG Parsing Helpers ---
+function extractGroup(svg, groupId) {
+  const openRegex = new RegExp(`<g\\b[^>]*\\bid\\s*=\\s*(["'])${escapeRegExp(groupId)}\\1[^>]*>`, "i");
+  const openMatch = openRegex.exec(svg);
+  if (!openMatch) return "";
+
+  const start = openMatch.index + openMatch[0].length;
+  const tokenRegex = /<g\b[^>]*?>|<\/g>/gi;
+  tokenRegex.lastIndex = start;
+
+  let depth = 1;
+  let match;
+
+  while ((match = tokenRegex.exec(svg))) {
+    const token = match[0];
+    if (token.toLowerCase().startsWith("</g")) {
+      depth -= 1;
+    } else if (!token.endsWith("/>")) {
+      depth += 1;
+    }
+    if (depth === 0) {
+      return svg.slice(start, match.index);
+    }
+  }
+  return svg.slice(start);
+}
+
 function extractStatesFromSvg(svg) {
-  const content = extractFeaturesGroup(svg);
+  const content = extractGroup(svg, "features");
   const pathRegex = /<path\b[^>]*?(?:\/>|>(?:[\s\S]*?)<\/path>)/gi;
   const states = [];
   const seenCodes = new Set();
@@ -74,70 +100,91 @@ function extractStatesFromSvg(svg) {
   return states;
 }
 
-function extractFeaturesGroup(svg) {
-  const openRegex = /<g\b[^>]*\bid\s*=\s*(["'])features\1[^>]*>/i;
-  const openMatch = openRegex.exec(svg);
-  if (!openMatch) return svg;
+function extractLabelsFromSvg(svg) {
+  const content = extractGroup(svg, "label_points");
+  const circleRegex = /<circle\b[^>]*?(?:\/>|>(?:[\s\S]*?)<\/circle>)/gi;
+  const labels = [];
 
-  const start = openMatch.index + openMatch[0].length;
-  const tokenRegex = /<g\b[^>]*?>|<\/g>/gi;
-  tokenRegex.lastIndex = start;
-
-  let depth = 1;
   let match;
+  while ((match = circleRegex.exec(content))) {
+    const tag = match[0];
 
-  while ((match = tokenRegex.exec(svg))) {
-    const token = match[0];
-    if (token.toLowerCase().startsWith("</g")) {
-      depth -= 1;
-    } else if (!token.endsWith("/>")) {
-      depth += 1;
-    }
-    if (depth === 0) {
-      return svg.slice(start, match.index);
+    const code = getAttr(tag, "id");
+    const x = getAttr(tag, "cx");
+    const y = getAttr(tag, "cy");
+    // Use "class" as the name based on your example, fallback to "name" attribute if present
+    let name = getAttr(tag, "class") || getAttr(tag, "name") || getAttr(tag, "data-name") || "";
+
+    if (code && x && y) {
+      labels.push({
+        code: decodeXmlEntities(code).trim(),
+        x: decodeXmlEntities(x).trim(),
+        y: decodeXmlEntities(y).trim(),
+        name: decodeXmlEntities(name).trim()
+      });
     }
   }
-  return svg.slice(start);
+
+  return labels;
 }
 
-function replaceStatesArray(source, states) {
-  const statesRegex = /(^|[\s,{])(states\s*:\s*)\[/i;
-  const match = statesRegex.exec(source);
+// --- Template Replacement Helpers ---
+function replaceArray(source, key, items, itemFormatter) {
+  const regex = new RegExp(`(^|[\\s,{])(${escapeRegExp(key)}\\s*:\\s*)\\[`, "i");
+  const match = regex.exec(source);
 
-  if (!match) throw new Error('Could not find "states: [" in the template.');
+  if (!match) {
+    console.warn(`Could not find "${key}: [" in the template.`);
+    return source;
+  }
 
   const openIndex = match.index + match[0].length - 1;
   const keyIndex = match.index + match[1].length;
   const closeIndex = findMatchingBracket(source, openIndex);
 
-  if (closeIndex === -1) throw new Error("Could not find the closing bracket for states array.");
+  if (closeIndex === -1) {
+    console.warn(`Could not find the closing bracket for ${key} array.`);
+    return source;
+  }
 
   const lineStart = source.lastIndexOf("\n", keyIndex) + 1;
   const indentMatch = source.slice(lineStart, keyIndex).match(/^[ \t]*/);
   const indent = indentMatch ? indentMatch[0] : "";
   const unit = detectIndentUnit(source);
 
-  const formatted = formatStatesArray(states, indent, unit);
+  const formatted = formatArray(items, indent, unit, itemFormatter);
   return source.slice(0, openIndex) + formatted + source.slice(closeIndex + 1);
 }
 
-function formatStatesArray(states, indent, unit) {
-  if (!states.length) return "[]";
+function formatArray(items, indent, unit, itemFormatter) {
+  if (!items.length) return "[]";
 
   const itemIndent = indent + unit;
   const propIndent = itemIndent + unit;
 
-  const items = states.map((state) => {
-    return [
-      `${itemIndent}{`,
-      `${propIndent}name: ${JSON.stringify(state.name)},`,
-      `${propIndent}code: ${JSON.stringify(state.code)},`,
-      `${propIndent}path: ${JSON.stringify(state.path)}`,
-      `${itemIndent}}`,
-    ].join("\n");
-  });
+  const formattedItems = items.map((item) => itemFormatter(item, itemIndent, propIndent));
+  return `[\n${formattedItems.join(",\n")}\n${indent}]`;
+}
 
-  return `[\n${items.join(",\n")}\n${indent}]`;
+function formatStateItem(state, itemIndent, propIndent) {
+  return [
+    `${itemIndent}{`,
+    `${propIndent}name: ${JSON.stringify(state.name)},`,
+    `${propIndent}code: ${JSON.stringify(state.code)},`,
+    `${propIndent}path: ${JSON.stringify(state.path)}`,
+    `${itemIndent}}`,
+  ].join("\n");
+}
+
+function formatLabelItem(label, itemIndent, propIndent) {
+  return [
+    `${itemIndent}{`,
+    `${propIndent}code: ${JSON.stringify(label.code)},`,
+    `${propIndent}x: ${JSON.stringify(label.x)},`,
+    `${propIndent}y: ${JSON.stringify(label.y)},`,
+    `${propIndent}name: ${JSON.stringify(label.name)}`,
+    `${itemIndent}}`,
+  ].join("\n");
 }
 
 function findMatchingBracket(source, openIndex) {
@@ -281,21 +328,31 @@ async function main() {
     newContent = newContent.replace(/code: "TM"/g, `code: "${code.toUpperCase()}"`);
     newContent = newContent.replace(/viewBox:\s*"0\s+0\s+1000\s+817"/g, `viewBox: "0 0 1000 ${height}"`);
 
-    // 5. Extract states from map.svg and inject them into the file content
+    // 5. Extract states & labels from map.svg and inject them into the file content
     const svgPath = path.join(process.cwd(), "src/maps/optional/map.svg");
     if (fs.existsSync(svgPath)) {
       console.log(`\n📂 Reading SVG from ${svgPath}...`);
       const svgContent = fs.readFileSync(svgPath, "utf8");
-      const states = extractStatesFromSvg(svgContent);
 
+      // Extract and inject states
+      const states = extractStatesFromSvg(svgContent);
       if (states.length > 0) {
         console.log(`✅ Extracted ${states.length} states from SVG.`);
-        newContent = replaceStatesArray(newContent, states);
+        newContent = replaceArray(newContent, "states", states, formatStateItem);
       } else {
         console.log("⚠️ No valid states found in <g id='features'>. Keeping template states.");
       }
+
+      // Extract and inject labels
+      const labels = extractLabelsFromSvg(svgContent);
+      if (labels.length > 0) {
+        console.log(`✅ Extracted ${labels.length} labels from SVG.`);
+        newContent = replaceArray(newContent, "labels", labels, formatLabelItem);
+      } else {
+        console.log("⚠️ No valid labels found in <g id='label_points'>. Keeping template labels.");
+      }
     } else {
-      console.log(`⚠️ Warning: map.svg not found at ${svgPath}. States will remain empty/template defaults.`);
+      console.log(`⚠️ Warning: map.svg not found at ${svgPath}. States and labels will remain empty/template defaults.`);
     }
 
     // 6. Create the new file
@@ -307,7 +364,7 @@ async function main() {
     const outputPath = path.join(outputDir, `${mapNameUpper}.ts`);
     fs.writeFileSync(outputPath, newContent, "utf8");
 
-    console.log(`\n🎉 Successfully created ${outputPath} with populated states!`);
+    console.log(`\n🎉 Successfully created ${outputPath} with populated states and labels!`);
   } catch (error) {
     console.error("❌ Error creating map:", error);
     rl.close();
