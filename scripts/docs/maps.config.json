@@ -12,6 +12,48 @@
       "regionLabel": "Province",
       "hoverColor": "rgba(238, 28, 39, 0.35)",
       "description": "China is a vast country in East Asia, featuring a diverse landscape of mountains, deserts, and rivers, and is home to one of the world's oldest civilizations."
+    },
+    {
+      "name": "Denmark",
+      "code": "DK",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(198, 12, 48, 0.35)",
+      "description": "Denmark is a Scandinavian country comprising the Jutland peninsula and numerous islands, known for its coastal geography, Viking heritage, and modern design."
+    },
+    {
+      "name": "Europe",
+      "code": "XE",
+      "regionLabel": "Country",
+      "hoverColor": "rgba(0, 51, 153, 0.35)",
+      "description": "Europe is a continent located entirely in the Northern Hemisphere and mostly in the Eastern Hemisphere, comprising the westernmost peninsulas of Eurasia and home to diverse cultures and nations."
+    },
+    {
+      "name": "Finland",
+      "code": "FI",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 47, 108, 0.35)",
+      "description": "Finland is a Nordic country situated between Sweden, Norway, and Russia, characterized by its vast forests, tens of thousands of lakes, and the phenomenon of the midnight sun."
+    },
+    {
+      "name": "France",
+      "code": "FR",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 35, 149, 0.35)",
+      "description": "France is a Western European nation spanning from the Mediterranean to the English Channel and the North Sea, renowned for its rich history, diverse landscapes, and cultural influence."
+    },
+    {
+      "name": "Great Britain",
+      "code": "GB",
+      "regionLabel": "Country",
+      "hoverColor": "rgba(1, 33, 105, 0.35)",
+      "description": "Great Britain is an island in the North Atlantic Ocean off the north-west coast of continental Europe, consisting of the countries England, Scotland, and Wales."
+    },
+    {
+      "name": "Germany",
+      "code": "DE",
+      "regionLabel": "State",
+      "hoverColor": "rgba(255, 206, 0, 0.35)",
+      "description": "Germany is a Central European country bordered by the North Sea, the Alps, and the Baltic Sea, known for its varied terrain, dense forests, and major rivers like the Rhine."
     }
   ]
 }
