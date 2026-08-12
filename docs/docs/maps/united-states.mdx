@@ -1,0 +1,75 @@
+---
+title: United States Map
+description: Interactive SVG map of the United States of America with all 50 states and Washington D.C. Features tooltips, click handling, and hover colors inspired by the national flag.
+sidebar_position: 5
+sidebar_label: United States
+---
+
+import UnitedStatesMap from '../../components/maps/UnitedStatesMap';
+import Admonition from '@theme/Admonition';
+
+# 🇺🇸 United States Interactive Map
+
+Experience the vast geography of the United States through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting across all 50 states.
+
+## 🌍 Country Overview
+
+The United States of America is a vast country located in North America, featuring an incredibly diverse landscape ranging from the Atlantic and Pacific coastlines to the towering Rocky Mountains and the expansive Great Plains.
+
+### 🎨 Design & Flag Inspiration
+The visual identity of this specific map pack is inspired by the **National Flag of the United States**, which features red, white, and blue.
+* **Hover State:** We utilize a vibrant translucent red (`rgba(179, 25, 46, 0.35)`) to represent the red stripes of the flag, symbolizing hardiness and valor.
+* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+---
+
+## 🗺️ Interactive Demo
+
+Hover over the states to see the red highlight and tooltips. **Click any state** to see how easily you can capture the region's data code.
+
+<UnitedStatesMap />
+
+<Admonition type="info" title="How it works">
+Every `<path>` element in the generated SVG automatically receives `data-code` (e.g., `"USCA"`) and `data-name` (e.g., `"California"`). You can listen for clicks on the parent container to instantly build drill-down experiences, filtering, or regional detail views.
+</Admonition>
+
+---
+
+## 💻 How to Render It
+
+Implementing the United States map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Red theme:
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useRef, useEffect } from "react";
+
+export default function UnitedStatesMap() {
+  const containerRef = useRef(null);
+
+  // Generate the SVG string
+  const svg = createMap("usa", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(179, 25, 46, 0.35)", // US Flag Red
+    size: "xl"
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const onClick = (e) => {
+      const { code, name } = e.target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    };
+
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}
