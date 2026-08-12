@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc",
+    "generate-map-docs": "node scripts/docs/generate-map.js",
     "create-map": "node scripts/create-map.js",
     "map-info": "node scripts/map-info.js",
     "register-map": "node scripts/register-map.js",

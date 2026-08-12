@@ -1,0 +1,17 @@
+{
+  "defaults": {
+    "regionLabel": "Province",
+    "hoverColor": "rgba(0, 153, 51, 0.35)",
+    "borders": "#1e293b",
+    "description": "Explore the diverse geography of {name} through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting."
+  },
+  "maps": [
+    {
+      "name": "China",
+      "code": "CN",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(238, 28, 39, 0.35)",
+      "description": "China is a vast country in East Asia, featuring a diverse landscape of mountains, deserts, and rivers, and is home to one of the world's oldest civilizations."
+    }
+  ]
+}
