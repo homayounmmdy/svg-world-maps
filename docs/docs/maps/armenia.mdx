@@ -1,0 +1,75 @@
+---
+title: Armenia Map
+description: Interactive SVG map of Armenia with all 11 administrative divisions. Features tooltips, click handling, and hover colors inspired by the national flag.
+sidebar_position: 7
+sidebar_label: Armenia
+---
+
+import ArmeniaMap from '../../components/maps/am';
+import Admonition from '@theme/Admonition';
+
+# 🇦🇲 Armenia Interactive Map
+
+Discover the rugged highlands and rich history of Armenia through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting across the Armenian Highlands.
+
+## 🌍 Country Overview
+
+Armenia is a landlocked country located in the Armenian Highlands of Western Asia. Known for its mountainous terrain, deep river valleys, and rich cultural heritage, it sits at the geopolitical crossroads of Eastern Europe and Western Asia.
+
+### 🎨 Design & Flag Inspiration
+The visual identity of this specific map pack is inspired by the **National Flag of Armenia**, a horizontal tricolor of red, blue, and orange.
+* **Hover State:** We utilize a vibrant translucent Apricot/Orange (`rgba(242, 168, 0, 0.35)`) to represent the bottom stripe of the flag, symbolizing the hardworking nature of the Armenian people and the country's famous apricot orchards.
+* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+---
+
+## 🗺️ Interactive Demo
+
+Hover over the provinces to see the orange highlight and tooltips. **Click any province** to see how easily you can capture the region's data code.
+
+<ArmeniaMap />
+
+<Admonition type="info" title="How it works">
+Every `<path>` element in the generated SVG automatically receives `data-code` (e.g., `"AMERE"`) and `data-name` (e.g., `"Yerevan"`). You can listen for clicks on the parent container to instantly build drill-down experiences, filtering, or regional detail views.
+</Admonition>
+
+---
+
+## 💻 How to Render It
+
+Implementing the Armenia map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Apricot theme:
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useRef, useEffect } from "react";
+
+export default function ArmeniaMap() {
+  const containerRef = useRef(null);
+
+  // Generate the SVG string
+  const svg = createMap("armenia", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(242, 168, 0, 0.35)", // Armenian Apricot
+    size: "xl"
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const onClick = (e) => {
+      const { code, name } = e.target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    };
+
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}

@@ -1,0 +1,75 @@
+---
+title: Argentina Map
+description: Interactive SVG map of Argentina with all 23 provinces and the autonomous city of Buenos Aires. Features tooltips, click handling, and hover colors inspired by the national flag.
+sidebar_position: 6
+sidebar_label: Argentina
+---
+
+import ArgentinaMap from '../../components/maps/ar';
+import Admonition from '@theme/Admonition';
+
+# 🇦🇷 Argentina Interactive Map
+
+Explore the vast and diverse geography of Argentina through our highly optimized, interactive SVG map. Perfect for dashboards, data visualization, and regional targeting spanning from the Andes to the Atlantic coast.
+
+## 🌍 Country Overview
+
+Argentina is the second-largest country in South America, boasting an incredibly diverse landscape. It ranges from the towering Andes mountains in the west to the expansive Pampas grasslands and the rugged Patagonian steppes in the south.
+
+### 🎨 Design & Flag Inspiration
+The visual identity of this specific map pack is inspired by the **National Flag of Argentina**, which features the iconic light blue (Celeste) and white stripes.
+* **Hover State:** We utilize a vibrant translucent Celeste (`rgba(117, 186, 222, 0.35)`) to represent the blue stripes of the flag, symbolizing the sky and the clear waters of the Rio de la Plata.
+* **Borders:** Rendered in Deep Navy (`#1e293b`) to ensure maximum contrast and a modern, premium aesthetic.
+
+---
+
+## 🗺️ Interactive Demo
+
+Hover over the provinces to see the Celeste highlight and tooltips. **Click any province** to see how easily you can capture the region's data code.
+
+<ArgentinaMap />
+
+<Admonition type="info" title="How it works">
+Every `<path>` element in the generated SVG automatically receives `data-code` (e.g., `"ARBUE"`) and `data-name` (e.g., `"Buenos Aires"`). You can listen for clicks on the parent container to instantly build drill-down experiences, filtering, or regional detail views.
+</Admonition>
+
+---
+
+## 💻 How to Render It
+
+Implementing the Argentina map in your project takes just a few lines of code. Here is how you can set it up in React with our signature Deep Navy & Celeste theme:
+
+```jsx
+import { createMap } from "svg-world-maps";
+import { useRef, useEffect } from "react";
+
+export default function ArgentinaMap() {
+  const containerRef = useRef(null);
+
+  // Generate the SVG string
+  const svg = createMap("argentina", {
+    background: "transparent",
+    borders: "#1e293b",
+    hoverColor: "rgba(117, 186, 222, 0.35)", // Argentine Celeste
+    size: "xl"
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const onClick = (e) => {
+      const { code, name } = e.target.dataset;
+      if (code && name) console.log(`Clicked: ${name} (${code})`);
+    };
+
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ background: "#0f172a", padding: "2rem", borderRadius: "1rem" }}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}

@@ -25,7 +25,7 @@ export default function BaseMap({
         borders: "#1e293b",
         hoverColor: hoverColor,
         showTooltip: true,
-        size: "xl",
+        size: "sm",
     });
 
     useEffect(() => {
