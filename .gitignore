@@ -42,5 +42,6 @@ next-env.d.ts
 test.svg
 
 src/maps/optional/TEMPLATE.ts
+src/maps/optional/map.svg
 
 *.tgz
