@@ -94,6 +94,40 @@ export const MAP_DATA_REGISTRY = {
   mauritania: undefined,
   mexico: undefined,
   monaco: undefined,
+  mongolia: undefined,
+  montenegro: undefined,
+  myanmar: undefined,
+  namibia: undefined,
+  new_zealand: undefined,
+  nicaragua: undefined,
+  nigeria: undefined,
+  north_korea: undefined,
+  panama: undefined,
+  paraguay: undefined,
+  peru: undefined,
+  philippines: undefined,
+  portugal: undefined,
+  romania: undefined,
+  russia: undefined,
+  saudi_arabia: undefined,
+  senegal: undefined,
+  serbia: undefined,
+  slovakia: undefined,
+  slovenia: undefined,
+  south_africa: undefined,
+  south_korea: undefined,
+  south_sudan: undefined,
+  spain: undefined,
+  sudan: undefined,
+  syria: undefined,
+  tajikistan: undefined,
+  thailand: undefined,
+  turkey: undefined,
+  turkmenistan: undefined,
+  ukraine: undefined,
+  uruguay: undefined,
+  uzbekistan: undefined,
+  vietnam: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -633,6 +667,210 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 879",
     aspectRatio: 1000 / 879,
   },
+  mongolia: {
+    height: 481,
+    width: 1000,
+    viewBox: "0 0 1000 481",
+    aspectRatio: 1000 / 481,
+  },
+  montenegro: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  myanmar: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  namibia: {
+    height: 966,
+    width: 1000,
+    viewBox: "0 0 1000 966",
+    aspectRatio: 1000 / 966,
+  },
+  new_zealand: {
+    height: 1330,
+    width: 1000,
+    viewBox: "0 0 1000 1330",
+    aspectRatio: 1000 / 1330,
+  },
+  nicaragua: {
+    height: 893,
+    width: 1000,
+    viewBox: "0 0 1000 893",
+    aspectRatio: 1000 / 893,
+  },
+  nigeria: {
+    height: 812,
+    width: 1000,
+    viewBox: "0 0 1000 812",
+    aspectRatio: 1000 / 812,
+  },
+  north_korea: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  panama: {
+    height: 421,
+    width: 1000,
+    viewBox: "0 0 1000 421",
+    aspectRatio: 1000 / 421,
+  },
+  paraguay: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  peru: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  philippines: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  portugal: {
+    height: 601,
+    width: 1000,
+    viewBox: "0 0 1000 601",
+    aspectRatio: 1000 / 601,
+  },
+  romania: {
+    height: 704,
+    width: 1000,
+    viewBox: "0 0 1000 704",
+    aspectRatio: 1000 / 704,
+  },
+  russia: {
+    height: 760,
+    width: 1000,
+    viewBox: "0 0 1000 760",
+    aspectRatio: 1000 / 760,
+  },
+  saudi_arabia: {
+    height: 824,
+    width: 1000,
+    viewBox: "0 0 1000 824",
+    aspectRatio: 1000 / 824,
+  },
+  senegal: {
+    height: 736,
+    width: 1000,
+    viewBox: "0 0 1000 736",
+    aspectRatio: 1000 / 736,
+  },
+  serbia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  slovakia: {
+    height: 492,
+    width: 1000,
+    viewBox: "0 0 1000 492",
+    aspectRatio: 1000 / 492,
+  },
+  slovenia: {
+    height: 660,
+    width: 1000,
+    viewBox: "0 0 1000 660",
+    aspectRatio: 1000 / 660,
+  },
+  south_africa: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  south_korea: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  south_sudan: {
+    height: 762,
+    width: 1000,
+    viewBox: "0 0 1000 762",
+    aspectRatio: 1000 / 762,
+  },
+  spain: {
+    height: 890,
+    width: 1000,
+    viewBox: "0 0 1000 890",
+    aspectRatio: 1000 / 890,
+  },
+  sudan: {
+    height: 900,
+    width: 1000,
+    viewBox: "0 0 1000 900",
+    aspectRatio: 1000 / 900,
+  },
+  syria: {
+    height: 918,
+    width: 1000,
+    viewBox: "0 0 1000 918",
+    aspectRatio: 1000 / 918,
+  },
+  tajikistan: {
+    height: 719,
+    width: 1000,
+    viewBox: "0 0 1000 719",
+    aspectRatio: 1000 / 719,
+  },
+  thailand: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  turkey: {
+    height: 422,
+    width: 1000,
+    viewBox: "0 0 1000 422",
+    aspectRatio: 1000 / 422,
+  },
+  turkmenistan: {
+    height: 692,
+    width: 1000,
+    viewBox: "0 0 1000 692",
+    aspectRatio: 1000 / 692,
+  },
+  ukraine: {
+    height: 669,
+    width: 1000,
+    viewBox: "0 0 1000 669",
+    aspectRatio: 1000 / 669,
+  },
+  uruguay: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  uzbekistan: {
+    height: 652,
+    width: 1000,
+    viewBox: "0 0 1000 652",
+    aspectRatio: 1000 / 652,
+  },
+  vietnam: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
 
   world: {
     height: 857,
@@ -777,6 +1015,40 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.mauritania
     | typeof BASE_VIEWPORT_CONFIGS.mexico
     | typeof BASE_VIEWPORT_CONFIGS.monaco
+    | typeof BASE_VIEWPORT_CONFIGS.mongolia
+    | typeof BASE_VIEWPORT_CONFIGS.montenegro
+    | typeof BASE_VIEWPORT_CONFIGS.myanmar
+    | typeof BASE_VIEWPORT_CONFIGS.namibia
+    | typeof BASE_VIEWPORT_CONFIGS.new_zealand
+    | typeof BASE_VIEWPORT_CONFIGS.nicaragua
+    | typeof BASE_VIEWPORT_CONFIGS.nigeria
+    | typeof BASE_VIEWPORT_CONFIGS.north_korea
+    | typeof BASE_VIEWPORT_CONFIGS.panama
+    | typeof BASE_VIEWPORT_CONFIGS.paraguay
+    | typeof BASE_VIEWPORT_CONFIGS.peru
+    | typeof BASE_VIEWPORT_CONFIGS.philippines
+    | typeof BASE_VIEWPORT_CONFIGS.portugal
+    | typeof BASE_VIEWPORT_CONFIGS.romania
+    | typeof BASE_VIEWPORT_CONFIGS.russia
+    | typeof BASE_VIEWPORT_CONFIGS.saudi_arabia
+    | typeof BASE_VIEWPORT_CONFIGS.senegal
+    | typeof BASE_VIEWPORT_CONFIGS.serbia
+    | typeof BASE_VIEWPORT_CONFIGS.slovakia
+    | typeof BASE_VIEWPORT_CONFIGS.slovenia
+    | typeof BASE_VIEWPORT_CONFIGS.south_africa
+    | typeof BASE_VIEWPORT_CONFIGS.south_korea
+    | typeof BASE_VIEWPORT_CONFIGS.south_sudan
+    | typeof BASE_VIEWPORT_CONFIGS.spain
+    | typeof BASE_VIEWPORT_CONFIGS.sudan
+    | typeof BASE_VIEWPORT_CONFIGS.syria
+    | typeof BASE_VIEWPORT_CONFIGS.tajikistan
+    | typeof BASE_VIEWPORT_CONFIGS.thailand
+    | typeof BASE_VIEWPORT_CONFIGS.turkey
+    | typeof BASE_VIEWPORT_CONFIGS.turkmenistan
+    | typeof BASE_VIEWPORT_CONFIGS.ukraine
+    | typeof BASE_VIEWPORT_CONFIGS.uruguay
+    | typeof BASE_VIEWPORT_CONFIGS.uzbekistan
+    | typeof BASE_VIEWPORT_CONFIGS.vietnam
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -953,6 +1225,40 @@ export const SVG_VIEWPORT_CONFIGS = {
   mauritania: createMapViewportConfig("mauritania"),
   mexico: createMapViewportConfig("mexico"),
   monaco: createMapViewportConfig("monaco"),
+  mongolia: createMapViewportConfig("mongolia"),
+  montenegro: createMapViewportConfig("montenegro"),
+  myanmar: createMapViewportConfig("myanmar"),
+  namibia: createMapViewportConfig("namibia"),
+  new_zealand: createMapViewportConfig("new_zealand"),
+  nicaragua: createMapViewportConfig("nicaragua"),
+  nigeria: createMapViewportConfig("nigeria"),
+  north_korea: createMapViewportConfig("north_korea"),
+  panama: createMapViewportConfig("panama"),
+  paraguay: createMapViewportConfig("paraguay"),
+  peru: createMapViewportConfig("peru"),
+  philippines: createMapViewportConfig("philippines"),
+  portugal: createMapViewportConfig("portugal"),
+  romania: createMapViewportConfig("romania"),
+  russia: createMapViewportConfig("russia"),
+  saudi_arabia: createMapViewportConfig("saudi_arabia"),
+  senegal: createMapViewportConfig("senegal"),
+  serbia: createMapViewportConfig("serbia"),
+  slovakia: createMapViewportConfig("slovakia"),
+  slovenia: createMapViewportConfig("slovenia"),
+  south_africa: createMapViewportConfig("south_africa"),
+  south_korea: createMapViewportConfig("south_korea"),
+  south_sudan: createMapViewportConfig("south_sudan"),
+  spain: createMapViewportConfig("spain"),
+  sudan: createMapViewportConfig("sudan"),
+  syria: createMapViewportConfig("syria"),
+  tajikistan: createMapViewportConfig("tajikistan"),
+  thailand: createMapViewportConfig("thailand"),
+  turkey: createMapViewportConfig("turkey"),
+  turkmenistan: createMapViewportConfig("turkmenistan"),
+  ukraine: createMapViewportConfig("ukraine"),
+  uruguay: createMapViewportConfig("uruguay"),
+  uzbekistan: createMapViewportConfig("uzbekistan"),
+  vietnam: createMapViewportConfig("vietnam"),
   world: createMapViewportConfig("world"),
 } as const;
 
