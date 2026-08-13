@@ -1,6 +1,6 @@
 # Maps Information Report
 
-**📅 Last Generated:** Thursday, August 13, 2026 at 01:16:58 AM GMT+3:30
+**📅 Last Generated:** Thursday, August 13, 2026 at 06:07:40 PM GMT+3:30
 
 ## ℹ️ About this Report
 This report provides an automated overview of all available map configurations located in the `src\maps\optional` directory. 
@@ -44,6 +44,7 @@ This report provides an automated overview of all available map configurations l
 | `BRITISH_VIRGIN_ISLANDS` | British_virgin_islands | VG | 1 | Yes |
 | `BRUNEI` | Brunei | BN | 4 | Yes |
 | `BULGARIA` | Bulgaria | BG | 28 | Yes |
+| `CAMBODIA` | Cambodia | KH | 25 | Yes |
 | `CAMEROON` | Cameroon | CM | 10 | Yes |
 | `CANADA` | Canada | CA | 13 | Yes |
 | `CAPE_VERDE` | Cape_verde | CV | 22 | Yes |
@@ -61,6 +62,7 @@ This report provides an automated overview of all available map configurations l
 | `ECUADOR` | Ecuador | EC | 24 | Yes |
 | `EGYPT` | Egypt | EG | 27 | Yes |
 | `EUROPE` | Europe | XE | 45 | No |
+| `FIJI` | Fiji | FJ | 5 | Yes |
 | `FINLAND` | Finland | FI | 19 | Yes |
 | `FRANCE` | France | FR | 13 | Yes |
 | `GEORGIA` | Georgia | GE | 12 | Yes |
@@ -81,16 +83,19 @@ This report provides an automated overview of all available map configurations l
 | `KAZAKHSTAN` | Kazakhstan | KZ | 20 | Yes |
 | `KUWAIT` | Kuwait | KW | 6 | Yes |
 | `KYRGYZSTAN` | Kyrgyzstan | KG | 9 | Yes |
+| `LAOS` | Laos | LA | 18 | Yes |
 | `LEBANON` | Lebanon | LB | 8 | Yes |
 | `LIBYA` | Libya | LY | 22 | Yes |
 | `LUXEMBOURG` | Luxembourg | LU | 12 | Yes |
 | `MACEDONIA` | Macedonia | MK | 80 | Yes |
+| `MALAYSIA` | Malaysia | MY | 16 | Yes |
 | `MALI` | Mali | ML | 10 | Yes |
 | `MAURITANIA` | Mauritania | MR | 15 | Yes |
 | `MEXICO` | Mexico | MX | 32 | Yes |
 | `MONACO` | Monaco | MC | 1 | Yes |
 | `MONGOLIA` | Mongolia | MN | 22 | Yes |
 | `MONTENEGRO` | Montenegro | ME | 24 | Yes |
+| `MYANMAR` | Myanmar | MM | 14 | Yes |
 | `NAMIBIA` | Namibia | NA | 14 | Yes |
 | `NETHERLANDS` | Netherlands | NL | 12 | Yes |
 | `NEW_ZEALAND` | New_zealand | NZ | 16 | Yes |
@@ -133,10 +138,11 @@ This report provides an automated overview of all available map configurations l
 | `URUGUAY` | Uruguay | UY | 19 | Yes |
 | `UZBEKISTAN` | Uzbekistan | UZ | 14 | Yes |
 | `VATICAN` | Vatican | VA | 1 | Yes |
+| `VIETNAM` | Vietnam | VN | 63 | Yes |
 
 ## 📊 Label Support Summary
 
-- **✅ Maps with Labels:** 113
+- **✅ Maps with Labels:** 119
 - **⚠️ Maps without Labels:** 5
 
 ### ⚠️ Note on Maps Without Labels
