@@ -72,6 +72,28 @@ export const MAP_DATA_REGISTRY = {
   cyprus: undefined,
   czech_republic: undefined,
   central_african_republic: undefined,
+  djibouti: undefined,
+  ecuador: undefined,
+  egypt: undefined,
+  fiji: undefined,
+  georgia: undefined,
+  greece: undefined,
+  hungary: undefined,
+  indonesia: undefined,
+  iraq: undefined,
+  italy: undefined,
+  japan: undefined,
+  jordan: undefined,
+  kazakhstan: undefined,
+  kyrgyzstan: undefined,
+  laos: undefined,
+  libya: undefined,
+  macedonia: undefined,
+  malaysia: undefined,
+  mali: undefined,
+  mauritania: undefined,
+  mexico: undefined,
+  monaco: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -479,6 +501,138 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 677",
     aspectRatio: 1000 / 677,
   },
+  djibouti: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  ecuador: {
+    height: 398,
+    width: 1000,
+    viewBox: "0 0 1000 398",
+    aspectRatio: 1000 / 398,
+  },
+  egypt: {
+    height: 888,
+    width: 1000,
+    viewBox: "0 0 1000 888",
+    aspectRatio: 1000 / 888,
+  },
+  fiji: {
+    height: 30,
+    width: 1000,
+    viewBox: "0 0 1000 30",
+    aspectRatio: 1000 / 30,
+  },
+  georgia: {
+    height: 510,
+    width: 1000,
+    viewBox: "0 0 1000 510",
+    aspectRatio: 1000 / 510,
+  },
+  greece: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  hungary: {
+    height: 613,
+    width: 1000,
+    viewBox: "0 0 1000 613",
+    aspectRatio: 1000 / 613,
+  },
+  indonesia: {
+    height: 368,
+    width: 1000,
+    viewBox: "0 0 1000 368",
+    aspectRatio: 1000 / 368,
+  },
+  iraq: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  italy: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  japan: {
+    height: 846,
+    width: 1000,
+    viewBox: "0 0 1000 846",
+    aspectRatio: 1000 / 846,
+  },
+  jordan: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  kazakhstan: {
+    height: 549,
+    width: 1000,
+    viewBox: "0 0 1000 549",
+    aspectRatio: 1000 / 549,
+  },
+  kyrgyzstan: {
+    height: 492,
+    width: 1000,
+    viewBox: "0 0 1000 492",
+    aspectRatio: 1000 / 492,
+  },
+  laos: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  libya: {
+    height: 972,
+    width: 1000,
+    viewBox: "0 0 1000 972",
+    aspectRatio: 1000 / 972,
+  },
+  macedonia: {
+    height: 793,
+    width: 1000,
+    viewBox: "0 0 1000 793",
+    aspectRatio: 1000 / 793,
+  },
+  malaysia: {
+    height: 332,
+    width: 1000,
+    viewBox: "0 0 1000 332",
+    aspectRatio: 1000 / 332,
+  },
+  mali: {
+    height: 949,
+    width: 1000,
+    viewBox: "0 0 1000 949",
+    aspectRatio: 1000 / 949,
+  },
+  mauritania: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  mexico: {
+    height: 630,
+    width: 1000,
+    viewBox: "0 0 1000 630",
+    aspectRatio: 1000 / 630,
+  },
+  monaco: {
+    height: 879,
+    width: 1000,
+    viewBox: "0 0 1000 879",
+    aspectRatio: 1000 / 879,
+  },
 
   world: {
     height: 857,
@@ -601,6 +755,28 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.cyprus
     | typeof BASE_VIEWPORT_CONFIGS.czech_republic
     | typeof BASE_VIEWPORT_CONFIGS.central_african_republic
+    | typeof BASE_VIEWPORT_CONFIGS.djibouti
+    | typeof BASE_VIEWPORT_CONFIGS.ecuador
+    | typeof BASE_VIEWPORT_CONFIGS.egypt
+    | typeof BASE_VIEWPORT_CONFIGS.fiji
+    | typeof BASE_VIEWPORT_CONFIGS.georgia
+    | typeof BASE_VIEWPORT_CONFIGS.greece
+    | typeof BASE_VIEWPORT_CONFIGS.hungary
+    | typeof BASE_VIEWPORT_CONFIGS.indonesia
+    | typeof BASE_VIEWPORT_CONFIGS.iraq
+    | typeof BASE_VIEWPORT_CONFIGS.italy
+    | typeof BASE_VIEWPORT_CONFIGS.japan
+    | typeof BASE_VIEWPORT_CONFIGS.jordan
+    | typeof BASE_VIEWPORT_CONFIGS.kazakhstan
+    | typeof BASE_VIEWPORT_CONFIGS.kyrgyzstan
+    | typeof BASE_VIEWPORT_CONFIGS.laos
+    | typeof BASE_VIEWPORT_CONFIGS.libya
+    | typeof BASE_VIEWPORT_CONFIGS.macedonia
+    | typeof BASE_VIEWPORT_CONFIGS.malaysia
+    | typeof BASE_VIEWPORT_CONFIGS.mali
+    | typeof BASE_VIEWPORT_CONFIGS.mauritania
+    | typeof BASE_VIEWPORT_CONFIGS.mexico
+    | typeof BASE_VIEWPORT_CONFIGS.monaco
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -755,6 +931,28 @@ export const SVG_VIEWPORT_CONFIGS = {
   cyprus: createMapViewportConfig("cyprus"),
   czech_republic: createMapViewportConfig("czech_republic"),
   central_african_republic: createMapViewportConfig("central_african_republic"),
+  djibouti: createMapViewportConfig("djibouti"),
+  ecuador: createMapViewportConfig("ecuador"),
+  egypt: createMapViewportConfig("egypt"),
+  fiji: createMapViewportConfig("fiji"),
+  georgia: createMapViewportConfig("georgia"),
+  greece: createMapViewportConfig("greece"),
+  hungary: createMapViewportConfig("hungary"),
+  indonesia: createMapViewportConfig("indonesia"),
+  iraq: createMapViewportConfig("iraq"),
+  italy: createMapViewportConfig("italy"),
+  japan: createMapViewportConfig("japan"),
+  jordan: createMapViewportConfig("jordan"),
+  kazakhstan: createMapViewportConfig("kazakhstan"),
+  kyrgyzstan: createMapViewportConfig("kyrgyzstan"),
+  laos: createMapViewportConfig("laos"),
+  libya: createMapViewportConfig("libya"),
+  macedonia: createMapViewportConfig("macedonia"),
+  malaysia: createMapViewportConfig("malaysia"),
+  mali: createMapViewportConfig("mali"),
+  mauritania: createMapViewportConfig("mauritania"),
+  mexico: createMapViewportConfig("mexico"),
+  monaco: createMapViewportConfig("monaco"),
   world: createMapViewportConfig("world"),
 } as const;
 
