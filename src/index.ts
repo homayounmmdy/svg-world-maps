@@ -253,14 +253,14 @@ export const createMap = (
     throw new Error(`Map type "${mapType}" not found in registry`);
   }
 
-  const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType].getConfig(
+  const viewportConfig = SVG_VIEWPORT_CONFIGS[mapType]?.getConfig(
     options.size || "lg",
   );
 
   return `<svg 
     xmlns="http://www.w3.org/2000/svg" 
-    height="${viewportConfig.height}" 
-    width="${viewportConfig.width}"
+    height="${viewportConfig?.height}" 
+    width="${viewportConfig?.width}"
     viewBox="${mapData.viewBox}"
     preserveAspectRatio="xMidYMid meet">
         ${generateStatePaths(mapData as MapData, options)}

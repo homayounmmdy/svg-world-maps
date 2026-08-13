@@ -1136,7 +1136,7 @@ const createMapViewportConfig = (
  *   via `registerMapData()` before use
  * - All dimensions are returned as strings for direct use in SVG attributes
  */
-export const SVG_VIEWPORT_CONFIGS = {
+export const SVG_VIEWPORT_CONFIGS :Record<string, ReturnType<typeof createMapViewportConfig>>= {
   afghanistan: createMapViewportConfig("afghanistan"),
   australia: createMapViewportConfig("australia"),
   brazil: createMapViewportConfig("brazil"),

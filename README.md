@@ -8,14 +8,14 @@ Simple, lightweight SVG maps for JavaScript projects.
 
 <img width="1664" height="928" alt="1783268206" src="https://github.com/user-attachments/assets/4ef39455-47e4-4d96-aa64-a69097874837" />
 
-🎉 **Now with 35+ Maps! (World + 34 Countries/Regions) Hover Effects, Tooltips, Labels & Click Support!**
+🎉 **Now with 124 Maps! (World + 123 Countries/Regions) Hover Effects, Tooltips, Labels & Click Support!**
 
 > 📚 **Documentation**: [Wiki Home](https://github.com/homayounmmdy/svg-world-maps/wiki) • [Getting Started](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) • [Maps Info Report](./MAPS_INFO.md) • [Optional Maps](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)  
 > 💬 **Community**: [Discussions](https://github.com/homayounmmdy/svg-world-maps/discussions) • [Report Issue](https://github.com/homayounmmdy/svg-world-maps/issues)
 
 ## Features
 
-- 🌍 **Massive Map Library**: World map + 34 country/region maps (USA, Germany, India, Iran, Canada, Pakistan, Australia, Brazil, Great Britain, and many more!)
+- 🌍 **Massive Map Library**: World map + 123 country/region maps (USA, Germany, India, China, Japan, Russia, Spain, and many more!)
 - 🏷️ **Tooltips & Labels**: Built-in tooltips on hover and region text labels.
 - 📏 **Flexible Sizing**: 8 preset sizes + custom scale factors
 - 🎨 **Customizable**: Background, borders, and hover colors
@@ -28,7 +28,7 @@ Simple, lightweight SVG maps for JavaScript projects.
 ## Installation
 
 ```bash
-npm install svg-world-maps@0.7.0
+npm install svg-world-maps@0.8.0
 ```
 
 > 💡 **Optional Maps**: Keep your bundle small by only adding the maps you need.  
@@ -70,6 +70,16 @@ npm install svg-world-maps@0.7.0
 > npx add-map sweden
 > npx add-map uae
 > npx add-map vatican
+> 
+> # 🆕 New in v0.8.0 (89 Maps!)
+> npx add-map china
+> npx add-map japan
+> npx add-map russia
+> npx add-map spain
+> npx add-map italy
+> npx add-map mexico
+> npx add-map south_africa
+> # ... and 82 more!
 > ```  
 >
 > ⚡ **Automate Registration**: You can now automatically register added maps to speed up development!
@@ -142,7 +152,7 @@ Creates an SVG map string.
 
 | Parameter | Type | Description | Options |
 |-----------|------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `mapType` | `string` | Type of map to generate | `"world"`, `"afghanistan"`, `"usa"`, `"germany"`, `"india"`, `"iran"`, `"netherlands"`, `"france"`, `"australia"`, `"brazil"`, `"gb"`, `"belgium"`, `"switzerland"`, `"europe"`, `"africa"`, `"pakistan"`, `"canada"`, `"argentina"`, `"armenia"`, `"austria"`, `"denmark"`, `"finland"`, `"greenland"`, `"iceland"`, `"israel"`, `"kuwait"`, `"lebanon"`, `"luxembourg"`, `"norway"`, `"oman"`, `"poland"`, `"singapore"`, `"sweden"`, `"uae"`, `"vatican"` |
+| `mapType` | `string` | Type of map to generate | `"world"`, `"afghanistan"`, `"usa"`, `"germany"`, `"india"`, `"iran"`, `"netherlands"`, `"france"`, `"australia"`, `"brazil"`, `"gb"`, `"belgium"`, `"switzerland"`, `"europe"`, `"africa"`, `"pakistan"`, `"canada"`, `"argentina"`, `"armenia"`, `"austria"`, `"denmark"`, `"finland"`, `"greenland"`, `"iceland"`, `"israel"`, `"kuwait"`, `"lebanon"`, `"luxembourg"`, `"norway"`, `"oman"`, `"poland"`, `"singapore"`, `"sweden"`, `"uae"`, `"vatican"`, `"albania"`, `"algeria"`, `"andorra"`, `"angola"`, `"anguilla"`, `"antigua_and_barbuda"`, `"aruba"`, `"azerbaijan"`, `"bahrain"`, `"barbados"`, `"belarus"`, `"belize"`, `"benin"`, `"bermuda"`, `"bhutan"`, `"bolivia"`, `"bosnia_and_herzegovina"`, `"botswana"`, `"british_virgin_islands"`, `"brunei"`, `"bulgaria"`, `"cambodia"`, `"cameroon"`, `"cape_verde"`, `"central_african_republic"`, `"chad"`, `"chile"`, `"china"`, `"colombia"`, `"croatia"`, `"cyprus"`, `"czech_republic"`, `"democratic_republic_of_the_congo"`, `"djibouti"`, `"ecuador"`, `"egypt"`, `"fiji"`, `"georgia"`, `"greece"`, `"hungary"`, `"indonesia"`, `"iraq"`, `"italy"`, `"japan"`, `"jordan"`, `"kazakhstan"`, `"kyrgyzstan"`, `"laos"`, `"libya"`, `"macedonia"`, `"malaysia"`, `"mali"`, `"mauritania"`, `"mexico"`, `"monaco"`, `"mongolia"`, `"montenegro"`, `"myanmar"`, `"namibia"`, `"new_zealand"`, `"nicaragua"`, `"nigeria"`, `"north_korea"`, `"panama"`, `"paraguay"`, `"peru"`, `"philippines"`, `"portugal"`, `"romania"`, `"russia"`, `"saudi_arabia"`, `"senegal"`, `"serbia"`, `"slovakia"`, `"slovenia"`, `"south_africa"`, `"south_korea"`, `"south_sudan"`, `"spain"`, `"sudan"`, `"syria"`, `"tajikistan"`, `"thailand"`, `"turkey"`, `"turkmenistan"`, `"ukraine"`, `"uruguay"`, `"uzbekistan"`, `"vietnam"` |
 | `options` | `object` | Configuration options | See below |
 
 *\* Optional maps require setup via `npx add-map` — [see guide](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps)*
@@ -367,6 +377,7 @@ const Maps = () => {
 | `"sweden"` | 🇸🇪 | Sweden map with 21 counties | v0.7.0 | 🔁 Optional |
 | `"uae"` | 🇦🇪 | UAE map with 7 emirates | v0.7.0 | 🔁 Optional |
 | `"vatican"` | 🇻🇦 | Vatican City map | v0.7.0 | 🔁 Optional |
+| **v0.8.0 Additions (89 Maps)** | 🌍 | Albania, Algeria, Andorra, Angola, Anguilla, Antigua and Barbuda, Aruba, Azerbaijan, Bahrain, Barbados, Belarus, Belize, Benin, Bermuda, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, British Virgin Islands, Brunei, Bulgaria, Cambodia, Cameroon, Cape Verde, Central African Republic, Chad, Chile, China, Colombia, Croatia, Cyprus, Czech Republic, DR Congo, Djibouti, Ecuador, Egypt, Fiji, Georgia, Greece, Hungary, Indonesia, Iraq, Italy, Japan, Jordan, Kazakhstan, Kyrgyzstan, Laos, Libya, Macedonia, Malaysia, Mali, Mauritania, Mexico, Monaco, Mongolia, Montenegro, Myanmar, Namibia, New Zealand, Nicaragua, Nigeria, North Korea, Panama, Paraguay, Peru, Philippines, Portugal, Romania, Russia, Saudi Arabia, Senegal, Serbia, Slovakia, Slovenia, South Africa, South Korea, South Sudan, Spain, Sudan, Syria, Tajikistan, Thailand, Turkey, Turkmenistan, Ukraine, Uruguay, Uzbekistan, Vietnam | v0.8.0 | 🔁 Optional |
 
 > 🔁 **Optional maps** keep your bundle small. Add them only when needed:  
 > ```bash
@@ -386,11 +397,32 @@ const Maps = () => {
 - [x] Germany, India, Iran, Netherlands, France, Australia, Brazil, Great Britain maps (v0.5.0)
 - [x] Belgium, Switzerland, Europe maps + Tooltips + Labels + `register-map` script (v0.6.0)
 - [x] 21 New Maps (Canada, Pakistan, Africa, Argentina, Armenia, Austria, Denmark, Finland, Greenland, Iceland, Israel, Kuwait, Lebanon, Luxembourg, Norway, Oman, Poland, Singapore, Sweden, UAE, Vatican) + DX Automation + `map-info` script (v0.7.0)
+- [x] 89 New Maps (China, Japan, Russia, Spain, Italy, etc.) + Docsourcos documentation integration (v0.8.0)
 - [ ] Label support for USA, Iran, Europe, and Africa maps
 - [ ] Keyboard navigation & accessibility improvements
 - [ ] Export to PNG/SVG file
 
 ## Migration Guide
+
+### From v0.7.0 to v0.8.0
+
+- **Massive Map Expansion**: Added **89 new country maps**, bringing the total to 124 maps! New additions include major countries like China, Japan, Russia, Spain, Italy, Mexico, South Africa, and 83 more.
+- **Documentation Generation**: Integrated **Docsourcos** to automatically generate documentation structure. *(Note: While the framework is in place, many feature docs are currently placeholders and will be fully fleshed out in upcoming patches).*
+- **Focus**: This release heavily focused on scaling our map library and establishing our new Docsourcos documentation pipeline.
+- **Fixes**:
+  - Fixed missing/broken **Italy** and **Malaysia** regions on the World map.
+
+**To use the new maps:**
+```bash
+npx add-map china
+npx add-map japan
+npx add-map russia
+npx add-map spain
+# Add any other new map you need
+
+# Automatically register your added maps
+npx register-map
+```
 
 ### From v0.6.0 to v0.7.0
 
@@ -428,6 +460,7 @@ npx register-map
 | Resource | Link |
 |----------|------|
 | 🏠 **Wiki Home** | [github.com/homayounmmdy/svg-world-maps/wiki](https://github.com/homayounmmdy/svg-world-maps/wiki) |
+| 🤖 **Docsourcos** | Documentation is now auto-generated using **Docsourcos**. *(Note: Most features are currently undocumented but will be fully documented in upcoming releases.)* |
 | 🚀 **Getting Started** | [Quick start guide](https://github.com/homayounmmdy/svg-world-maps/wiki/Getting-Started) |
 | 🗺️ **Maps Info Report** | [View automated map configurations & label support](./MAPS_INFO.md) |
 | 🗺️ **Optional Maps** | [Add USA, Afghanistan & more](https://github.com/homayounmmdy/svg-world-maps/wiki/Optional-Maps) |
