@@ -27,10 +27,10 @@ if (!mapName) {
   process.exit(1);
 }
 
-// Clean the name (lowercase, alphanumeric only)
-const cleanName = mapName.toLowerCase().replace(/[^a-z0-9]/g, "");
+// Clean the name (lowercase, alphanumeric and underscores only)
+const cleanName = mapName.toLowerCase().replace(/[^a-z0-9_]/g, "");
 if (!cleanName) {
-  console.error("❌ Invalid map name. Use only letters and numbers.");
+  console.error("❌ Invalid map name. Use only letters, numbers, and underscores.");
   process.exit(1);
 }
 

@@ -1,5 +1,5 @@
 const BRITISH_VIRGIN_ISLANDS = {
-    name: "British_virgin_islands",
+    name: "British virgin islands",
     code: "VG",
     viewBox: "0 0 1000 863",
     states: [

@@ -54,6 +54,24 @@ export const MAP_DATA_REGISTRY = {
   benin: undefined,
   bermuda: undefined,
   bhutan: undefined,
+  bolivia: undefined,
+  bosnia_and_herzegovina: undefined,
+  botswana: undefined,
+  british_virgin_islands: undefined,
+  brunei: undefined,
+  bulgaria: undefined,
+  cambodia: undefined,
+  cameroon: undefined,
+  cape_verde: undefined,
+  drc: undefined,
+  chad: undefined,
+  chile: undefined,
+  china: undefined,
+  colombia: undefined,
+  croatia: undefined,
+  cyprus: undefined,
+  czech_republic: undefined,
+  central_african_republic: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -353,6 +371,114 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 522",
     aspectRatio: 1000 / 522,
   },
+  bolivia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  bosnia_and_herzegovina: {
+    height: 970,
+    width: 1000,
+    viewBox: "0 0 1000 970",
+    aspectRatio: 1000 / 970,
+  },
+  botswana: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  british_virgin_islands: {
+    height: 863,
+    width: 1000,
+    viewBox: "0 0 1000 863",
+    aspectRatio: 1000 / 863,
+  },
+  brunei: {
+    height: 766,
+    width: 1000,
+    viewBox: "0 0 1000 766",
+    aspectRatio: 1000 / 766,
+  },
+  bulgaria: {
+    height: 651,
+    width: 1000,
+    viewBox: "0 0 1000 651",
+    aspectRatio: 1000 / 651,
+  },
+  cambodia: {
+    height: 834,
+    width: 1000,
+    viewBox: "0 0 1000 834",
+    aspectRatio: 1000 / 834,
+  },
+  cameroon: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  cape_verde: {
+    height: 924,
+    width: 1000,
+    viewBox: "0 0 1000 924",
+    aspectRatio: 1000 / 924,
+  },
+  drc: {
+    height: 994,
+    width: 1000,
+    viewBox: "0 0 1000 994",
+    aspectRatio: 1000 / 994,
+  },
+  chad: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  chile: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  china: {
+    height: 738,
+    width: 1000,
+    viewBox: "0 0 1000 738",
+    aspectRatio: 1000 / 738,
+  },
+  colombia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  croatia: {
+    height: 981,
+    width: 1000,
+    viewBox: "0 0 1000 981",
+    aspectRatio: 1000 / 981,
+  },
+  cyprus: {
+    height: 569,
+    width: 1000,
+    viewBox: "0 0 1000 569",
+    aspectRatio: 1000 / 569,
+  },
+  czech_republic: {
+    height: 570,
+    width: 1000,
+    viewBox: "0 0 1000 570",
+    aspectRatio: 1000 / 570,
+  },
+  central_african_republic: {
+    height: 677,
+    width: 1000,
+    viewBox: "0 0 1000 677",
+    aspectRatio: 1000 / 677,
+  },
 
   world: {
     height: 857,
@@ -457,6 +583,24 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.benin
     | typeof BASE_VIEWPORT_CONFIGS.bermuda
     | typeof BASE_VIEWPORT_CONFIGS.bhutan
+    | typeof BASE_VIEWPORT_CONFIGS.bolivia
+    | typeof BASE_VIEWPORT_CONFIGS.bosnia_and_herzegovina
+    | typeof BASE_VIEWPORT_CONFIGS.botswana
+    | typeof BASE_VIEWPORT_CONFIGS.british_virgin_islands
+    | typeof BASE_VIEWPORT_CONFIGS.brunei
+    | typeof BASE_VIEWPORT_CONFIGS.bulgaria
+    | typeof BASE_VIEWPORT_CONFIGS.cambodia
+    | typeof BASE_VIEWPORT_CONFIGS.cameroon
+    | typeof BASE_VIEWPORT_CONFIGS.cape_verde
+    | typeof BASE_VIEWPORT_CONFIGS.drc
+    | typeof BASE_VIEWPORT_CONFIGS.chad
+    | typeof BASE_VIEWPORT_CONFIGS.chile
+    | typeof BASE_VIEWPORT_CONFIGS.china
+    | typeof BASE_VIEWPORT_CONFIGS.colombia
+    | typeof BASE_VIEWPORT_CONFIGS.croatia
+    | typeof BASE_VIEWPORT_CONFIGS.cyprus
+    | typeof BASE_VIEWPORT_CONFIGS.czech_republic
+    | typeof BASE_VIEWPORT_CONFIGS.central_african_republic
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -593,6 +737,24 @@ export const SVG_VIEWPORT_CONFIGS = {
   benin: createMapViewportConfig("benin"),
   bermuda: createMapViewportConfig("bermuda"),
   bhutan: createMapViewportConfig("bhutan"),
+  bolivia: createMapViewportConfig("bolivia"),
+  bosnia_and_herzegovina: createMapViewportConfig("bosnia_and_herzegovina"),
+  botswana: createMapViewportConfig("botswana"),
+  british_virgin_islands: createMapViewportConfig("british_virgin_islands"),
+  brunei: createMapViewportConfig("brunei"),
+  bulgaria: createMapViewportConfig("bulgaria"),
+  cambodia: createMapViewportConfig("cambodia"),
+  cameroon: createMapViewportConfig("cameroon"),
+  cape_verde: createMapViewportConfig("cape_verde"),
+  drc: createMapViewportConfig("drc"),
+  chad: createMapViewportConfig("chad"),
+  chile: createMapViewportConfig("chile"),
+  china: createMapViewportConfig("china"),
+  colombia: createMapViewportConfig("colombia"),
+  croatia: createMapViewportConfig("croatia"),
+  cyprus: createMapViewportConfig("cyprus"),
+  czech_republic: createMapViewportConfig("czech_republic"),
+  central_african_republic: createMapViewportConfig("central_african_republic"),
   world: createMapViewportConfig("world"),
 } as const;
 
