@@ -39,6 +39,11 @@ export const MAP_DATA_REGISTRY = {
   sweden: undefined,
   uae: undefined,
   vatican: undefined,
+  albania: undefined,
+  algeria: undefined,
+  andorra: undefined,
+  angola: undefined,
+  anguilla: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -248,6 +253,37 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 1000",
     aspectRatio: 1000 / 1000,
   },
+  albania: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  algeria: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  andorra: {
+    height: 835,
+    width: 1000,
+    viewBox: "0 0 1000 835",
+    aspectRatio: 1000 / 835,
+  },
+  angola: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  anguilla: {
+    height: 557,
+    width: 1000,
+    viewBox: "0 0 1000 557",
+    aspectRatio: 1000 / 557,
+  },
+
   world: {
     height: 857,
     width: 2000,
@@ -336,6 +372,11 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.sweden
     | typeof BASE_VIEWPORT_CONFIGS.uae
     | typeof BASE_VIEWPORT_CONFIGS.vatican
+    | typeof BASE_VIEWPORT_CONFIGS.albania
+    | typeof BASE_VIEWPORT_CONFIGS.algeria
+    | typeof BASE_VIEWPORT_CONFIGS.andorra
+    | typeof BASE_VIEWPORT_CONFIGS.angola
+    | typeof BASE_VIEWPORT_CONFIGS.anguilla
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -457,6 +498,11 @@ export const SVG_VIEWPORT_CONFIGS = {
   sweden: createMapViewportConfig("sweden"),
   uae: createMapViewportConfig("uae"),
   vatican: createMapViewportConfig("vatican"),
+  albania: createMapViewportConfig("albania"),
+  algeria: createMapViewportConfig("algeria"),
+  andorra: createMapViewportConfig("andorra"),
+  angola: createMapViewportConfig("angola"),
+  anguilla: createMapViewportConfig("anguilla"),
   world: createMapViewportConfig("world"),
 } as const;
 

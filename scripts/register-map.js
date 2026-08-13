@@ -9,9 +9,20 @@ const __dirname = path.dirname(__filename);
 // Get the map name from command line arguments
 const mapName = process.argv[2];
 
+// Get the optional height from command line arguments, default to 1000
+let customHeight = 1000;
+if (process.argv[3]) {
+  const parsedHeight = parseInt(process.argv[3], 10);
+  if (!isNaN(parsedHeight) && parsedHeight > 0) {
+    customHeight = parsedHeight;
+  } else {
+    console.warn("⚠️ Invalid height provided. Using default height: 1000.");
+  }
+}
+
 if (!mapName) {
   console.error(
-    "❌ Please provide a map name. Usage: node scripts/register-map.js <map-name>",
+    "❌ Please provide a map name. Usage: node scripts/register-map.js <map-name> [height]",
   );
   process.exit(1);
 }
@@ -23,7 +34,7 @@ if (!cleanName) {
   process.exit(1);
 }
 
-console.log(`🚀 Adding new map: "${cleanName}"...`);
+console.log(`🚀 Adding new map: "${cleanName}" with height: ${customHeight}...`);
 
 // Define file paths (adjust if your src folder is named differently)
 const srcDir = path.join(__dirname, "../src");
@@ -83,11 +94,11 @@ if (!configContent.includes(`${cleanName}: undefined`)) {
   configUpdated = true;
 }
 
-// Add to BASE_VIEWPORT_CONFIGS (inserts before "world")
+// Add to BASE_VIEWPORT_CONFIGS (inserts before "world") using customHeight
 if (!configContent.includes(`${cleanName}: {`)) {
   configContent = configContent.replace(
     /(export const BASE_VIEWPORT_CONFIGS = \{[\s\S]*?)(\s*world: \{)/,
-    `$1    ${cleanName}: {\n        height: 1000,\n        width: 1000,\n        viewBox: "0 0 1000 1000",\n        aspectRatio: 1000 / 1000\n    },\n$2`,
+    `$1    ${cleanName}: {\n        height: ${customHeight},\n        width: 1000,\n        viewBox: "0 0 1000 ${customHeight}",\n        aspectRatio: 1000 / ${customHeight}\n    },\n$2`,
   );
   configUpdated = true;
 }

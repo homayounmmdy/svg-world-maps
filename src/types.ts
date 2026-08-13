@@ -189,6 +189,11 @@ export type MapType =
   | "sweden"
   | "uae"
   | "vatican"
+  | "albania"
+  | "algeria"
+  | "andorra"
+  | "angola"
+  | "anguilla"
   | "world";
 
 /**
