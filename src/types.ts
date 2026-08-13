@@ -194,6 +194,16 @@ export type MapType =
   | "andorra"
   | "angola"
   | "anguilla"
+  | "antigua_and_barbuda"
+  | "aruba"
+  | "azerbaijan"
+  | "bahrain"
+  | "barbados"
+  | "belarus"
+  | "belize"
+  | "benin"
+  | "bermuda"
+  | "bhutan"
   | "world";
 
 /**

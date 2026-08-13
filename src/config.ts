@@ -44,6 +44,16 @@ export const MAP_DATA_REGISTRY = {
   andorra: undefined,
   angola: undefined,
   anguilla: undefined,
+  antigua_and_barbuda: undefined,
+  aruba: undefined,
+  azerbaijan: undefined,
+  bahrain: undefined,
+  barbados: undefined,
+  belarus: undefined,
+  belize: undefined,
+  benin: undefined,
+  bermuda: undefined,
+  bhutan: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -283,6 +293,66 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 557",
     aspectRatio: 1000 / 557,
   },
+  antigua_and_barbuda: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  aruba: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  azerbaijan: {
+    height: 782,
+    width: 1000,
+    viewBox: "0 0 1000 782",
+    aspectRatio: 1000 / 782,
+  },
+  bahrain: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  barbados: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  belarus: {
+    height: 871,
+    width: 1000,
+    viewBox: "0 0 1000 871",
+    aspectRatio: 1000 / 871,
+  },
+  belize: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  benin: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  bermuda: {
+    height: 698,
+    width: 1000,
+    viewBox: "0 0 1000 698",
+    aspectRatio: 1000 / 698,
+  },
+  bhutan: {
+    height: 522,
+    width: 1000,
+    viewBox: "0 0 1000 522",
+    aspectRatio: 1000 / 522,
+  },
 
   world: {
     height: 857,
@@ -377,6 +447,16 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.andorra
     | typeof BASE_VIEWPORT_CONFIGS.angola
     | typeof BASE_VIEWPORT_CONFIGS.anguilla
+    | typeof BASE_VIEWPORT_CONFIGS.antigua_and_barbuda
+    | typeof BASE_VIEWPORT_CONFIGS.aruba
+    | typeof BASE_VIEWPORT_CONFIGS.azerbaijan
+    | typeof BASE_VIEWPORT_CONFIGS.bahrain
+    | typeof BASE_VIEWPORT_CONFIGS.barbados
+    | typeof BASE_VIEWPORT_CONFIGS.belarus
+    | typeof BASE_VIEWPORT_CONFIGS.belize
+    | typeof BASE_VIEWPORT_CONFIGS.benin
+    | typeof BASE_VIEWPORT_CONFIGS.bermuda
+    | typeof BASE_VIEWPORT_CONFIGS.bhutan
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -503,6 +583,16 @@ export const SVG_VIEWPORT_CONFIGS = {
   andorra: createMapViewportConfig("andorra"),
   angola: createMapViewportConfig("angola"),
   anguilla: createMapViewportConfig("anguilla"),
+  antigua_and_barbuda: createMapViewportConfig("antigua_and_barbuda"),
+  aruba: createMapViewportConfig("aruba"),
+  azerbaijan: createMapViewportConfig("azerbaijan"),
+  bahrain: createMapViewportConfig("bahrain"),
+  barbados: createMapViewportConfig("barbados"),
+  belarus: createMapViewportConfig("belarus"),
+  belize: createMapViewportConfig("belize"),
+  benin: createMapViewportConfig("benin"),
+  bermuda: createMapViewportConfig("bermuda"),
+  bhutan: createMapViewportConfig("bhutan"),
   world: createMapViewportConfig("world"),
 } as const;
 
