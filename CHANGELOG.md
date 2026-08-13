@@ -5,7 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.7.0] - Latest
+## [0.8.0] - Latest
+### 🌍 Added
+- **89 New Maps**: Massive expansion of our map library! Added detailed SVG maps for Albania, Algeria, Andorra, Angola, Anguilla, Antigua and Barbuda, Aruba, Azerbaijan, Bahrain, Barbados, Belarus, Belize, Benin, Bermuda, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, British Virgin Islands, Brunei, Bulgaria, Cambodia, Cameroon, Cape Verde, Central African Republic, Chad, Chile, China, Colombia, Croatia, Cyprus, Czech Republic, Democratic Republic of the Congo, Djibouti, Ecuador, Egypt, Fiji, Georgia, Greece, Hungary, Indonesia, Iraq, Italy, Japan, Jordan, Kazakhstan, Kyrgyzstan, Laos, Libya, Macedonia, Malaysia, Mali, Mauritania, Mexico, Monaco, Mongolia, Montenegro, Myanmar, Namibia, New Zealand, Nicaragua, Nigeria, North Korea, Panama, Paraguay, Peru, Philippines, Portugal, Romania, Russia, Saudi Arabia, Senegal, Serbia, Slovakia, Slovenia, South Africa, South Korea, South Sudan, Spain, Sudan, Syria, Tajikistan, Thailand, Turkey, Turkmenistan, Ukraine, Uruguay, Uzbekistan, and Vietnam.
+- **Docsourcos Integration**: Integrated Docsourcos to automatically generate the initial documentation structure. 
+  - *Note*: The documentation framework is now in place, though many feature-specific pages are currently placeholders and will be fully fleshed out in upcoming releases.
+
+### 🐛 Fixed
+- **World Map Accuracy**: Fixed missing and broken regions for **Italy** and **Malaysia** on the main World map.
+
+### 🎯 Release Focus
+- This release primarily focused on massively scaling our SVG map library (bringing the total to 124 maps!) and establishing our new Docsourcos documentation pipeline.
+
+---
+
+## [0.7.0] - Jul 24, 2026
 ### 🌍 Added
 - **21 New Maps**: Added detailed SVG maps for Africa, Pakistan, Canada, Argentina, Armenia, Austria, Denmark, Finland, Greenland, Iceland, Israel, Kuwait, Lebanon, Luxembourg, Norway, Oman, Poland, Singapore, Sweden, UAE, and Vatican.
 - **Map Info Script**: Created a new `map-info` script that automatically generates a `MAPS_INFO.md` report in the root directory, providing a real-time overview of all available map configurations, state counts, and label support.
