@@ -138,7 +138,7 @@
   background: rgba(6, 182, 212, 0.05);
   border: 1px solid rgba(6, 182, 212, 0.2);
   border-radius: 999px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent-cyan);
   backdrop-filter: blur(10px);
@@ -377,8 +377,8 @@
 
 .installDollar {
   color: var(--accent-cyan);
-  margin-right: 0.5rem;
   font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .copyBtn {
@@ -765,4 +765,338 @@
   margin-bottom: 2.5rem;
   line-height: 1.6;
   color: #cbd5e1;
+}
+
+/* ============================================
+   ROTATING BADGE ANIMATION
+   ============================================ */
+.badgeMapName {
+  display: inline-block;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  animation: badgeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes badgeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   MAP-INSPIRED BACKGROUND DECORATIONS
+   ============================================ */
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+          linear-gradient(0deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
+.globeRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  border: 1px dashed rgba(6, 182, 212, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: slowSpin 120s linear infinite;
+}
+
+.globeRing2 {
+  width: 500px;
+  height: 500px;
+  border-color: rgba(6, 182, 212, 0.06);
+  animation-direction: reverse;
+  animation-duration: 90s;
+}
+
+.globeRing3 {
+  width: 300px;
+  height: 300px;
+  border-color: rgba(6, 182, 212, 0.04);
+  animation-duration: 60s;
+}
+
+@keyframes slowSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.compass {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed rgba(6, 182, 212, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(6, 182, 212, 0.25);
+  pointer-events: none;
+  animation: compassPulse 4s ease-in-out infinite;
+}
+
+@keyframes compassPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.coordMark {
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  color: rgba(6, 182, 212, 0.2);
+  pointer-events: none;
+}
+
+.coordMark2 {
+  bottom: auto;
+  top: 25%;
+  left: auto;
+  right: 12%;
+}
+
+/* ============================================
+   GET STARTED CTA ANIMATIONS
+   ============================================ */
+.primaryBtn {
+  position: relative;
+  overflow: hidden;
+  animation: ctaGlowPulse 3s ease-in-out infinite;
+}
+
+.ctaArrow {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+.primaryBtn:hover .ctaArrow {
+  animation: none;
+  transform: translateX(6px);
+}
+
+@keyframes ctaGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.35), 0 0 60px rgba(6, 182, 212, 0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+/* Hover shine effect */
+.primaryBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.primaryBtn:hover::after {
+  left: 150%;
+}
+
+/* ============================================
+   GITHUB STAR BUTTON - ATTENTION ANIMATION
+   ============================================ */
+.secondaryBtn {
+  position: relative;
+}
+
+.starPing {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Ping ring effect */
+.starPing::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fbbf24;
+  animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Solid dot */
+.starPing::after {
+  content: "⭐";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 1;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Border attention pulse */
+.secondaryBtn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid var(--accent-cyan);
+  opacity: 0;
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.02); }
+}
+
+/* ============================================
+   NPM INSTALL BOX WITH BADGE
+   ============================================ */
+.npmBadge {
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.installBox {
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 0.75rem;
+}
+
+.installCode {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   UPDATED HERO BADGE FOR ROTATING TEXT
+   ============================================ */
+.heroBadge {
+  gap: 0.75rem;
+}
+
+/* ============================================
+   UPDATED STATS
+   ============================================ */
+.statNumber {
+  font-size: 1.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+[data-theme="dark"] .mapGrid {
+  background-image:
+          linear-gradient(0deg, rgba(6, 182, 212, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .globeRing {
+  border-color: rgba(6, 182, 212, 0.1);
+}
+
+[data-theme="dark"] .compass {
+  border-color: rgba(6, 182, 212, 0.2);
+  color: rgba(6, 182, 212, 0.35);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .compass,
+  .coordMark {
+    display: none;
+  }
+
+
+  .globeRing {
+    width: 400px;
+    height: 400px;
+  }
+
+  .globeRing2 {
+    width: 280px;
+    height: 280px;
+  }
+
+  .globeRing3 {
+    display: none;
+  }
+
+  .heroStats {
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .installBox {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .npmBadge {
+    order: -1;
+  }
+}
+@media (max-width: 576px) {
+  .installDollar {
+    margin-right: 0;
+  }
+  .heroBanner {
+    padding: 4rem 0 3em;
+  }
 }

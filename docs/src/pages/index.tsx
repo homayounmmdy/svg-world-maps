@@ -8,6 +8,19 @@ import styles from "./index.module.css";
 
 /* ---------- Data ---------- */
 
+const rotatingMaps = [
+  "USA 🇺🇸",
+  "Germany 🇩🇪",
+  "France 🇫🇷",
+  "Italy 🇮🇹",
+  "Canada 🇨🇦",
+  "India 🇮🇳",
+  "Brazil 🇧🇷",
+  "Japan 🇯🇵",
+  "UK 🇬🇧",
+  "Australia 🇦🇺",
+];
+
 type Feature = {
   title: string;
   emoji: string;
@@ -21,7 +34,7 @@ const features: Feature[] = [
     emoji: "🌍",
     description: (
         <>
-          35+ SVG maps out of the box — World, USA, Germany, India, Brazil,
+          212+ SVG maps out of the box — World, USA, Germany, India, Brazil,
           Europe, Canada, and many more. All lightweight, pure SVG output.
         </>
     ),
@@ -94,6 +107,15 @@ interface HeroProps {
 
 function HeroBanner({ mousePos, copied, onCopy }: HeroProps) {
   const { siteConfig } = useDocusaurusContext();
+  const [mapIndex, setMapIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMapIndex((prev) => (prev + 1) % rotatingMaps.length);
+    }, 2200);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
       <header className={styles.heroBanner}>
         {/* Global Cursor Glow */}
@@ -103,15 +125,37 @@ function HeroBanner({ mousePos, copied, onCopy }: HeroProps) {
         />
 
         <div className={styles.heroBackground}>
+          {/* Map-inspired grid lines */}
+          <div className={styles.mapGrid} />
+          {/* Globe rings */}
+          <div className={styles.globeRing} />
+          <div className={clsx(styles.globeRing, styles.globeRing2)} />
+          <div className={clsx(styles.globeRing, styles.globeRing3)} />
+          {/* Compass decoration */}
+          <div className={styles.compass}>N</div>
+          <div className={styles.coordMark}>
+            <span>+40.7128°</span>
+          </div>
+          <div className={clsx(styles.coordMark, styles.coordMark2)}>
+            <span>-74.0060°</span>
+          </div>
+          {/* Orbs */}
           <div className={styles.heroOrb} />
           <div className={clsx(styles.heroOrb, styles.heroOrb2)} />
           <div className={clsx(styles.heroOrb, styles.heroOrb3)} />
         </div>
 
         <div className="container">
+          {/* Rotating Map Badge */}
           <div className={clsx(styles.heroBadge, styles.revealElement)}>
             <span className={styles.pulse} />
-            <span>🎉 v0.7.0 — 21 new maps available!</span>
+            <span>
+              🗺️ Now supporting{" "}
+              <span key={mapIndex} className={styles.badgeMapName}>
+                {rotatingMaps[mapIndex]}
+              </span>{" "}
+              & 200+ more!
+            </span>
           </div>
 
           <h1 className={clsx(styles.heroTitle, styles.revealElement)}>
@@ -132,31 +176,39 @@ function HeroBanner({ mousePos, copied, onCopy }: HeroProps) {
                 to="/docs/getting-started"
             >
               🚀 Get Started
+              <span className={styles.ctaArrow}>→</span>
             </Link>
             <Link
                 className={clsx("button button--secondary button--lg", styles.secondaryBtn)}
                 to="https://github.com/homayounmmdy/svg-world-maps"
             >
-              ⭐ Star on GitHub
+              <span className={styles.starPing}>
+                ⭐ Star on GitHub
+              </span>
             </Link>
           </div>
 
           <div className={clsx(styles.heroBottomCTA, styles.revealElement)}>
             <div className={styles.heroStats}>
               <div className={styles.stat}>
-                <div className={styles.statNumber}>35+</div>
+                <div className={styles.statNumber}>212</div>
                 <div className={styles.statLabel}>Maps</div>
               </div>
               <div className={styles.statDivider} />
               <div className={styles.stat}>
-                <div className={styles.statNumber}>0</div>
-                <div className={styles.statLabel}>Dependencies</div>
+                <div className={styles.statNumber}>100%</div>
+                <div className={styles.statLabel}>Pure SVG</div>
               </div>
             </div>
 
             <div className={styles.installBox}>
+              <img
+                  src="https://img.shields.io/npm/v/svg-world-maps?style=flat-square&color=06b6d4&labelColor=020617&logo=npm&logoColor=white"
+                  alt="npm version"
+                  className={styles.npmBadge}
+              />
               <code className={styles.installCode}>
-                <span className={styles.installDollar}>$</span> npm install svg-world-maps@0.7.0
+                <span className={styles.installDollar}>$</span> npm install svg-world-maps
               </code>
               <button className={styles.copyBtn} onClick={onCopy} aria-label="Copy to clipboard">
                 {copied ? (
@@ -258,44 +310,6 @@ document.getElementById("map")!.innerHTML = map;`}
   );
 }
 
-function MapsSection() {
-  const maps = [
-    { name: "World", emoji: "🌍", states: "195 countries" },
-    { name: "USA", emoji: "🇺🇸", states: "51 states" },
-    { name: "Germany", emoji: "🇩🇪", states: "16 states" },
-    { name: "India", emoji: "🇮🇳", states: "36 states" },
-    { name: "Brazil", emoji: "🇧🇷", states: "27 states" },
-    { name: "Canada", emoji: "🇨🇦", states: "13 provinces" },
-    { name: "France", emoji: "🇫🇷", states: "13 regions" }
-  ];
-
-  return (
-      <section className={styles.maps}>
-        <div className="container">
-          <div className={clsx(styles.sectionHeader, styles.revealElement)}>
-            <h2 className={styles.sectionTitle}>Explore 35+ Maps</h2>
-            <p className={styles.sectionSubtitle}>
-              From the whole world to specific countries — add only the maps you
-              need.
-            </p>
-          </div>
-          <div className={styles.mapGrid}>
-            {maps.map((map, idx) => (
-                <div key={idx} className={clsx(styles.mapCard, styles.revealElement)}>
-                  <div className={styles.mapEmoji}>{map.emoji}</div>
-                  <div className={styles.mapName}>{map.name}</div>
-                  <div className={styles.mapStates}>{map.states}</div>
-                </div>
-            ))}
-            <div className={clsx(styles.mapCard, styles.mapCardMore, styles.revealElement)}>
-              <div className={styles.mapEmoji}>🗺️</div>
-              <div className={styles.mapName}>+ 27 more</div>
-            </div>
-          </div>
-        </div>
-      </section>
-  );
-}
 
 function CTASection() {
   return (
@@ -364,7 +378,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("npm install svg-world-maps@0.7.0");
+    navigator.clipboard.writeText("npm install svg-world-maps");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -381,13 +395,12 @@ export default function Home(): JSX.Element {
   return (
       <Layout
           title={`${siteConfig.title} — SVG World Maps`}
-          description="Simple, lightweight SVG maps for JavaScript projects. 35+ maps with tooltips, labels, hover effects, and click support."
+          description="Simple, lightweight SVG maps for JavaScript projects. 212+ maps with tooltips, labels, hover effects, and click support."
       >
         <HeroBanner mousePos={mousePos} copied={copied} onCopy={handleCopy} />
         <main>
           <FeaturesSection onMouseMove={handleCardMouseMove} />
           <DemoSection />
-          <MapsSection />
           <CTASection />
         </main>
       </Layout>
