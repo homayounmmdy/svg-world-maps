@@ -128,6 +128,25 @@ export const MAP_DATA_REGISTRY = {
   uruguay: undefined,
   uzbekistan: undefined,
   vietnam: undefined,
+  bangladesh: undefined,
+  ethiopia: undefined,
+  morocco: undefined,
+  taiwan: undefined,
+  tunisia: undefined,
+  zimbabwe: undefined,
+  madagascar: undefined,
+  ghana: undefined,
+  yemen: undefined,
+  honduras: undefined,
+  niger: undefined,
+  venezuela: undefined,
+  nepal: undefined,
+  togo: undefined,
+  liberia: undefined,
+  ireland: undefined,
+  palestine: undefined,
+  eritrea: undefined,
+  lithuania: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -871,6 +890,120 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 1000",
     aspectRatio: 1000 / 1000,
   },
+  bangladesh: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  ethiopia: {
+    height: 774,
+    width: 1000,
+    viewBox: "0 0 1000 774",
+    aspectRatio: 1000 / 774,
+  },
+  morocco: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  taiwan: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  tunisia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  zimbabwe: {
+    height: 918,
+    width: 1000,
+    viewBox: "0 0 1000 918",
+    aspectRatio: 1000 / 918,
+  },
+  madagascar: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  ghana: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  yemen: {
+    height: 563,
+    width: 1000,
+    viewBox: "0 0 1000 563",
+    aspectRatio: 1000 / 563,
+  },
+  honduras: {
+    height: 738,
+    width: 1000,
+    viewBox: "0 0 1000 738",
+    aspectRatio: 1000 / 738,
+  },
+  niger: {
+    height: 786,
+    width: 1000,
+    viewBox: "0 0 1000 786",
+    aspectRatio: 1000 / 786,
+  },
+  venezuela: {
+    height: 877,
+    width: 1000,
+    viewBox: "0 0 1000 877",
+    aspectRatio: 1000 / 877,
+  },
+  nepal: {
+    height: 569,
+    width: 1000,
+    viewBox: "0 0 1000 569",
+    aspectRatio: 1000 / 569,
+  },
+  togo: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  liberia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  ireland: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  palestine: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  eritrea: {
+    height: 875,
+    width: 1000,
+    viewBox: "0 0 1000 875",
+    aspectRatio: 1000 / 875,
+  },
+  lithuania: {
+    height: 763,
+    width: 1000,
+    viewBox: "0 0 1000 763",
+    aspectRatio: 1000 / 763,
+  },
 
   world: {
     height: 857,
@@ -1049,6 +1182,24 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.uruguay
     | typeof BASE_VIEWPORT_CONFIGS.uzbekistan
     | typeof BASE_VIEWPORT_CONFIGS.vietnam
+    | typeof BASE_VIEWPORT_CONFIGS.bangladesh
+    | typeof BASE_VIEWPORT_CONFIGS.ethiopia
+    | typeof BASE_VIEWPORT_CONFIGS.morocco
+    | typeof BASE_VIEWPORT_CONFIGS.taiwan
+    | typeof BASE_VIEWPORT_CONFIGS.tunisia
+    | typeof BASE_VIEWPORT_CONFIGS.zimbabwe
+    | typeof BASE_VIEWPORT_CONFIGS.madagascar
+    | typeof BASE_VIEWPORT_CONFIGS.ghana
+    | typeof BASE_VIEWPORT_CONFIGS.yemen
+    | typeof BASE_VIEWPORT_CONFIGS.honduras
+    | typeof BASE_VIEWPORT_CONFIGS.venezuela
+    | typeof BASE_VIEWPORT_CONFIGS.nepal
+    | typeof BASE_VIEWPORT_CONFIGS.togo
+    | typeof BASE_VIEWPORT_CONFIGS.liberia
+    | typeof BASE_VIEWPORT_CONFIGS.ireland
+    | typeof BASE_VIEWPORT_CONFIGS.palestine
+    | typeof BASE_VIEWPORT_CONFIGS.eritrea
+    | typeof BASE_VIEWPORT_CONFIGS.lithuania
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
@@ -1136,7 +1287,10 @@ const createMapViewportConfig = (
  *   via `registerMapData()` before use
  * - All dimensions are returned as strings for direct use in SVG attributes
  */
-export const SVG_VIEWPORT_CONFIGS :Record<string, ReturnType<typeof createMapViewportConfig>>= {
+export const SVG_VIEWPORT_CONFIGS: Record<
+  string,
+  ReturnType<typeof createMapViewportConfig>
+> = {
   afghanistan: createMapViewportConfig("afghanistan"),
   australia: createMapViewportConfig("australia"),
   brazil: createMapViewportConfig("brazil"),
