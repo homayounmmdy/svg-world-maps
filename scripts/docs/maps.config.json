@@ -7,74 +7,214 @@
   },
   "maps": [
     {
-      "name": "India",
-      "code": "IN",
+      "name": "Turkey",
+      "code": "TR",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(227, 10, 23, 0.35)",
+      "description": "Turkey is a transcontinental country located mainly on the Anatolian Peninsula in Western Asia, with a smaller portion on the Balkan peninsula in Southeastern Europe, known for its rich history, diverse culture, and strategic location bridging Europe and Asia."
+    },
+    {
+      "name": "Switzerland",
+      "code": "CH",
+      "regionLabel": "Canton",
+      "hoverColor": "rgba(255, 0, 0, 0.35)",
+      "description": "Switzerland is a landlocked country in Central Europe, renowned for its stunning Alpine landscapes, high quality of life, political neutrality, and status as a global hub for finance and diplomacy."
+    },
+    {
+      "name": "Sweden",
+      "code": "SE",
+      "regionLabel": "County",
+      "hoverColor": "rgba(0, 106, 175, 0.35)",
+      "description": "Sweden is a Nordic country in Northern Europe, known for its vast forests, thousands of coastal islands, progressive social policies, and exceptionally high standard of living."
+    },
+    {
+      "name": "Poland",
+      "code": "PL",
+      "regionLabel": "Voivodeship",
+      "hoverColor": "rgba(220, 20, 60, 0.35)",
+      "description": "Poland is a country in Central Europe, characterized by its diverse landscape, rich and resilient history, vibrant cultural heritage, and a rapidly growing modern economy."
+    },
+    {
+      "name": "Thailand",
+      "code": "TH",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(165, 25, 45, 0.35)",
+      "description": "Thailand is a Southeast Asian country known for its tropical beaches, opulent royal palaces, ancient ruins, and ornate temples displaying figures of Buddha, alongside its world-famous cuisine."
+    },
+    {
+      "name": "Egypt",
+      "code": "EG",
+      "regionLabel": "Governorate",
+      "hoverColor": "rgba(206, 17, 38, 0.35)",
+      "description": "Egypt is a transcontinental country spanning the northeast corner of Africa and southwest corner of Asia, globally famous for its ancient civilization, the Pyramids of Giza, and the historic Nile River."
+    },
+    {
+      "name": "Vietnam",
+      "code": "VN",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(218, 37, 29, 0.35)",
+      "description": "Vietnam is a Southeast Asian country known for its stunning natural beauty, including lush rice terraces, bustling cities, rich culinary traditions, and a history shaped by diverse cultural influences."
+    },
+    {
+      "name": "Philippines",
+      "code": "PH",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 56, 168, 0.35)",
+      "description": "The Philippines is an archipelagic country in Southeast Asia, comprising over 7,000 islands, celebrated for its beautiful white-sand beaches, rich biodiversity, and warm, hospitable people."
+    },
+    {
+      "name": "Malaysia",
+      "code": "MY",
       "regionLabel": "State",
-      "hoverColor": "rgba(255, 153, 51, 0.35)",
-      "description": "India is a South Asian country known for its rich cultural heritage, diverse landscapes ranging from the Himalayas to the Indian Ocean, and being the world's most populous democracy."
+      "hoverColor": "rgba(0, 40, 104, 0.35)",
+      "description": "Malaysia is a Southeast Asian country occupying parts of the Malay Peninsula and the island of Borneo, known for its multicultural society, beautiful beaches, and lush, ancient rainforests."
     },
     {
-      "name": "Japan",
-      "code": "JP",
-      "regionLabel": "Prefecture",
-      "hoverColor": "rgba(187, 0, 0, 0.35)",
-      "description": "Japan is an island nation in East Asia, famous for its blend of ancient traditions and cutting-edge technology, stunning landscapes, and a culture centered around respect and harmony."
+      "name": "Ukraine",
+      "code": "UA",
+      "regionLabel": "Oblast",
+      "hoverColor": "rgba(0, 87, 183, 0.35)",
+      "description": "Ukraine is a country in Eastern Europe and the second-largest in Europe by area, known for its fertile plains, rich agricultural heritage, deep historical roots, and resilient national spirit."
     },
     {
-      "name": "Russia",
-      "code": "RU",
-      "regionLabel": "Federal Subject",
+      "name": "Colombia",
+      "code": "CO",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(252, 209, 22, 0.35)",
+      "description": "Colombia is a South American country known for its incredible biodiversity, vibrant culture, coffee-growing regions, and diverse landscapes ranging from Andean mountains to Caribbean and Pacific coastlines."
+    },
+    {
+      "name": "Chile",
+      "code": "CL",
+      "regionLabel": "Region",
       "hoverColor": "rgba(213, 43, 30, 0.35)",
-      "description": "Russia is the world's largest country by land area, spanning Eastern Europe and Northern Asia, characterized by its vast forests, rich history, and significant global influence."
+      "description": "Chile is a long, narrow country stretching along South America's western edge, famous for its Atacama Desert, Patagonian glaciers, Andes mountains, and world-class wine production."
     },
     {
-      "name": "Mexico",
-      "code": "MX",
+      "name": "South Africa",
+      "code": "ZA",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 120, 73, 0.35)",
+      "description": "South Africa is a country at the southern tip of the African continent, renowned for its varied topography, rich cultural diversity, wildlife reserves, and significant historical landmarks."
+    },
+    {
+      "name": "Nigeria",
+      "code": "NG",
       "regionLabel": "State",
-      "hoverColor": "rgba(0, 103, 71, 0.35)",
-      "description": "Mexico is a North American country known for its rich history, vibrant culture, diverse ecosystems ranging from arid deserts to tropical beaches, and world-renowned cuisine."
+      "hoverColor": "rgba(0, 135, 81, 0.35)",
+      "description": "Nigeria is a West African country and the most populous in Africa, known for its vibrant cultural heritage, booming film and music industries, and diverse ecosystems from savannas to rainforests."
     },
     {
-      "name": "Italy",
-      "code": "IT",
+      "name": "Pakistan",
+      "code": "PK",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(1, 65, 28, 0.35)",
+      "description": "Pakistan is a South Asian country featuring dramatic landscapes including the Karakoram and Himalayan mountain ranges, ancient historical sites, and a rich, diverse cultural heritage."
+    },
+    {
+      "name": "Bangladesh",
+      "code": "BD",
+      "regionLabel": "Division",
+      "hoverColor": "rgba(0, 106, 78, 0.35)",
+      "description": "Bangladesh is a densely populated South Asian country known for its lush greenery, the vast Ganges-Brahmaputra delta, rich textile history, and vibrant cultural traditions."
+    },
+    {
+      "name": "Iran",
+      "code": "IR",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(218, 0, 0, 0.35)",
+      "description": "Iran is a Middle Eastern country with a profound historical legacy, featuring ancient Persian empires, stunning Islamic architecture, and diverse landscapes from arid deserts to snow-capped mountains."
+    },
+    {
+      "name": "UAE",
+      "code": "AE",
+      "regionLabel": "Emirate",
+      "hoverColor": "rgba(0, 115, 47, 0.35)",
+      "description": "The United Arab Emirates is a federation of seven emirates on the Arabian Peninsula, globally recognized for its modern architecture, luxury shopping, and vibrant cultural scene in cities like Dubai and Abu Dhabi."
+    },
+    {
+      "name": "Singapore",
+      "code": "SG",
       "regionLabel": "Region",
-      "hoverColor": "rgba(0, 146, 70, 0.35)",
-      "description": "Italy is a Southern European country shaped like a boot, celebrated for its profound impact on global culture, art, architecture, and its world-famous culinary traditions."
+      "hoverColor": "rgba(238, 0, 0, 0.35)",
+      "description": "Singapore is a sovereign island city-state in Southeast Asia, celebrated for its futuristic skyline, strict cleanliness, multicultural population, and status as a major global financial hub."
     },
     {
-      "name": "South Korea",
-      "code": "KR",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(205, 46, 58, 0.35)",
-      "description": "South Korea is an East Asian country known for its rapid economic development, vibrant pop culture, advanced technology, and a beautiful landscape of mountains and coastline."
-    },
-    {
-      "name": "Spain",
-      "code": "ES",
-      "regionLabel": "Autonomous Community",
-      "hoverColor": "rgba(173, 22, 43, 0.35)",
-      "description": "Spain is a southwestern European country known for its diverse culture, rich history, sunny Mediterranean beaches, and significant contributions to art, literature, and global exploration."
-    },
-    {
-      "name": "Indonesia",
-      "code": "ID",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(237, 28, 36, 0.35)",
-      "description": "Indonesia is a vast Southeast Asian archipelago comprising thousands of islands, renowned for its incredible biodiversity, diverse cultures, and stunning tropical landscapes."
-    },
-    {
-      "name": "Netherlands",
-      "code": "NL",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(255, 125, 0, 0.35)",
-      "description": "The Netherlands is a small, densely populated Western European country famous for its flat landscape of polders, canals, windmills, tulip fields, and a strong cycling culture."
-    },
-    {
-      "name": "Saudi Arabia",
-      "code": "SA",
+      "name": "New Zealand",
+      "code": "NZ",
       "regionLabel": "Region",
-      "hoverColor": "rgba(0, 105, 56, 0.35)",
-      "description": "Saudi Arabia is a Middle Eastern country, the largest on the Arabian Peninsula, known for its vast deserts, significant Islamic holy sites, and major role in the global energy sector."
+      "hoverColor": "rgba(0, 36, 125, 0.35)",
+      "description": "New Zealand is an island country in the southwestern Pacific Ocean, famous for its breathtaking natural beauty, including fjords, rolling hills, active volcanoes, and a strong indigenous Māori culture."
+    },
+    {
+      "name": "Ireland",
+      "code": "IE",
+      "regionLabel": "County",
+      "hoverColor": "rgba(0, 154, 68, 0.35)",
+      "description": "Ireland is a lush, green island nation in Northwestern Europe, renowned for its rich literary history, vibrant folklore, welcoming culture, and stunning coastal cliffs."
+    },
+    {
+      "name": "Norway",
+      "code": "NO",
+      "regionLabel": "County",
+      "hoverColor": "rgba(186, 12, 47, 0.35)",
+      "description": "Norway is a Scandinavian country famous for its dramatic fjords, the northern lights, a high standard of living, and a deep cultural connection to nature and maritime history."
+    },
+    {
+      "name": "Israel",
+      "code": "IL",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 56, 184, 0.35)",
+      "description": "Israel is a Middle Eastern country on the Mediterranean Sea, known for its profound historical and religious significance, technological innovation, and diverse landscapes from deserts to green valleys."
+    },
+    {
+      "name": "Portugal",
+      "code": "PT",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 102, 51, 0.35)",
+      "description": "Portugal is a southern European country known for its historic cities, stunning Atlantic coastline, rich Age of Discovery maritime history, and world-famous Port wine."
+    },
+    {
+      "name": "Greece",
+      "code": "GR",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 85, 164, 0.35)",
+      "description": "Greece is a southeastern European country celebrated as the cradle of Western civilization, featuring ancient ruins, thousands of picturesque islands, and a rich Mediterranean culture."
+    },
+    {
+      "name": "Czech Republic",
+      "code": "CZ",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(174, 15, 29, 0.35)",
+      "description": "The Czech Republic is a landlocked country in Central Europe, renowned for its well-preserved medieval architecture, historic castles, and a deeply rooted brewing tradition."
+    },
+    {
+      "name": "Romania",
+      "code": "RO",
+      "regionLabel": "County",
+      "hoverColor": "rgba(0, 43, 127, 0.35)",
+      "description": "Romania is a country in Eastern Europe known for the forested region of Transylvania, the Carpathian Mountains, the Danube Delta, and its rich folklore and medieval towns."
+    },
+    {
+      "name": "Hungary",
+      "code": "HU",
+      "regionLabel": "County",
+      "hoverColor": "rgba(206, 14, 45, 0.35)",
+      "description": "Hungary is a landlocked country in Central Europe, famous for its historic capital Budapest, extensive thermal bath culture, rich culinary heritage, and the Danube River."
+    },
+    {
+      "name": "Algeria",
+      "code": "DZ",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 98, 51, 0.35)",
+      "description": "Algeria is the largest country in Africa, located in the Maghreb region, characterized by the vast Sahara Desert, a scenic Mediterranean coastline, and a rich historical heritage."
+    },
+    {
+      "name": "Kazakhstan",
+      "code": "KZ",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 158, 204, 0.35)",
+      "description": "Kazakhstan is a vast, landlocked country in Central Asia, known for its sweeping steppes, towering mountain ranges, and a blend of rapid modernization with rich nomadic traditions."
     }
   ]
 }
