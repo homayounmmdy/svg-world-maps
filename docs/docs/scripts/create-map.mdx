@@ -1,0 +1,149 @@
+---
+title: Automated Map Generator (DX)
+description: A life-changing development utility that extracts map data from SVGs and generates TypeScript files in seconds.
+sidebar_position: 5
+sidebar_label: Map Generator (DX)
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# ⚡ Automated Map Generator (DX)
+
+> **Life-changing Developer Experience.** What used to take 10–30 minutes (or hours for complex maps like Russia or China) now takes seconds.
+
+This internal development utility completely transforms how new maps are added to the codebase. Instead of manually copying, pasting, and formatting hundreds of SVG paths and coordinates, this script intelligently parses a source SVG file and automatically generates a fully populated, production-ready TypeScript map file.
+
+<Admonition type="success" title="The DX Difference">
+  🚀 <strong>Before:</strong> Manually extracting paths, formatting arrays, and calculating viewboxes for complex maps took up to hours.
+  <br/>
+  💡 <strong>Now:</strong> Drop an SVG, run the script, and get a perfectly formatted <code>.ts</code> file in seconds.
+</Admonition>
+
+---
+
+## 🚀 How to Use the Generator
+
+The script automates the extraction of `viewBox`, `states` (paths), and `labels` (coordinates) from a source SVG and injects them into a standardized template.
+
+### Step 1: Prepare Your Files
+
+Place your source files in the `src/maps/optional/` directory:
+
+1. **`map.svg`**: The source SVG file containing your map data.
+2. **`TEMPLATE.ts`** *(Optional)*: A base template file. If missing, the script will use a built-in fallback template.
+
+<Admonition type="info" title="Expected SVG Structure">
+  For the script to extract data correctly, your SVG should ideally group its elements as follows:
+  <ul>
+    <li><strong>Paths/States:</strong> Wrapped in <code>&lt;g id="features"&gt;</code></li>
+    <li><strong>Labels/Points:</strong> Wrapped in <code>&lt;g id="label_points"&gt;</code></li>
+  </ul>
+  The script will gracefully fall back to template defaults if these groups are not found, but extracting them is highly recommended.
+</Admonition>
+
+### Step 2: Run the Generator
+
+Execute the script from the root of your project:
+
+```bash
+node scripts/generate-map.js
+```
+*(Note: Adjust the path to `generate-map.js` if your script is named differently, e.g., `map-generator.js`)*
+
+The CLI will interactively prompt you for two pieces of information:
+
+```text
+🗺️  Map Generator Tool
+
+Enter SVG map name (e.g., germany): germany
+Enter map code (e.g., DE): DE
+```
+
+### Step 3: Review the Output
+
+The script will read `map.svg`, extract the necessary data, and generate a new file (e.g., `GERMANY.ts`).
+
+**Example Output:**
+```text
+📂 Reading SVG from /src/maps/optional/map.svg...
+✅ Extracted viewBox from SVG: "0 0 1000 817"
+✅ Extracted 16 states from SVG.
+✅ Extracted 16 labels from SVG.
+
+🎉 Successfully created /src/maps/optional/GERMANY.ts with populated states and labels!
+```
+
+---
+
+## ⚙️ What the Script Does (Under the Hood)
+
+This tool is built with robust parsing logic to ensure clean, readable, and bug-free output:
+
+1. **Dynamic `viewBox` Extraction**: Automatically reads the `viewBox` attribute from the root `<svg>` tag, eliminating manual calculation.
+2. **Smart State Extraction**: Scans the `<g id="features">` group for `<path>` elements. It intelligently extracts the `d` (path), `id`/`data-code` (code), and `name`/`title` (name), while handling duplicate codes by appending numeric suffixes.
+3. **Label Coordinate Extraction**: Scans the `<g id="label_points">` group for `<circle>` elements, extracting `cx` (x), `cy` (y), and `id`/`class` (code/name).
+4. **XML Entity Decoding**: Automatically decodes HTML/XML entities (e.g., `&amp;`, `&#x...;`) to ensure names render correctly in tooltips.
+5. **Indentation Preservation**: Uses a custom bracket-matching algorithm to replace the `states` and `labels` arrays in the template while perfectly preserving your project's indentation style (spaces or tabs).
+
+---
+
+## 📝 Post-Generation Steps
+
+Once the `.ts` file is generated, the map data is ready. To make it available in your application:
+
+1. **Register the Map**: Import the newly generated file and register it using your library's registration function (e.g., `registerMapData('germany', GERMANY)`).
+2. **Verify Complex Maps**: For highly detailed maps (e.g., Russia, China, USA), quickly spot-check the generated file to ensure no paths were truncated and that the `viewBox` matches the visual bounds of the SVG.
+3. **Clean Up**: You can now remove or replace `map.svg` for the next map you wish to generate.
+
+---
+
+## ⚠️ Common Errors & Fixes
+
+<details>
+<summary><strong>❌ "⚠️ No valid states found in &lt;g id='features'&gt;"</strong></summary>
+<br/>
+**Cause**: The script could not find a `<g>` tag with `id="features"`, or it contained no `<path>` elements.
+<br/><br/>
+**Fix**: 
+1. Open your `map.svg` in a text editor.
+2. Ensure your map paths are wrapped in `<g id="features"> ... </g>`.
+3. If your SVG uses a different grouping ID, you can temporarily rename it to `features` before running the script.
+</details>
+
+<details>
+<summary><strong>❌ "⚠️ Could not find viewBox in SVG. Using default."</strong></summary>
+<br/>
+**Cause**: The root `<svg>` tag in `map.svg` is missing the `viewBox` attribute.
+<br/><br/>
+**Fix**: Add the `viewBox` attribute to the root `<svg>` tag (e.g., `<svg viewBox="0 0 1000 817" ...>`). The script relies on this for accurate aspect ratio calculations.
+</details>
+
+<details>
+<summary><strong>❌ "❌ Error: Map name and code are required."</strong></summary>
+<br/>
+**Cause**: You pressed Enter without providing a value for the map name or code during the interactive prompt.
+<br/><br/>
+**Fix**: Rerun the script and ensure you provide a lowercase name (e.g., `france`) and a 2-3 letter uppercase code (e.g., `FR`).
+</details>
+
+---
+
+## 💡 Best Practices for Contributors
+
+<Admonition type="tip" title="Maintaining Code Quality">
+  <ul>
+    <li><strong>Naming Conventions:</strong> Always use lowercase, alphanumeric names with underscores for the map name prompt (e.g., <code>south_africa</code>, <code>great_britain</code>) to maintain consistency and prevent import errors.</li>
+    <li><strong>Source SVG Quality:</strong> Ensure your source SVG is optimized (e.g., via SVGOMG) before running the generator. This keeps the resulting TypeScript file size as small as possible.</li>
+    <li><strong>Review Before Committing:</strong> Always review the generated <code>.ts</code> file in your Git diff. While the script is highly robust, human verification ensures no edge cases (like malformed paths) slip into production.</li>
+  </ul>
+</Admonition>
+
+---
+
+## 🌍 Scaling Map Additions
+
+This script is the backbone of our scalable map architecture. Because it decouples the *visual SVG data* from the *TypeScript implementation*, adding new regions is now a predictable, repeatable, and frictionless process. 
+
+Whether you are adding the 31 provinces of Iran, the 50 states of the USA, or a custom imaginary map for a side project, the workflow remains exactly the same: **Drop SVG → Run Script → Register → Done.**
