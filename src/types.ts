@@ -1,79 +1,58 @@
 /**
- * Configuration options for map styling and sizing
+ * The single source of truth for all supported map identifiers.
+ *
+ * @remarks
+ * Add or remove a map key here, and the `MapType` union will automatically update.
+ * This eliminates the need to manually maintain duplicate lists across the codebase.
+ */
+export const ALL_MAP_KEYS = [
+  "world", "afghanistan", "australia", "brazil", "france", "gb", "germany", "india", "iran", "netherlands", "usa", "europe", "belgium", "switzerland", "pakistan", "canada", "argentina", "armenia", "austria", "denmark", "finland", "greenland", "iceland", "israel", "kuwait", "lebanon", "luxembourg", "norway", "oman", "poland", "singapore", "sweden", "uae", "vatican", "albania", "algeria", "andorra", "angola", "anguilla", "antigua_and_barbuda", "aruba", "azerbaijan", "bahrain", "barbados", "belarus", "belize", "benin", "bermuda", "bhutan", "bolivia", "bosnia_and_herzegovina", "botswana", "british_virgin_islands", "brunei", "bulgaria", "cambodia", "cameroon", "cape_verde", "drc", "chad", "chile", "china", "colombia", "croatia", "cyprus", "czech_republic", "central_african_republic", "djibouti", "ecuador", "egypt", "fiji", "georgia", "greece", "hungary", "indonesia", "iraq", "italy", "japan", "jordan", "kazakhstan", "kyrgyzstan", "laos", "libya", "macedonia", "malaysia", "mali", "mauritania", "mexico", "monaco", "mongolia", "montenegro", "myanmar", "namibia", "new_zealand", "nicaragua", "nigeria", "north_korea", "panama", "paraguay", "peru", "philippines", "portugal", "romania", "russia", "saudi_arabia", "senegal", "serbia", "slovakia", "slovenia", "south_africa", "south_korea", "south_sudan", "spain", "sudan", "syria", "tajikistan", "thailand", "turkey", "turkmenistan", "ukraine", "uruguay", "uzbekistan", "vietnam", "bangladesh", "ethiopia", "morocco", "taiwan", "tunisia", "zimbabwe", "madagascar", "ghana", "yemen", "honduras", "niger", "venezuela", "nepal", "togo", "liberia", "ireland", "palestine", "eritrea", "lithuania", "qatar", "malawi", "jamaica", "somalia", "uganda", "kenya", "tanzania", "mozambique", "moldova", "gabon", "lesotho", "latvia", "swaziland", "comoros", "guyana", "mauritius", "estonia", "suriname", "malta", "maldives", "bahamas", "vanuatu", "zambia", "guatemala", "guinea", "rwanda", "haiti", "burundi", "cuba", "grenada", "seychelles", "tonga", "dominica", "nauru", "montserrat", "liechtenstein", "timorleste", "hong_kong", "western_sahara", "cte_d_ivoire", "burkina_faso", "sri_lanka", "dominican_republic", "falkland_islands", "pitcairn_islands", "saint_martin_french", "saint_martin_dutch", "saint_kitts_and_nevis", "puerto_rico", "costa_rica", "the_gambia", "cayman_islands", "faeroe_islands", "turks_and_caicos_islands", "saint_vincent_and_the_grenadines", "united_states_virgin_islands", "curaco", "saint_lucia", "sao_tome_and_principe", "french_polynesia", "new_caledonia", "solomon_islands", "sierra_leone", "papua_new_guinea", "el_salvador", "republic_of_congo", "guineabissau", "equatorial_guinea", "trinidad_and_tobago"
+] as const;
+
+/**
+ * A union type of all supported map identifiers.
+ * @remarks Automatically derived from `ALL_MAP_KEYS`. Do not modify this manually.
+ */
+export type MapType = typeof ALL_MAP_KEYS[number];
+
+/**
+ * Base configuration defining the original/optimal dimensions for a specific map's SVG viewport.
+ */
+export type ViewportConfig = {
+  height: number;
+  width: number;
+  viewBox: string;
+  aspectRatio: number;
+};
+
+/**
+ * Configuration options for map styling and sizing.
  */
 export type MapOptions = {
-  /** Background color for map states (supports any valid CSS color) */
+  /** Background color for map states (supports any valid CSS color). @default "#f0f0f0" */
   background?: string;
 
-  /** Border color for state boundaries (supports any valid CSS color) */
+  /** Border color for state boundaries (supports any valid CSS color). @default "#333333" */
   borders?: string;
 
   /**
-   * Controls the rendered size of the map
+   * Controls the rendered size of the map.
    *
    * You can specify size in two ways:
+   * 1. **Preset sizes**: `'xs'` (0.25x), `'sm'` (0.5x), `'md'` (0.75x), `'lg'` (1x, default), `'xl'` (1.5x), `'2xl'` (2x), `'3xl'` (2.5x), `'4xl'` (3x)
+   * 2. **Custom scale factor**: Any number (e.g., `0.33` for one-third size, `1.25` for 25% larger)
    *
-   * 1. **Preset sizes** - Use predefined string values for common scaling:
-   *    - `'xs'`   - 25% of original size (0.25x scale)
-   *    - `'sm'`   - 50% of original size (0.5x scale)
-   *    - `'md'`   - 75% of original size (0.75x scale)
-   *    - `'lg'`   - 100% of original size (1x scale - default)
-   *    - `'xl'`   - 150% of original size (1.5x scale)
-   *    - `'2xl'`  - 200% of original size (2x scale)
-   *    - `'3xl'`  - 250% of original size (2.5x scale)
-   *    - `'4xl'`  - 300% of original size (3x scale)
-   *
-   * 2. **Custom scale factor** - Provide a number for precise control:
-   *    - `0.25` - Quarter size (same as 'xs')
-   *    - `0.5`  - Half size (same as 'sm')
-   *    - `0.75` - Three-quarters size (same as 'md')
-   *    - `1`    - Original size (same as 'lg')
-   *    - `1.25` - 25% larger than original
-   *    - `2`    - Double size (same as '2xl')
-   *    - `2.5`  - Two and a half times larger (same as '3xl')
-   *    - `3`    - Triple size (same as '4xl')
-   *    - `0.33` - One-third size
-   *    - `1.8`  - 80% larger than original
-   *
-   * @example
-   * // Using preset sizes
-   * { size: 'sm' }     // 50% of original dimensions
-   * { size: 'xl' }     // 150% of original dimensions
-   *
-   * @example
-   * // Using custom scale factors
-   * { size: 0.33 }     // Exactly one-third the original size
-   * { size: 1.25 }     // 25% larger than original
-   * { size: 1.75 }     // 75% larger than original
-   * { size: 2.5 }      // Two and a half times larger
-   *
-   * @default 'lg' (original size)
+   * @default "lg"
+   * @example { size: 'sm' } // 50% of original dimensions
+   * @example { size: 1.25 } // 25% larger than original
    */
   size?: MapSize;
 
   /**
    * Color applied to map states when hovered by the user.
-   *
-   * @remarks
-   * - Requires CSS/JS hover handling to be implemented in your renderer
-   * - Supports any valid CSS color format:
-   *   • Named colors: `'red'`, `'blue'`, `'transparent'`
-   *   • Hex: `'#ff0000'`, `'#f00'`
-   *   • RGB/RGBA: `'rgb(255, 0, 0)'`, `'rgba(255, 0, 0, 0.5)'`
-   *   • HSL/HSLA: `'hsl(0, 100%, 50%)'`, `'hsla(0, 100%, 50%, 0.3)'`
-   * - If not provided, states will use default color on hover
-   *
-   * @example
-   * // Simple named color
-   * { hoverColor: 'lightblue' }
-   *
-   * @example
-   * // Semi-transparent highlight
-   * { hoverColor: 'rgba(0, 123, 255, 0.4)' }
-   *
-   * @example
-   * // Using CSS custom property (if supported by your renderer)
-   * { hoverColor: 'var(--map-hover-color)' }
+   * Supports any valid CSS color format (named, hex, rgb, hsl).
+   * @remarks Requires CSS/JS hover handling to be implemented in your renderer.
+   * @default "#d0e0ff"
    */
   hoverColor?: string;
 
@@ -85,333 +64,68 @@ export type MapOptions = {
 
   /**
    * Whether to show a tooltip popup when hovering over a state.
-   * Uses the native SVG <title> element for maximum compatibility
-   * (works in React dangerouslySetInnerHTML, <img> tags, etc.).
+   * Uses the native SVG `<title>` element for maximum compatibility.
    * @default true
    */
   showTooltip?: boolean;
 };
 
 /**
- * Represents the possible size values for map rendering
+ * Represents the possible size values for map rendering.
  *
- * The map size can be specified either as a:
- * - **String preset**: Predefined common sizes (xs through 4xl)
- * - **Number**: Custom scale factor relative to the original map dimensions
- *
- * **How scaling works:**
- * - The number represents a multiplier applied to the map's original dimensions
+ * Can be a predefined string preset (`'xs'` through `'4xl'`) or a custom numeric scale factor.
  * - A value of `1` = original size (100%)
- * - Values less than `1` = smaller than original (e.g., `0.5` = half size)
- * - Values greater than `1` = larger than original (e.g., `2` = double size)
- *
- * **String presets and their numeric equivalents:**
- * | Preset | Scale | Visual Reference                      |
- * |--------|-------|---------------------------------------|
- * | 'xs'   | 0.25  | Quarter of original size              |
- * | 'sm'   | 0.5   | Half of original size                 |
- * | 'md'   | 0.75  | Three-quarters of original size       |
- * | 'lg'   | 1     | Original size (default)               |
- * | 'xl'   | 1.5   | One and a half times original         |
- * | '2xl'  | 2     | Twice original size                   |
- * | '3xl'  | 2.5   | Two and a half times original         |
- * | '4xl'  | 3     | Three times original size             |
- *
- * @example
- * // Valid size values:
- * const size1: MapSize = 'md';     // 75% of original
- * const size2: MapSize = 'xl';     // 150% of original
- * const size3: MapSize = 0.33;     // Exactly one-third
- * const size4: MapSize = 1.25;     // 25% larger
- * const size5: MapSize = 2.75;     // 175% larger
- *
- * @example
- * // Practical usage with createMap:
- * // Mobile-friendly map (half size)
- * createMap('world', { size: 'sm' })
- *
- * // Print-quality map (double size)
- * createMap('world', { size: '2xl' })
- *
- * // Custom size for specific layout
- * createMap('usa', { size: 0.65 }) // 65% of original
+ * - Values `< 1` = smaller (e.g., `0.5` = half size)
+ * - Values `> 1` = larger (e.g., `2` = double size)
  */
-export type MapSize =
-  | "xs"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | number;
+export type MapSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | number;
 
 /**
- * Supported map types
- * - 'world': World map with all countries
- * - 'usa': Detailed map of usa with provinces/states
- * - 'india': Detailed map of india with provinces/states
- * - 'europe': Detailed map of europe with provinces/states
- * - For the full list of supported maps, open `MAPS_INFO.md` located in the root of the project.
- */
-export type MapType =
-  | "afghanistan"
-  | "australia"
-  | "brazil"
-  | "france"
-  | "gb"
-  | "germany"
-  | "india"
-  | "iran"
-  | "netherlands"
-  | "usa"
-  | "europe"
-  | "belgium"
-  | "switzerland"
-  | "pakistan"
-  | "canada"
-  | "argentina"
-  | "armenia"
-  | "austria"
-  | "denmark"
-  | "finland"
-  | "greenland"
-  | "iceland"
-  | "israel"
-  | "kuwait"
-  | "lebanon"
-  | "luxembourg"
-  | "norway"
-  | "oman"
-  | "poland"
-  | "singapore"
-  | "sweden"
-  | "uae"
-  | "vatican"
-  | "albania"
-  | "algeria"
-  | "andorra"
-  | "angola"
-  | "anguilla"
-  | "antigua_and_barbuda"
-  | "aruba"
-  | "azerbaijan"
-  | "bahrain"
-  | "barbados"
-  | "belarus"
-  | "belize"
-  | "benin"
-  | "bermuda"
-  | "bhutan"
-  | "bolivia"
-  | "bosnia_and_herzegovina"
-  | "botswana"
-  | "british_virgin_islands"
-  | "brunei"
-  | "bulgaria"
-  | "cambodia"
-  | "cameroon"
-  | "cape_verde"
-  | "drc"
-  | "chad"
-  | "chile"
-  | "china"
-  | "colombia"
-  | "croatia"
-  | "cyprus"
-  | "czech_republic"
-  | "central_african_republic"
-  | "djibouti"
-  | "ecuador"
-  | "egypt"
-  | "fiji"
-  | "georgia"
-  | "greece"
-  | "hungary"
-  | "indonesia"
-  | "iraq"
-  | "italy"
-  | "japan"
-  | "jordan"
-  | "kazakhstan"
-  | "kyrgyzstan"
-  | "laos"
-  | "libya"
-  | "macedonia"
-  | "malaysia"
-  | "mali"
-  | "mauritania"
-  | "mexico"
-  | "monaco"
-  | "mongolia"
-  | "montenegro"
-  | "myanmar"
-  | "namibia"
-  | "new_zealand"
-  | "nicaragua"
-  | "nigeria"
-  | "north_korea"
-  | "panama"
-  | "paraguay"
-  | "peru"
-  | "philippines"
-  | "portugal"
-  | "romania"
-  | "russia"
-  | "saudi_arabia"
-  | "senegal"
-  | "serbia"
-  | "slovakia"
-  | "slovenia"
-  | "south_africa"
-  | "south_korea"
-  | "south_sudan"
-  | "spain"
-  | "sudan"
-  | "syria"
-  | "tajikistan"
-  | "thailand"
-  | "turkey"
-  | "turkmenistan"
-  | "ukraine"
-  | "uruguay"
-  | "uzbekistan"
-  | "vietnam"
-  | "bangladesh"
-  | "ethiopia"
-  | "morocco"
-  | "taiwan"
-  | "tunisia"
-  | "zimbabwe"
-  | "madagascar"
-  | "ghana"
-  | "yemen"
-  | "honduras"
-  | "niger"
-  | "venezuela"
-  | "nepal"
-  | "togo"
-  | "liberia"
-  | "ireland"
-  | "palestine"
-  | "eritrea"
-  | "lithuania"
-  | "qatar"
-  | "malawi"
-  | "jamaica"
-  | "somalia"
-  | "uganda"
-  | "kenya"
-  | "tanzania"
-  | "mozambique"
-  | "moldova"
-  | "gabon"
-  | "lesotho"
-  | "latvia"
-  | "swaziland"
-  | "comoros"
-  | "guyana"
-  | "mauritius"
-  | "estonia"
-  | "suriname"
-  | "malta"
-  | "maldives"
-  | "bahamas"
-  | "vanuatu"
-  | "zambia"
-  | "guatemala"
-  | "guinea"
-  | "rwanda"
-  | "haiti"
-  | "burundi"
-  | "cuba"
-  | "grenada"
-  | "seychelles"
-  | "tonga"
-  | "dominica"
-  | "nauru"
-  | "montserrat"
-  | "liechtenstein"
-  | "timorleste"
-  | "hong_kong"
-  | "western_sahara"
-  | "cte_d_ivoire"
-  | "burkina_faso"
-  | "sri_lanka"
-  | "dominican_republic"
-  | "falkland_islands"
-  | "pitcairn_islands"
-  | "saint_martin_french"
-  | "saint_martin_dutch"
-  | "saint_kitts_and_nevis"
-  | "puerto_rico"
-  | "costa_rica"
-  | "the_gambia"
-  | "cayman_islands"
-  | "faeroe_islands"
-  | "turks_and_caicos_islands"
-  | "saint_vincent_and_the_grenadines"
-  | "united_states_virgin_islands"
-  | "curaco"
-  | "saint_lucia"
-  | "sao_tome_and_principe"
-  | "french_polynesia"
-  | "new_caledonia"
-  | "solomon_islands"
-  | "sierra_leone"
-  | "papua_new_guinea"
-  | "el_salvador"
-  | "republic_of_congo"
-  | "guineabissau"
-  | "equatorial_guinea"
-  | "trinidad_and_tobago"
-  | "world";
-
-/**
- * Represents a single path within a state
+ * Represents a single SVG path within a state.
  */
 export type PathData = {
-  /** SVG path data string */
+  /** The SVG path data string (e.g., "M10 10 H 90 V 90 H 10 Z") */
   d: string;
 };
 
 /**
- * Represents a geographic state (or country in world maps) within a map
- * Can have either a single path OR multiple paths, but not both
+ * Represents a geographic state (or country in world maps) within a map.
+ *
+ * @remarks Uses a discriminated union to ensure a state has either a single `path`
+ * OR multiple `paths` (for islands/territories), but never both.
  */
 export type MapState = {
   /** Unique identifier code for the state (e.g., 'AF' for Afghanistan) */
   code: string;
-
-  /** Display name of the state (e.g., 'Angola') */
+  /** Display name of the state (e.g., 'Afghanistan') */
   name: string;
 } & (
-  | {
-      /** Single SVG path for simple states */
-      path: string;
-      paths?: never;
-    }
-  | {
-      /** Multiple SVG paths for complex states (islands, territories, etc.) */
-      paths: PathData[];
-      path?: never;
-    }
-);
+    | {
+  /** Single SVG path for simple states */
+  path: string;
+  paths?: never;
+}
+    | {
+  /** Multiple SVG paths for complex states (islands, territories, etc.) */
+  paths: PathData[];
+  path?: never;
+}
+    );
 
 /**
- * Structure of map data containing either states or countries
+ * Structure of raw map data containing geographic and labeling information.
  */
 export type MapData = {
-  /** SVG viewBox attribute value */
+  /** SVG viewBox attribute value (e.g., "0 0 1000 1000") */
   viewBox: string;
 
-  /** States/provinces for country maps (like usa) */
+  /** States/provinces for country maps (e.g., USA, India) */
   states?: MapState[];
 
   /** Countries for world maps (treated as states for uniformity) */
   countries?: MapState[];
 
+  /** Optional static label coordinates and text */
   labels?: Array<{
     code: string;
     x: string | number;
