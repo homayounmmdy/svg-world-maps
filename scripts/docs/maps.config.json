@@ -7,355 +7,438 @@
   },
   "maps": [
     {
-      "name": "Cameroon",
-      "code": "CM",
+      "name": "Haiti",
+      "code": "HT",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(0, 32, 152, 0.35)",
+      "description": "Haiti is a Caribbean nation sharing the island of Hispaniola, celebrated as the world's first independent black republic, with a rich history, vibrant art, and resilient culture."
+    },
+    {
+      "name": "Honduras",
+      "code": "HN",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(0, 112, 184, 0.35)",
+      "description": "Honduras is a Central American country known for its rugged Caribbean and Pacific coastlines, lush rainforests, and the ancient Mayan ruins of Copán."
+    },
+    {
+      "name": "Iceland",
+      "code": "IS",
       "regionLabel": "Region",
-      "hoverColor": "rgba(0, 122, 54, 0.35)",
-      "description": "Cameroon is a Central African country often called 'Africa in miniature' due to its geological and cultural diversity, featuring rainforests, savannas, and mountain ranges."
+      "hoverColor": "rgba(0, 58, 135, 0.35)",
+      "description": "Iceland is a Nordic island nation in the North Atlantic, famously known as the 'Land of Fire and Ice' for its dramatic volcanoes, geysers, hot springs, and lava fields."
     },
     {
-      "name": "Côte d'Ivoire",
-      "code": "CI",
-      "regionLabel": "District",
-      "hoverColor": "rgba(247, 127, 0, 0.35)",
-      "description": "Côte d'Ivoire (Ivory Coast) is a West African country known for its rich cocoa production, vibrant cultural heritage, and beautiful Atlantic coastline."
+      "name": "Jamaica",
+      "code": "JM",
+      "regionLabel": "Parish",
+      "hoverColor": "rgba(0, 154, 68, 0.35)",
+      "description": "Jamaica is a vibrant Caribbean island nation, globally renowned as the birthplace of reggae music, with lush mountainous interiors, waterfalls, and stunning white-sand beaches."
     },
     {
-      "name": "Libya",
-      "code": "LY",
-      "regionLabel": "District",
+      "name": "Kyrgyzstan",
+      "code": "KG",
+      "regionLabel": "Region",
       "hoverColor": "rgba(238, 28, 39, 0.35)",
-      "description": "Libya is a North African country with a long Mediterranean coastline, renowned for its well-preserved ancient Roman ruins, vast Sahara Desert landscapes, and significant energy reserves."
+      "description": "Kyrgyzstan is a landlocked country in Central Asia, dominated by the majestic Tian Shan mountains, pristine alpine lakes like Issyk-Kul, and a rich, enduring nomadic heritage."
     },
     {
-      "name": "Mozambique",
-      "code": "MZ",
+      "name": "Laos",
+      "code": "LA",
       "regionLabel": "Province",
-      "hoverColor": "rgba(0, 120, 60, 0.35)",
-      "description": "Mozambique is a Southeast African country celebrated for its stunning Indian Ocean coastline, pristine coral reefs, and a rich cultural heritage blending African, Arab, and Portuguese influences."
+      "hoverColor": "rgba(174, 15, 29, 0.35)",
+      "description": "Laos is a landlocked Southeast Asian country characterized by its rugged mountainous terrain, the mighty Mekong River, French colonial architecture, and serene Buddhist temples."
     },
     {
-      "name": "Palestine",
-      "code": "PS",
-      "regionLabel": "Governorate",
-      "hoverColor": "rgba(206, 17, 38, 0.35)",
-      "description": "Palestine is a region in the Middle East with profound historical and religious significance, known for its ancient cities, rich cultural heritage, and enduring resilience."
+      "name": "Lesotho",
+      "code": "LS",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 33, 115, 0.35)",
+      "description": "Lesotho is an independent, landlocked kingdom entirely surrounded by South Africa, known as the 'Kingdom in the Sky' due to its high elevation and the spectacular Maloti Mountains."
     },
     {
-      "name": "Puerto Rico",
-      "code": "PR",
-      "regionLabel": "Municipality",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "Puerto Rico is a Caribbean island and unincorporated territory of the United States, famous for its tropical beaches, lush El Yunque rainforest, and vibrant Spanish colonial history."
-    },
-    {
-      "name": "Senegal",
-      "code": "SN",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(0, 134, 69, 0.35)",
-      "description": "Senegal is a West African country known for its vibrant music scene, the historic Gorée Island, diverse wildlife, and the iconic baobab trees dotting its landscape."
-    },
-    {
-      "name": "Zimbabwe",
-      "code": "ZW",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "Zimbabwe is a landlocked country in Southern Africa, renowned for the majestic Victoria Falls, the ancient Great Zimbabwe ruins, and abundant wildlife in its expansive national parks."
-    },
-    {
-      "name": "Albania",
-      "code": "AL",
+      "name": "Liberia",
+      "code": "LR",
       "regionLabel": "County",
-      "hoverColor": "rgba(228, 0, 21, 0.35)",
-      "description": "Albania is a Balkan country in Southeastern Europe, celebrated for its rugged mountains, pristine Ionian and Adriatic coastlines, and ancient historical sites."
+      "hoverColor": "rgba(191, 10, 48, 0.35)",
+      "description": "Liberia is a West African country with a unique history as a settlement for freed American slaves, featuring dense rainforests, a rich cultural tapestry, and a resilient national spirit."
     },
     {
-      "name": "Andorra",
-      "code": "AD",
+      "name": "Liechtenstein",
+      "code": "LI",
+      "regionLabel": "Commune",
+      "hoverColor": "rgba(0, 43, 127, 0.35)",
+      "description": "Liechtenstein is a tiny, prosperous Alpine principality nestled between Switzerland and Austria, famous for its medieval castles, picturesque villages, and stunning mountain landscapes."
+    },
+    {
+      "name": "Luxembourg",
+      "code": "LU",
+      "regionLabel": "Canton",
+      "hoverColor": "rgba(237, 28, 36, 0.35)",
+      "description": "Luxembourg is a small, landlocked Western European grand duchy, known for its fortified medieval old town perched on rocky gorges, lush forests, and its role as a major financial hub."
+    },
+    {
+      "name": "Macedonia",
+      "code": "MK",
+      "regionLabel": "Municipality",
+      "hoverColor": "rgba(210, 28, 38, 0.35)",
+      "description": "Macedonia (North Macedonia) is a landlocked country in the Balkan peninsula, known for its ancient history, dramatic mountains, and the UNESCO World Heritage site of Lake Ohrid."
+    },
+    {
+      "name": "Madagascar",
+      "code": "MG",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(218, 41, 28, 0.35)",
+      "description": "Madagascar is a large island nation in the Indian Ocean, globally famous for its unique biodiversity, including lemurs and baobab trees, found nowhere else on Earth."
+    },
+    {
+      "name": "Malawi",
+      "code": "MW",
+      "regionLabel": "District",
+      "hoverColor": "rgba(206, 17, 38, 0.35)",
+      "description": "Malawi is a landlocked country in southeastern Africa, affectionately known as the 'Warm Heart of Africa' for its friendly people and the stunning, clear waters of Lake Malawi."
+    },
+    {
+      "name": "Maldives",
+      "code": "MV",
+      "regionLabel": "Atoll",
+      "hoverColor": "rgba(218, 41, 28, 0.35)",
+      "description": "The Maldives is a tropical island nation in the Indian Ocean, renowned worldwide for its luxury overwater resorts, pristine white-sand beaches, and vibrant coral reefs."
+    },
+    {
+      "name": "Mali",
+      "code": "ML",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(206, 17, 38, 0.35)",
+      "description": "Mali is a landlocked West African country, historically significant as the heart of the ancient Mali Empire, and known for the historic city of Timbuktu and the Niger River."
+    },
+    {
+      "name": "Malta",
+      "code": "MT",
+      "regionLabel": "Local Council",
+      "hoverColor": "rgba(207, 14, 45, 0.35)",
+      "description": "Malta is a small, densely populated island country in the central Mediterranean, famous for its rich history, fortified medieval cities, and ancient megalithic temples."
+    },
+    {
+      "name": "Mauritania",
+      "code": "MR",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 98, 51, 0.35)",
+      "description": "Mauritania is a large country in Northwest Africa, largely covered by the Sahara Desert, known for its ancient Saharan trading posts, iron ore reserves, and Atlantic coastline."
+    },
+    {
+      "name": "Mauritius",
+      "code": "MU",
+      "regionLabel": "District",
+      "hoverColor": "rgba(218, 41, 28, 0.35)",
+      "description": "Mauritius is an island nation in the Indian Ocean, celebrated for its stunning beaches, turquoise lagoons, extensive coral reefs, and a harmonious multicultural society."
+    },
+    {
+      "name": "Moldova",
+      "code": "MD",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Moldova is a landlocked country in Eastern Europe, known for its rolling hills, extensive and historic wine cellars, and a rich, traditional agricultural heritage."
+    },
+    {
+      "name": "Monaco",
+      "code": "MC",
+      "regionLabel": "Ward",
+      "hoverColor": "rgba(207, 14, 45, 0.35)",
+      "description": "Monaco is a tiny, sovereign city-state on the French Riviera, globally famous for its upscale casinos, yacht-lined harbor, prestigious Grand Prix, and glamorous lifestyle."
+    },
+    {
+      "name": "Mongolia",
+      "code": "MN",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Mongolia is a vast, landlocked country in East Asia, famous for its expansive steppes, rich nomadic heritage, and the legacy of the historic Mongol Empire."
+    },
+    {
+      "name": "Montenegro",
+      "code": "ME",
+      "regionLabel": "Municipality",
+      "hoverColor": "rgba(210, 16, 52, 0.35)",
+      "description": "Montenegro is a small Balkan country on the Adriatic Sea, known for its dramatic mountains, medieval villages, and the stunning, fjord-like Bay of Kotor."
+    },
+    {
+      "name": "Montserrat",
+      "code": "MS",
       "regionLabel": "Parish",
       "hoverColor": "rgba(0, 51, 160, 0.35)",
-      "description": "Andorra is a small, landlocked principality nestled high in the Pyrenees mountains between France and Spain, famous for its ski resorts, duty-free shopping, and stunning alpine scenery."
+      "description": "Montserrat is a small Caribbean island and British Overseas Territory, known as the 'Emerald Isle of the Caribbean' for its Irish heritage and lush, volcanic landscape."
     },
     {
-      "name": "Bahamas",
-      "code": "BS",
-      "regionLabel": "District",
-      "hoverColor": "rgba(0, 123, 167, 0.35)",
-      "description": "The Bahamas is an archipelagic country in the Lucayan Archipelago of the Atlantic Ocean, renowned for its stunning turquoise waters, white-sand beaches, and vibrant coral reefs."
-    },
-    {
-      "name": "Barbados",
-      "code": "BB",
-      "regionLabel": "Parish",
-      "hoverColor": "rgba(0, 33, 115, 0.35)",
-      "description": "Barbados is an island country in the Lesser Antilles of the West Indies, celebrated for its rich British colonial history, vibrant calypso music, and beautiful coastal landscapes."
-    },
-    {
-      "name": "Bolivia",
-      "code": "BO",
-      "regionLabel": "Department",
-      "hoverColor": "rgba(217, 45, 32, 0.35)",
-      "description": "Bolivia is a landlocked country in central South America, famous for its diverse landscapes ranging from the Andes Mountains and the Altiplano to the Amazon Basin and the vast Salar de Uyuni salt flats."
-    },
-    {
-      "name": "Bosnia and Herzegovina",
-      "code": "BA",
-      "regionLabel": "Entity",
-      "hoverColor": "rgba(0, 33, 128, 0.35)",
-      "description": "Bosnia and Herzegovina is a country in Southeastern Europe, known for its rugged Dinaric Alps, medieval fortresses, and historic cities like Sarajevo and Mostar with its iconic Old Bridge."
-    },
-    {
-      "name": "Botswana",
-      "code": "BW",
-      "regionLabel": "District",
-      "hoverColor": "rgba(114, 188, 232, 0.35)",
-      "description": "Botswana is a landlocked country in Southern Africa, globally recognized for its vast Kalahari Desert, the unique Okavango Delta, and its exceptional commitment to wildlife conservation."
-    },
-    {
-      "name": "Brunei",
-      "code": "BN",
-      "regionLabel": "District",
-      "hoverColor": "rgba(247, 209, 0, 0.35)",
-      "description": "Brunei is a small, wealthy sovereign state located on the north coast of the island of Borneo, known for its opulent Islamic architecture, vast rainforests, and significant oil reserves."
-    },
-    {
-      "name": "Burkina_faso",
-      "code": "BF",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(239, 42, 46, 0.35)",
-      "description": "Burkina Faso is a landlocked country in West Africa, characterized by its expansive savanna landscapes, rich cultural festivals, and a heritage deeply rooted in traditional Mossi kingdoms."
-    },
-    {
-      "name": "Burundi",
-      "code": "BI",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "Burundi is a small, landlocked country in the Great Lakes region of Eastern Africa, known for its rolling hills, the northern shores of Lake Tanganyika, and a resilient, vibrant culture."
-    },
-    {
-      "name": "Cape_verde",
-      "code": "CV",
-      "regionLabel": "Municipality",
-      "hoverColor": "rgba(0, 44, 125, 0.35)",
-      "description": "Cape Verde is an island country spanning an archipelago of 10 volcanic islands in the central Atlantic Ocean, famous for its Creole culture, morna music, and dramatic mountainous terrain."
-    },
-    {
-      "name": "Costa_rica",
-      "code": "CR",
-      "regionLabel": "Province",
-      "hoverColor": "rgba(0, 43, 127, 0.35)",
-      "description": "Costa Rica is a Central American country renowned for its intense biodiversity, lush rainforests, active volcanoes, and a national philosophy of 'Pura Vida' (pure life) emphasizing peace and nature."
-    },
-    {
-      "name": "Anguilla",
-      "code": "AI",
-      "regionLabel": "District",
+      "name": "Namibia",
+      "code": "NA",
+      "regionLabel": "Region",
       "hoverColor": "rgba(0, 56, 168, 0.35)",
-      "description": "Anguilla is a British Overseas Territory in the Caribbean, renowned for its pristine white-sand beaches, crystal-clear turquoise waters, and vibrant coral reefs."
+      "description": "Namibia is a country in Southern Africa characterized by the arid Namib Desert along its Atlantic coastline, diverse wildlife, and striking red sand dunes."
     },
     {
-      "name": "Antigua and Barbuda",
-      "code": "AG",
-      "regionLabel": "Parish",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "Antigua and Barbuda is a twin-island nation in the Caribbean, famous for its 365 beaches, historic Nelson's Dockyard, and a rich sailing culture."
-    },
-    {
-      "name": "Aruba",
-      "code": "AW",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(0, 51, 160, 0.35)",
-      "description": "Aruba is a constituent country of the Kingdom of the Netherlands in the southern Caribbean Sea, known for its dry, sunny climate, white-sand beaches, and distinctive divi-divi trees."
-    },
-    {
-      "name": "Benin",
-      "code": "BJ",
-      "regionLabel": "Department",
-      "hoverColor": "rgba(252, 209, 22, 0.35)",
-      "description": "Benin is a West African country celebrated as the birthplace of the Voodoo religion, featuring rich historical heritage, traditional architecture, and diverse wildlife reserves."
-    },
-    {
-      "name": "Bermuda",
-      "code": "BM",
-      "regionLabel": "Parish",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "Bermuda is a British Overseas Territory in the North Atlantic Ocean, famous for its pink-sand beaches, pastel-colored architecture, and mysterious maritime history."
-    },
-    {
-      "name": "Bhutan",
-      "code": "BT",
-      "regionLabel": "District",
-      "hoverColor": "rgba(255, 165, 0, 0.35)",
-      "description": "Bhutan is a landlocked Himalayan kingdom in South Asia, globally unique for measuring its progress by Gross National Happiness and preserving its rich Buddhist culture and pristine environment."
-    },
-    {
-      "name": "British Virgin Islands",
-      "code": "VG",
+      "name": "Nauru",
+      "code": "NR",
       "regionLabel": "District",
       "hoverColor": "rgba(0, 51, 160, 0.35)",
-      "description": "The British Virgin Islands is a Caribbean overseas territory of the United Kingdom, celebrated as a world-class yachting destination with stunning volcanic islands and clear waters."
+      "description": "Nauru is a tiny island country in Micronesia, known for its raised coral atoll, phosphate mining history, and unique, isolated Pacific culture."
     },
     {
-      "name": "Cayman Islands",
-      "code": "KY",
-      "regionLabel": "District",
-      "hoverColor": "rgba(0, 51, 160, 0.35)",
-      "description": "The Cayman Islands is a British Overseas Territory in the western Caribbean, globally recognized as a major financial hub and a premier destination for scuba diving and luxury tourism."
-    },
-    {
-      "name": "Central African Republic",
-      "code": "CF",
-      "regionLabel": "Prefecture",
-      "hoverColor": "rgba(33, 93, 168, 0.35)",
-      "description": "The Central African Republic is a landlocked country in Central Africa, characterized by vast savannas, dense tropical rainforests, and rich biodiversity including forest elephants and gorillas."
-    },
-    {
-      "name": "Chad",
-      "code": "TD",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(0, 42, 135, 0.35)",
-      "description": "Chad is a large, landlocked country in north-central Africa, known for its diverse geography ranging from the Sahara Desert in the north to the fertile Sudanian Savanna and Lake Chad in the south."
-    },
-    {
-      "name": "Comoros",
-      "code": "KM",
-      "regionLabel": "Autonomous Island",
-      "hoverColor": "rgba(0, 120, 60, 0.35)",
-      "description": "Comoros is a volcanic archipelago nation in the Indian Ocean, known for its rich biodiversity, fragrant ylang-ylang plantations, and a unique blend of African, Arab, and French cultures."
-    },
-    {
-      "name": "Curaco",
-      "code": "CW",
-      "regionLabel": "Municipality",
-      "hoverColor": "rgba(0, 43, 127, 0.35)",
-      "description": "Curaçao is a Caribbean island country and constituent of the Kingdom of the Netherlands, famous for its colorful Dutch colonial architecture in Willemstad, pristine beaches, and vibrant cultural heritage."
-    },
-    {
-      "name": "Cyprus",
-      "code": "CY",
-      "regionLabel": "District",
-      "hoverColor": "rgba(207, 146, 52, 0.35)",
-      "description": "Cyprus is an island country in the Eastern Mediterranean, celebrated for its ancient Greek and Roman ruins, beautiful beaches, and a rich history that bridges Europe and the Middle East."
-    },
-    {
-      "name": "Democratic Republic of the Congo",
-      "code": "CD",
+      "name": "New_caledonia",
+      "code": "NC",
       "regionLabel": "Province",
-      "hoverColor": "rgba(118, 208, 242, 0.35)",
-      "description": "The Democratic Republic of the Congo is a vast Central African nation, home to the second-largest rainforest in the world, the mighty Congo River, and incredible wildlife including mountain gorillas."
+      "hoverColor": "rgba(238, 28, 39, 0.35)",
+      "description": "New Caledonia is a French special collectivity in the southwest Pacific, renowned for its immense barrier reef, diverse indigenous Kanak culture, and lush landscapes."
     },
     {
-      "name": "Djibouti",
-      "code": "DJ",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(110, 173, 212, 0.35)",
-      "description": "Djibouti is a small country in the Horn of Africa, strategically located at the southern entrance to the Red Sea, known for its dramatic volcanic landscapes and salt lakes like Lake Assal."
-    },
-    {
-      "name": "Dominica",
-      "code": "DM",
-      "regionLabel": "Parish",
-      "hoverColor": "rgba(0, 120, 60, 0.35)",
-      "description": "Dominica, known as the 'Nature Island of the Caribbean,' is a mountainous volcanic island famous for its lush rainforests, boiling lakes, waterfalls, and eco-tourism."
-    },
-    {
-      "name": "El_salvador",
-      "code": "SV",
+      "name": "Nicaragua",
+      "code": "NI",
       "regionLabel": "Department",
-      "hoverColor": "rgba(0, 65, 158, 0.35)",
-      "description": "El Salvador is the smallest and most densely populated country in Central America, known for its Pacific coastline, volcanic landscapes, ancient Mayan ruins, and world-class surfing spots."
+      "hoverColor": "rgba(0, 112, 184, 0.35)",
+      "description": "Nicaragua is the largest country in Central America, known as the 'Land of Lakes and Volcanoes' for its stunning natural geography, colonial cities, and rich biodiversity."
     },
     {
-      "name": "Equatorial_guinea",
-      "code": "GQ",
+      "name": "Niger",
+      "code": "NE",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 120, 60, 0.35)",
+      "description": "Niger is a landlocked country in West Africa, largely covered by the Sahara Desert, known for its ancient rock art, the W National Park, and the Niger River."
+    },
+    {
+      "name": "North_korea",
+      "code": "KP",
       "regionLabel": "Province",
-      "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "Equatorial Guinea is a small country on the west coast of Central Africa, consisting of a mainland region and several islands, known for its lush rainforests and diverse wildlife."
-    },
-    {
-      "name": "Eritrea",
-      "code": "ER",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(255, 210, 0, 0.35)",
-      "description": "Eritrea is a country in the Horn of Africa with a long coastline along the Red Sea, renowned for its well-preserved Italian colonial architecture in Asmara and ancient historical sites."
-    },
-    {
-      "name": "Ethiopia",
-      "code": "ET",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "Ethiopia is a landlocked country in the Horn of Africa, celebrated as one of the oldest sites of human existence, featuring ancient rock-hewn churches, highland plateaus, and a rich, unique cultural heritage."
-    },
-
-    {
-      "name": "Faeroe_islands",
-      "code": "FO",
-      "regionLabel": "Municipality",
       "hoverColor": "rgba(0, 51, 160, 0.35)",
-      "description": "A self-governing archipelago of the Kingdom of Denmark, known for its dramatic sea cliffs, rugged treeless landscapes, and rich Norse maritime heritage."
+      "description": "North Korea is a country in East Asia, known for its highly centralized government, distinctive monumental architecture in Pyongyang, and rugged mountainous terrain."
     },
     {
-      "name": "Falkland_islands",
-      "code": "FK",
+      "name": "Panama",
+      "code": "PA",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(210, 16, 52, 0.35)",
+      "description": "Panama is a Central American country famous for the Panama Canal, which connects the Atlantic and Pacific Oceans, as well as its vibrant capital city and rich tropical biodiversity."
+    },
+    {
+      "name": "Papua New Guinea",
+      "code": "PG",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(255, 204, 0, 0.35)",
+      "description": "Papua New Guinea is an Oceanian country occupying the eastern half of the island of New Guinea, renowned for its incredible linguistic diversity, rich tribal cultures, and unique wildlife like the bird of paradise."
+    },
+    {
+      "name": "Paraguay",
+      "code": "PY",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(213, 43, 30, 0.35)",
+      "description": "Paraguay is a landlocked country in the heart of South America, known for its strong Guarani cultural heritage, the vast Gran Chaco region, and the mighty Paraguay River."
+    },
+    {
+      "name": "Pitcairn Islands",
+      "code": "PN",
       "regionLabel": "Settlement",
-      "hoverColor": "rgba(0, 33, 115, 0.35)",
-      "description": "A remote British Overseas Territory in the South Atlantic Ocean, famous for its abundant wildlife, including massive penguin colonies, and rugged, windswept terrain."
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "The Pitcairn Islands are a remote British Overseas Territory in the South Pacific, famously known as the final refuge of the HMS Bounty mutineers and their Tahitian companions."
     },
     {
-      "name": "Fiji",
-      "code": "FJ",
-      "regionLabel": "Division",
-      "hoverColor": "rgba(0, 56, 168, 0.35)",
-      "description": "An island country in Melanesia, part of Oceania, celebrated for its pristine coral reefs, clear blue lagoons, soft coral diving, and vibrant indigenous culture."
+      "name": "Republic of Congo",
+      "code": "CG",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(254, 203, 0, 0.35)",
+      "description": "The Republic of the Congo is a Central African nation located on the equator, known for its dense Congo Basin rainforests, diverse wildlife, and vibrant cultural traditions."
     },
     {
-      "name": "French_polynesia",
-      "code": "PF",
-      "regionLabel": "Administrative Subdivision",
+      "name": "Rwanda",
+      "code": "RW",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 120, 60, 0.35)",
+      "description": "Rwanda is a small, landlocked country in East Africa, famously known as the 'Land of a Thousand Hills' and celebrated for its mountain gorilla conservation efforts and remarkable post-genocide recovery."
+    },
+    {
+      "name": "Saint Kitts and Nevis",
+      "code": "KN",
+      "regionLabel": "Parish",
       "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "An overseas collectivity of France in the South Pacific, renowned for its stunning volcanic atolls, turquoise lagoons, and the iconic, culturally rich island of Tahiti."
+      "description": "Saint Kitts and Nevis is a dual-island nation in the Caribbean, known for its historic Brimstone Hill Fortress, lush rainforests, and beautiful black-sand beaches."
     },
     {
-      "name": "Gabon",
-      "code": "GA",
+      "name": "Saint Lucia",
+      "code": "LC",
+      "regionLabel": "Quarter",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Saint Lucia is a volcanic island nation in the Caribbean, globally famous for its iconic, towering Pitons, lush rainforests, and vibrant Creole culture."
+    },
+    {
+      "name": "Saint Martin (Dutch)",
+      "code": "SX",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(238, 28, 39, 0.35)",
+      "description": "Sint Maarten is the Dutch constituent country occupying the southern part of the Caribbean island of Saint Martin, famous for its duty-free shopping, vibrant nightlife, and the unique Maho Beach."
+    },
+    {
+      "name": "Saint Martin (French)",
+      "code": "MF",
+      "regionLabel": "Collectivity",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Saint Martin is the French overseas collectivity occupying the northern part of the Caribbean island, celebrated for its pristine beaches, gourmet French-Creole cuisine, and tranquil atmosphere."
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "code": "VC",
+      "regionLabel": "Parish",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Saint Vincent and the Grenadines is a Caribbean nation consisting of the main island of Saint Vincent and a chain of smaller islands, renowned as a world-class sailing destination with lush volcanic landscapes."
+    },
+    {
+      "name": "São Tomé and Príncipe",
+      "code": "ST",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 158, 48, 0.35)",
+      "description": "São Tomé and Príncipe is a small island nation in the Gulf of Guinea, known for its lush rainforests, pristine beaches, and historic Portuguese colonial architecture."
+    },
+    {
+      "name": "Seychelles",
+      "code": "SC",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Seychelles is an archipelago of 115 islands in the Indian Ocean, globally celebrated for its rare wildlife, pristine coral reefs, and iconic granite rock formations."
+    },
+    {
+      "name": "Sierra Leone",
+      "code": "SL",
       "regionLabel": "Province",
       "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "A Central African country on the Atlantic coast, known for its exceptionally preserved rainforests, diverse wildlife including forest elephants, and significant natural resources."
+      "description": "Sierra Leone is a West African country known for its beautiful Atlantic coastline, rich diamond mining history, and resilient, vibrant cultural communities."
     },
     {
-      "name": "Greenland",
-      "code": "GL",
+      "name": "Solomon Islands",
+      "code": "SB",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "The Solomon Islands is an Oceanian country consisting of nearly 1,000 islands, famous for its World War II historical sites, incredible marine biodiversity, and traditional Melanesian culture."
+    },
+    {
+      "name": "Somalia",
+      "code": "SO",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(73, 162, 225, 0.35)",
+      "description": "Somalia is a country in the Horn of Africa with the longest coastline on the continent, known for its rich pastoral heritage, ancient cave paintings, and strategic maritime location."
+    },
+    {
+      "name": "South Sudan",
+      "code": "SS",
+      "regionLabel": "State",
+      "hoverColor": "rgba(0, 158, 48, 0.35)",
+      "description": "South Sudan is a landlocked country in East-Central Africa, characterized by vast swamps, the White Nile, and diverse ethnic groups with rich cultural traditions."
+    },
+    {
+      "name": "Suriname",
+      "code": "SR",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 120, 60, 0.35)",
+      "description": "Suriname is a small country on the northeastern coast of South America, renowned for its vast, untouched Amazon rainforest and highly diverse, multicultural population."
+    },
+    {
+      "name": "Swaziland",
+      "code": "SZ",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Eswatini (formerly Swaziland) is a small, landlocked kingdom in Southern Africa, famous for its traditional Swazi culture, wildlife reserves, and scenic mountain landscapes."
+    },
+    {
+      "name": "Tajikistan",
+      "code": "TJ",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(200, 16, 46, 0.35)",
+      "description": "Tajikistan is a landlocked, mountainous country in Central Asia, dominated by the Pamir Mountains and known for its ancient Silk Road history and resilient, hospitable people."
+    },
+    {
+      "name": "The Gambia",
+      "code": "GM",
+      "regionLabel": "Division",
+      "hoverColor": "rgba(200, 16, 46, 0.35)",
+      "description": "The Gambia is the smallest country on mainland Africa, uniquely defined by the Gambia River that flows through its center, known for its rich birdlife and friendly coastal communities."
+    },
+    {
+      "name": "Timor-leste",
+      "code": "TL",
       "regionLabel": "Municipality",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "The world's largest island, an autonomous territory within the Kingdom of Denmark, characterized by its vast Arctic ice sheet, dramatic fjords, and resilient Inuit culture."
+      "hoverColor": "rgba(218, 41, 28, 0.35)",
+      "description": "Timor-Leste is a Southeast Asian nation occupying the eastern half of the island of Timor, known for its rich cultural heritage, pristine coral reefs, and resilient history."
     },
     {
-      "name": "Grenada",
-      "code": "GD",
-      "regionLabel": "Parish",
-      "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "A Caribbean island nation known as the 'Isle of Spice' for its abundant nutmeg and mace production, featuring lush mountainous rainforests and beautiful secluded beaches."
-    },
-    {
-      "name": "Guinea",
-      "code": "GN",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(200, 16, 46, 0.35)",
-      "description": "A coastal country in West Africa, often called the 'Water Tower of West Africa' due to its major rivers, and globally significant for its rich mineral resources, particularly bauxite."
-    },
-    {
-      "name": "Guinea-bissau",
-      "code": "GW",
-      "regionLabel": "Region",
-      "hoverColor": "rgba(239, 42, 46, 0.35)",
-      "description": "A small West African country with a rugged coastline dotted with the Bijagós archipelago, known for its rich biodiversity, mangrove forests, and vibrant Afro-Portuguese culture."
-    },
-    {
-      "name": "Guyana",
-      "code": "GY",
+      "name": "Togo",
+      "code": "TG",
       "regionLabel": "Region",
       "hoverColor": "rgba(0, 158, 48, 0.35)",
-      "description": "A country on the northern mainland of South America, featuring dense Amazon rainforests, vast savannas, and the spectacular, single-drop Kaieteur Falls."
+      "description": "Togo is a narrow West African country known for its palm-lined beaches, vibrant voodoo culture, and the scenic, rolling landscapes of the Togo Mountains."
+    },
+    {
+      "name": "Tonga",
+      "code": "TO",
+      "regionLabel": "Division",
+      "hoverColor": "rgba(200, 16, 46, 0.35)",
+      "description": "Tonga is a Polynesian kingdom in the South Pacific, famous for its untouched coral reefs, traditional wooden architecture, and being the first country to see the new day."
+    },
+    {
+      "name": "Trinidad_and_tobago",
+      "code": "TT",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(200, 16, 46, 0.35)",
+      "description": "Trinidad and Tobago is a twin-island Caribbean nation renowned as the birthplace of calypso and steelpan music, with rich biodiversity and vibrant carnival traditions."
+    },
+    {
+      "name": "Turkmenistan",
+      "code": "TM",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 158, 48, 0.35)",
+      "description": "Turkmenistan is a Central Asian country largely covered by the Karakum Desert, known for its ancient Silk Road cities like Merv and the famous Darvaza gas crater."
+    },
+    {
+      "name": "Turks_and_caicos_islands",
+      "code": "TC",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "The Turks and Caicos Islands are a British Overseas Territory in the Atlantic Ocean, celebrated for their stunning white-sand beaches, crystal-clear waters, and world-class snorkeling."
+    },
+    {
+      "name": "United_states_virgin_islands",
+      "code": "VI",
+      "regionLabel": "District",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "The United States Virgin Islands are a group of Caribbean islands and an unincorporated territory of the US, known for beautiful beaches, historic sugar plantations, and vibrant marine life."
+    },
+    {
+      "name": "Uruguay",
+      "code": "UY",
+      "regionLabel": "Department",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Uruguay is a South American country known for its progressive policies, scenic coastal resorts like Punta del Este, and a rich gaucho and tango heritage."
+    },
+    {
+      "name": "Uzbekistan",
+      "code": "UZ",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 51, 160, 0.35)",
+      "description": "Uzbekistan is a doubly landlocked country in Central Asia, famous for its stunning Islamic architecture and ancient Silk Road cities like Samarkand, Bukhara, and Khiva."
+    },
+    {
+      "name": "Vanuatu",
+      "code": "VU",
+      "regionLabel": "Province",
+      "hoverColor": "rgba(200, 16, 46, 0.35)",
+      "description": "Vanuatu is a South Pacific island nation known for its active volcanoes, pristine coral reefs, shipwreck diving sites, and rich, diverse Melanesian cultures."
+    },
+    {
+      "name": "Vatican",
+      "code": "VA",
+      "regionLabel": "District",
+      "hoverColor": "rgba(254, 218, 0, 0.35)",
+      "description": "Vatican City is an independent city-state enclaved within Rome, Italy, serving as the spiritual and administrative headquarters of the Roman Catholic Church and home to iconic art and architecture."
+    },
+    {
+      "name": "Western Sahara",
+      "code": "EH",
+      "regionLabel": "Region",
+      "hoverColor": "rgba(0, 120, 60, 0.35)",
+      "description": "Western Sahara is a sparsely populated territory in North Africa, largely covered by the Sahara Desert, known for its rugged Atlantic coastline and complex geopolitical status."
     }
   ]
 }
