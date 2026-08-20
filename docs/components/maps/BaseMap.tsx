@@ -22,7 +22,7 @@ export default function BaseMap({
 
     const svgString = createMap(mapId, {
         background: "transparent",
-        borders: "#1e293b",
+        borders: "#4f5357",
         hoverColor: hoverColor,
         showTooltip: true,
         size: "sm",
