@@ -1,0 +1,155 @@
+---
+title: Map Registration Script (DX)
+description: Internal development utility for automating boilerplate when adding custom, historical, or imaginary maps.
+sidebar_position: 4
+sidebar_label: Map Registration (DX)
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# 🛠️ Map Registration Script (DX)
+
+> **Development Utility.** Automate boilerplate configuration when adding custom, historical, or imaginary maps to the codebase.
+
+By default, all core country and region maps are already registered in the library. However, this script is retained in the codebase strictly for **internal development and Developer Experience (DX)**. It allows you to scaffold the necessary type definitions and configurations for new maps in seconds, without manual boilerplate updates.
+
+<Admonition type="warning" title="Deprecation & Status Notice">
+  ⚠️ This script is <strong>deprecated for standard production use</strong>, as the core map set is complete. 
+  <br/>
+  It is kept exclusively for <strong>development purposes</strong> to speed up the addition of niche, historical, or fictional maps in the future.
+</Admonition>
+
+---
+
+## 🚀 How to Use the Script
+
+The script automates the scaffolding of a new map by safely updating `types.ts`, `config.ts`, and `index.ts`, and ensuring the `src/maps/` directory exists.
+
+Run the script from the root of your project:
+
+<Tabs groupId="execution">
+  <TabItem value="node" label="Node.js" default>
+    ```bash
+    node scripts/register-map.js <map-name> [height]
+    ```
+  </TabItem>
+  <TabItem value="npx" label="npx (if configured)">
+    ```bash
+    npx register-map <map-name> [height]
+    ```
+  </TabItem>
+</Tabs>
+
+### Arguments
+
+| Argument | Required | Default | Description |
+| :--- | :---: | :---: | :--- |
+| `<map-name>` | ✅ Yes | *None* | The name of the new map. It will be automatically sanitized to lowercase, containing only alphanumeric characters and underscores (e.g., `MiddleEarth` → `middleearth`). |
+| `[height]` | ❌ No | `1000` | Optional custom height for the map's viewport configuration. Must be a positive integer. |
+
+### Example Execution
+
+```bash
+node scripts/register-map.js atlantis 1200
+```
+
+**Output:**
+```text
+🚀 Adding new map: "atlantis" with height: 1200...
+✅ Updated types.ts
+✅ Updated config.ts
+✅ Updated index.ts
+
+🎉 Successfully added "atlantis"!
+
+📝 Next steps:
+1. Update the dimensions in config.ts (BASE_VIEWPORT_CONFIGS.atlantis) if needed
+2. Import and register the data in config.ts:
+   import atlantisData from './maps/atlantis';
+   registerMapData('atlantis', atlantisData);
+```
+
+---
+
+## ⚙️ What the Script Does (Under the Hood)
+
+When executed, the script safely modifies the following files in the `src/` directory:
+
+1. **`src/types.ts`**  
+   Adds the new map name to the `MapType` union type (inserted before `"world"`) and appends a corresponding JSDoc description.
+2. **`src/config.ts`**  
+   - Adds the map to `MAP_DATA_REGISTRY` (initialized as `undefined`).
+   - Generates a new entry in `BASE_VIEWPORT_CONFIGS` with the specified `height`, a default `width` of `1000`, and calculates the `viewBox` and `aspectRatio`.
+   - Adds the map to `SVG_VIEWPORT_CONFIGS` using the `createMapViewportConfig` helper.
+   - Updates the viewport configuration type union to include the new map's config type.
+3. **`src/index.ts`**  
+   Updates the JSDoc comments for the `createMap` function to include the new map in the list of optionally registered maps.
+4. **`src/maps/` Directory**  
+   Ensures the directory exists, creating it recursively if it does not.
+
+---
+
+## 📝 Post-Execution Manual Steps
+
+The script handles the *structural* boilerplate, but you must still provide the actual map data. After running the script, complete the following steps:
+
+1. **Add the Map Data File**  
+   Create a new file at `src/maps/<map-name>.ts` (or `.json`) containing your map's path data or topology.
+2. **Register the Data**  
+   Open `src/config.ts` and update the registry:
+   ```javascript
+   import middleearthData from './maps/middleearth';
+
+   export const MAP_DATA_REGISTRY = {
+     // ... other maps
+     middleearth: middleearthData,
+   } as const;
+   ```
+3. **Verify Viewport Dimensions**  
+   Check `BASE_VIEWPORT_CONFIGS.<map-name>` in `src/config.ts`. If the default `width: 1000` and your provided `height` do not perfectly match the aspect ratio of your SVG path data, adjust them manually to prevent rendering distortion.
+
+---
+
+## 🔮 Future Use Cases
+
+While not used for the core map set anymore, this script remains a valuable DX tool for:
+- **Historical Maps**: Quickly scaffolding configurations for historical borders (e.g., `roman_empire`, `ottoman_1683`).
+- **Imaginary/Fictional Maps**: Adding support for fantasy or conceptual maps (e.g., `middle_earth`, `westeros`) without breaking existing type safety.
+- **Testing**: Rapidly generating mock map configurations for local development and testing edge cases in the rendering engine.
+
+<Admonition type="tip" title="Best Practices for Contributors">
+  <ul>
+    <li>Always run this script <strong>before</strong> manually editing <code>types.ts</code> or <code>config.ts</code> to avoid merge conflicts or type mismatches.</li>
+    <li>Use clear, descriptive names with underscores (e.g., <code>byzantine_empire</code>) to maintain excellent naming conventions and code readability.</li>
+  </ul>
+</Admonition>
+
+---
+
+## ⚠️ Common Errors & Fixes
+
+<details>
+<summary><strong>❌ "Invalid map name. Use only letters, numbers, and underscores."</strong></summary>
+<br/>
+**Cause**: The provided `<map-name>` contains invalid characters (e.g., spaces, hyphens, or special symbols).
+<br/><br/>
+**Fix**: Use only alphanumeric characters. The script will automatically sanitize the input to lowercase (e.g., `New-Map!` becomes `newmap`). For readability, use underscores: `new_map`.
+</details>
+
+<details>
+<summary><strong>❌ "ℹ️ types.ts already contains..."</strong></summary>
+<br/>
+**Cause**: The script detected that the map name is already present in the target files.
+<br/><br/>
+**Fix**: This is a safe guard. It means the map was partially or fully registered previously. You can safely proceed to the manual data registration steps or choose a different map name.
+</details>
+
+<details>
+<summary><strong>❌ "⚠️ Invalid height provided. Using default height: 1000."</strong></summary>
+<br/>
+**Cause**: The optional `[height]` argument was not a valid positive integer.
+<br/><br/>
+**Fix**: Ensure the second argument is a number greater than 0 (e.g., `node scripts/register-map.js my_map 1200`). You can always manually adjust the height later in `config.ts`.
+</details>
