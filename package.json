@@ -1,7 +1,7 @@
 {
   "name": "svg-world-maps",
-  "version": "0.8.0",
-  "description": "Simple, lightweight, and interactive SVG maps for JavaScript/TypeScript projects. Includes World, Europe, USA, and 30+ country maps with built-in tooltips, labels, and click support.",
+  "version": "1.0.0",
+  "description": "Simple, lightweight, and interactive SVG maps for JavaScript/TypeScript projects. Includes the World map and 211+ country/region maps (USA, China, Japan, Germany, Iran, Brazil, etc.) with built-in tooltips, labels, click handling, and zero dependencies.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "src/maps/optional/**/*.ts",
     "scripts/add-map.js",
     "scripts/register-map.js",
-    "scripts/create-map.js",
+    "scripts/create-map.mjs",
     "scripts/generate-report.js"
   ],
   "bin": {
@@ -38,6 +38,9 @@
     "vue-map",
     "typescript",
     "dashboard",
+    "data-visualization",
+    "vector-map",
+    "geo-mapping",
     "afghanistan",
     "usa",
     "germany",
@@ -47,7 +50,7 @@
     "france",
     "australia",
     "brazil",
-    "great britain",
+    "great-britain",
     "gb",
     "belgium",
     "switzerland",
@@ -72,7 +75,14 @@
     "singapore",
     "sweden",
     "uae",
-    "vatican"
+    "vatican",
+    "china",
+    "japan",
+    "russia",
+    "spain",
+    "italy",
+    "mexico",
+    "south-africa"
   ],
   "author": "Homayoun Mohammadi",
   "license": "MIT",
@@ -88,8 +98,5 @@
   "bugs": {
     "url": "https://github.com/homayounmmdy/svg-world-maps/issues"
   },
-  "homepage": "https://github.com/homayounmmdy/svg-world-maps#readme",
-  "dependencies": {
-    "svg-world-maps": "^0.7.0"
-  }
+  "homepage": "https://svg-world-maps.vercel.app/"
 }

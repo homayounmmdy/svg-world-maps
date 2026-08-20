@@ -1,43 +1,68 @@
-# Website
+# 📚 Documentation Website for `svg-world-maps`
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This directory contains the source code for the official documentation website of **`svg-world-maps`**, built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-## Installation
+> 📍 **Location**: This website is located in the `/docs` folder of the main `svg-world-maps` repository.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js**: `>=20.0` (as specified in the project's `engines` field)
+- **Package Manager**: `npm`, `yarn`, `pnpm`, or `bun`
+
+### Installation
+
+Navigate to the `/docs` directory and install the dependencies:
 
 ```bash
 npm install
 ```
 
-**Note**: feel free to use the package manager of your choice.
+---
 
-## Local Development
+## 💻 Local Development
+
+Start the local development server:
 
 ```bash
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server and opens a browser window (usually at `http://localhost:3000`). Most content changes are reflected live via hot module replacement (HMR) without needing to restart the server.
 
-## Build
+---
+
+## 📦 Build
+
+Generate static content for production:
 
 ```bash
 npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates optimized static content into the `build` directory. This output can be served using any static hosting service (like Vercel, Netlify, or GitHub Pages).
 
-## Deployment
-
-Using SSH:
-
+To preview the production build locally, run:
 ```bash
-USE_SSH=true npm run deploy
+npm run serve
 ```
 
-Not using SSH:
+---
 
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
 
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## 🛠️ Useful Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run start` | Starts the local development server with hot reloading. |
+| `npm run build` | Builds the static site for production. |
+| `npm run serve` | Serves the built static site locally for testing. |
+| `npm run clear` | Clears the Docusaurus cache and generated files (useful for troubleshooting). |
+| `npm run swizzle` | Ejects a Docusaurus theme component for deep customization. |
+| `npm run typecheck` | Runs TypeScript type checking on the documentation codebase. |
+
+---
+
+*For more information on contributing to the documentation or adding new pages, please refer to the main repository's [Contributing Guidelines](../CONTRIBUTING.md).*
