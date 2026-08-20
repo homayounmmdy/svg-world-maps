@@ -1,0 +1,129 @@
+---
+title: Migration Guide
+description: Step-by-step instructions for upgrading between major and minor versions of svg-world-maps, including new features, breaking changes, and CLI updates.
+sidebar_position: 9
+sidebar_label: Migration Guide
+---
+
+import Admonition from '@theme/Admonition';
+
+# 🚀 Migration Guide
+
+This guide provides step-by-step instructions for upgrading your `svg-world-maps` installation. It highlights new features, developer experience (DX) improvements, bug fixes, and any necessary code adjustments for each release.
+
+---
+
+## ⬆️ From v0.7.0 to v0.8.0
+
+This release represents a massive expansion of the library's geographic coverage and establishes a new, automated documentation pipeline.
+
+### 🌟 What's New
+- **Massive Map Expansion**: Added **89 new country maps**, bringing the total to 124+ supported maps! New additions include major regions like China, Japan, Russia, Spain, Italy, Mexico, South Africa, and 83 more.
+- **Documentation Generation**: Integrated Docsourcos to automatically generate and maintain our documentation structure. 
+- **Bug Fixes**: 
+  - Fixed missing/broken Italy and Malaysia regions on the default World map.
+
+<Admonition type="info" title="Documentation Status">
+  While the new Docsourcos framework is fully in place, some feature documentation pages may currently be placeholders. These are actively being fleshed out with comprehensive examples and API details in upcoming patch releases.
+</Admonition>
+
+### 🛠️ How to Upgrade
+1. Update your package:
+   ```bash
+   npm install svg-world-maps@latest
+   # or
+   yarn upgrade svg-world-maps@latest
+   ```
+2. Add any new maps you wish to use in your project:
+   ```bash
+   npx add-map china
+   npx add-map japan
+   npx add-map russia
+   npx add-map spain
+   # Add any other new map you need
+   ```
+3. Automatically register your newly added maps to keep your setup frictionless:
+   ```bash
+   npx register-map
+   ```
+
+---
+
+## ⬆️ From v0.6.0 to v0.7.0
+
+This release focused heavily on Developer Experience (DX), introducing powerful automation tools to make adding and managing maps significantly faster.
+
+### 🌟 What's New
+- **New Maps**: Added **21 new maps**, including Canada, Pakistan, Argentina, Austria, Denmark, Finland, Israel, Norway, Poland, Singapore, Sweden, UAE, Vatican, and more.
+- **DX Improvements**:
+  - Introduced a map creation template and automation script to drastically reduce the time required to add new maps.
+  - Registered map management scripts directly in `package.json` for easier `npx` execution.
+  - Refactored JSDocs for the list of available maps, providing much better autocomplete and IDE support.
+- **New Tools**:
+  - Created the `map-info` script, which automatically generates a `MAPS_INFO.md` report in the project root. This provides real-time data on map configurations, state counts, and label support.
+- **Bug Fixes**:
+  - Fixed an issue where map creation codes were not consistently lowercase in the generated SVG.
+  - Resolved a custom scoping issue that occurred when using multiple different maps within a single project.
+
+### 🛠️ How to Upgrade
+1. Update your package:
+   ```bash
+   npm install svg-world-maps@latest
+   ```
+2. Add the new maps you need:
+   ```bash
+   npx add-map canada
+   npx add-map pakistan
+   # Add any other new map you need
+   ```
+3. Run the new registration tool to wire them up automatically:
+   ```bash
+   npx register-map
+   ```
+
+---
+
+## ⬆️ From v0.5.0 to v0.6.0
+
+This release introduced foundational interactive features and improved the reliability of the CLI tools.
+
+### 🌟 What's New
+- **New Maps**: Added Belgium, Switzerland, and a comprehensive map of the whole Europe region.
+- **New Features**: 
+  - Added the `showTooltip` option to enable native hover popups.
+  - Added the `showLabels` option to render static text labels directly on map regions.
+- **CLI Improvements**: 
+  - Created the `npx register-map` script to automate boilerplate configuration.
+  - Fixed a bug in `npx add-map` that incorrectly handled file overwrites.
+
+### 🛠️ How to Upgrade
+1. Update your package:
+   ```bash
+   npm install svg-world-maps@latest
+   ```
+2. Update your `createMap` calls if you wish to utilize the new interactive features:
+   ```javascript
+   const map = createMap('europe', {
+     showTooltip: true,
+     showLabels: true,
+     hoverColor: '#d0e0ff'
+   });
+   ```
+3. Add the new regional maps if needed:
+   ```bash
+   npx add-map belgium
+   npx add-map switzerland
+   npx add-map europe
+   ```
+
+---
+
+## 📜 Older Versions
+
+Migration guides for older versions (e.g., v0.4.0 to v0.5.0, v0.1.0 to v0.2.0) remain unchanged. If you are upgrading from a version prior to v0.5.0, we recommend upgrading incrementally (e.g., v0.4.0 → v0.5.0 → v0.6.0) to ensure a smooth transition and to address any deprecated APIs step-by-step.
+
+---
+
+<Admonition type="tip" title="Need Help Upgrading?">
+  If you encounter unexpected behavior, type errors, or missing maps after upgrading, please check the <a href="/docs/maps-info">Maps Info Report</a> or open a <a href="https://github.com/homayounmmdy/svg-world-maps/discussions" target="_blank">GitHub Discussion</a>. We are here to help!
+</Admonition>
