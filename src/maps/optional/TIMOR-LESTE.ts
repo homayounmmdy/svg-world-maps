@@ -1,4 +1,4 @@
-const TIMOR-LESTE = {
+const TIMORLESTE = {
     name: "Timor-leste",
     code: "TL",
     viewBox: "0 0 1000 421",
@@ -151,4 +151,4 @@ const TIMOR-LESTE = {
     ]
 }
 
-export default TIMOR-LESTE
+export default TIMORLESTE
