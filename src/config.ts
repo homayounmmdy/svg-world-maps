@@ -147,6 +147,32 @@ export const MAP_DATA_REGISTRY = {
   palestine: undefined,
   eritrea: undefined,
   lithuania: undefined,
+  qatar: undefined,
+  malawi: undefined,
+  jamaica: undefined,
+  somalia: undefined,
+  uganda: undefined,
+  kenya: undefined,
+  tanzania: undefined,
+  mozambique: undefined,
+  moldova: undefined,
+  gabon: undefined,
+  lesotho: undefined,
+  latvia: undefined,
+  swaziland: undefined,
+  comoros: undefined,
+  guyana: undefined,
+  mauritius: undefined,
+  estonia: undefined,
+  suriname: undefined,
+  malta: undefined,
+  maldives: undefined,
+  bahamas: undefined,
+  vanuatu: undefined,
+  zambia: undefined,
+  guatemala: undefined,
+  guinea: undefined,
+  rwanda: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -1004,6 +1030,162 @@ export const BASE_VIEWPORT_CONFIGS = {
     viewBox: "0 0 1000 763",
     aspectRatio: 1000 / 763,
   },
+  qatar: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  malawi: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  jamaica: {
+    height: 395,
+    width: 1000,
+    viewBox: "0 0 1000 395",
+    aspectRatio: 1000 / 395,
+  },
+  somalia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  uganda: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  kenya: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  tanzania: {
+    height: 998,
+    width: 1000,
+    viewBox: "0 0 1000 998",
+    aspectRatio: 1000 / 998,
+  },
+  mozambique: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  moldova: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  gabon: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  lesotho: {
+    height: 987,
+    width: 1000,
+    viewBox: "0 0 1000 987",
+    aspectRatio: 1000 / 987,
+  },
+  latvia: {
+    height: 605,
+    width: 1000,
+    viewBox: "0 0 1000 605",
+    aspectRatio: 1000 / 605,
+  },
+  swaziland: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  comoros: {
+    height: 791,
+    width: 1000,
+    viewBox: "0 0 1000 791",
+    aspectRatio: 1000 / 791,
+  },
+  guyana: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  mauritius: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  estonia: {
+    height: 690,
+    width: 1000,
+    viewBox: "0 0 1000 690",
+    aspectRatio: 1000 / 690,
+  },
+  suriname: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  malta: {
+    height: 884,
+    width: 1000,
+    viewBox: "0 0 1000 884",
+    aspectRatio: 1000 / 884,
+  },
+  maldives: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  bahamas: {
+    height: 898,
+    width: 1000,
+    viewBox: "0 0 1000 898",
+    aspectRatio: 1000 / 898,
+  },
+  vanuatu: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  zambia: {
+    height: 860,
+    width: 1000,
+    viewBox: "0 0 1000 860",
+    aspectRatio: 1000 / 860,
+  },
+  guatemala: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  guinea: {
+    height: 751,
+    width: 1000,
+    viewBox: "0 0 1000 751",
+    aspectRatio: 1000 / 751,
+  },
+  rwanda: {
+    height: 873,
+    width: 1000,
+    viewBox: "0 0 1000 873",
+    aspectRatio: 1000 / 873,
+  },
 
   world: {
     height: 857,
@@ -1200,6 +1382,32 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.palestine
     | typeof BASE_VIEWPORT_CONFIGS.eritrea
     | typeof BASE_VIEWPORT_CONFIGS.lithuania
+    | typeof BASE_VIEWPORT_CONFIGS.qatar
+    | typeof BASE_VIEWPORT_CONFIGS.malawi
+    | typeof BASE_VIEWPORT_CONFIGS.jamaica
+    | typeof BASE_VIEWPORT_CONFIGS.somalia
+    | typeof BASE_VIEWPORT_CONFIGS.uganda
+    | typeof BASE_VIEWPORT_CONFIGS.kenya
+    | typeof BASE_VIEWPORT_CONFIGS.tanzania
+    | typeof BASE_VIEWPORT_CONFIGS.mozambique
+    | typeof BASE_VIEWPORT_CONFIGS.moldova
+    | typeof BASE_VIEWPORT_CONFIGS.gabon
+    | typeof BASE_VIEWPORT_CONFIGS.lesotho
+    | typeof BASE_VIEWPORT_CONFIGS.latvia
+    | typeof BASE_VIEWPORT_CONFIGS.swaziland
+    | typeof BASE_VIEWPORT_CONFIGS.comoros
+    | typeof BASE_VIEWPORT_CONFIGS.guyana
+    | typeof BASE_VIEWPORT_CONFIGS.mauritius
+    | typeof BASE_VIEWPORT_CONFIGS.estonia
+    | typeof BASE_VIEWPORT_CONFIGS.suriname
+    | typeof BASE_VIEWPORT_CONFIGS.malta
+    | typeof BASE_VIEWPORT_CONFIGS.maldives
+    | typeof BASE_VIEWPORT_CONFIGS.bahamas
+    | typeof BASE_VIEWPORT_CONFIGS.vanuatu
+    | typeof BASE_VIEWPORT_CONFIGS.zambia
+    | typeof BASE_VIEWPORT_CONFIGS.guatemala
+    | typeof BASE_VIEWPORT_CONFIGS.guinea
+    | typeof BASE_VIEWPORT_CONFIGS.rwanda
     | typeof BASE_VIEWPORT_CONFIGS.world,
   size: MapSize = "lg",
 ): { width: number; height: number } => {
