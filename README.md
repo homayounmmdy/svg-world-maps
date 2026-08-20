@@ -13,9 +13,9 @@ Simple, lightweight, and highly customizable SVG maps for modern JavaScript proj
 
 ---
 
-## 🎉 Welcome to v1.0.0!
+## 🎉 Welcome to v1.0.1!
 
-We are thrilled to announce the **v1.0.0** stable release! This major milestone brings:
+We are thrilled to announce the **v1.0.1** stable release! This major milestone brings:
 - 🌍 **212+ Maps**: World map + 211 country and region maps (USA, China, Japan, Germany, Iran, Brazil, and many more!).
 - ⚡ **Zero Dependencies**: Pure, lightweight SVG output.
 - 🛠 **Framework Agnostic**: Works flawlessly with React, Next.js, Vue, Svelte, Angular, or Vanilla JS.
@@ -132,7 +132,14 @@ Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before contributing.
 
 ## 📜 License
 
-Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
+This project's code is distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
+
+### 🗺️ Map Data Attribution
+Please note that the underlying SVG map data (paths, `viewBox` coordinates, and labels) for specific countries and regions included in this package is sourced from [SimpleMaps](https://simplemaps.com/). 
+
+This map data is used in accordance with the [SimpleMaps SVG Map Library License](https://simplemaps.com/resources/svg-license). The map data itself is **not** covered by the MIT license of this project and remains subject to SimpleMaps' terms of use (free for commercial use, attribution appreciated, and no redistribution "as is" without added value). 
+
+If you use these maps in your own projects, we kindly ask that you acknowledge SimpleMaps.
 
 ---
 

@@ -1,3 +1,23 @@
+/**
+ * svg-world-maps
+ * 
+ * ⚠️ MAP DATA LICENSING EXCEPTION ⚠️
+ * -----------------------------------------------------------------------------
+ * The underlying SVG map data (including paths, viewBox coordinates, element 
+ * IDs, and labels) consumed by this library is sourced from SimpleMaps 
+ * (https://simplemaps.com).
+ * 
+ * This specific map data is governed by the SimpleMaps SVG Map Library License 
+ * (https://simplemaps.com/resources/svg-license) and is NOT covered by the 
+ * MIT license of this project.
+ * 
+ * You are free to use these maps in personal or commercial projects in 
+ * accordance with the SimpleMaps license. However, you may not redistribute 
+ * the raw map data "as is" without adding value, and attribution to 
+ * SimpleMaps is highly appreciated as per their terms.
+ * -----------------------------------------------------------------------------
+ */
+
 import {
   DEFAULT_MAP_OPTIONS,
   MAP_DATA_REGISTRY,

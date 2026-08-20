@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - latest
+## [1.0.1] - latest
+### 📜 Changed
+- **Licensing Exception**: Clarified that while the project's code remains under the MIT License, the underlying SVG map data is sourced from [SimpleMaps](https://simplemaps.com/) and is governed by the [SimpleMaps SVG Map Library License](https://simplemaps.com/resources/svg-license).
+
+### 📝 Documentation
+- Added a dedicated "Map Data Attribution" section to `README.md`.
+- Added a licensing exception block to the root `LICENSE` file.
+- Added source attribution headers to the main entry point (`index.ts`) for developer transparency.
+
+---
+
+## [1.0.0] - 2026-08-20
 ### 🎉 Major Milestone
 - **v1.0.0 Stable Release**: We are thrilled to announce the first major stable release of `svg-world-maps`! This release represents a complete, production-ready, and fully documented mapping solution.
 

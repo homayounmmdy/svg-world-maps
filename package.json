@@ -1,6 +1,6 @@
 {
   "name": "svg-world-maps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple, lightweight, and interactive SVG maps for JavaScript/TypeScript projects. Includes the World map and 211+ country/region maps (USA, China, Japan, Germany, Iran, Brazil, etc.) with built-in tooltips, labels, click handling, and zero dependencies.",
   "type": "module",
   "main": "dist/index.js",
