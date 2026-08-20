@@ -1,0 +1,90 @@
+---
+title: Map Information Report
+description: Automatically generate a real-time, high-quality overview of all available maps, their state counts, and label support.
+sidebar_position: 6
+sidebar_label: Info Report (DX)
+---
+
+import Admonition from '@theme/Admonition';
+
+# 📊 Map Information Report Generator
+
+> **Transparency & Documentation.** Automatically generate a real-time, high-quality overview of every map in the codebase.
+
+As the library grows, keeping track of which maps have label support, how many regions they contain, and their CLI commands can become difficult. This internal DX script solves that by scanning the `src/maps/optional` directory and generating a beautiful, up-to-date `MAPS_INFO.md` report at the project root.
+
+<Admonition type="info" title="Why this matters">
+  This report ensures that our documentation never falls out of sync with the codebase. It is generated dynamically, meaning the numbers (like total states and label coverage) are always 100% accurate.
+</Admonition>
+
+---
+
+## 🚀 How to Generate the Report
+
+Run the following command from the root of your project:
+
+```bash
+node scripts/generate-report.js
+```
+
+### What It Does
+1. **Scans** all `.ts` files in `src/maps/optional`.
+2. **Parses** each file using robust bracket-matching to accurately count states/regions (avoiding regex bugs from nested arrays).
+3. **Detects** the presence of the `labels` array to determine label support.
+4. **Calculates** executive summary statistics (Total Maps, Total Regions, Label Coverage %).
+5. **Outputs** a cleanly formatted `MAPS_INFO.md` file at the project root.
+
+---
+
+## 📋 Understanding the Report
+
+The generated `MAPS_INFO.md` contains three key sections:
+
+### 1. Executive Summary
+Provides a high-level overview of the library's current scale:
+- **Total Maps Available**: The number of distinct map files.
+- **Total Regions/States Tracked**: The sum of all individual paths/provinces across all maps.
+- **Label Support Coverage**: The percentage of maps that currently support the `showLabel` feature.
+
+### 2. Map Details Table
+A comprehensive, alphabetically sorted table containing:
+- **Command**: The exact string to use when adding/registering the map.
+- **Country Name**: Human-readable name.
+- **Code**: The standard short code (e.g., `DE`, `US`).
+- **Regions/States**: The precise count of geographical divisions.
+- **Has Labels**: ✅ Yes or ❌ No.
+
+### 3. Notes on Label Support
+A dedicated section that explicitly lists which maps currently lack label coordinates, along with a transparent explanation of why (e.g., awaiting open-source data verification).
+
+---
+
+## 💡 Best Practices for Maintainers
+
+<Admonition type="tip" title="When to run this">
+  <ul>
+    <li><strong>After adding a new map:</strong> Run the script to instantly update the report and verify the state count matches your expectations.</li>
+    <li><strong>Before a major release:</strong> Generate a fresh report to include in the release notes or GitHub PR description, showcasing the library's growing scale.</li>
+    <li><strong>When adding label support:</strong> After manually adding coordinates to a map, run the script to watch the "Label Support Coverage" percentage increase!</li>
+  </ul>
+</Admonition>
+
+---
+
+## ⚠️ Troubleshooting
+
+<details>
+<summary><strong>❌ "Error: Directory not found at..."</strong></summary>
+<br/>
+**Cause**: The script is being run from the wrong directory, or the `src/maps/optional` folder has been renamed.
+<br/><br/>
+**Fix**: Ensure you are running the command from the **root** of the project (where `package.json` is located).
+</details>
+
+<details>
+<summary><strong>❌ "State count is 0 for a map that clearly has states"</strong></summary>
+<br/>
+**Cause**: The `states` array in the `.ts` file is malformed or missing the `name` property for its objects.
+<br/><br/>
+**Fix**: Open the specific `.ts` file and ensure the `states` array contains objects with a valid `name` key (e.g., `name: "Bavaria"`). The script specifically counts `name` occurrences within the `states` block for accuracy.
+</details>
