@@ -7,7 +7,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "SVG World Maps",
   tagline: "Simple, lightweight SVG maps for JavaScript projects.",
-  favicon: "static/img/favicon.ico",
+  favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://svg-world-maps.vercel.app/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -105,13 +105,13 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/docusaurus-social-card.png",
     colorMode: { defaultMode: "dark", respectPrefersColorScheme: true },
     navbar: {
       title: "SVG World Maps",
       logo: {
         alt: "SVG World Maps Logo",
-        src: "static/img/logo.svg",
+        src: "img/logo.svg",
       },
       items: [
         {
