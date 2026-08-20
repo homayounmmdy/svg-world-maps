@@ -1,0 +1,170 @@
+---
+title: Interactive Features
+description: Learn how to enable native hover tooltips, static text labels, and custom hover colors for a richer, more engaging map experience.
+sidebar_position: 7
+sidebar_label: Interactive Features
+---
+
+import Admonition from "@theme/Admonition";
+
+# 🖱️ Interactive Features (Tooltips & Labels)
+
+Enhance your maps with built-in interactive features. `svg-world-maps` provides native hover tooltips, static text labels, and smooth hover color transitions out of the box, requiring zero additional JavaScript or CSS setup.
+
+---
+
+## 🚀 Quick Start
+
+Here is how you enable all interactive features at once.
+
+_(Note: Ensure you use the exact property names `showTooltip` and `showLabels` as defined in the API)._
+
+```javascript
+import { createMap } from "svg-world-maps";
+
+const mapSVG = createMap("germany", {
+  showTooltip: true, // Enables native hover tooltips
+  showLabels: true, // Renders static text labels on regions
+  hoverColor: "#bfdbfe", // Light blue color on hover (Tailwind blue-200)
+});
+
+document.getElementById("map-container").innerHTML = mapSVG;
+```
+
+---
+
+## 💬 1. Native Tooltips (`showTooltip`)
+
+When `showTooltip` is set to `true`, the library automatically injects a standard SVG `<title>` tag into every map region.
+
+### How it works:
+
+- **Zero Dependencies:** It relies entirely on the browser's native tooltip rendering. No external tooltip libraries (like Tippy.js or Floating UI) are required.
+- **Accessibility:** Screen readers can read the `<title>` tag, making your map more accessible.
+- **Mobile Friendly:** On touch devices, tapping a region will briefly display the native tooltip.
+
+```javascript
+createMap("france", {
+  showTooltip: true, // Default is true
+});
+```
+
+---
+
+## 🏷️ 2. Static Labels (`showLabels`)
+
+When `showLabels` is set to `true`, the library renders `<text>` elements directly over the map regions using pre-calculated centroid coordinates.
+
+### How it works:
+
+- Labels are styled with a clean, readable default CSS (`font-family: sans-serif`, centered alignment, and `pointer-events: none` so they don't interfere with hover states).
+- **Important Limitation:** Due to open-source data constraints, label coordinates are not yet available for all maps.
+
+<Admonition type="warning" title="Maps Without Label Support">
+  Currently, setting <code>showLabels: true</code> will have{" "}
+  <strong>no visual effect</strong> on the following maps:
+  <ul>
+    <li>
+      <code>africa</code>
+    </li>
+    <li>
+      <code>europe</code>
+    </li>
+    <li>
+      <code>iran</code>
+    </li>
+    <li>
+      <code>russia</code>
+    </li>
+    <li>
+      <code>usa</code>
+    </li>
+  </ul>
+  We are actively working to add coordinate data for these regions in future
+  updates. Check the <a href="/docs/maps-info">Maps Info Report</a> for the
+  latest support status.
+</Admonition>
+
+```javascript
+createMap("italy", {
+  showLabels: true, // Default is false
+});
+```
+
+---
+
+## 🎨 3. Hover States (`hoverColor`)
+
+The `hoverColor` option allows you to define the fill color of a region when the user's cursor is over it.
+
+### How it works:
+
+- The library automatically generates and injects a scoped `<style>` block into the SVG.
+- It applies a smooth `0.2s` CSS `ease` transition for a polished, professional feel.
+- It automatically sets `cursor: pointer` to indicate interactivity to the user.
+
+```javascript
+createMap("japan", {
+  hoverColor: "#f87171", // Tailwind red-400
+});
+```
+
+<Admonition type="tip" title="Customizing Hover Behavior Further">
+  If you need more advanced hover effects (e.g., showing a custom HTML tooltip, updating React state, or changing border colors on hover), you can attach standard DOM event listeners to the generated SVG:
+
+```javascript
+const svgElement = document.querySelector("svg");
+svgElement.addEventListener("mouseover", (e) => {
+  if (e.target.tagName === "path") {
+    console.log("Hovered region:", e.target.getAttribute("data-name"));
+  }
+});
+```
+
+</Admonition>
+
+---
+
+## ⚙️ Complete Configuration Example
+
+Here is a comprehensive example combining all interactive features with custom styling for a dashboard widget:
+
+```javascript
+import { createMap } from "svg-world-maps";
+
+const dashboardMap = createMap("canada", {
+  // Base Styling
+  background: "#f8fafc", // Slate-50
+  borders: "#94a3b8", // Slate-400
+
+  // Interactive Features
+  showTooltip: true,
+  showLabels: true,
+  hoverColor: "#3b82f6", // Blue-500
+
+  // Sizing
+  size: "md", // 75% of original size
+});
+
+document.getElementById("canada-widget").innerHTML = dashboardMap;
+```
+
+---
+
+## 📦 TypeScript Support
+
+All interactive options are strictly typed to ensure a bug-free developer experience:
+
+```typescript
+import type { MapOptions } from "svg-world-maps";
+
+const options: MapOptions = {
+  showTooltip: true, // ✅ boolean
+  showLabels: false, // ✅ boolean
+  hoverColor: "rgba(0, 0, 0, 0.1)", // ✅ Valid CSS color string
+
+  // ❌ TypeScript Error: Property 'tooltip' does not exist on type 'MapOptions'.
+  // (Did you mean 'showTooltip'?)
+  tooltip: true,
+};
+```

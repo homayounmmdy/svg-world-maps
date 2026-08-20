@@ -1,0 +1,62 @@
+---
+title: API Reference Overview
+description: Complete documentation for integrating, configuring, and interacting with svg-world-maps.
+sidebar_position: 1
+sidebar_label: Overview
+---
+
+import Admonition from '@theme/Admonition';
+
+# ⚙️ API Reference Overview
+
+Welcome to the API Reference for **`svg-world-maps`**. 
+
+This section provides comprehensive, type-safe documentation for all core functions, configuration options, and interactive features of the library. Whether you are rendering a simple world map or building a complex, data-driven regional dashboard, you will find everything you need here.
+
+<Admonition type="tip" title="Where to Start?">
+  If you are new to the library, we recommend starting with the <a href="/docs/api-reference/create-map"><strong>createMap</strong></a> guide to understand the core rendering function, and then exploring <a href="/docs/api-reference/interactive-features"><strong>Interactive Features</strong></a> to make your maps come alive.
+</Admonition>
+
+---
+
+## 📚 Core Documentation
+
+Explore the specific areas of the API below:
+
+| Documentation Page | Description |
+| :--- | :--- |
+| [**🗺️ createMap & registerMapData**](/docs/api-reference/create-map) | The core functions for generating SVG map strings and loading optional regional data into the library registry. |
+| [**📏 Size & Scaling**](/docs/api-reference/size-options) | Complete guide to controlling map dimensions using responsive preset strings (`'xs'` to `'4xl'`) or precise custom numeric scale factors. |
+| [**🖱️ Interactive Features**](/docs/api-reference/interactive-features) | Learn how to enable native hover tooltips, static text labels, and smooth CSS hover color transitions out of the box. |
+| [**⚡ Click Handling & Events**](/docs/api-reference/click-handling) | Discover how to capture user interactions, read built-in `data-code` and `data-name` attributes, and build dynamic dashboards. |
+
+---
+
+## 🛡️ TypeScript Support
+
+`svg-world-maps` is built with TypeScript first. All public APIs, configuration objects, and map data structures are strictly typed to provide autocomplete, inline documentation, and compile-time safety in your editor.
+
+You can import the underlying types directly into your project:
+
+```typescript
+import type { 
+  MapType,       // Union type of all 212+ supported map string identifiers
+  MapOptions,    // The configuration object shape for createMap
+  MapData,       // The structure of the imported map data file
+  MapState,      // Individual state/country object within MapData
+  MapSize        // Union type for size presets ('xs'-'4xl') or custom numbers
+} from 'svg-world-maps';
+```
+
+---
+
+## 🔗 Quick Links
+
+- 📦 **[Available Maps Report](/docs/maps-info)**: View the complete, auto-generated list of all 212+ supported regions and their label support status.
+- 🚀 **[Adding Optional Maps](/docs/adding-maps)**: Learn how to use the `npx add-map` CLI to keep your production bundle size minimal.
+- 💻 **[GitHub Repository](https://github.com/homayounmmdy/svg-world-maps)**: View the source code, report issues, or contribute to the project.
+
+---
+
+> 💡 **Need Help?**  
+> If you encounter unexpected behavior or have questions about a specific API, please check the [GitHub Discussions](https://github.com/homayounmmdy/svg-world-maps/discussions) or open an [Issue](https://github.com/homayounmmdy/svg-world-maps/issues).

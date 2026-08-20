@@ -1,0 +1,191 @@
+---
+title: API Reference
+description: Complete reference for the createMap and registerMapData functions, including all configuration options and types.
+sidebar_position: 5
+sidebar_label: API Reference
+---
+
+import Admonition from '@theme/Admonition';
+
+# ⚙️ API Reference
+
+The core API for `svg-world-maps` is intentionally minimal, type-safe, and flexible. It consists of two primary functions: `createMap` for generating the SVG, and `registerMapData` for loading optional maps.
+
+---
+
+## 🗺️ `createMap`
+
+Generates a complete, styled SVG string for the specified map.
+
+### Signature
+
+```typescript
+function createMap(mapType: MapType, options?: MapOptions): string
+```
+
+### Parameters
+
+| Parameter | Type | Description | Default |
+| :--- | :--- | :--- | :--- |
+| `mapType` | `string` | The identifier of the map to generate. `'world'` is always available. All other maps are optional and must be registered first. | *Required* |
+| `options` | `MapOptions` | An object containing styling and behavioral configuration for the map. | `{}` |
+
+<Admonition type="info" title="Available Map Types">
+  While <code>'world'</code> is built-in, there are <strong>212+ optional maps</strong> available (e.g., <code>'usa'</code>, <code>'germany'</code>, <code>'iran'</code>, <code>'brazil'</code>). 
+  <br/><br/>
+  👉 See the <a href="/docs/maps-info">Maps Information Report</a> for the complete, up-to-date list of supported <code>mapType</code> strings.
+</Admonition>
+
+---
+
+### `MapOptions` Configuration
+
+The `options` object accepts the following properties. Any omitted properties will fall back to the library's defaults.
+
+| Option | Type | Description | Default |
+| :--- | :--- | :--- | :--- |
+| `background` | `string` | The fill color for map regions. Accepts any valid CSS color (hex, rgb, named colors). | `"#f0f0f0"` |
+| `borders` | `string` | The stroke color for country/state borders. | `"#333333"` |
+| `hoverColor` | `string` | The fill color applied to a region when hovered. *(See note below)* | `"#d0e0ff"` |
+| `showTooltip` | `boolean` | Enables native browser tooltips (via `<title>` tags) showing the region name on hover. | `true` |
+| `showLabels` | `boolean` | Displays text labels (e.g., state/province names) directly on the map regions. | `false` |
+| `size` | `string` \| `number` | The scale of the map. Accepts preset strings (`'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'2xl'`, `'3xl'`, `'4xl'`) or a custom numeric multiplier (e.g., `0.5` for 50%). | `"lg"` |
+
+<Admonition type="warning" title="Important: Label Support Limitations">
+  The <code>showLabels</code> feature is supported for most maps. However, due to open-source data quality and coordinate limitations, the following maps <strong>do not currently support labels</strong>:
+  <ul>
+    <li><code>africa</code></li>
+    <li><code>europe</code></li>
+    <li><code>iran</code></li>
+    <li><code>russia</code></li>
+    <li><code>usa</code></li>
+  </ul>
+  Setting <code>showLabels: true</code> on these maps will not produce visual changes. We are actively working to add support for these in future versions.
+</Admonition>
+
+<Admonition type="tip" title="Note on hoverColor">
+  The library automatically injects a <code>&lt;style&gt;</code> block into the SVG to handle the <code>hoverColor</code> transition. However, depending on your framework or CSS reset, you may need to ensure that <code>:hover</code> pseudo-classes are not being stripped or overridden by global styles.
+</Admonition>
+
+---
+
+### Code Examples
+
+#### 1. Basic World Map
+```javascript
+import { createMap } from 'svg-world-maps';
+
+// Uses default options (lg size, #f0f0f0 background, #333333 borders)
+const worldMapSvg = createMap('world');
+
+document.getElementById('map-container').innerHTML = worldMapSvg;
+```
+
+#### 2. Custom Styling & Size Presets
+```javascript
+import { createMap } from 'svg-world-maps';
+
+const customMap = createMap('world', {
+  background: '#e6f3ff',
+  borders: '#2c3e50',
+  hoverColor: '#3498db',
+  showTooltip: true,
+  size: 'xl' // 150% of original size
+});
+```
+
+#### 3. Using a Custom Numeric Size
+```javascript
+import { createMap } from 'svg-world-maps';
+
+// Render at exactly 50% scale
+const smallMap = createMap('france', {
+  size: 0.5 
+});
+```
+
+---
+
+## 📥 `registerMapData`
+
+Registers an optional map's data into the library's internal registry. This is **required** before calling `createMap` for any map other than `'world'`.
+
+### Signature
+
+```typescript
+function registerMapData(type: MapType, data: MapData): void
+```
+
+### Parameters
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `type` | `string` | The map identifier (must match a valid key in `MapType`, e.g., `'usa'`, `'germany'`). |
+| `data` | `object` | The imported map data object (usually the default export from the map's `.ts` file). |
+
+### Code Example
+
+```javascript
+import { registerMapData, createMap } from 'svg-world-maps';
+
+// 1. Import the optional map data (path depends on your project structure)
+import usaData from './src/maps/usa';
+
+// 2. Register the data before creating the map
+registerMapData('usa', usaData);
+
+// 3. Now you can safely generate the map
+const usaMapSvg = createMap('usa', {
+  background: '#ffffff',
+  borders: '#000000',
+  size: 'md'
+});
+```
+
+<Admonition type="success" title="Pro Tip: Automation">
+  Remember that you don't need to write this boilerplate manually! After running <code>npx add-map usa</code>, the CLI will output the exact import and registration code you need to copy and paste.
+</Admonition>
+
+---
+
+## 🛡️ Error Handling
+
+The library is designed to fail fast and provide helpful error messages to improve Developer Experience (DX).
+
+### Unregistered Map Error
+If you call `createMap` with an optional map that hasn't been registered, the library will throw a descriptive error with step-by-step instructions on how to fix it:
+
+```text
+Error: Map "japan" is not registered.
+
+💡 This map is optional to keep bundle size small.
+✅ To add it, run:
+   npx add-map japan
+
+📝 Then register it in your code:
+   import { registerMapData } from 'svg-world-maps';
+   import japanData from './src/maps/japan';
+   registerMapData('japan', japanData);
+```
+
+### Invalid Map Type Error
+If you pass a string that is not a valid `MapType` (even after registration), it will throw:
+```text
+Error: Map type "invalid_map_name" not found in registry.
+```
+
+---
+
+## 📦 Exported Types (TypeScript)
+
+If you are using TypeScript, the library exports the following types for your convenience:
+
+```typescript
+import type { 
+  MapType,       // Union type of all 212+ supported map strings
+  MapOptions,    // The options object shape
+  MapData,       // The shape of the imported map data file
+  MapState,      // Individual state/country object within MapData
+  PathData       // SVG path data structure
+} from 'svg-world-maps';
+```

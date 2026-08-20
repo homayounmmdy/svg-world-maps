@@ -1,0 +1,166 @@
+---
+title: Click Handling & Events
+description: Learn how to capture user interactions, read region data, and build dynamic dashboards using the built-in SVG data attributes.
+sidebar_position: 8
+sidebar_label: Click Handling
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Admonition from "@theme/Admonition";
+
+# 🖱️ Click Handling & Data Attributes
+
+Every geographic region (state, province, or country) in the generated SVG is automatically equipped with standard HTML5 `data-*` attributes. This makes it incredibly easy to capture click events, identify the selected region, and build dynamic, interactive dashboards—**without any framework-specific wrappers**.
+
+---
+
+## 📊 Available Data Attributes
+
+When a user interacts with a map region, you can read the following attributes directly from the clicked `<path>` element:
+
+| Attribute   | Description                                  | Example Values                                            |
+| :---------- | :------------------------------------------- | :-------------------------------------------------------- |
+| `data-code` | The short, unique identifier for the region. | `"US-CA"`, `"IN-MH"`, `"DE-BY"`, `"GB-ENG"`               |
+| `data-name` | The full, human-readable name of the region. | `"California"`, `"Maharashtra"`, `"Bavaria"`, `"England"` |
+
+---
+
+## 💻 Code Examples
+
+Because the map is just a standard SVG, you can use standard DOM event delegation. Here is how to implement it in both React and Vanilla JavaScript.
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React / Next.js" default>
+    ```jsx
+    import { useEffect, useRef, useState } from "react";
+    import { createMap, registerMapData } from "svg-world-maps";
+    import usaData from "./maps/usa";
+
+    // 1. Register the map data
+    registerMapData("usa", usaData);
+
+    const App = () => {
+      const [selected, setSelected] = useState(null);
+      const containerRef = useRef(null);
+
+      // 2. Generate the map SVG string
+      const mapSVG = createMap("usa", {
+        background: "#e6f3ff",
+        borders: "#2c3e50",
+        size: "md",
+        hoverColor: "purple",
+        showTooltip: true // Note: use showTooltip, not tooltip
+      });
+
+      useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        // 3. Attach event listener to the container (Event Delegation)
+        const handleClick = (e) => {
+          // Ensure we clicked a path (region), not the background or a label
+          if (e.target.tagName === "path") {
+            const code = e.target.dataset.code;
+            const name = e.target.dataset.name;
+
+            if (code && name) {
+              setSelected({ name, code });
+
+              // Auto-clear selection after 3 seconds
+              setTimeout(() => setSelected(null), 3000);
+            }
+          }
+        };
+
+        container.addEventListener("click", handleClick);
+
+        // 4. Cleanup on unmount
+        return () => container.removeEventListener("click", handleClick);
+      }, []);
+
+      return (
+        <div>
+          <div ref={containerRef} dangerouslySetInnerHTML={{ __html: mapSVG }} />
+
+          {selected && (
+            <div style={{ marginTop: "1rem", padding: "1rem", background: "#f0f0f0", borderRadius: "8px" }}>
+              <strong>Selected:</strong> {selected.name} ({selected.code})
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    export default App;
+    ```
+  </TabItem>
+
+  <TabItem value="vanilla" label="Vanilla JavaScript">
+    ```javascript
+    import { createMap, registerMapData } from 'svg-world-maps';
+    import usaData from './maps/usa.js';
+
+    // 1. Register the map data
+    registerMapData('usa', usaData);
+
+    // 2. Generate and render the map
+    const mapSVG = createMap('usa', {
+      background: '#e6f3ff',
+      borders: '#2c3e50',
+      size: 'md',
+      hoverColor: 'purple',
+      showTooltip: true
+    });
+
+    const container = document.getElementById('map-container');
+    container.innerHTML = mapSVG;
+
+    // 3. Attach event listener using event delegation
+    container.addEventListener('click', (e) => {
+      // Check if the clicked element is a map region (path)
+      if (e.target.tagName === 'path') {
+        const code = e.target.dataset.code;
+        const name = e.target.dataset.name;
+
+        if (code && name) {
+          console.log(`You clicked on: ${name} (${code})`);
+
+          // Example: Update UI
+          document.getElementById('selection-display').textContent = `${name} (${code})`;
+        }
+      }
+    });
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## 🎯 Common Use Cases
+
+The `data-code` and `data-name` attributes unlock a wide variety of interactive features for your application:
+
+1. **Dynamic Dashboards**: Filter charts, tables, or KPI cards based on the `data-code` of the clicked region.
+2. **Client-Side Routing**: Navigate users to a dedicated detail page (e.g., `` `router.push('/regions/' + code)` `` in Next.js or React Router).
+3. **Custom Tooltips/Modals**: Trigger a custom, styled HTML modal or floating tooltip with rich data fetched from your API, instead of relying on the native SVG `<title>` tag.
+4. **Analytics Tracking**: Fire an event to your analytics provider (e.g., Google Analytics, Mixpanel) to track which regions users are interacting with most frequently.
+
+---
+
+## 💡 Pro Tips for Event Handling
+
+<Admonition type="tip" title="Always Use Event Delegation">
+  Instead of attaching hundreds of individual event listeners to every single `<path>` element, attach <strong>one</strong> listener to the parent container. This is vastly more performant and prevents memory leaks, especially on complex maps like Great Britain (232 regions) or Slovenia (212 regions).
+</Admonition>
+
+<Admonition type="info" title="Handling Labels and Backgrounds">
+  If you have <code>showLabels: true</code>, clicking directly on the text might trigger the event on the <code>&lt;text&gt;</code> element instead of the <code>&lt;path&gt;</code>.
+  <br />
+  <br />
+  <strong>Solution:</strong> Always check <code>e.target.tagName === 'path'</code> (as shown in the examples above), or use <code>e.target.closest('path')</code> to safely traverse up the DOM tree and find the parent region.
+</Admonition>
+
+<Admonition type="success" title="Framework Agnostic">
+  Because this relies on standard DOM APIs, the exact same logic works seamlessly in <strong>Vue, Svelte, Angular, Alpine.js</strong>, or plain JavaScript. The library never locks you into a specific framework's event system.
+</Admonition>
