@@ -1,6 +1,6 @@
 import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import MFData from '../../../../src/maps/optional/SAINT_MARTIN_(FRENCH)';
+import MFData from '../../../../src/maps/optional/SAINT_MARTIN_FRENCH';
 
 registerMapData('saint-martin-french', MFData);
 

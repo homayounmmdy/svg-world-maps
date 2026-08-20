@@ -1,4 +1,4 @@
-const SÃO_TOMÉ_AND_PRINCIPE = {
+const SAO_TOME_AND_PRINCIPE  = {
     name: "São_tomé_and_principe",
     code: "ST",
     viewBox: "0 0 1000 1000",
@@ -85,4 +85,4 @@ const SÃO_TOMÉ_AND_PRINCIPE = {
     ]
 }
 
-export default SÃO_TOMÉ_AND_PRINCIPE
+export default SAO_TOME_AND_PRINCIPE 

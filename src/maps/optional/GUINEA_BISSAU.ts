@@ -1,4 +1,4 @@
-const GUINEA-BISSAU = {
+const GUINEA_BISSAU = {
     name: "Guinea-bissau",
     code: "GW",
     viewBox: "0 0 1000 583",
@@ -107,4 +107,4 @@ const GUINEA-BISSAU = {
     ]
 }
 
-export default GUINEA-BISSAU
+export default GUINEA_BISSAU

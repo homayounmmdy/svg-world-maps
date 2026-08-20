@@ -185,7 +185,37 @@ export const MAP_DATA_REGISTRY = {
   liechtenstein: undefined,
   timorleste: undefined,
   hong_kong: undefined,
-  western_sahara: undefined,    cte_divoire: undefined,    burkina_faso: undefined,    sri_lanka: undefined,    dominican_republic: undefined,    falkland_islands: undefined,    pitcairn_islands: undefined,    saint_martin_french: undefined,    saint_martin_dutch: undefined,    saint_kitts_and_nevis: undefined,    puerto_rico: undefined,    costa_rica: undefined,    the_gambia: undefined,    cayman_islands: undefined,    faeroe_islands: undefined,    turks_and_caicos_islands: undefined,    saint_vincent_and_the_grenadines: undefined,    united_states_virgin_islands: undefined,    curaco: undefined,    saint_lucia: undefined,    so_tom_and_principe: undefined,    french_polynesia: undefined,    new_caledonia: undefined,    solomon_islands: undefined,    sierra_leone: undefined,    papua_new_guinea: undefined,    el_salvador: undefined,    republic_of_congo: undefined,    guineabissau: undefined,    equatorial_guinea: undefined,    trinidad_and_tobago: undefined,
+  western_sahara: undefined,
+  cte_d_ivoire: undefined,
+  burkina_faso: undefined,
+  sri_lanka: undefined,
+  dominican_republic: undefined,
+  falkland_islands: undefined,
+  pitcairn_islands: undefined,
+  saint_martin_french: undefined,
+  saint_martin_dutch: undefined,
+  saint_kitts_and_nevis: undefined,
+  puerto_rico: undefined,
+  costa_rica: undefined,
+  the_gambia: undefined,
+  cayman_islands: undefined,
+  faeroe_islands: undefined,
+  turks_and_caicos_islands: undefined,
+  saint_vincent_and_the_grenadines: undefined,
+  united_states_virgin_islands: undefined,
+  curaco: undefined,
+  saint_lucia: undefined,
+  sao_tome_and_principe: undefined,
+  french_polynesia: undefined,
+  new_caledonia: undefined,
+  solomon_islands: undefined,
+  sierra_leone: undefined,
+  papua_new_guinea: undefined,
+  el_salvador: undefined,
+  republic_of_congo: undefined,
+  guineabissau: undefined,
+  equatorial_guinea: undefined,
+  trinidad_and_tobago: undefined,
 } as const;
 
 export const registerMapData = (type: string, data: any) => {
@@ -1276,187 +1306,187 @@ export const BASE_VIEWPORT_CONFIGS = {
     width: 1000,
     viewBox: "0 0 1000 898",
     aspectRatio: 1000 / 898,
-  },    cte_divoire: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    burkina_faso: {
-        height: 736,
-        width: 1000,
-        viewBox: "0 0 1000 736",
-        aspectRatio: 1000 / 736
-    },    sri_lanka: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    dominican_republic: {
-        height: 686,
-        width: 1000,
-        viewBox: "0 0 1000 686",
-        aspectRatio: 1000 / 686
-    },    falkland_islands: {
-        height: 621,
-        width: 1000,
-        viewBox: "0 0 1000 621",
-        aspectRatio: 1000 / 621
-    },    pitcairn_islands: {
-        height: 212,
-        width: 1000,
-        viewBox: "0 0 1000 212",
-        aspectRatio: 1000 / 212
-    },    saint_martin_french: {
-        height: 686,
-        width: 1000,
-        viewBox: "0 0 1000 686",
-        aspectRatio: 1000 / 686
-    },    saint_martin_dutch: {
-        height: 446,
-        width: 1000,
-        viewBox: "0 0 1000 446",
-        aspectRatio: 1000 / 446
-    },    saint_kitts_and_nevis: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    puerto_rico: {
-        height: 234,
-        width: 1000,
-        viewBox: "0 0 1000 234",
-        aspectRatio: 1000 / 234
-    },    costa_rica: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    the_gambia: {
-        height: 258,
-        width: 1000,
-        viewBox: "0 0 1000 258",
-        aspectRatio: 1000 / 258
-    },    cayman_islands: {
-        height: 310,
-        width: 1000,
-        viewBox: "0 0 1000 310",
-        aspectRatio: 1000 / 310
-    },    faeroe_islands: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    turks_and_caicos_islands: {
-        height: 532,
-        width: 1000,
-        viewBox: "0 0 1000 532",
-        aspectRatio: 1000 / 532
-    },    saint_vincent_and_the_grenadines: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    united_states_virgin_islands: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    curaco: {
-        height: 829,
-        width: 1000,
-        viewBox: "0 0 1000 829",
-        aspectRatio: 1000 / 829
-    },    saint_lucia: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    so_tom_and_principe: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    french_polynesia: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    new_caledonia: {
-        height: 722,
-        width: 1000,
-        viewBox: "0 0 1000 722",
-        aspectRatio: 1000 / 722
-    },    solomon_islands: {
-        height: 433,
-        width: 1000,
-        viewBox: "0 0 1000 433",
-        aspectRatio: 1000 / 433
-    },    sierra_leone: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    papua_new_guinea: {
-        height: 589,
-        width: 1000,
-        viewBox: "0 0 1000 589",
-        aspectRatio: 1000 / 589
-    },    el_salvador: {
-        height: 547,
-        width: 1000,
-        viewBox: "0 0 1000 547",
-        aspectRatio: 1000 / 547
-    },    republic_of_congo: {
-        height: 1000,
-        width: 1000,
-        viewBox: "0 0 1000 1000",
-        aspectRatio: 1000 / 1000
-    },    guineabissau: {
-        height: 583,
-        width: 1000,
-        viewBox: "0 0 1000 583",
-        aspectRatio: 1000 / 583
-    },    equatorial_guinea: {
-        height: 917,
-        width: 1000,
-        viewBox: "0 0 1000 917",
-        aspectRatio: 1000 / 917
-    },    trinidad_and_tobago: {
-        height: 932,
-        width: 1000,
-        viewBox: "0 0 1000 932",
-        aspectRatio: 1000 / 932
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  },
+  cte_d_ivoire: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  burkina_faso: {
+    height: 736,
+    width: 1000,
+    viewBox: "0 0 1000 736",
+    aspectRatio: 1000 / 736,
+  },
+  sri_lanka: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  dominican_republic: {
+    height: 686,
+    width: 1000,
+    viewBox: "0 0 1000 686",
+    aspectRatio: 1000 / 686,
+  },
+  falkland_islands: {
+    height: 621,
+    width: 1000,
+    viewBox: "0 0 1000 621",
+    aspectRatio: 1000 / 621,
+  },
+  pitcairn_islands: {
+    height: 212,
+    width: 1000,
+    viewBox: "0 0 1000 212",
+    aspectRatio: 1000 / 212,
+  },
+  saint_martin_french: {
+    height: 686,
+    width: 1000,
+    viewBox: "0 0 1000 686",
+    aspectRatio: 1000 / 686,
+  },
+  saint_martin_dutch: {
+    height: 446,
+    width: 1000,
+    viewBox: "0 0 1000 446",
+    aspectRatio: 1000 / 446,
+  },
+  saint_kitts_and_nevis: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  puerto_rico: {
+    height: 234,
+    width: 1000,
+    viewBox: "0 0 1000 234",
+    aspectRatio: 1000 / 234,
+  },
+  costa_rica: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  the_gambia: {
+    height: 258,
+    width: 1000,
+    viewBox: "0 0 1000 258",
+    aspectRatio: 1000 / 258,
+  },
+  cayman_islands: {
+    height: 310,
+    width: 1000,
+    viewBox: "0 0 1000 310",
+    aspectRatio: 1000 / 310,
+  },
+  faeroe_islands: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  turks_and_caicos_islands: {
+    height: 532,
+    width: 1000,
+    viewBox: "0 0 1000 532",
+    aspectRatio: 1000 / 532,
+  },
+  saint_vincent_and_the_grenadines: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  united_states_virgin_islands: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  curaco: {
+    height: 829,
+    width: 1000,
+    viewBox: "0 0 1000 829",
+    aspectRatio: 1000 / 829,
+  },
+  saint_lucia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  sao_tome_and_principe: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  french_polynesia: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  new_caledonia: {
+    height: 722,
+    width: 1000,
+    viewBox: "0 0 1000 722",
+    aspectRatio: 1000 / 722,
+  },
+  solomon_islands: {
+    height: 433,
+    width: 1000,
+    viewBox: "0 0 1000 433",
+    aspectRatio: 1000 / 433,
+  },
+  sierra_leone: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  papua_new_guinea: {
+    height: 589,
+    width: 1000,
+    viewBox: "0 0 1000 589",
+    aspectRatio: 1000 / 589,
+  },
+  el_salvador: {
+    height: 547,
+    width: 1000,
+    viewBox: "0 0 1000 547",
+    aspectRatio: 1000 / 547,
+  },
+  republic_of_congo: {
+    height: 1000,
+    width: 1000,
+    viewBox: "0 0 1000 1000",
+    aspectRatio: 1000 / 1000,
+  },
+  guineabissau: {
+    height: 583,
+    width: 1000,
+    viewBox: "0 0 1000 583",
+    aspectRatio: 1000 / 583,
+  },
+  equatorial_guinea: {
+    height: 917,
+    width: 1000,
+    viewBox: "0 0 1000 917",
+    aspectRatio: 1000 / 917,
+  },
+  trinidad_and_tobago: {
+    height: 932,
+    width: 1000,
+    viewBox: "0 0 1000 932",
+    aspectRatio: 1000 / 932,
+  },
 
   world: {
     height: 857,
@@ -1692,7 +1722,7 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.timorleste
     | typeof BASE_VIEWPORT_CONFIGS.hong_kong
     | typeof BASE_VIEWPORT_CONFIGS.western_sahara
-    | typeof BASE_VIEWPORT_CONFIGS.cte_divoire
+    | typeof BASE_VIEWPORT_CONFIGS.cte_d_ivoire
     | typeof BASE_VIEWPORT_CONFIGS.burkina_faso
     | typeof BASE_VIEWPORT_CONFIGS.sri_lanka
     | typeof BASE_VIEWPORT_CONFIGS.dominican_republic
@@ -1711,7 +1741,7 @@ export const calculateViewportDimensions = (
     | typeof BASE_VIEWPORT_CONFIGS.united_states_virgin_islands
     | typeof BASE_VIEWPORT_CONFIGS.curaco
     | typeof BASE_VIEWPORT_CONFIGS.saint_lucia
-    | typeof BASE_VIEWPORT_CONFIGS.so_tom_and_principe
+    | typeof BASE_VIEWPORT_CONFIGS.sao_tome_and_principe
     | typeof BASE_VIEWPORT_CONFIGS.french_polynesia
     | typeof BASE_VIEWPORT_CONFIGS.new_caledonia
     | typeof BASE_VIEWPORT_CONFIGS.solomon_islands

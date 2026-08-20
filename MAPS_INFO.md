@@ -16,7 +16,7 @@ directory.
 ## 🗺️ Map Details
 
 | Command                            | Country Name                     | Code | States/Countries | Has Labels |
-|------------------------------------|----------------------------------|------|------------------|------------|
+| ---------------------------------- | -------------------------------- | ---- | ---------------- | ---------- |
 | `AFGHANISTAN`                      | Afghanistan                      | AF   | 34               | Yes        |
 | `AFRICA`                           | Africa                           | XF   | 50               | No         |
 | `ALBANIA`                          | Albania                          | AL   | 12               | Yes        |
@@ -175,7 +175,7 @@ directory.
 | `RWANDA`                           | Rwanda                           | RW   | 5                | Yes        |
 | `SAINT_KITTS_AND_NEVIS`            | Saint_kitts_and_nevis            | KN   | 14               | Yes        |
 | `SAINT_LUCIA`                      | Saint_lucia                      | LC   | 11               | Yes        |
-| `SAINT_MARTIN_DUTCH`               | Saint_martin_dutch               | SX   | 1                | Yes        |
+| `saint_martin_dutch`               | saint_martin_dutch               | SX   | 1                | Yes        |
 | `SAINT_MARTIN_FRENCH`              | Saint_martin_french              | MF   | 1                | Yes        |
 | `SAINT_VINCENT_AND_THE_GRENADINES` | Saint_vincent_and_the_grenadines | VC   | 6                | Yes        |
 | `SÃO_TOMÉ_AND_PRINCIPE`            | São_tomé_and_principe            | ST   | 7                | Yes        |

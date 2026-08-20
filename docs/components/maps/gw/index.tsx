@@ -1,6 +1,6 @@
 import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import GWData from '../../../../src/maps/optional/GUINEA-BISSAU';
+import GWData from '../../../../src/maps/optional/GUINEA_BISSAU';
 
 registerMapData('guinea-bissau', GWData);
 

@@ -1,4 +1,4 @@
-const CÔTE_D'IVOIRE = {
+const COTE_D_IVOIRE  = {
     name: "Côte_d'ivoire",
     code: "CI",
     viewBox: "0 0 1000 1000",
@@ -162,4 +162,4 @@ const CÔTE_D'IVOIRE = {
     ]
 }
 
-export default CÔTE_D'IVOIRE
+export default COTE_D_IVOIRE 
