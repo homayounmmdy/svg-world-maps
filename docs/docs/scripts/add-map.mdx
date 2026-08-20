@@ -1,0 +1,127 @@
+---
+title: Adding Optional Maps
+description: The production-ready CLI command to safely download and register country and region maps on-demand.
+sidebar_position: 2
+sidebar_label: Adding Maps
+---
+
+import Admonition from '@theme/Admonition';
+
+# ➕ Adding Optional Maps
+
+> **The Production Standard.** Safely add heavy country and region maps to your project with a single, interactive CLI command.
+
+By default, `svg-world-maps` includes **only the World map** to ensure the smallest possible initial bundle size. All other country and region maps are **optional** and can be added to your project on-demand using the official `add-map` CLI tool.
+
+<Admonition type="success" title="Safe & Interactive">
+  This production-ready script includes built-in safeguards. It validates map names, prevents accidental overwrites with an interactive prompt, and provides you with the exact code needed to register the map instantly.
+</Admonition>
+
+---
+
+## 🚀 How to Add a Map
+
+Let's use **Germany** as an example. The process is identical for any supported optional map.
+
+### Step 1: Run the CLI Command
+
+Run this command in the root directory of your project:
+
+```bash
+npx add-map germany
+```
+*(Note: You can also use `npm exec add-map germany` or `yarn add-map germany` depending on your package manager).*
+
+### Step 2: Handle Existing Files (If Applicable)
+
+If you have previously added this map, the script will safely detect it and ask for confirmation before making any changes:
+
+```text
+⚠️  Map 'germany' already exists in your project.
+Do you want to overwrite it? (y/N): 
+```
+- Type `y` and press Enter to update the file with the latest version from the package.
+- Press Enter (or type anything else) to abort and keep your existing file.
+
+### Step 3: Register the Map in Your Code
+
+Upon successful installation, the script will output a ready-to-use code snippet tailored to your map name:
+
+```text
+✅ germany map added to your project!
+
+📝 Now register it in your code:
+
+import { registerMapData, createMap } from 'svg-world-maps';
+import germanyData from './src/maps/germany';
+
+registerMapData('germany', germanyData);
+
+const map = createMap('germany');
+```
+
+Simply copy this snippet into your application's entry point (e.g., `main.js`, `App.tsx`, or a dedicated map configuration file) **before** you call `createMap`.
+
+---
+
+## ⚙️ What the Script Does (Under the Hood)
+
+The `add-map` CLI is designed for maximum reliability and a frictionless developer experience:
+
+1. **Input Validation**: Immediately rejects invalid usage or attempts to add the `world` map (which is already built-in).
+2. **Smart Case-Insensitive Resolution**: Automatically searches the package's internal `src/maps/optional` directory for variations of your input (e.g., `germany.ts`, `GERMANY.ts`, `Germany.ts`). This ensures the command works regardless of how the file is capitalized in the source package.
+3. **Safe Directory Creation**: Automatically creates the `src/maps` directory in your project if it doesn't already exist, preventing "directory not found" errors.
+4. **Non-Destructive by Default**: Uses an interactive `readline` prompt to prevent accidental data loss if a file with the same name already exists.
+5. **Dynamic Code Generation**: Sanitizes your map name (replacing dashes or spaces with underscores) to generate a valid, safe JavaScript variable name (e.g., `great-britain` becomes `great_britainData`) for the import snippet.
+
+---
+
+## ⚠️ Common Errors & Fixes
+
+<details>
+<summary><strong>❌ "The World Map is included by default. You do not need to add it."</strong></summary>
+<br/>
+**Cause**: You ran `npx add-map world`.
+<br/><br/>
+**Fix**: The World map is bundled with the core library. You can use it immediately without running any installation commands:
+```javascript
+import { createMap } from 'svg-world-maps';
+const map = createMap('world');
+```
+</details>
+
+<details>
+<summary><strong>❌ "Map 'xyz' not found in package."</strong></summary>
+<br/>
+**Cause**: The requested map name does not match any available optional maps in the library, or there is a typo.
+<br/><br/>
+**Fix**: 
+1. Check the spelling of the map name (e.g., use `usa` instead of `united-states`).
+2. Refer to the <a href="/docs/available-maps">Available Maps</a> documentation page for the exact CLI command for your desired region.
+</details>
+
+<details>
+<summary><strong>❌ "Failed to copy map file: EACCES: permission denied"</strong></summary>
+<br/>
+**Cause**: The script does not have the necessary file system permissions to create the `src/maps` directory or write the `.ts` file.
+<br/><br/>
+**Fix**: 
+1. Ensure you are running the command from the **root** of your project.
+2. Check your folder permissions. On Unix-like systems, you may need to ensure your user has write access to the project directory, or (rarely) run the command with elevated privileges if the project was initialized by a different user (e.g., `root`).
+</details>
+
+---
+
+## 🧹 Removing an Optional Map
+
+If you no longer need a map and want to reduce your production bundle size, the removal process is straightforward and manual, giving you full control:
+
+1. **Delete the map file** from your project:
+   ```bash
+   rm src/maps/germany.ts 
+   ```
+2. **Remove the registration code** (`registerMapData`) from your application.
+3. **Remove the import statement** for the map data.
+4. **Rebuild your project** (`npm run build`) to confirm the bundle size reduction.
+
+> 💡 **Note**: The `npx add-map` command is idempotent and safe. Running it multiple times will simply trigger the overwrite prompt, ensuring your local file can always be reset to the package's default version if it becomes corrupted.
