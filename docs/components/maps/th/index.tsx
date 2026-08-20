@@ -1,17 +1,17 @@
 import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import THData from '../../../../src/maps/optional/THAILAND';
+import THData from '../../../../src/maps/optional/TUNISIA';
 
-registerMapData('thailand', THData);
+registerMapData('tunisia', THData);
 
-export default function ThailandMap() {
+export default function TunisiaMap() {
     return (
         <BaseMap 
-            mapId="thailand"
-            svgFileName="thailand.svg"
-            hoverColor="rgba(165, 25, 45, 0.35)"
-            themeColorRgb="165, 25, 45"
-            regionLabel="Province"
+            mapId="tunisia"
+            svgFileName="tunisia.svg"
+            hoverColor="rgba(231, 0, 23, 0.35)"
+            themeColorRgb="231, 0, 23"
+            regionLabel="Governorate"
         />
     );
 }
