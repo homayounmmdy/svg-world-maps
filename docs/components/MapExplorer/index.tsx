@@ -11,7 +11,7 @@ export default function MapExplorer() {
   // Generate the world map SVG with modern Deep Navy theme colors
   const worldMapSvg = createMap("world", {
     background: "transparent", // Let container handle bg
-    borders: "#1e293b",
+    borders: "#4f5357",
     hoverColor: "rgba(6, 182, 212, 0.3)", // Cyan glow
     showLabels: true,
     size: "md",
