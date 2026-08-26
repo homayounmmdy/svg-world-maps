@@ -1,0 +1,109 @@
+---
+slug: automated-map-generator-dx
+title: "From Hours to Seconds: Automating Map Generation for Better DX"
+authors: homayoun
+tags: [developer-experience, automation]
+---
+
+Adding new maps to our codebase used to be a tedious, manual process that could take up to 30 minutes or even hours for complex regions like Russia or China. Today, we're thrilled to introduce our new Automated Map Generator, a life-changing Developer Experience (DX) upgrade that reduces this workflow to mere seconds.
+
+Instead of manually copying, pasting, and formatting hundreds of SVG paths and coordinates, this script intelligently parses a source SVG file and automatically generates a fully populated, production-ready TypeScript map file.
+
+{/* truncate */}
+
+## 🚀 The DX Difference
+
+We've completely transformed how new maps are added to the codebase. Here is what changed:
+
+*   **Before:** Manually extracting paths, formatting arrays, and calculating viewboxes for complex maps took up to hours.
+*   **Now:** Drop an SVG, run the script, and get a perfectly formatted `.ts` file in seconds.
+
+## 🗺️ How to Use the Generator
+
+The script automates the extraction of `viewBox`, states (paths), and labels (coordinates) from a source SVG and injects them into a standardized template.
+
+### Step 1: Prepare Your Files
+
+Place your source files in the `src/maps/optional/` directory:
+
+*   **`map.svg`**: The source SVG file containing your map data.
+*   **`TEMPLATE.ts`** *(Optional)*: A base template file. If missing, the script will use a built-in fallback template.
+
+**Expected SVG Structure:**
+For the script to extract data correctly, your SVG should ideally group its elements as follows:
+*   **Paths/States:** Wrapped in `<g id="features">`
+*   **Labels/Points:** Wrapped in `<g id="label_points">`
+
+*(Note: The script will gracefully fall back to template defaults if these groups are not found, but extracting them is highly recommended.)*
+
+### Step 2: Run the Generator
+
+Execute the script from the root of your project:
+
+```bash
+node scripts/generate-map.js
+```
+*(Adjust the path if your script is named differently, e.g., `map-generator.js`)*
+
+The CLI will interactively prompt you for two pieces of information:
+
+```text
+🗺️  Map Generator Tool
+
+Enter SVG map name (e.g., germany): germany
+Enter map code (e.g., DE): DE
+```
+
+### Step 3: Review the Output
+
+The script will read `map.svg`, extract the necessary data, and generate a new file (e.g., `GERMANY.ts`).
+
+**Example Output:**
+```text
+📂 Reading SVG from /src/maps/optional/map.svg...
+✅ Extracted viewBox from SVG: "0 0 1000 817"
+✅ Extracted 16 states from SVG.
+✅ Extracted 16 labels from SVG.
+
+🎉 Successfully created /src/maps/optional/GERMANY.ts with populated states and labels!
+```
+
+## ⚙️ What the Script Does (Under the Hood)
+
+This tool is built with robust parsing logic to ensure clean, readable, and bug-free output:
+
+1.  **Dynamic viewBox Extraction:** Automatically reads the `viewBox` attribute from the root `<svg>` tag, eliminating manual calculation.
+2.  **Smart State Extraction:** Scans the `<g id="features">` group for `<path>` elements. It intelligently extracts the `d` (path), `id`/`data-code` (code), and `name`/`title` (name), while handling duplicate codes by appending numeric suffixes.
+3.  **Label Coordinate Extraction:** Scans the `<g id="label_points">` group for `<circle>` elements, extracting `cx` (x), `cy` (y), and `id`/`class` (code/name).
+4.  **XML Entity Decoding:** Automatically decodes HTML/XML entities (e.g., `&amp;`, `&#x...;`) to ensure names render correctly in tooltips.
+5.  **Indentation Preservation:** Uses a custom bracket-matching algorithm to replace the states and labels arrays in the template while perfectly preserving your project's indentation style (spaces or tabs).
+
+## 📝 Post-Generation & Best Practices
+
+Once the `.ts` file is generated, the map data is ready. To make it available in your application:
+
+1.  **Register the Map:** Import the newly generated file and register it using your library's registration function (e.g., `registerMapData('germany', GERMANY)`).
+2.  **Verify Complex Maps:** For highly detailed maps (e.g., Russia, China, USA), quickly spot-check the generated file to ensure no paths were truncated and that the `viewBox` matches the visual bounds of the SVG.
+3.  **Clean Up:** You can now remove or replace `map.svg` for the next map you wish to generate.
+
+### 💡 Pro-Tips for Contributors
+
+*   **Naming Conventions:** Always use lowercase, alphanumeric names with underscores for the map name prompt (e.g., `south_africa`, `great_britain`) to maintain consistency and prevent import errors.
+*   **Source SVG Quality:** Ensure your source SVG is optimized (e.g., via [SVGOMG](https://jakearchibald.github.io/svgomg/)) before running the generator. This keeps the resulting TypeScript file size as small as possible.
+*   **Review Before Committing:** Always review the generated `.ts` file in your Git diff. While the script is highly robust, human verification ensures no edge cases (like malformed paths) slip into production.
+
+## ⚠️ Troubleshooting Common Errors
+
+If things don't go as planned, here are a few common errors and how to fix them:
+
+*   ❌ `"⚠️ No valid states found in <g id='features'>"`: Check your SVG structure. Ensure your paths are wrapped in `<g id="features">`.
+*   ❌ `"⚠️ Could not find viewBox in SVG. Using default."`: Your source SVG is missing a `viewBox` attribute. Add it manually to the root `<svg>` tag.
+*   ❌ `"❌ Error: Map name and code are required."`: Make sure you provided inputs for both prompts in the CLI.
+
+## 🌍 Scaling Map Additions
+
+This script is the backbone of our scalable map architecture. Because it decouples the visual SVG data from the TypeScript implementation, adding new regions is now a predictable, repeatable, and frictionless process.
+
+Whether you are adding the 31 provinces of Iran, the 50 states of the USA, or a custom imaginary map for a side project, the workflow remains exactly the same: **Drop SVG → Run Script → Register → Done.**
+
+Happy mapping! 🗺️✨

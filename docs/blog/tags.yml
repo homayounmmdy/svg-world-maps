@@ -1,19 +1,9 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+developer-experience:
+  label: Developer Experience
+  permalink: /developer-experience
+  description: Articles focused on improving developer workflows, tooling, and overall productivity.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
-
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+automation:
+  label: Automation
+  permalink: /automation
+  description: Posts about scripts and tools that automate repetitive tasks and save valuable time.
