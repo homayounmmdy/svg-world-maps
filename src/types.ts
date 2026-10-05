@@ -1,3 +1,4 @@
+
 /**
  * The single source of truth for all supported map identifiers.
  *
@@ -8,6 +9,31 @@
 export const ALL_MAP_KEYS = [
   "world", "afghanistan", "australia", "brazil", "france", "gb", "germany", "india", "iran", "netherlands", "usa", "europe", "belgium", "switzerland", "pakistan", "canada", "argentina", "armenia", "austria", "denmark", "finland", "greenland", "iceland", "israel", "kuwait", "lebanon", "luxembourg", "norway", "oman", "poland", "singapore", "sweden", "uae", "vatican", "albania", "algeria", "andorra", "angola", "anguilla", "antigua_and_barbuda", "aruba", "azerbaijan", "bahrain", "barbados", "belarus", "belize", "benin", "bermuda", "bhutan", "bolivia", "bosnia_and_herzegovina", "botswana", "british_virgin_islands", "brunei", "bulgaria", "cambodia", "cameroon", "cape_verde", "drc", "chad", "chile", "china", "colombia", "croatia", "cyprus", "czech_republic", "central_african_republic", "djibouti", "ecuador", "egypt", "fiji", "georgia", "greece", "hungary", "indonesia", "iraq", "italy", "japan", "jordan", "kazakhstan", "kyrgyzstan", "laos", "libya", "macedonia", "malaysia", "mali", "mauritania", "mexico", "monaco", "mongolia", "montenegro", "myanmar", "namibia", "new_zealand", "nicaragua", "nigeria", "north_korea", "panama", "paraguay", "peru", "philippines", "portugal", "romania", "russia", "saudi_arabia", "senegal", "serbia", "slovakia", "slovenia", "south_africa", "south_korea", "south_sudan", "spain", "sudan", "syria", "tajikistan", "thailand", "turkey", "turkmenistan", "ukraine", "uruguay", "uzbekistan", "vietnam", "bangladesh", "ethiopia", "morocco", "taiwan", "tunisia", "zimbabwe", "madagascar", "ghana", "yemen", "honduras", "niger", "venezuela", "nepal", "togo", "liberia", "ireland", "palestine", "eritrea", "lithuania", "qatar", "malawi", "jamaica", "somalia", "uganda", "kenya", "tanzania", "mozambique", "moldova", "gabon", "lesotho", "latvia", "swaziland", "comoros", "guyana", "mauritius", "estonia", "suriname", "malta", "maldives", "bahamas", "vanuatu", "zambia", "guatemala", "guinea", "rwanda", "haiti", "burundi", "cuba", "grenada", "seychelles", "tonga", "dominica", "nauru", "montserrat", "liechtenstein", "timorleste", "hong_kong", "western_sahara", "cte_d_ivoire", "burkina_faso", "sri_lanka", "dominican_republic", "falkland_islands", "pitcairn_islands", "saint_martin_french", "saint_martin_dutch", "saint_kitts_and_nevis", "puerto_rico", "costa_rica", "the_gambia", "cayman_islands", "faeroe_islands", "turks_and_caicos_islands", "saint_vincent_and_the_grenadines", "united_states_virgin_islands", "curaco", "saint_lucia", "sao_tome_and_principe", "french_polynesia", "new_caledonia", "solomon_islands", "sierra_leone", "papua_new_guinea", "el_salvador", "republic_of_congo", "guineabissau", "equatorial_guinea", "trinidad_and_tobago"
 ] as const;
+
+/**
+ * Visual style for capital markers.
+ *
+ * @remarks
+ * Every field is optional. When omitted, the value falls back to
+ * `DEFAULT_CAPITALS_STYLE`, so `capitals: {}` renders with full defaults.
+ */
+export interface CapitalsConfig {
+  /**
+   * Fill color of the capital marker.
+   * Accepts any valid CSS color (named, hex, `rgb()`, `hsl()`).
+   * @default "#2563eb"
+   */
+  color?: string;
+}
+
+/**
+ * Public option for the capitals feature.
+ *
+ * - `false` / omitted → no capitals rendered
+ * - `true`            → render with default style
+ * - `CapitalsConfig`  → render with overrides
+ */
+export type CapitalsOption = boolean | CapitalsConfig;
 
 /**
  * Represents a single capital-city marker rendered on top of a map.
@@ -105,24 +131,14 @@ export type MapOptions = {
    * Renders capital-city markers on the map.
    *
    * @remarks
-   * Requires the map's data to include a `capitals` array — maps that were
-   * not built with capital data simply render nothing, even when this is `true`.
+   * Only maps whose data ships a `capitals` array will render markers.
+   * Enabling this on a map without capital data is a safe no-op.
    *
    * @default false
    * @example { capitals: true }
+   * @example { capitals: { color: "#e11d48" } }
    */
-  capitals?: boolean;
-
-  /**
-   * Fill color of the capital marker.
-   *
-   * Accepts any valid CSS color (named, hex, `rgb()`, `hsl()`, etc.).
-   * Only used when {@link MapOptions.capitals} is `true`.
-   *
-   * @default "#2563eb"
-   * @example { capitals: true, capitalColor: "#e11d48" }
-   */
-  capitalColor?: string;
+  capitals?: CapitalsOption;
 };
 
 /**

@@ -19,16 +19,18 @@
  */
 
 import {
-  DEFAULT_MAP_OPTIONS,
-  MAP_DATA_REGISTRY,
-  SVG_VIEWPORT_CONFIGS,
+    DEFAULT_CAPITALS_STYLE,
+    DEFAULT_MAP_OPTIONS,
+    MAP_DATA_REGISTRY,
+    SVG_VIEWPORT_CONFIGS,
 } from "./config.js";
 import type {
-  MapData,
-  MapOptions,
-  MapState,
-  MapType,
-  PathData,
+    CapitalsOption,
+    MapData,
+    MapOptions,
+    MapState,
+    MapType,
+    PathData,
 } from "./types";
 
 export { registerMapData } from "./config.js";
@@ -220,6 +222,29 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
 };
 
 /**
+ * Normalizes any accepted shape of `CapitalsOption` into a flat, resolved
+ * style the renderer can consume without branching.
+ *
+ * @remarks
+ * - `false` / `undefined` → disabled
+ * - `true`                → enabled, defaults applied
+ * - `CapitalsConfig`      → enabled, user overrides merged over defaults
+ */
+const resolveCapitals = (option: CapitalsOption | undefined) => {
+    if (!option) {
+        return { enabled: false, ...DEFAULT_CAPITALS_STYLE };
+    }
+    if (option === true) {
+        return { enabled: true, ...DEFAULT_CAPITALS_STYLE };
+    }
+    return {
+        enabled: true,
+        ...DEFAULT_CAPITALS_STYLE,
+        ...option,
+    };
+};
+
+/**
  * Generates SVG `<g>` elements for every capital marker in the map data.
  *
  * @remarks
@@ -241,12 +266,9 @@ const generateCapitals = (
   mapData: MapData,
   options: MapOptions = {},
 ): string => {
-  const merged: Required<MapOptions> = {
-    ...DEFAULT_MAP_OPTIONS,
-    ...options,
-  };
+  const { enabled, color } = resolveCapitals(options.capitals);
 
-  if (!merged.capitals || !mapData.capitals?.length) return "";
+  if (!enabled || !mapData.capitals?.length) return "";
 
   return mapData.capitals
     .map((cap) => {
@@ -257,7 +279,7 @@ const generateCapitals = (
                  data-capital="true">
           <title>${name}</title>
           <circle cx="${cap.x}" cy="${cap.y}" r="4"
-                  fill="${merged.capitalColor}"
+                  fill="${color}"
                   stroke="#ffffff" stroke-width="1.5" />
         </g>`;
     })
@@ -313,8 +335,14 @@ const generateCapitals = (
  * @example
  * // Capital markers — only rendered on maps that ship capital data
  * const iranMap = createMap('iran', {
- *   capitals: true,
- *   capitalColor: '#e11d48',
+ *   capitals: true,               // default style
+ * });
+ *
+ * @example
+ * // Capital markers with a custom color
+ * const japanMap = createMap('japan', {
+ *   background: 'red',
+ *   capitals: { color: 'black' },
  * });
  *
  * @example

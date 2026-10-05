@@ -1,6 +1,7 @@
 import World from "./maps/World";
 import {
     ALL_MAP_KEYS,
+    type CapitalsConfig,
     type MapOptions,
     type MapSize,
     type MapType,
@@ -364,6 +365,15 @@ export const SVG_VIEWPORT_CONFIGS = Object.fromEntries(
 ) as Record<MapType, ReturnType<typeof createMapViewportConfig>>;
 
 /**
+ * Fallback style for capital markers.
+ * Merged under any user-supplied `CapitalsConfig`, so partial overrides work.
+ */
+export const DEFAULT_CAPITALS_STYLE: Required<CapitalsConfig> = {
+    color: "#2563eb",
+};
+
+
+/**
  * Default styling and behavioral options applied to all maps unless overridden.
  */
 export const DEFAULT_MAP_OPTIONS: Required<MapOptions> = {
@@ -374,5 +384,4 @@ export const DEFAULT_MAP_OPTIONS: Required<MapOptions> = {
     showLabels: false,
     showTooltip: true,
     capitals: false,
-    capitalColor: "#2563eb",
 };
