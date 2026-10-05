@@ -373,4 +373,6 @@ export const DEFAULT_MAP_OPTIONS: Required<MapOptions> = {
     size: "lg",
     showLabels: false,
     showTooltip: true,
+    capitals: false,
+    capitalColor: "#2563eb",
 };

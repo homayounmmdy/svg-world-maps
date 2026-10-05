@@ -522,6 +522,10 @@ const JAPAN = {
             y: "468",
             name: "Nara"
         }
+    ],
+    capitals: [
+        { name: "Tokyo", code: "JP", x: "526.9",
+            y: "419.8", },
     ]
 }
 

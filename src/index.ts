@@ -220,32 +220,111 @@ const generateLabels = (mapData: MapData, options: MapOptions = {}): string => {
 };
 
 /**
- * Creates an SVG map string for the specified map type
+ * Generates SVG `<g>` elements for every capital marker in the map data.
  *
- * @param mapType - Type of map to generate
- *   - `'world'`: Always available ✅
- *   - `'usa'`: Optional - requires registration via `npx add-map usa` ⚙️
- *   - `'india'`: Optional - requires registration via `npx add-map india` ⚙️
- *   - `'europe'`: Optional - requires registration via `npx add-map europe` ⚙️
- *   - For the full list of supported countries, see `MAPS_INFO.md` located in the root of the project.
- * @param options - Optional styling configuration for the map
- * @returns Complete SVG string representing the map
+ * @remarks
+ * Each capital is rendered as a small circle with a white stroke, wrapped in
+ * a `<g>` that carries `data-code`, `data-name`, and `data-capital="true"`
+ * so consumers can hook click / hover handlers with the same pattern used
+ * for `<path>` states.
+ *
+ * Returns an empty string when either:
+ * - `options.capitals` is falsy, or
+ * - the map data contains no `capitals` array.
+ *
+ * @param mapData - Map data containing an optional `capitals` array
+ * @param options - Map options; `capitals` enables rendering and
+ *                  `capitalColor` controls the marker fill
+ * @returns Concatenated SVG markup for all capital markers (may be empty)
+ */
+const generateCapitals = (
+  mapData: MapData,
+  options: MapOptions = {},
+): string => {
+  const merged: Required<MapOptions> = {
+    ...DEFAULT_MAP_OPTIONS,
+    ...options,
+  };
+
+  if (!merged.capitals || !mapData.capitals?.length) return "";
+
+  return mapData.capitals
+    .map((cap) => {
+      const name = escapeXml(cap.name);
+      return `<g class="map-capital"
+                 data-code="${cap.code ?? ""}"
+                 data-name="${name}"
+                 data-capital="true">
+          <title>${name}</title>
+          <circle cx="${cap.x}" cy="${cap.y}" r="4"
+                  fill="${merged.capitalColor}"
+                  stroke="#ffffff" stroke-width="1.5" />
+        </g>`;
+    })
+    .join("\n");
+};
+
+/**
+ * Generates a fully-formed SVG string for the specified map.
+ *
+ * @remarks
+ * - The `'world'` map is bundled by default. All other maps are **opt-in** to
+ *   keep the initial bundle small — register them first via `registerMapData`
+ *   (or the `npx add-map` CLI) before calling `createMap`.
+ * - The returned string is safe to inject with `innerHTML` /
+ *   `dangerouslySetInnerHTML`. State boundaries expose `data-code` and
+ *   `data-name`, so click handlers can read the selected region without
+ *   extra wiring.
+ * - Capital markers (when enabled) are rendered **above** states and labels,
+ *   and expose `data-capital="true"` alongside `data-code` / `data-name`.
+ *
+ * @param mapType - The map identifier. Must be a key of `MapType`.
+ *   - `'world'` — always available ✅
+ *   - `'usa' | 'india' | 'europe' | 'iran' | …` — require registration via
+ *     `npx add-map <name>` ⚙️
+ *   - See `MAPS_INFO.md` in the project root for the full list of 212+ maps.
+ *
+ * @param options - Optional styling and behavior configuration. Every field
+ *   falls back to `DEFAULT_MAP_OPTIONS` when omitted.
+ *
+ * @returns A complete SVG document as a string, including the `<svg>` wrapper,
+ *   inline `<style>` for hover states, and (when enabled) capital markers.
+ *
+ * @throws {Error} When `mapType` is not registered. For non-`world` maps the
+ *   error message includes the exact CLI command and `registerMapData` snippet
+ *   needed to fix it.
  *
  * @example
- * // Create a world map with custom colors and size
+ * // World map with custom colors and size
  * const worldMap = createMap('world', {
  *   background: '#e6f3ff',
  *   borders: '#2c3e50',
- *   size: 'xl'
+ *   hoverColor: '#d0e0ff',
+ *   size: 'xl',
  * });
  *
  * @example
- * // Create USA map at 50% scale
+ * // Country map at 50% scale with labels
  * const usaMap = createMap('usa', {
- *   size: 0.5
+ *   size: 'sm',
+ *   showLabels: true,
  * });
  *
- * @throws {Error} If the map type is not found in the registry
+ * @example
+ * // Capital markers — only rendered on maps that ship capital data
+ * const iranMap = createMap('iran', {
+ *   capitals: true,
+ *   capitalColor: '#e11d48',
+ * });
+ *
+ * @example
+ * // Vanilla JS: hook clicks on states and capitals
+ * container.innerHTML = createMap('iran', { capitals: true });
+ * container.addEventListener('click', (e) => {
+ *   const el = e.target.closest('path, [data-capital]');
+ *   if (!el) return;
+ *   console.log(el.dataset.name, el.dataset.code);
+ * });
  */
 export const createMap = (
   mapType: MapType,
@@ -285,6 +364,7 @@ export const createMap = (
     preserveAspectRatio="xMidYMid meet">
         ${generateStatePaths(mapData as MapData, options)}
         ${generateLabels(mapData as MapData, options)}
+        ${generateCapitals(mapData as MapData, options)}
   </svg>`;
 };
 

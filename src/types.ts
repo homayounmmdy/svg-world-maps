@@ -10,6 +10,38 @@ export const ALL_MAP_KEYS = [
 ] as const;
 
 /**
+ * Represents a single capital-city marker rendered on top of a map.
+ *
+ * @remarks
+ * Coordinates (`x`, `y`) must be expressed in the **same `viewBox` coordinate
+ * space** as the parent map's `states` / `labels`. They are **not** latitude /
+ * longitude — SVG has no projection, so the renderer plots the raw numbers.
+ *
+ * A map can contain more than one capital (e.g. South Africa has three,
+ * Bolivia has two), which is why `MapData.capitals` is always an array.
+ *
+ * @example
+ * const tehran: Capital = { name: "Tehran", code: "IR", x: 380.42, y: 210.77 };
+ */
+export interface Capital {
+  /** Display name of the capital (e.g. "London"). */
+  name: string;
+
+  /** X coordinate within the map's `viewBox`. */
+  x: number;
+
+  /** Y coordinate within the map's `viewBox`. */
+  y: number;
+
+  /**
+   * Optional ISO code of the owning state / country
+   * (e.g. `"IR"`, `"US-DC"`). Surfaced on the rendered `<g>` as
+   * `data-code` for click-handling.
+   */
+  code?: string;
+}
+
+/**
  * A union type of all supported map identifiers.
  * @remarks Automatically derived from `ALL_MAP_KEYS`. Do not modify this manually.
  */
@@ -68,6 +100,29 @@ export type MapOptions = {
    * @default true
    */
   showTooltip?: boolean;
+
+  /**
+   * Renders capital-city markers on the map.
+   *
+   * @remarks
+   * Requires the map's data to include a `capitals` array — maps that were
+   * not built with capital data simply render nothing, even when this is `true`.
+   *
+   * @default false
+   * @example { capitals: true }
+   */
+  capitals?: boolean;
+
+  /**
+   * Fill color of the capital marker.
+   *
+   * Accepts any valid CSS color (named, hex, `rgb()`, `hsl()`, etc.).
+   * Only used when {@link MapOptions.capitals} is `true`.
+   *
+   * @default "#2563eb"
+   * @example { capitals: true, capitalColor: "#e11d48" }
+   */
+  capitalColor?: string;
 };
 
 /**
@@ -132,4 +187,17 @@ export type MapData = {
     y: string | number;
     name: string;
   }>;
-};
+
+  /**
+   * Optional list of capital-city markers to render on the map.
+   *
+   * @remarks
+   * Only drawn when `MapOptions.capitals` is `true`. Coordinates must match
+   * the map's `viewBox`; see {@link Capital} for details.
+   *
+   * @example
+   * capitals: [
+   *   { name: "Tehran", code: "IR", x: 380.42, y: 210.77 },
+   * ]
+   */
+  capitals?: Capital[];};
