@@ -7,3 +7,8 @@ automation:
   label: Automation
   permalink: /automation
   description: Posts about scripts and tools that automate repetitive tasks and save valuable time.
+
+scaling:
+  label: Scaling
+  permalink: /scaling
+  description: Articles focused on scaling codebases, workflows, and systems as projects grow.

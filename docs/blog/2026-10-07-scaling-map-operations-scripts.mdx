@@ -1,0 +1,108 @@
+---
+slug: scaling-map-operations-scripts
+title: "Scaling Map Operations: Why Scripts Are Your Best Friend at 200+ Maps"
+authors: homayoun
+tags: [developer-experience, automation, scaling]
+---
+
+At the time of writing this, our map library has grown to over **200 maps**. At this scale, every change no matter how small must be applied to every single map. What sounds like a simple commit quickly becomes hours of repetitive, error-prone work. That's why we've adopted a simple rule: **if a task needs to be applied to all maps, always use a script.**
+
+In this post, we'll share why scripting is essential at scale, how to safely run bulk updates, and how to leverage the `MAPS_INFO` file to keep your tooling in sync with the latest map list.
+
+{/* truncate */}
+
+## 🚀 The Scale Difference
+
+We've learned the hard way that manual workflows don't scale. Here's what changed:
+
+*   **Before:** Adding a new property or fixing a formatting issue meant editing 200+ files by hand. Hours of work, high risk of mistakes, and one missed file could break production.
+*   **Now:** Write a script once, test it on a subset, then run it across all maps in seconds. Consistent, deterministic, and auditable.
+
+## 🗺️ How to Safely Run Bulk Map Updates
+
+Running a script that modifies 200+ files requires care. A bug in your script doesn't just cause one problem , it causes that same problem 200 times over. Follow this workflow to stay safe.
+
+### Step 1: Write the Script Carefully
+
+Understand exactly what transformations your script performs. Use the `MAPS_INFO` file in the root of the project to dynamically get the list of all available and latest maps. This prevents hardcoding and ensures you never miss a map.
+
+```javascript
+// Example: Reading MAPS_INFO to process all maps
+import { MAPS_INFO } from './MAPS_INFO.js';
+
+for (const [mapName, mapData] of Object.entries(MAPS_INFO)) {
+  console.log(`Processing ${mapName}...`);
+  // Apply your transformations here
+}
+```
+
+### Step 2: Test on a Subset First
+
+Never run a bulk update on all maps without testing. Use a `--dry-run` flag or limit the script to a few maps, then inspect the output manually.
+
+```bash
+# Example: Testing on a subset before full run
+node scripts/update-all-maps.js --dry-run
+node scripts/update-all-maps.js --limit 5
+# Inspect output, then:
+node scripts/update-all-maps.js
+```
+
+### Step 3: Verify Edge Cases
+
+Check that your script handles:
+*   Maps with special characters or empty fields
+*   Unusual formatting (spaces vs. tabs, different indentation styles)
+*   Duplicate codes or missing properties
+*   Very complex maps (e.g., Russia, China, USA)
+
+### Step 4: Run on All Maps
+
+Once verified, run the script on the full map set. Commit before running so you can easily revert if something goes wrong.
+
+### Step 5: Review the Diff
+
+After running, check a sample of the changes in your Git diff to confirm correctness. Human verification ensures no edge cases slip into production.
+
+## ⚙️ What Your Script Should Do (Under the Hood)
+
+A robust bulk-update script should include:
+
+1.  **Dynamic Map Discovery:** Read `MAPS_INFO` to get the latest list of all maps, so you never miss a newly added map.
+2.  **Validation:** Check all maps for required fields, valid `viewBox` dimensions, and suspiciously short or long path data.
+3.  **Formatting Preservation:** Use AST parsing or custom bracket-matching to preserve indentation and formatting style.
+4.  **Dry-Run Mode:** Provide a way to preview changes without writing files.
+5.  **Error Handling:** Report which maps failed and why, without stopping the entire process.
+
+## 📝 Post-Update & Best Practices
+
+After running a bulk update, follow these best practices:
+
+1.  **Review Before Committing:** Always review the generated diff. While scripts are robust, human verification catches edge cases.
+2.  **Use Version Control:** Commit before running. If something goes wrong, you can revert.
+3.  **Keep Scripts Reusable:** Write scripts that can be run again as the map library grows. Use `MAPS_INFO` to stay in sync.
+4.  **Document Your Scripts:** Add comments and a README so other contributors can understand and safely use them.
+
+### 💡 Pro-Tips for Contributors
+
+*   **Always Use Scripts for Bulk Changes:** If you're changing more than one map, write a script. Manual edits at 200+ maps are a recipe for disaster.
+*   **Test, Test, Test:** Run your script on 2-3 maps first. Inspect the output. Then scale up.
+*   **Leverage `MAPS_INFO`:** This file is your single source of truth for all available maps. Use it in every bulk operation.
+*   **Review Before Committing:** Always review the generated files in your Git diff. Human eyes catch what scripts might miss.
+
+## ⚠️ Troubleshooting Common Errors
+
+If things don't go as planned, here are a few common errors and how to fix them:
+
+*   ❌ `"Map not found in MAPS_INFO"`: Ensure the map is registered in `MAPS_INFO` and the file is up to date.
+*   ❌ `"Script skipped some maps"`: Check that your script is reading `MAPS_INFO` correctly and not filtering out valid maps.
+*   ❌ `"Formatting broke after update"`: Your script may not be preserving indentation. Use AST parsing or a bracket-matching algorithm.
+*   ❌ `"Dry run passed but full run failed"`: Check for edge cases like missing files, permission issues, or maps with unusual structures.
+
+## 🌍 Scaling Map Additions
+
+At 200+ maps, scripting is not just a convenience , it's a necessity. Every change that touches multiple maps should be automated, tested, and reviewed. By leveraging resources like `MAPS_INFO` and following a careful workflow, you can scale your map operations without scaling your mistakes.
+
+Whether you're adding a new property to all maps, standardizing formatting, or validating data before a release, the workflow remains the same: **Write Script → Test on Subset → Run on All Maps → Review → Commit.**
+
+Happy scripting! 🗺️⚙️
