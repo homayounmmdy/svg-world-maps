@@ -10,21 +10,18 @@
     "README.md",
     "LICENSE",
     "src/maps/optional/**/*.ts",
-    "scripts/add-map.js",
-    "scripts/register-map.js",
-    "scripts/create-map.mjs",
-    "scripts/generate-report.js"
+    "script/prod"
   ],
   "bin": {
-    "add-map": "./scripts/add-map.js",
-    "register-map": "./scripts/register-map.js"
+    "add-map": "./scripts/prod/add-map.js",
+    "register-map": "./scripts/prod/register-map.js"
   },
   "scripts": {
     "build": "rimraf dist && tsc",
     "generate-map-docs": "node scripts/docs/generate-map.js",
-    "create-map": "node scripts/create-map.mjs",
-    "generate-report": "node scripts/generate-report.js",
-    "register-map": "node scripts/register-map.js",
+    "create-map": "node scripts/dev/create-map.mjs",
+    "generate-report": "node scripts/dev/generate-report.js",
+    "register-map": "node scripts/prod/register-map.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
