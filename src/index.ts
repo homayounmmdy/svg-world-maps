@@ -1,20 +1,24 @@
 /**
  * svg-world-maps
- * 
- * ⚠️ MAP DATA LICENSING EXCEPTION ⚠️
+ *
+ * ⚠️  MAP DATA LICENSING NOTICE  ⚠️
  * -----------------------------------------------------------------------------
- * The underlying SVG map data (including paths, viewBox coordinates, element 
- * IDs, and labels) consumed by this library is sourced from SimpleMaps 
- * (https://simplemaps.com).
- * 
- * This specific map data is governed by the SimpleMaps SVG Map Library License 
- * (https://simplemaps.com/resources/svg-license) and is NOT covered by the 
- * MIT license of this project.
- * 
- * You are free to use these maps in personal or commercial projects in 
- * accordance with the SimpleMaps license. However, you may not redistribute 
- * the raw map data "as is" without adding value, and attribution to 
- * SimpleMaps is highly appreciated as per their terms.
+ * This package (svg-world-maps) does NOT bundle SVG map data for optional
+ * maps. Map data is distributed separately and fetched on demand via the
+ * `npx add-map <name>` CLI.
+ *
+ *   Data repo: https://github.com/homayounmmdy/svg-world-maps-data
+ *   License:   SimpleMaps SVG Map Library License
+ *              https://simplemaps.com/resources/svg-license
+ *
+ * The underlying SVG map data (paths, viewBox coordinates, element IDs, and
+ * labels) originates from SimpleMaps (https://simplemaps.com) and is NOT
+ * covered by the MIT license of this project. It may be used in personal or
+ * commercial projects in accordance with the SimpleMaps license.
+ *
+ * The raw map data may NOT be redistributed "as is" or as a standalone
+ * product without prior written permission from SimpleMaps. Attribution to
+ * SimpleMaps is appreciated as per their terms.
  * -----------------------------------------------------------------------------
  */
 

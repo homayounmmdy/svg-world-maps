@@ -24,15 +24,20 @@ SOFTWARE.
 EXCEPTION: Map Data Licensing
 ================================================================================
 
-The SVG map data (including paths, viewBox coordinates, element IDs, and labels) 
-located in the map data directories (e.g., `src/maps/`) is sourced from 
-SimpleMaps (https://simplemaps.com).
+The published npm package (svg-world-maps) does NOT bundle any SVG map data.
+Map data is distributed separately via the svg-world-maps-data repository:
+https://github.com/homayounmmdy/svg-world-maps-data
 
-This specific map data is governed by the SimpleMaps SVG Map Library License 
-(https://simplemaps.com/resources/svg-license) and is NOT covered by the MIT 
-license above.
+However, this source repository contains SVG map files for development and
+documentation purposes (for example in `docs/maps/`). Those
+SVG map files are derived from SimpleMaps (https://simplemaps.com) and are
+governed by the SimpleMaps SVG Map Library License
+(https://simplemaps.com/resources/svg-license), NOT by the MIT license above.
 
-Users of this software may use the included map data for personal or commercial 
-projects in accordance with the SimpleMaps license. However, you may not 
-redistribute the raw map data "as is" without adding value, and attribution to 
-SimpleMaps is required/highly appreciated as per their terms.
+You may use these map files for personal or commercial projects in accordance
+with the SimpleMaps license. You may NOT redistribute the raw map data "as is"
+or as a standalone product without prior written permission from SimpleMaps.
+Attribution to SimpleMaps is appreciated as per their terms.
+
+For the full map data license, see:
+https://github.com/homayounmmdy/svg-world-maps-data/blob/main/LICENSE
