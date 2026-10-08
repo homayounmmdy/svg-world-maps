@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import readline from 'readline';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const DATA_REPO = 'homayounmmdy/svg-world-maps-data';
+const DATA_VERSION = 'main'; // switch to 'v1.0.0' once you tag it
+const CDN = `https://cdn.jsdelivr.net/gh/${DATA_REPO}@${DATA_VERSION}/maps`;
 
 const mapName = process.argv[2];
 
-if (!mapName ) {
+if (!mapName) {
   console.error('❌ Usage: npx add-map <map-name> (e.g., npx add-map usa)');
   process.exit(1);
 }
@@ -19,83 +19,84 @@ if (mapName.toLowerCase() === 'world') {
   process.exit(1);
 }
 
-const optionalDir = path.join(__dirname, '../src/maps/optional');
-const possibleFileNames = [
-  `${mapName}.ts`,
-  `${mapName.toUpperCase()}.ts`,
-  `${mapName.toLowerCase()}.ts`
-];
+const slug = mapName.toLowerCase();
 
-let foundFileName = null;
-
-for (const fileName of possibleFileNames) {
-  const potentialPath = path.join(optionalDir, fileName);
-  if (fs.existsSync(potentialPath)) {
-    foundFileName = fileName;
-    break;
+async function urlExists(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
+    return res.ok;
+  } catch {
+    return false;
   }
 }
 
-if (!foundFileName) {
-  console.error(`❌ Map '${mapName}' not found in package.`);
-  console.error(`   Available optional maps are located in the package's src/maps/optional directory.`);
-  process.exit(1);
+async function resolveUrl() {
+  // Try common casings because the GitHub repo may use USA.ts, usa.ts, etc.
+  const candidates = [
+    `${CDN}/${slug}.ts`,
+    `${CDN}/${mapName}.ts`,
+    `${CDN}/${mapName.toUpperCase()}.ts`,
+  ];
+  for (const url of candidates) {
+    if (await urlExists(url)) return url;
+  }
+  return null;
 }
 
-const src = path.join(optionalDir, foundFileName);
-// Destination uses the name provided by the user for consistency
-const dest = path.join(process.cwd(), 'src/maps', `${mapName}.ts`);
-
 function askQuestion(query) {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  return new Promise(resolve => {
-    rl.question(query, (answer) => {
-      rl.close();
-      resolve(answer);
-    });
-  });
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise(resolve => rl.question(query, a => { rl.close(); resolve(a); }));
 }
 
 async function run() {
-// 4. Check if already installed
-if (fs.existsSync(dest)) {
-  console.warn(`⚠️  Map '${mapName}' already exists in your project.`);
-
-    // 👇 Use the async helper instead of prompt()
-    const overwrite = await askQuestion('Do you want to overwrite it? (y/N): ');
-
-  if (overwrite?.toLowerCase() !== 'y') {
-      console.log('Aborted.');
-    process.exit(0);
+  const url = await resolveUrl();
+  if (!url) {
+    console.error(`❌ Map '${mapName}' not found on CDN.`);
+    console.error(`   Browse available maps: https://github.com/${DATA_REPO}/tree/main/maps`);
+    process.exit(1);
   }
-}
 
-// 5. Copy File
-try {
-fs.mkdirSync(path.dirname(dest), { recursive: true });
-fs.copyFileSync(src, dest);
-} catch (err) {
-  console.error('❌ Failed to copy map file:', err.message);
-  process.exit(1);
-}
+  const dest = path.join(process.cwd(), 'src/maps', `${slug}.ts`);
 
-// 6. Generate Variable Name for Example (sanitize dashes/spaces)
-const varName = `${mapName.replace(/[^a-zA-Z0-9]/g, '_')}Data`;
+  if (fs.existsSync(dest)) {
+    console.warn(`⚠️  Map '${slug}' already exists in your project.`);
+    const ans = await askQuestion('Do you want to overwrite it? (y/N): ');
+    if (ans?.toLowerCase() !== 'y') {
+      console.log('Aborted.');
+      process.exit(0);
+    }
+  }
 
-console.log(`
-✅ ${mapName} map added to your project!
+  let content;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    content = await res.text();
+  } catch (err) {
+    console.error('❌ Failed to download map:', err.message);
+    process.exit(1);
+  }
+
+  try {
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, content);
+  } catch (err) {
+    console.error('❌ Failed to write file:', err.message);
+    process.exit(1);
+  }
+
+  const varName = `${slug.replace(/[^a-zA-Z0-9]/g, '_')}Data`;
+  console.log(`
+✅ ${slug} map added to your project!
 
 📝 Now register it in your code:
 
 import { registerMapData, createMap } from 'svg-world-maps';
-import ${varName} from './src/maps/${mapName}';
+import ${varName} from './src/maps/${slug}';
 
-registerMapData('${mapName}', ${varName});
+registerMapData('${slug}', ${varName});
 
-const map = createMap('${mapName}');
+const map = createMap('${slug}');
 `);
 }
 

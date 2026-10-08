@@ -1,5 +1,5 @@
 import { registerMapData } from "svg-world-maps";
-import usaData from "../../../../src/maps/optional/USA";
+import usaData from "../../../maps/USA";
 import BaseMap from "../BaseMap";
 
 registerMapData("usa", usaData);
