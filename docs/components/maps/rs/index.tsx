@@ -1,17 +1,17 @@
-import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import RSData from '../../../../src/maps/optional/SERBIA';
+import RSData from "../../../maps/SERBIA";
+import BaseMap from "../BaseMap";
 
-registerMapData('serbia', RSData);
+registerMapData("serbia", RSData);
 
 export default function SerbiaMap() {
-    return (
-        <BaseMap 
-            mapId="serbia"
-            svgFileName="serbia.svg"
-            hoverColor="rgba(198, 54, 60, 0.35)"
-            themeColorRgb="198, 54, 60"
-            regionLabel="District"
-        />
-    );
+  return (
+    <BaseMap
+      mapId="serbia"
+      svgFileName="serbia.svg"
+      hoverColor="rgba(198, 54, 60, 0.35)"
+      themeColorRgb="198, 54, 60"
+      regionLabel="District"
+    />
+  );
 }

@@ -9,7 +9,6 @@
     "dist",
     "README.md",
     "LICENSE",
-    "src/maps/optional/**/*.ts",
     "script/prod"
   ],
   "bin": {

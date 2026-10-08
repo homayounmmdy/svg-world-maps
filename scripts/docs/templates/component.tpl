@@ -1,6 +1,6 @@
 import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import {{codeUpper}}Data from '../../../../src/maps/optional/{{dataFile}}';
+import {{codeUpper}}Data from '../../../maps/{{dataFile}}';
 
 registerMapData('{{mapId}}', {{codeUpper}}Data);
 

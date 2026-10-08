@@ -1,5 +1,5 @@
 import { registerMapData } from "svg-world-maps";
-import auData from "../../../../src/maps/optional/AUSTRALIA";
+import auData from "../../../maps/AUSTRALIA";
 import BaseMap from "../BaseMap";
 
 registerMapData("australia", auData);

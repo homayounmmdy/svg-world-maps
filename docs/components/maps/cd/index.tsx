@@ -1,5 +1,5 @@
 import { registerMapData } from "svg-world-maps";
-import CDData from "../../../../src/maps/optional/DRC";
+import CDData from "../../../maps/DRC";
 import BaseMap from "../BaseMap";
 
 registerMapData("democratic-republic-of-the-congo", CDData);

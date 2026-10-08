@@ -1,17 +1,17 @@
-import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import BAData from '../../../../src/maps/optional/BOSNIA_AND_HERZEGOVINA';
+import BAData from "../../../maps/BOSNIA_AND_HERZEGOVINA";
+import BaseMap from "../BaseMap";
 
-registerMapData('bosnia-and-herzegovina', BAData);
+registerMapData("bosnia-and-herzegovina", BAData);
 
 export default function BosniaAndHerzegovinaMap() {
-    return (
-        <BaseMap 
-            mapId="bosnia-and-herzegovina"
-            svgFileName="bosnia-and-herzegovina.svg"
-            hoverColor="rgba(0, 33, 128, 0.35)"
-            themeColorRgb="0, 33, 128"
-            regionLabel="Entity"
-        />
-    );
+  return (
+    <BaseMap
+      mapId="bosnia-and-herzegovina"
+      svgFileName="bosnia-and-herzegovina.svg"
+      hoverColor="rgba(0, 33, 128, 0.35)"
+      themeColorRgb="0, 33, 128"
+      regionLabel="Entity"
+    />
+  );
 }

@@ -1,17 +1,17 @@
-import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import OMData from '../../../../src/maps/optional/OMAN';
+import OMData from "../../../maps/OMAN";
+import BaseMap from "../BaseMap";
 
-registerMapData('oman', OMData);
+registerMapData("oman", OMData);
 
 export default function OmanMap() {
-    return (
-        <BaseMap 
-            mapId="oman"
-            svgFileName="oman.svg"
-            hoverColor="rgba(210, 16, 52, 0.35)"
-            themeColorRgb="210, 16, 52"
-            regionLabel="Governorate"
-        />
-    );
+  return (
+    <BaseMap
+      mapId="oman"
+      svgFileName="oman.svg"
+      hoverColor="rgba(210, 16, 52, 0.35)"
+      themeColorRgb="210, 16, 52"
+      regionLabel="Governorate"
+    />
+  );
 }

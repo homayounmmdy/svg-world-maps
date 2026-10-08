@@ -1,17 +1,17 @@
-import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import PHData from '../../../../src/maps/optional/PHILIPPINES';
+import PHData from "../../../maps/PHILIPPINES";
+import BaseMap from "../BaseMap";
 
-registerMapData('philippines', PHData);
+registerMapData("philippines", PHData);
 
 export default function PhilippinesMap() {
-    return (
-        <BaseMap 
-            mapId="philippines"
-            svgFileName="philippines.svg"
-            hoverColor="rgba(0, 56, 168, 0.35)"
-            themeColorRgb="0, 56, 168"
-            regionLabel="Province"
-        />
-    );
+  return (
+    <BaseMap
+      mapId="philippines"
+      svgFileName="philippines.svg"
+      hoverColor="rgba(0, 56, 168, 0.35)"
+      themeColorRgb="0, 56, 168"
+      regionLabel="Province"
+    />
+  );
 }

@@ -1,5 +1,5 @@
 import { registerMapData } from "svg-world-maps";
-import STData from "../../../../src/maps/optional/SAO_TOME_AND_PRINCIPE";
+import STData from "../../../maps/SAO_TOME_AND_PRINCIPE";
 import BaseMap from "../BaseMap";
 
 registerMapData("sao_tome_and_principe", STData);

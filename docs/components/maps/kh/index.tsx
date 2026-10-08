@@ -1,17 +1,17 @@
-import BaseMap from "../BaseMap";
 import { registerMapData } from "svg-world-maps";
-import KHData from '../../../../src/maps/optional/CAMBODIA';
+import KHData from "../../../maps/CAMBODIA";
+import BaseMap from "../BaseMap";
 
-registerMapData('cambodia', KHData);
+registerMapData("cambodia", KHData);
 
 export default function CambodiaMap() {
-    return (
-        <BaseMap 
-            mapId="cambodia"
-            svgFileName="cambodia.svg"
-            hoverColor="rgba(225, 0, 21, 0.35)"
-            themeColorRgb="225, 0, 21"
-            regionLabel="Province"
-        />
-    );
+  return (
+    <BaseMap
+      mapId="cambodia"
+      svgFileName="cambodia.svg"
+      hoverColor="rgba(225, 0, 21, 0.35)"
+      themeColorRgb="225, 0, 21"
+      regionLabel="Province"
+    />
+  );
 }

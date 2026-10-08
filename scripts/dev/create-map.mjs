@@ -313,7 +313,7 @@ async function main() {
     const mapNameCapitalized = mapName.charAt(0).toUpperCase() + mapName.slice(1).toLowerCase(); // e.g., Germany
 
     // 3. Read the template file
-    const templatePath = path.join(process.cwd(), "src/maps/optional/TEMPLATE.ts");
+    const templatePath = path.join(process.cwd(), "docs/maps/TEMPLATE.ts");
     let templateContent;
 
     if (fs.existsSync(templatePath)) {
@@ -326,7 +326,7 @@ async function main() {
     let newContent = templateContent;
 
     // 4. Read SVG to extract viewBox automatically
-    const svgPath = path.join(process.cwd(), "src/maps/optional/map.svg");
+    const svgPath = path.join(process.cwd(), "docs/maps/map.svg");
     let svgContent = "";
     let viewBox = "0 0 1000 817"; // fallback
 
@@ -378,7 +378,7 @@ async function main() {
     }
 
     // 7. Create the new file
-    const outputDir = path.join(process.cwd(), "src/maps/optional");
+    const outputDir = path.join(process.cwd(), "docs/maps");
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }

@@ -1,5 +1,5 @@
 import { registerMapData } from "svg-world-maps";
-import SXData from "../../../../src/maps/optional/SAINT_MARTIN_DUTCH";
+import SXData from "../../../maps/SAINT_MARTIN_DUTCH";
 import BaseMap from "../BaseMap";
 
 registerMapData("saint_martin_dutch", SXData);
