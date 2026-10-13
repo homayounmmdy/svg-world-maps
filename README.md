@@ -13,15 +13,20 @@ Simple, lightweight, and highly customizable SVG maps for modern JavaScript proj
 
 ---
 
-## 🎉 Welcome to v1.0.1!
+## 🎉 Welcome to v1.1.0!
 
-We are thrilled to announce the **v1.0.1** stable release! This major milestone brings:
+We are thrilled to announce the **v1.1.0** release! This version focuses on making `svg-world-maps` dramatically smaller, safer to maintain, and even more powerful for interactive projects.
+
 - 🌍 **212+ Maps**: World map + 211 country and region maps (USA, China, Japan, Germany, Iran, Brazil, and many more!).
 - ⚡ **Zero Dependencies**: Pure, lightweight SVG output.
 - 🛠 **Framework Agnostic**: Works flawlessly with React, Next.js, Vue, Svelte, Angular, or Vanilla JS.
 - 📦 **Tree-shakeable**: Keep your bundle tiny by only adding the specific maps you need.
 - 🖱️ **Interactive**: Built-in hover effects, native tooltips, static labels, and click handling via data attributes.
 - 🛡️ **TypeScript Ready**: Full, strict type definitions included out of the box.
+- 🏛️ **Opt-in Capital City Markers** *(New in v1.1.0)*: Add capital city markers to any map with a simple option. Only loaded when enabled.
+- 📉 **Massively Smaller npm Bundle** *(New in v1.1.0)*: The full map registry now lives in the dedicated [`svg-world-maps-data`](https://github.com/homayounmmdy/svg-world-maps-data) repository and is referenced on demand. The main package no longer bundles the entire map list, resulting in a huge reduction in installed package size.
+- 🧹 **Safer Map Data** *(New in v1.1.0)*: All generated map data files now include a clear **DO NOT EDIT** warning to prevent accidental modifications.
+- 🛠 **Refined CLI & Scripts** *(New in v1.1.0)*: CLI scripts were refactored to only add the npm dependencies you actually need, helping reduce package size even further.
 
 ---
 
@@ -90,7 +95,9 @@ container.addEventListener("click", (e) => {
 
 ## 🗺️ Adding Optional Maps
 
-To keep your production bundle size minimal, only the `world` map is included by default. Add any of the 211+ optional maps on-demand using our CLI:
+To keep your production bundle size minimal, only the `world` map is included by default. The full list of 211+ optional maps now lives in the dedicated [`svg-world-maps-data`](https://github.com/homayounmmdy/svg-world-maps-data) repository and is referenced on demand. This is the main reason the `v1.1.0` npm package is dramatically smaller.
+
+Add any of the 211+ optional maps on-demand using our CLI:
 
 ```bash
 # Add a specific map (e.g., usa, germany, japan, brazil)
@@ -99,7 +106,25 @@ npx add-map usa
 # Automatically register it in your codebase (DX booster!)
 npx register-map
 ```
+
 👉 *[See the full list of 212+ available maps in the Documentation](https://svg-world-maps.vercel.app/docs/maps-info)*
+
+
+## 🏛️ Capital City Markers (New in v1.1.0)
+
+You can now easily overlay capital city markers on any map. This feature is **opt-in** and only loads the necessary capital data when enabled, so your bundle stays lean.
+
+```javascript
+import { createMap } from "svg-world-maps";
+
+const mapWithCapitals = createMap("france", {
+  capitals: { 
+    color : "#ef4444"
+  }
+});
+```
+
+The markers are rendered as small circles at the coordinates of each capital. You can customize their appearance via the options.
 
 ---
 
@@ -123,7 +148,7 @@ The README is just the beginning. For comprehensive guides, API references, and 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. We welcome:
 - 🐛 Bug reports and fixes
 - 💡 Feature requests
-- 🌍 New country/region map additions
+- 🌍 New country/region map additions (please contribute to the [`svg-world-maps-data`](https://github.com/homayounmmdy/svg-world-maps-data) repository)
 - 📝 Documentation improvements
 
 Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before contributing.
