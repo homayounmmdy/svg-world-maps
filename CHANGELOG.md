@@ -5,7 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.1] - latest
+## [1.1.0] - 2026-10-09
+
+### 🎉 Release Focus
+- **Massive npm bundle size reduction**: The full map registry/list now lives in the dedicated [`svg-world-maps-data`](https://github.com/homayounmmdy/svg-world-maps-data) repository and is referenced on demand. The main package no longer bundles the entire 212+ map catalog, resulting in a dramatically smaller installed package.
+- **Opt-in capital city markers**: Add capital markers to any map without affecting bundle size unless enabled.
+- **Safer generated map data**: All map data files now include a clear `DO NOT EDIT` warning.
+- **Refined CLI/scripts**: Scripts now add only the npm dependencies that are actually needed, helping reduce package size.
+
+### 🌍 Added
+- **Capital City Markers**: New opt-in feature via `capitals`, with customization options `color` . Capital data is only loaded when the feature is enabled.
+- **External Map Registry**: The list of available maps is now sourced from [`svg-world-maps-data`](https://github.com/homayounmmdy/svg-world-maps-data), keeping the core npm package much smaller.
+
+### ♻️ Refactored
+- **Package Size Optimization**: Removed the bundled map list from the main npm package and replaced it with on-demand references to the external data registry.
+
+### 📝 Documentation
+- Added a `DO NOT EDIT` warning to all generated map data files.
+
+---
+
+## [1.0.1] - 2026-08-21
 ### 📜 Changed
 - **Licensing Exception**: Clarified that while the project's code remains under the MIT License, the underlying SVG map data is sourced from [SimpleMaps](https://simplemaps.com/) and is governed by the [SimpleMaps SVG Map Library License](https://simplemaps.com/resources/svg-license).
 
